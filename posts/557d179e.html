@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shawn22.xyz">
-  <title>Spring Boot后端接口规范 | 星星的猫(&gt;^ω^&lt;)喵</title>
+  <title>SpringBoot后端接口规范 | 星星的猫(&gt;^ω^&lt;)喵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、前言  一个后端接口大致分为四个部分组成：接口地址（url）、接口请求方式（get、post等）、请求数据（request）、响应数据（response）。虽然说后端接口的编写并没有统一规范要求，而且如何构建这几个部分每个公司要求都不同，没有什么“一定是最好的”标准，但其中最重要的关键点就是看是否规范。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot后端接口规范">
+<meta property="og:title" content="SpringBoot后端接口规范">
 <meta property="og:url" content="https://www.shawn22.xyz/posts/557d179e.html">
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、前言  一个后端接口大致分为四个部分组成：接口地址（url）、接口请求方式（get、post等）、请求数据（request）、响应数据（response）。虽然说后端接口的编写并没有统一规范要求，而且如何构建这几个部分每个公司要求都不同，没有什么“一定是最好的”标准，但其中最重要的关键点就是看是否规范。">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200830204830239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200830211916735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2020-08-30T13:47:00.000Z">
-<meta property="article:modified_time" content="2020-09-22T15:09:24.807Z">
+<meta property="article:modified_time" content="2021-03-15T03:39:58.405Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring-Boot后端接口规范" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringBoot后端接口规范" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -260,7 +260,7 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 class="article-title_code_ant" itemprop="name">
-      Spring Boot后端接口规范
+      SpringBoot后端接口规范
     </h1>
   
 </p></center>
@@ -293,7 +293,7 @@ var _hmt = _hmt || [];
 <p> 参数校验失败会自动引发异常，我们当然不可能再去手动捕捉异常进行处理。但我们又不想手动捕捉这个异常，又要对这个异常进行处理，那正好使用SpringBoot全局异常处理来达到一劳永逸的效果！</p>
 <h2 id="基本使用">基本使用</h2>
 <p>首先，我们需要新建一个类，在这个类上加上<code>@ControllerAdvice</code>或<code>@RestControllerAdvice</code>注解，这个类就配置成全局处理类了。（这个根据你的Controller层用的是<code>@Controller</code>还是<code>@RestController</code>来决定） 然后在类中新建方法，在方法上加上<code>@ExceptionHandler</code>注解并指定你想处理的异常类型，接着在方法内编写对该异常的操作逻辑，就完成了对该异常的全局处理！我们现在就来演示一下对参数校验失败抛出的<code>MethodArgumentNotValidException</code>全局处理：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.csdn.demo1.global;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.validation.ObjectError;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.MethodArgumentNotValidException;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestControllerAdvice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionControllerAdvice</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(MethodArgumentNotValidException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">String</span> <span class="title">MethodArgumentNotValidExceptionHandler</span>(<span class="title">MethodArgumentNotValidException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 从异常对象中拿到ObjectError对象</span></span><br><span class="line">        ObjectError objectError = e.getBindingResult().getAllErrors().get(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 然后提取错误提示信息进行返回</span></span><br><span class="line">        <span class="keyword">return</span> objectError.getDefaultMessage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.csdn.demo1.global;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.validation.ObjectError;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.MethodArgumentNotValidException;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestControllerAdvice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionControllerAdvice</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(MethodArgumentNotValidException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    @<span class="title">ResponseStatus</span>(<span class="title">HttpStatus</span>.<span class="title">BAD_REQUEST</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">String</span> <span class="title">MethodArgumentNotValidExceptionHandler</span>(<span class="title">MethodArgumentNotValidException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 从异常对象中拿到ObjectError对象</span></span><br><span class="line">        ObjectError objectError = e.getBindingResult().getAllErrors().get(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 然后提取错误提示信息进行返回</span></span><br><span class="line">        <span class="keyword">return</span> objectError.getDefaultMessage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 我们再次进行测试，这次返回的就是我们制定的错误提示信息！我们通过全局异常处理优雅的实现了我们想要的功能！以后我们再想写接口参数校验，就只需要在入参的成员变量上加上Validator校验规则注解，然后在参数上加上@Valid注解即可完成校验，校验失败会自动返回错误提示信息，无需任何其他代码！<br>
 <img src="https://img-blog.csdnimg.cn/20200830204830239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 <h2 id="自定义异常">自定义异常</h2>
@@ -592,7 +592,7 @@ var _hmt = _hmt || [];
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020
+                &copy; 2020-2021
             
             Shawn
         </div>
@@ -787,6 +787,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">macos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Idea</a>
               </li>
             
             <div class="clearfix"></div>

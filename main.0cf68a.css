@@ -519,8 +519,9 @@ body {
     color:#333;
     /* background-color:#fff; */
     min-height:100%;
-    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
-        url('https://oss.yansheng.xyz/wallpaper/qinshimingyue.jpg') no-repeat 0% 0%/ cover;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4)), 
+        url('https://s3.ax1x.com/2021/01/18/syBWOU.jpg') no-repeat 0% 0%/ cover;
+        /*https://oss.yansheng.xyz/wallpaper/qinshimingyue.jpg*/
     cursor:url('https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.1.6/images/mouse.cur'), default;
 }
 
@@ -539,7 +540,8 @@ a {
 .left-col {
     /* background:#fff; */
     background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    url('http://bucket836.oss-cn-shenzhen.aliyuncs.com/wallpaper/381535373.jpeg') no-repeat 0% 20%/ cover;
+    url('https://s3.ax1x.com/2021/01/18/syBql6.jpg') no-repeat 0% 20%/ cover;
+    /*http://bucket836.oss-cn-shenzhen.aliyuncs.com/wallpaper/381535373.jpeg*/
     width:300px;
     position:fixed;
     opacity:1;

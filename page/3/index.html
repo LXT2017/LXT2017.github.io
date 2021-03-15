@@ -206,6 +206,901 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Synology安装并实现在linux和win下使用ISCSI存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+
+        
+
+        
+        <a href="/posts/63c06a7a.html" class="archive-article-date">
+  	<time datetime="2020-04-08T06:10:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">801字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/63c06a7a.html">Synology安装并实现在linux和win下使用ISCSI存储</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h3 id="1、虚拟机安装Synology需要准备的工具">1、虚拟机安装Synology需要准备的工具</h3>
+<ul>
+<li>
+<p>Synology Assistant</p>
+</li>
+<li>
+<p>DSM_DS3615xs_5967.pat</p>
+</li>
+<li>
+<p>XPEnoboot_DS3615xs_5.2-5967.1.iso</p>
+</li>
+</ul>
+<blockquote>
+<p>链接：<a href="https://pan.baidu.com/s/1vU0WDlJV_pxTTt0d02KLKg" target="_blank" rel="noopener">https://pan.baidu.com/s/1vU0WDlJV_pxTTt0d02KLKg</a>  提取码：0sy9<br>
+或者https://download.csdn.net/download/lemon_TT/14945706</p>
+</blockquote>
+<p>注意DSM和XPEnoboot的版本要一致，如上都是DS3615xs_5967</p>
+<p>XPEnoboot_DS3615xs_5.1-5967.1.iso用于引导镜像</p>
+<p>DSM是系统文件</p>
+<p>Synology Assistant是客户端管理工具</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+    <!-- 开始添加版权声明-->
+      
+      
+        <div class="declare" hidden="hidden"></div>
+      
+      <!-- 添加完成 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云计算</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/云计算//" class="article-tag-list-link color4">云计算</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/63c06a7a.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-NAS、SAN、ISCSI存储简单理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+
+        
+
+        
+        <a href="/posts/2.927e+166.html" class="archive-article-date">
+  	<time datetime="2020-04-08T05:43:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">695字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/2.927e+166.html">NAS、SAN、ISCSI存储简单理解</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h3 id="NAS">NAS</h3>
+<p> NAS是Network-Attached Storage的简称。中文一般称为“网络附加存储”，或者“网络连接存储”。我们可以把NAS理解为通过网络提供存储的设备（请特别注意，不需要光纤交换机，普通的局域网交换机即可）。</p>
+<p>NAS是一种基于IP的高性能文件共享和存储专用设备。</p>
+<ul>
+<li>可使NAS客户端通过IP网络共享文件</li>
+<li>采用针对文件I/O而优化的专用操作系统</li>
+<li>使UNIX和Windows用户都能共享数据</li>
+</ul>
+<p> 通俗来讲：NAS可以是一个独立的存储系统，从与普通的应用服务器对比也可以看出，NAS是直接独立的存储，我们就称为<strong>NAS存储系统</strong>。一般来说，我们也可以用NAS搭建家庭共享存储设备，可以实现视频、照片等在多终端的同时共享。</p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GWAFfS.png" alt="GWAFfS.png"></p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+    <!-- 开始添加版权声明-->
+      
+      
+        <div class="declare" hidden="hidden"></div>
+      
+      <!-- 添加完成 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云计算</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/云计算//" class="article-tag-list-link color4">云计算</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/2.927e+166.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-springboot2整合WebSocket入门实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+
+        
+
+        
+        <a href="/posts/f56bb91e.html" class="archive-article-date">
+  	<time datetime="2020-04-07T12:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/f56bb91e.html">springboot2整合WebSocket入门实战</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h3 id="一、问题描述">一、问题描述</h3>
+<p>最近刚好有一个需要，就是需要服务端推送消息到客户端，解决方案第一个想到的便是前端轮询服务器，查询服务器是否有请求。对于这种方法，优点是简单，但缺点也十分明显，那就是十分耗费服务器资源。因此在这里介绍了第二种方法，使用webSocket。</p>
+<h3 id="二、websocket与http-区别">二、websocket与http 区别</h3>
+<p>http协议是用在应用层的协议，他是基于tcp协议的，http协议建立链接也必须要有三次握手才能发送信息。http链接分为短链接，长链接，短链接是每次请求都要三次握手才能发送自己的信息。即每一个request对应一个response。长链接是在一定的期限内保持链接。保持TCP连接不断开。客户端与服务器通信，必须要有客户端发起然后服务器返回结果。客户端是主动的，服务器是被动的。<br>
+WebSocket是HTML5中的协议， 他是为了解决客户端发起多个http请求到服务器资源浏览器必须要经过长时间的轮训问题而生的，他实现了多路复用，他是全双工通信。在webSocket协议下客服端和浏览器可以同时发送信息。服务器也可以主动推送消息给客户端。</p>
+<p><a href="https://imgchr.com/i/G2Em9g" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/04/07/G2Em9g.md.png" alt="G2Em9g.md.png"></a></p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+    <!-- 开始添加版权声明-->
+      
+      
+        <div class="declare" hidden="hidden"></div>
+      
+      <!-- 添加完成 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebSocket</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/f56bb91e.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-springboot集成RabbitMQ简单入门实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+
+        
+
+        
+        <a href="/posts/538a1b2.html" class="archive-article-date">
+  	<time datetime="2020-03-29T09:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/538a1b2.html">springboot集成RabbitMQ简单入门实践</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h3 id="一、RabbitMQ核心概念">一、RabbitMQ核心概念</h3>
+<p>RabbitMQ是一个由erlang开发的AMQP(Advanved Message Queue Protocol)的开源实现。所有 MQ 产品从模型抽象上来说都是一样的过程：</p>
+<blockquote>
+<p>消费者（consumer）订阅某个队列。生产者（producer）创建消息，然后发布到队列（queue）中，最后将消息发送到监听的消费者。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/f2c700887fa3dfe1fae01a0dbe6ecf63.png" alt=""></p>
+<h5 id="1、Message">1、Message</h5>
+<p>消息，消息是不具名的，它由消息头和消息体组成。消息体是不透明的，而消息头则由一系列的可选属性组成，这些属性包括routing-key(路由键)、priority(相对于其他消息的优先权)、delivery-mode(指出该消息可能需要持久性存储)等。</p>
+<h5 id="2、Publisher">2、Publisher</h5>
+<p>消息的生产者，也是一个向交换器发布消息的客户端应用程序。</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+    <!-- 开始添加版权声明-->
+      
+      
+        <div class="declare" hidden="hidden"></div>
+      
+      <!-- 添加完成 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java/中间件//" class="article-tag-list-link color4">中间件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/538a1b2.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-Centos7安装zookeeper和Web-UI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+
+        
+
+        
+        <a href="/posts/f2395be.html" class="archive-article-date">
+  	<time datetime="2020-03-05T09:56:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/f2395be.html">Centos7安装zookeeper和Web UI</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h2 id="一、zookeeper的安装">一、zookeeper的安装</h2>
+<h4 id="1、zookeeper介绍">1、zookeeper介绍</h4>
+<p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。</p>
+<p>ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。</p>
+<p>ZooKeeper包含一个简单的原语集， [1] 提供Java和C的接口。官网：<a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">https://zookeeper.apache.org</a></p>
+<h4 id="2、安装环境">2、安装环境</h4>
+<p>Centos7.6 、JDK1.8</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+    <!-- 开始添加版权声明-->
+      
+      
+        <div class="declare" hidden="hidden"></div>
+      
+      <!-- 添加完成 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">zookeeper</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/f2395be.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-java通过IP解析地理位置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+
+        
+
+        
+        <a href="/posts/3b99ced5.html" class="archive-article-date">
+  	<time datetime="2020-02-28T11:29:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">718字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/3b99ced5.html">java通过IP解析地理位置</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h2 id="一、问题描述">一、问题描述</h2>
+<p>最近在做一个外包项目，这里要求如果定位高延迟怎么办，另外为了能够加附近的人为好友方便，所以想到了利用用户的IP进行粗略的地理位置定位。因为在写的时候遇到了一些坑，所以在这里特别记录一下，方便以后翻阅。</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+    <!-- 开始添加版权声明-->
+      
+      
+        <div class="declare" hidden="hidden"></div>
+      
+      <!-- 添加完成 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IP解析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/3b99ced5.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
     <article id="post-ubuntu16-04下docker的入门学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -226,7 +1121,7 @@ var _hmt = _hmt || [];
     <span class="post-time">
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -234,7 +1129,7 @@ var _hmt = _hmt || [];
       &nbsp; | &nbsp;
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
 </div>
@@ -259,13 +1154,6 @@ var _hmt = _hmt || [];
       
         <h2 id="一、虚拟机">一、虚拟机</h2>
 <p>这里我使用的是VMWare 15的虚拟机软件，Linux版本使用了ubuntu16.04 TLE版本，建议去阿里云下载ubuntu的镜像，启动后默认就可以了，之后所有的操作都以最高权限操作，输入<code>sudo su</code>进行切换。不过这里需要注意的是刚开始系统的apt源是国外的，所以使用<code>apt update</code>时会报错，所以需要在设置里先修改到国内源。后面也可以进入<code>/etc/apt/source.list</code>下进行国内源的添加，这些网上有很多，这里就不阐述了。</p>
-<h2 id="二、docker-的安装">二、docker 的安装</h2>
-<h5 id="1、更新apt库">1、更新apt库</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-<h5 id="2、以下安装使得允许apt通过HTTPS使用存储库">2、以下安装使得允许apt通过HTTPS使用存储库</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></table></figure>
-<h5 id="3、添加阿里GPG秘钥">3、添加阿里GPG秘钥</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
         
       
 
@@ -772,435 +1660,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Nginx的入门与配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-
-        
-
-        
-        <a href="/posts/45652.html" class="archive-article-date">
-  	<time datetime="2020-01-06T03:05:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-06</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.3k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/45652.html">Nginx的入门与配置</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h2 id="1Nginx简介">1	Nginx简介</h2>
-<p>Nginx是一款轻量级的Web服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。在学习Nginx前，首先要明确Nginx的一些特点，包括</p>
-<ul>
-<li>反向代理</li>
-<li>负载均衡</li>
-<li>动静分离</li>
-</ul>
-<p><img src="https://pic1.zhimg.com/v2-e1826bab1d07df8e97d61aa809b94a10_r.jpg" alt=""></p>
-<p>上图基本上说明了当下流行的技术架构。</p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-    <!-- 开始添加版权声明-->
-      
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">高并发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/45652.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-githubPage和hexo进行个人博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-
-        
-
-        
-        <a href="/posts/1f66eb4d.html" class="archive-article-date">
-  	<time datetime="2020-01-04T03:56:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">332字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/1f66eb4d.html">githubPage和hexo进行个人博客搭建</a>
-    </h1>
-  
-</p></center>
-
-      
-        <p>参考如下</p>
-<h4 id="博客搭建"><a href="https://blog.csdn.net/sinat_37781304/article/details/82729029" target="_blank" rel="noopener">博客搭建</a></h4>
-<h4 id="博客搭建-v2"><a href="https://blog.csdn.net/qq_37513473/article/details/88617281" target="_blank" rel="noopener">博客搭建</a></h4>
-<h4 id="博客美化"><a href="http://xxty.fun/2019/08/14/hexo%E5%8D%9A%E5%AE%A2%EF%BC%9Ayilia%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" target="_blank" rel="noopener">博客美化</a></h4>
-<hr>
-<p>另外因为yilia默认的文章搜索是按照/年/月/日/文章 来进行搜索的，这种搜索方式不利于被检索到，而且当题目是中文的时候，中文会变成很长的编码，看起来也很不爽，在网上找了很久，最终采用<code>hexo-abbrlink</code>这个插件，下面简单说一下安装步骤，因为网上说的还是有些坑</p>
-<br/>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-    <!-- 开始添加版权声明-->
-      
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/hexo的搭建和美化//" class="article-tag-list-link color1">hexo的搭建和美化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/1f66eb4d.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-
-        
-
-        
-        <a href="/posts/4a17b156.html" class="archive-article-date">
-  	<time datetime="2019-12-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">78字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/4a17b156.html">Hello World</a>
-    </h1>
-  
-</p></center>
-
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-    <!-- 开始添加版权声明-->
-      
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
-
-    <div class="article-info article-info-index">
-      
-      
-      
-      <!-- 文末访问量统计（开始） -->
-      <span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>
-      <!-- 文末访问量统计（结束） -->
-
-      
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/4a17b156.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
     </nav>
   
 
@@ -1214,7 +1676,7 @@ var _hmt = _hmt || [];
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020
+                &copy; 2020-2021
             
             Shawn
         </div>
@@ -1409,6 +1871,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">macos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Idea</a>
               </li>
             
             <div class="clearfix"></div>

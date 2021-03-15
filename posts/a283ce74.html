@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201023202423444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2020-10-23T12:52:10.000Z">
-<meta property="article:modified_time" content="2020-10-28T02:32:51.083Z">
+<meta property="article:modified_time" content="2021-02-17T02:32:52.709Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Lombok">
 <meta name="twitter:card" content="summary">
@@ -233,7 +233,7 @@ var _hmt = _hmt || [];
     <span class="post-time">
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">749字</span>
+        <span class="post-count">782字</span>
       </span>
     </span>
 
@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
       &nbsp; | &nbsp;
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -323,6 +323,7 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
 @NoArgsConstructor<br>
 @AllArgsConstructor</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span>         <span class="comment">// 生成 getter/setter/equals/canEqual/hashCode/toString        </span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span>     <span class="comment">// 为类提供一个无参的构造方法 </span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span>    <span class="comment">// 为类提供一个全参的构造方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Stu</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> weigh;</span><br><span class="line">    <span class="keyword">int</span> high;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果要链式调用，增加注解<code>@Accessor(chain = true)</code>后即可链式。同时注意Lombok可能会产生一定问题</p>
 <hr>
 <p>参考文章：<br>
 <a href="https://www.cnblogs.com/ooo0/p/12448096.html" target="_blank" rel="noopener">https://www.cnblogs.com/ooo0/p/12448096.html</a></p>
@@ -490,6 +491,15 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
   
 <nav id="article-nav">
   
+    <a href="/posts/49a72762.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android组件点击事件三种实现方法
+        
+      </div>
+    </a>
+  
   
     <a href="/posts/d5aff0bc.html" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Java实现生成和解析二维码</div>
@@ -572,7 +582,7 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020
+                &copy; 2020-2021
             
             Shawn
         </div>
@@ -767,6 +777,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">macos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Idea</a>
               </li>
             
             <div class="clearfix"></div>

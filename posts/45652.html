@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/10/lfx1mR.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/10/lfxJk6.jpg">
 <meta property="article:published_time" content="2020-01-06T03:05:56.000Z">
-<meta property="article:modified_time" content="2020-04-07T13:59:18.588Z">
+<meta property="article:modified_time" content="2021-01-18T01:32:56.275Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="高并发">
 <meta property="article:tag" content="Nginx">
@@ -239,7 +239,7 @@ var _hmt = _hmt || [];
     <span class="post-time">
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.3k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -247,7 +247,7 @@ var _hmt = _hmt || [];
       &nbsp; | &nbsp;
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">12分</span>
       </span>
     </span>
 </div>
@@ -290,20 +290,20 @@ var _hmt = _hmt || [];
 <h3 id="1-3-动静分离">1.3 动静分离</h3>
 <p>这个也很好理解，就是讲动态资源和静态资源相互分离，把动态页面和静态页面由不同的服务器来解析，加快解析速度。降低原来单个服务器的压力。</p>
 <h2 id="2-Nginx的安装">2 Nginx的安装</h2>
-<p>进入官网下载http://nginx.org/</p>
-<p>pcre-8.37.tar.gz    openssl-1.0.1t.tar.gz   zlib-1.2.8.tar.gz   nginx-1.11.1.tar.gz</p>
+<p>进入官网下载http://nginx.org/ ,这里自行替换版本</p>
+<p><code>pcre-8.37.tar.gz</code>    <code>openssl-1.0.1t.tar.gz</code>   <code>zlib-1.2.8.tar.gz</code>   <code>nginx-1.11.1.tar.gz</code></p>
 <p>第一步，安装pcre<br>
 wget <a href="http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz</a></p>
 <p>下载完成后输入命令进行解压</p>
-<p>tar -xvf pcre-8.37.tar.gz</p>
+<p><code>tar -xvf pcre-8.37.tar.gz </code></p>
 <p>在这里有些系统会自带，所以不安装也没事</p>
-<p>./configure 完成后，回到 pcre 目录下执行make，</p>
-<p>再执行make install<br>
+<p>./configure 完成后，回到 pcre 目录下执行<code>make</code>，</p>
+<p>再执行<code>make install </code><br>
 第二步，安装openssl<br>
 第三步，安装zlib<br>
-yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</p>
+<code>yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</code></p>
 <p>最后安装Nginx</p>
-<p>wget  <a href="http://nginx.org/download/nginx-1.16.1.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.16.1.tar.gz</a></p>
+<p><code>wget  http://nginx.org/download/nginx-1.16.1.tar.gz   </code></p>
 <p>之后进行和上述一样的操作就行了。</p>
 <br/>
 <br/>
@@ -342,7 +342,7 @@ firewall-cmd --reload</p>
 <p><code>服务器ip/edu/a.html</code></p>
 <p>我服务器中有两台tomcat并且同时有路径/edu/a.html，当访问时会按照固定分配策略选择一台tomcat进行服务，若其中一台挂了，另一台还可以正常工作。</p>
 <p>我的nginx一部分配置如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="comment">#负载均衡</span></span><br><span class="line">   upstream myserver &#123;</span><br><span class="line">    <span class="comment">#ip_hash</span></span><br><span class="line">server	服务器ip:8081 weight=5;</span><br><span class="line">server	服务器ip:8082 weight=10;</span><br><span class="line"><span class="comment">#fair  </span></span><br><span class="line">   &#125;</span><br><span class="line">...</span><br><span class="line">   server &#123;</span><br><span class="line">	...</span><br><span class="line">   <span class="comment">#负载均衡</span></span><br><span class="line">       location / &#123;</span><br><span class="line">           proxy_pass   http://myserver;</span><br><span class="line">           root	html;</span><br><span class="line">           index	index.html	index.html;</span><br><span class="line">       &#125;</span><br><span class="line">       ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="comment">#负载均衡</span></span><br><span class="line">   upstream myserver &#123;</span><br><span class="line">    <span class="comment">#ip_hash</span></span><br><span class="line">server	服务器ip:8081 weight=5;</span><br><span class="line">server	服务器ip:8082 weight=10;</span><br><span class="line"><span class="comment">#fair  </span></span><br><span class="line">   &#125;</span><br><span class="line">...</span><br><span class="line">   server &#123;</span><br><span class="line">	<span class="comment">#listen       80;        #端口</span></span><br><span class="line">       server_name  _;   <span class="comment">#服务名</span></span><br><span class="line"></span><br><span class="line">       charset utf-8,gbk;</span><br><span class="line">       root    /data/download;  <span class="comment">#显示的根索引目录</span></span><br><span class="line">       autoindex on;             <span class="comment">#开启索引功能</span></span><br><span class="line">       <span class="comment">#autoindex_exact_size off; # 关闭计算文件确切大小（单位bytes），只显示大概大小（单位kb、mb、gb）</span></span><br><span class="line">       <span class="comment">#autoindex_localtime on;   # 显示本机时间而非 GMT 时间</span></span><br><span class="line">   <span class="comment">#负载均衡</span></span><br><span class="line">       location / &#123;</span><br><span class="line">           proxy_pass   http://myserver;</span><br><span class="line">           root	html;</span><br><span class="line">           index	index.html	index.html;</span><br><span class="line">       &#125;</span><br><span class="line">       ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>而分配策略有以下几点</p>
 <p>1、轮询（默认）<br>
 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。<br>
@@ -357,6 +357,37 @@ weightweight weightweight代表权 代表权 ,重默认为 重默认为 重默�
 <p>通过 location 指定不同的后缀名实现不同的请求转发。通过 expires 参数设置，可以使浏览器缓存过期时间，减少与服务器之前的请求和流量。具体 Expires 定义：是给一个资源设定一个过期时间，也就是说无需去服务端验证，直接通过浏览器自身确认是否过期即可，所以不会产生额外的流量。</p>
 <p>我在我的文件夹data下分别创建了www和image文件夹，里面分别存放了图片和一个html，当浏览器访问时就会自动寻找对应的静态资源（expires参数也可配置）,部分配置如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	...</span><br><span class="line">		<span class="comment">#负载均衡</span></span><br><span class="line">		location / &#123;</span><br><span class="line">            proxy_pass   http://myserver;</span><br><span class="line">            root	html;</span><br><span class="line">            index	index.html	index.html;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">#动静分离</span></span><br><span class="line">		location /www/&#123;</span><br><span class="line">            root	/contest/data/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /image/&#123;</span><br><span class="line">            root	/contest/data/;</span><br><span class="line">            <span class="comment">#列出当前文件夹文件</span></span><br><span class="line">            autoindex on;</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-nginx其他情况">4.4 nginx其他情况</h3>
+<p>使用Nginx做代理的时候，有时需要把请求原封不动的转发给下一个服务。</p>
+<p>比如，<a href="http://xn--shawn-6u8oj48c.com/test/a/b.html" target="_blank" rel="noopener">访问shawn.com/test/a/b.html</a>, 要求转发到localhost:8088/test/a/b.html</p>
+<p>简单配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">upstream one &#123;</span><br><span class="line">  server localhost:8088 weight=5;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen              80;</span><br><span class="line">    server_name         shawn.com;</span><br><span class="line">    access_log  <span class="string">"pipe:rollback /data/log/nginx/access.log interval=1d baknum=7 maxsize=1G"</span>  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header  X-Real-IP        <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header  X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        proxy_pass http://one;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>即，设置<code>proxy_pass</code>即可。请求只会替换域名。</p>
+<p>但很多时候，我们需要根据url的前缀转发到不同的服务。</p>
+<p>比如</p>
+<p><a href="http://shawn.com/user/profile.html%E8%BD%AC%E5%8F%91%E5%88%B0" target="_blank" rel="noopener">shawn.com/user/profile.html转发到</a> <strong>用户服务</strong>localhost:8089/profile.html</p>
+<p><a href="http://shawn.com/order/details.html%E8%BD%AC%E5%8F%91%E5%88%B0" target="_blank" rel="noopener">shawn.com/order/details.html转发到</a> <strong>订单服务</strong> localhost:8090/details.html</p>
+<p>即，url的前缀对下游的服务是不需要的，除非下游服务添加context-path, 但很多时候我们并不喜欢加这个。如果Nginx转发的时候，把这个前缀去掉就好了。</p>
+<p><strong>一个种方案是proxy_pass后面加根路径<code>/</code>.</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen              80;</span><br><span class="line">    server_name         shawn.com;</span><br><span class="line">    access_log  <span class="string">"pipe:rollback /data/log/nginx/access.log interval=1d baknum=7 maxsize=1G"</span>  main;</span><br><span class="line"></span><br><span class="line">    location ^~/user/ &#123;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header  X-Real-IP        <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header  X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        proxy_pass http://user/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ^~/order/ &#123;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header  X-Real-IP        <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header  X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        proxy_pass http://order/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>^~/user/</code>表示匹配前缀是<code>user</code>的请求，proxy_pass的结尾有<code>/</code>， 则会把<code>/user/*</code>后面的路径直接拼接到后面，即移除user.</p>
+<p><strong>另一种方案是使用<code>rewrite</code></strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">upstream user &#123;</span><br><span class="line">  server localhost:8089 weight=5;</span><br><span class="line">&#125;</span><br><span class="line">upstream order &#123;</span><br><span class="line">  server localhost:8090 weight=5;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen              80;</span><br><span class="line">    server_name         abc.com;</span><br><span class="line">    access_log  <span class="string">"pipe:rollback /data/log/nginx/access.log interval=1d baknum=7 maxsize=1G"</span>  main;</span><br><span class="line"></span><br><span class="line">    location ^~/user/ &#123;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header  X-Real-IP        <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header  X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        rewrite ^/user/(.*)$ /<span class="variable">$1</span> <span class="built_in">break</span>;</span><br><span class="line">        proxy_pass http://user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ^~/order/ &#123;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header  X-Real-IP        <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header  X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        rewrite ^/order/(.*)$ /<span class="variable">$1</span> <span class="built_in">break</span>;</span><br><span class="line">        proxy_pass http://order;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意到proxy_pass结尾没有<code>/</code>， <code>rewrite</code>重写了url。</p>
+<p><strong>alias与root的区别</strong></p>
+<blockquote>
+<p>root 实际访问文件路径会拼接URL中的路径<br>
+alias 实际访问文件路径不会拼接URL中的路径</p>
+</blockquote>
+<p><strong>last 和 break关键字的区别</strong></p>
+<blockquote>
+<p>只用到了break，即匹配到此处后不会继续跳。</p>
+</blockquote>
+<p><strong>permanent 和 redirect关键字的区别</strong></p>
+<blockquote>
+<p>rewrite … permanent 永久性重定向，请求日志中的状态码为301</p>
+<p>rewrite … redirect 临时重定向，请求日志中的状态码为302</p>
+</blockquote>
 <h2 id="5-Nginx配置高可用集群">5 Nginx配置高可用集群</h2>
 <p><a href="https://imgchr.com/i/lfxtfO" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/10/lfxtfO.jpg" alt="lfxtfO.jpg"></a></p>
 <p>原理如上，相信大家的水平应该都能看懂，在配置时需要一些准备工作</p>
@@ -378,9 +409,9 @@ weightweight weightweight代表权 代表权 ,重默认为 重默认为 重默�
 <h2 id="6-Nginx的原理">6 Nginx的原理</h2>
 <p><img src="https://s2.ax1x.com/2020/01/10/lfxJk6.jpg" alt="lfxJk6.jpg"></p>
 <p>多个worker可以进行热部署，而且提高了服务的可靠性，另外worker数一般和cpu核心数相等，这样能最大限度发挥性能。对于连接数worker_connection，访问静态资源占用2个(请求和返回)，动态资源占用4个(另外再加上tomcat的请求)。</p>
-<p><br/><br/></p>
-<p>通过尚硅谷的学习进行简单的记录和总结，如有不好请指出</p>
-<p><a href="https://github.com/LXT2017/picBed/tree/master/file/nginx" target="_blank" rel="noopener">详细文件的下载</a></p>
+<p><br/>参考：</p>
+<p><a href="https://www.cnblogs.com/woshimrf/p/nginx-config-location.html" target="_blank" rel="noopener">https://www.cnblogs.com/woshimrf/p/nginx-config-location.html</a></p>
+<p><a href="http://www.gulixueyuan.com/my/course/332" target="_blank" rel="noopener">尚硅谷nginx学习视频</a></p>
 <br/>
       
 
@@ -587,7 +618,7 @@ weightweight weightweight代表权 代表权 ,重默认为 重默认为 重默�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1Nginx简介"><span class="toc-number">1.</span> <span class="toc-text">1	Nginx简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-反向代理"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-负载均衡"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-动静分离"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 动静分离</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Nginx的安装"><span class="toc-number">2.</span> <span class="toc-text">2 Nginx的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Nginx常用命令"><span class="toc-number">3.</span> <span class="toc-text">3 Nginx常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Nginx特点详细说明"><span class="toc-number">4.</span> <span class="toc-text">4 Nginx特点详细说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-反向代理"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-负载均衡"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-动静分离"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 动静分离</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Nginx配置高可用集群"><span class="toc-number">5.</span> <span class="toc-text">5 Nginx配置高可用集群</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主从配置-还有双主模式自行学习"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">主从配置(还有双主模式自行学习)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Nginx的原理"><span class="toc-number">6.</span> <span class="toc-text">6 Nginx的原理</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1Nginx简介"><span class="toc-number">1.</span> <span class="toc-text">1	Nginx简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-反向代理"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-负载均衡"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-动静分离"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 动静分离</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Nginx的安装"><span class="toc-number">2.</span> <span class="toc-text">2 Nginx的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Nginx常用命令"><span class="toc-number">3.</span> <span class="toc-text">3 Nginx常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Nginx特点详细说明"><span class="toc-number">4.</span> <span class="toc-text">4 Nginx特点详细说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-反向代理"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-负载均衡"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-动静分离"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 动静分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-nginx其他情况"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 nginx其他情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Nginx配置高可用集群"><span class="toc-number">5.</span> <span class="toc-text">5 Nginx配置高可用集群</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主从配置-还有双主模式自行学习"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">主从配置(还有双主模式自行学习)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Nginx的原理"><span class="toc-number">6.</span> <span class="toc-text">6 Nginx的原理</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -640,7 +671,7 @@ weightweight weightweight代表权 代表权 ,重默认为 重默认为 重默�
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020
+                &copy; 2020-2021
             
             Shawn
         </div>
@@ -835,6 +866,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">macos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Idea</a>
               </li>
             
             <div class="clearfix"></div>
