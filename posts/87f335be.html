@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shawn22.xyz">
-  <title>Tag: Idea | 星星的猫(&gt;^ω^&lt;)喵</title>
+  <title>SpringBoot异步、邮件、定时任务 | 星星的猫(&gt;^ω^&lt;)喵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Shawn的个人记录网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="星星的猫(&gt;^ω^&lt;)喵">
-<meta property="og:url" content="https://www.shawn22.xyz/tags/Idea/index.html">
+  <meta name="description" content="一、异步任务 首先在service服务类上添加注解@Async，然后在Application启动类上添加@EnableAsync注解即可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot异步、邮件、定时任务">
+<meta property="og:url" content="https://www.shawn22.xyz/posts/87f335be.html">
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
-<meta property="og:description" content="Shawn的个人记录网站">
+<meta property="og:description" content="一、异步任务 首先在service服务类上添加注解@Async，然后在Application启动类上添加@EnableAsync注解即可">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210315192806333.png">
+<meta property="article:published_time" content="2021-03-15T11:07:24.000Z">
+<meta property="article:modified_time" content="2021-03-15T11:29:44.031Z">
 <meta property="article:author" content="Shawn">
-<meta property="article:tag" content="IT">
+<meta property="article:tag" content="任务">
+<meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210315192806333.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -204,49 +209,194 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringBoot异步、邮件、定时任务" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/posts/5f51afa8.html" class="archive-article-date">
-  	<time datetime="2020-11-06T15:46:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-06</time>
+      <header class="article-header">
+
+        
+
+        
+        <a href="/posts/87f335be.html" class="archive-article-date">
+  	<time datetime="2021-03-15T11:07:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-15</time>
   	
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 </a>
-        </div>
-    	 
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">812字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/5f51afa8.html">IntelliJ IDEA好用的几款插件</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      SpringBoot异步、邮件、定时任务
     </h1>
   
+</p></center>
 
-        <div class="article-info info-on-right">
+      
+        <h2 id="一、异步任务">一、异步任务</h2>
+<p>首先在service服务类上添加注解<code>@Async</code>，然后在Application启动类上添加<code>@EnableAsync</code>注解即可</p>
+<a id="more"></a>
+<h2 id="二、邮件任务">二、邮件任务</h2>
+<h3 id="1、引入maven依赖">1、引入maven依赖</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-mail&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2、配置yml文件">2、配置yml文件</h3>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">mail:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">your</span> <span class="string">username</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">your</span> <span class="string">password</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">smtp.qq.com</span></span><br><span class="line">    <span class="comment">#开启加密验证</span></span><br><span class="line">    <span class="attr">properties:</span></span><br><span class="line">      <span class="attr">mail.smtl.ssl.enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意开通<code>POP3/SMTP服务</code>，以QQ邮箱为例，<code>首页-&gt;设置-&gt;账户</code>找到<code>POP3/SMTP服务</code>并开启，开启后会获得一个password，而username就填你的邮箱地址</p>
+<p><img src="https://img-blog.csdnimg.cn/20210315192806333.png" alt="在这里插入图片描述"></p>
+<h3 id="3、编写发送邮件服务类">3、编写发送邮件服务类</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LearnApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JavaMailSenderImpl javaMailSender;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//简单邮件</span></span><br><span class="line">        SimpleMailMessage mailMessage = <span class="keyword">new</span> SimpleMailMessage();</span><br><span class="line">        <span class="comment">//邮件主题</span></span><br><span class="line">        mailMessage.setSubject(<span class="string">"hello shawn"</span>);</span><br><span class="line">        <span class="comment">//正文</span></span><br><span class="line">        mailMessage.setText(<span class="string">"很高兴认识你"</span>);</span><br><span class="line">        <span class="comment">//接受者的邮箱地址</span></span><br><span class="line">        mailMessage.setTo(<span class="string">"xxx@qq.com"</span>);</span><br><span class="line">        <span class="comment">//发送者的邮箱地址</span></span><br><span class="line">        mailMessage.setFrom(<span class="string">"xxx@qq.com"</span>);</span><br><span class="line"></span><br><span class="line">        javaMailSender.send(mailMessage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads2</span><span class="params">()</span> <span class="keyword">throws</span> MessagingException, ParseException </span>&#123;</span><br><span class="line">        <span class="comment">//复杂邮件</span></span><br><span class="line">        MimeMessage mailMessage = javaMailSender.createMimeMessage();</span><br><span class="line">        <span class="comment">//组装</span></span><br><span class="line">        MimeMessageHelper helper = <span class="keyword">new</span> MimeMessageHelper(mailMessage,<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//邮件主题</span></span><br><span class="line">        helper.setSubject(<span class="string">"hello shawn"</span>);</span><br><span class="line">        <span class="comment">//正文，可以支持html解析</span></span><br><span class="line">        helper.setText(<span class="string">"&lt;p style='color:red'&gt;很高兴认识你&lt;p&gt;"</span>,<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//附件</span></span><br><span class="line">        helper.addAttachment(<span class="string">"1.jpg"</span>,<span class="keyword">new</span> File(<span class="string">"C:\\Users\\Shawn\\Desktop\\1.jpg"</span>));</span><br><span class="line">		 <span class="comment">//接受者的邮箱地址</span></span><br><span class="line">        helper.setTo(<span class="string">"xxx@qq.com"</span>);</span><br><span class="line">         <span class="comment">//发送者的邮箱地址</span></span><br><span class="line">        helper.setFrom(<span class="string">"xxx@qq.com"</span>);</span><br><span class="line"></span><br><span class="line">        javaMailSender.send(mailMessage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三、定时任务">三、定时任务</h2>
+<p>首先在主启动类上添加<code>@EnableScheduling</code>，之后在服务类上添加<code>@Scheduled(cron=&quot;xxx&quot;)</code>，例如<code>@Scheduled(cron=&quot;0 * * * * 0-7&quot;)</code>，cron顺序分别为<code>秒，分，时，日，月，周几</code></p>
+<p><a href="https://crontab.guru/" target="_blank" rel="noopener">cron在线生成网站</a></p>
+<p><strong>常用表达式例子</strong></p>
+<p><strong>0 0 2 1 * ? *</strong>  表示在每月的1日的凌晨2点调整任务</p>
+<p><strong>0 15 10 ? * MON-FRI</strong>  表示周一到周五每天上午10:15执行作业</p>
+<p><strong>0 15 10 ? 6L 2002-2006</strong>  表示2002-2006年的每个月的最后一个星期五上午10:15执行作</p>
+<p><strong>0 0 10,14,16 * * ?</strong>  每天上午10点，下午2点，4点</p>
+<p><strong>0 0/30 9-17 * * ?</strong>  朝九晚五工作时间内每半小时</p>
+<p><strong>0 0 12 ? * WED</strong>   表示每个星期三中午12点</p>
+<p><strong>0 0 12 * * ?</strong>  每天中午12点触发</p>
+<p><strong>0 15 10 ? * *</strong>   每天上午10:15触发</p>
+<p><strong>0 15 10 * * ?</strong>   每天上午10:15触发</p>
+<p><strong>0 15 10 * * ? *</strong>   每天上午10:15触发<br>
+<strong>0 15 10 * * ? 2005</strong>   2005年的每天上午10:15触发<br>
+<strong>0 * 14 * * ?</strong>   在每天下午2点到下午2:59期间的每1分钟触发<br>
+<strong>0 0/5 14 * * ?</strong>   在每天下午2点到下午2:55期间的每5分钟触发<br>
+<strong>0 0/5 14,18 * * ?</strong>   在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发<br>
+<strong>0 0-5 14 * * ?</strong>   在每天下午2点到下午2:05期间的每1分钟触发<br>
+<strong>0 10,44 14 ? 3 WED</strong>   每年三月的星期三的下午2:10和2:44触发<br>
+<strong>0 15 10 ? * MON-FRI</strong>   周一至周五的上午10:15触发<br>
+<strong>0 15 10 15 * ?</strong>   每月15日上午10:15触发<br>
+<strong>0 15 10 L * ?</strong>   每月最后一日的上午10:15触发<br>
+<strong>0 15 10 ? * 6L</strong>   每月的最后一个星期五上午10:15触发<br>
+<strong>0 15 10 ? * 6L 2002-2005</strong>  2002年至2005年的每月的最后一个星期五上午10:15触发<br>
+<strong>0 15 10 ? * 6#3</strong>  每月的第三个星期五上午10:15触发</p>
+
+      
+
+      
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <div style="text-align:center;color: #00BFFF;font-size:14px;">
+         -------------本文结束^-^感谢您的阅读-------------
+         </div>
+    
+    <!-- 添加完成 -->
+
+
+    <!-- 开始添加版权声明-->
+      
+      
+        <div class="declare">
+          <ul><li><strong>本文作者：</strong>
           
+            Shawn
+          
+        </li></ul>
+          <ul><li><strong>本文链接：</strong>
+         <a href="https://www.shawn22.xyz/posts/87f335be.html" target="_blank" rel="noopener">https://www.shawn22.xyz/posts/87f335be.html</a>
+        </li></ul>
+          <ul><li><strong>版权声明：</strong>
+          本作品采用
+          <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+          进行许可。转载请注明出处！
+          
+        </li></ul>
+            <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="/img/internation.png"/></a>
+          
+        </div>
+      
+      <!-- 添加完成 -->
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Idea</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">任务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
+      <!-- 文末访问量统计（开始） -->
+      <span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>
+      <!-- 文末访问量统计（结束） -->
+
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -259,17 +409,148 @@ var _hmt = _hmt || [];
 	</div>
 
 
+     
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.shawn22.xyz/posts/87f335be.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/posts/ece49569.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringBoot日志总结
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/posts/d48f4301.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring整合POI及EasyExcel</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、异步任务"><span class="toc-number">1.</span> <span class="toc-text">一、异步任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、邮件任务"><span class="toc-number">2.</span> <span class="toc-text">二、邮件任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、引入maven依赖"><span class="toc-number">2.1.</span> <span class="toc-text">1、引入maven依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、配置yml文件"><span class="toc-number">2.2.</span> <span class="toc-text">2、配置yml文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、编写发送邮件服务类"><span class="toc-number">2.3.</span> <span class="toc-text">3、编写发送邮件服务类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、定时任务"><span class="toc-number">3.</span> <span class="toc-text">三、定时任务</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+  
+    <section id="comments" class="comments">
+       <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "hRDQtFPNrfKmHhxhBlFlXkGq-gzGzoHsz",
+            app_key: "jSCOVLxSm31BVC1D8RrKWn1d",
+            placeholder: "😉看了这么久，有啥想说的吗？🤔",
+            avatar:"retro"
+        });
+    }
+</script>
+  </section>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -338,9 +619,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -419,10 +700,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
@@ -440,10 +717,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,7 +756,63 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Idea</a>
+                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">POI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
               </li>
             
             <div class="clearfix"></div>
