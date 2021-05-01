@@ -1,6 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>＜img＞标签src缓存问题</title>
+    <url>/posts/d39ecf00.html</url>
+    <content><![CDATA[<h4 id="问题描述：">问题描述：</h4>
+<p>最近在使用vue做目标检测算法可视化的时候发现了一个问题，我在前端传入原始图片到后端，经过后端算法检测后生成检测图片，前端vue直接调用该图片路径。本来想着输入不同图片，后端会不断覆盖result.jpg，最终前端也会实时变化，但是最终结果出现了意外，如图后连输入图不管如何变化，结果图都是同一张图片。</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//html部分</span></span><br><span class="line">&lt;el-image <span class="class"><span class="keyword">class</span></span>=<span class="string">"originImg"</span> :src=<span class="string">"resulturl"</span>/&gt;</span><br><span class="line"><span class="comment">//js部分</span></span><br><span class="line"><span class="keyword">this</span>.resulturl=<span class="string">"http://localhost:5000/static/images/result.jpg"</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210430142255885.png" alt="在这里插入图片描述"></p>
+<h4 id="问题原因">问题原因</h4>
+<p>因为src后面的请求路径不变，所以浏览器就认为是同一个图片，就不会重新发送请求，导致获得的一直是第一张缓存图片。</p>
+<blockquote>
+<p>浏览器缓存知识：<a href="https://www.cnblogs.com/chengxs/p/10396066.html" target="_blank" rel="noopener">https://www.cnblogs.com/chengxs/p/10396066.html</a></p>
+</blockquote>
+<h4 id="解决方法">解决方法</h4>
+<p>因为浏览器缓存的img是根据scr属性的，只要告诉浏览器这个图片和原来的缓存图片不一样浏览器就会重新进行请求了，即在请求图片后面添加<code>&quot;?tempid=&quot;+Math.random()</code>字符串。比如我的，成功解决。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.resulturl=<span class="string">"http://localhost:5000/static/images/result.jpg?tempid="</span>+<span class="built_in">Math</span>.random();</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>SSH原理与使用</title>
+    <url>/posts/ec679095.html</url>
+    <content><![CDATA[<h2 id="一、SSH介绍">一、SSH介绍</h2>
+<p>SSH是Secure Shell Protocol的简写，用于加密两台计算机之间的通信，并且支持各种身份验证机制。SSH先对联机数据包通过加密技术进行加密处理，加密后在进行数据传输。确保了传递的数据安全。</p>
+<a id="more"></a>
+<ul>
+<li>SSH是安全的加密协议，用于远程连接linux服务器。</li>
+<li>SSH默认端口是22，安全协议版本SSHv2，除了2之外还有SSHv1（有漏洞）。</li>
+<li>SSH服务端主要包含两个服务功能SSH远程连接和SFTP服务。</li>
+<li>Linux SSH客户端包含ssh远程连接命令，以及远程拷贝scp命令等。</li>
+</ul>
+<p>而SSH 的软件架构是服务器-客户端模式（Server - Client）。在这个架构中，SSH 软件分成两个部分：向服务器发出请求的部分，称为客户端（client），OpenSSH 的实现为 ssh；接收客户端发出的请求的部分，称为服务器（server），OpenSSH 的实现为 sshd。</p>
+<h2 id="二、SSH登录">二、SSH登录</h2>
+<h3 id="1、基本用法">1、基本用法</h3>
+<p>SSH主要用于远程登录。假定你要以用户名user，登录远程主机host，只要一条简单命令就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># user指的是你远程主机的名字，host指的是ip或者局域网的主机名</span></span><br><span class="line">ssh user@host</span><br><span class="line"><span class="comment"># 如果本地用户名与远程用户名一致，登录时可以省略用户名。</span></span><br><span class="line">ssh host</span><br><span class="line"><span class="comment">#SSH的默认端口是22，你的登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口，注意端口开放。</span></span><br><span class="line">ssh -p 2222 user@hostSSH</span><br></pre></td></tr></table></figure>
+<h3 id="2、口令登录">2、口令登录</h3>
+<p>SSH之所以能够保证安全，原因在于它采用了公钥加密。整个过程是这样的：</p>
+<ol>
+<li>远程主机收到用户的登录请求，把自己的公钥发给用户。</li>
+<li>用户使用这个公钥，将登录密码加密后，发送回来。</li>
+<li>远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。</li>
+</ol>
+<p>这个过程本身是安全的，但是实施的时候存在一个风险：如果有人截获了登录请求，然后冒充远程主机，将伪造的公钥发给用户，那么用户很难辨别真伪。因为不像https协议，SSH协议的公钥是没有证书中心（CA）公证的，也就是说，都是自己签发的。可以设想，如果攻击者插在用户与远程主机之间（比如在公共的wifi区域），用伪造的公钥，获取用户的登录密码。再用这个密码登录远程主机，那么SSH的安全机制就荡然无存了。这种风险就是著名的<a href="https://baike.baidu.com/item/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/1739730?fr=aladdin" target="_blank" rel="noopener">&quot;中间人攻击&quot;</a>（Man-in-the-middle attack）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh user@host</span><br></pre></td></tr></table></figure>
+<p>第一次登录对方主机，系统会出现一个警告提示，意思是无法确认远程主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？经过用户的考虑后接受，之后进行口令的输入，如果密码正确，就可以登录了。当远程主机的公钥被接受以后，它就会被保存在文件<code>$HOME/.ssh/known_hosts</code>之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。</p>
+<h3 id="3、公钥登录">3、公钥登录</h3>
+<p>使用密码登录，每次都必须输入密码，非常麻烦。SSH还提供了公钥登录，可以省去输入密码的步骤。</p>
+<p>所谓&quot;公钥登录&quot;，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。</p>
+<p>这种方法要求用户必须提供自己的公钥。如果没有现成的，可以直接用ssh-keygen生成一个：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#程序会询问一系列问题，然后生成密钥，默认rsa算法</span></span><br><span class="line">ssh-keygen</span><br><span class="line"><span class="comment">#通常做法是使用-t参数，指定密钥的加密算法</span></span><br><span class="line">ssh-keygen -t dsa</span><br></pre></td></tr></table></figure>
+<p>执行<code>ssh-keygen</code>命令以后，会出现第一个问题，询问密钥保存的文件名，默认是<code>~/.ssh/id_rsa</code>文件，这个是私钥的文件名，对应的公钥文件<code>~/.ssh/id_rsa.pub</code>是自动生成的。用户的密钥一般都放在主目录的<code>.ssh</code>目录里面。</p>
+<p>生成密钥以后，公钥必须上传到服务器，才能使用公钥登录。</p>
+<p><strong>手动上传公钥</strong></p>
+<p>OpenSSH 规定，用户公钥保存在服务器的<code>~/.ssh/authorized_keys</code>文件。你要以哪个用户的身份登录到服务器，密钥就必须保存在该用户主目录的<code>~/.ssh/authorized_keys</code>文件。只要把公钥添加到这个文件之中，就相当于公钥上传到服务器了。每个公钥占据一行。如果该文件不存在，可以手动创建。</p>
+<p><strong><code>ssh-copy-id</code>命令：自动上传公钥</strong></p>
+<p>OpenSSH 自带一个<code>ssh-copy-id</code>命令，可以自动将公钥拷贝到远程服务器的<code>~/.ssh/authorized_keys</code>文件。如果<code>~/.ssh/authorized_keys</code>文件不存在，<code>ssh-copy-id</code>命令会自动创建该文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#需要把工作目录切换到~/.ssh/下</span></span><br><span class="line">ssh-copy-id -i id_rsa user@host</span><br></pre></td></tr></table></figure>
+<p>上面命令中，<code>-i</code>参数用来指定公钥文件，<code>user</code>是所要登录的账户名，<code>host</code>是服务器地址。如果省略用户名，默认为当前的本机用户名。执行完该命令，公钥就会拷贝到服务器。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#SSH 就会自动采用密钥登录，不再提示输入密码。</span></span><br><span class="line">ssh user@host</span><br></pre></td></tr></table></figure>
+<p>从此ssh登录，为了安全性就不需要密码登录了，具体方法就是打开服务器 sshd 的配置文件<code>/etc/ssh/sshd_config</code>，将<code>PasswordAuthentication</code>这一项设为<code>no</code>，最后重启sshd。</p>
+<h2 id="三、SSH端口转发">三、SSH端口转发</h2>
+<h3 id="1、动态转发">1、动态转发</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -D <span class="built_in">local</span>-port tunnel-host [-N]</span><br><span class="line"><span class="comment">#举例</span></span><br><span class="line">ssh -D 8080 user@host</span><br></pre></td></tr></table></figure>
+<p>上面命令中，<code>-D</code>表示动态转发，<code>local-port</code>是本地端口，<code>tunnel-host</code>是 SSH 服务器，<code>-N</code>表示这个 SSH 连接只进行端口转发，不登录远程 Shell，不能执行远程命令，只能充当隧道。</p>
+<p>SSH会建立一个socket，去监听本地的端口。一旦有数据传向那个端口，就自动把它转移到SSH连接上面，发往远程主机。可以想象，如果某个本地端口原来是一个不加密端口，现在将变成一个加密端口。</p>
+<h3 id="2、本地转发">2、本地转发</h3>
+<p>本地转发（local forwarding）指的是，SSH 服务器作为中介的跳板机，建立本地计算机与特定目标网站之间的加密连接。本地转发是在本地计算机的 SSH 客户端建立的转发规则。</p>
+<p>它会指定一个本地端口（local-port），所有发向那个端口的请求，都会转发到 SSH 跳板机（tunnel-host），然后 SSH 跳板机作为中介，将收到的请求发到目标服务器（target-host）的目标端口（target-port）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -L <span class="built_in">local</span>-port:target-host:target-port tunnel-host [-N] [-f]</span><br></pre></td></tr></table></figure>
+<p>上面命令中，<code>-L</code>参数表示本地转发，<code>local-port</code>是本地端口，<code>target-host</code>是你想要访问的目标服务器，<code>target-port</code>是目标服务器的端口，<code>tunnel-host</code>是 SSH 跳板机。<code>-N</code>参数表示不在 SSH 跳板机执行远程命令，让 SSH 只充当隧道。另外还有一个<code>-f</code>参数表示 SSH 连接在后台运行。</p>
+<p>举例来说，现在有一台 SSH 跳板机<code>root@10.16.22.123</code>，我们可以通过本地访问<code>http://localhost:16006</code>即可访问到跳板机的<code>127.0.0.1:6006</code>端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#本机运行</span></span><br><span class="line">ssh -L 16006:127.0.0.1:6006 root@10.16.22.123</span><br></pre></td></tr></table></figure>
+<h3 id="3、远程端口转发">3、远程端口转发</h3>
+<p>远程端口指的是在远程 SSH 服务器建立的转发规则。</p>
+<p>这种场景比较特殊，主要针对内网的情况。本地计算机在外网，SSH 跳板机和目标服务器都在内网，而且本地计算机无法访问内网之中的 SSH 跳板机，但是 SSH 跳板机可以访问本机计算机。</p>
+<p>由于本机无法访问内网 SSH 跳板机，就无法从外网发起 SSH 隧道，建立端口转发。必须反过来，从 SSH 跳板机发起隧道，建立端口转发，这时就形成了远程端口转发。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -R <span class="built_in">local</span>-port:target-host:target-port <span class="built_in">local</span> [-N] [-f]</span><br></pre></td></tr></table></figure>
+<p>上面的命令，首先需要注意，不是在本机执行的，而是在 SSH 跳板机执行的，从跳板机去连接本地计算机。<code>-R</code>参数表示远程端口转发，<code>local-port</code>是本地计算机的端口，<code>target-host</code>和<code>target-port</code>是目标服务器(内网机器)及其端口，<code>local</code>是本地计算机。</p>
+<p>举例来说，目标服务器在内网但可以访问外网，而跳板机不能直接访问内网，这时候就需要用远程端口转发，即可以直接使用跳板机访问内网</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#内网机器运行，将内网服务器的22端口转发到跳板机的2222端口</span></span><br><span class="line">ssh -R 2222:localhost:22 root@114.215.200.71 -N -f</span><br><span class="line"><span class="comment">#在跳板机进行登录，即可访问内网目标服务器，注意端口开放，以及用户名的修改，localhost不变，其中若因为网络问题断线，可以下载autossh</span></span><br><span class="line">ssh shawn@localhost -p 2222</span><br></pre></td></tr></table></figure>
+<h2 id="四、SSH其他命令">四、SSH其他命令</h2>
+<h3 id="1、scp命令">1、scp命令</h3>
+<p><code>scp</code>是 SSH 提供的一个客户端程序，用来在两台主机之间加密传送文件（即复制文件）。<code>scp</code>主要用于以下三种复制操作：</p>
+<ul>
+<li>本地复制到远程。</li>
+<li>远程复制到本地。</li>
+<li>两个远程系统之间的复制。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#上传文件</span></span><br><span class="line">scp <span class="built_in">source</span> destination</span><br><span class="line"><span class="comment">#上传design.tar.gz到服务器/shawn目录下,也可以反过来</span></span><br><span class="line">scp design.tar.gz root@114.215.200.70:/shawn</span><br><span class="line"><span class="comment">#上传目录</span></span><br><span class="line">scp -r 目录 用户名@ip:服务器绝对路径目录</span><br></pre></td></tr></table></figure>
+<h3 id="2、sftp-命令">2、sftp 命令</h3>
+<p><code>sftp</code>是 SSH 提供的一个客户端应用程序，主要用来安全地访问 FTP。因为 FTP 是不加密协议，很不安全，<code>sftp</code>就相当于将 FTP 放入了 SSH。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接</span></span><br><span class="line">sftp username@hostname</span><br><span class="line"><span class="comment"># 本地文件传输到远程主机。</span></span><br><span class="line">put localfile</span><br><span class="line"><span class="comment"># 远程文件传输到本地。</span></span><br><span class="line">get remotefile</span><br></pre></td></tr></table></figure>
+<h3 id="3、rsync-命令">3、rsync 命令</h3>
+<p>rsync 是一个常用的 Linux 应用程序，用于文件同步。</p>
+<hr>
+<p>参考文章:</p>
+<p><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html</a></p>
+<p><a href="https://wangdoc.com/ssh/port-forwarding.html" target="_blank" rel="noopener">https://wangdoc.com/ssh/port-forwarding.html</a></p>
+<p><a href="https://abcdabcd987.com/ssh/" target="_blank" rel="noopener">https://abcdabcd987.com/ssh/</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java多线程几种实现方式</title>
+    <url>/posts/d5b482ca.html</url>
+    <content><![CDATA[<h4 id="1、继承Thread类">1、继承Thread类</h4>
+<blockquote>
+<p>继承类必须重写 run() 方法，该方法是新线程的入口点。它也必须调用 start() 方法才能执行。该方法尽管被列为一种多线程实现方式，但是本质上也是实现了 Runnable 接口的一个实例。</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="comment">//4.创建Thread类的子类对象</span></span><br><span class="line">        MyThread mt = <span class="keyword">new</span> MyThread();</span><br><span class="line">        <span class="comment">//5.开启线程</span></span><br><span class="line">        mt.setName(<span class="string">"多线程"</span>);</span><br><span class="line">        mt.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()  + i);</span><br><span class="line">            <span class="comment">// 让线程睡眠一会</span></span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.继承Thread</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 2.重写run方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//3.将要执行的代码写在run方法中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通过匿名类创建</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  </span>&#123;</span><br><span class="line">        <span class="comment">//重写run方法,将要执行的代码写在run方法中</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                System.out.println(<span class="string">"thread"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、实现Runnable接口">2、实现Runnable接口</h4>
+<blockquote>
+<p>为了实现 Runnable，一个类只需要执行一个方法调用 run()，声明如下：</p>
+<p><code>public void run()</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="comment">//4,创建Runnable的子类对象</span></span><br><span class="line">        MyRunnable mr = <span class="keyword">new</span> MyRunnable();</span><br><span class="line">        <span class="comment">//5,将其当作参数传递给Thread的构造函数</span></span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(mr,<span class="string">"myrunnable"</span>);</span><br><span class="line">        t.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()  + i);</span><br><span class="line">            <span class="comment">// 让线程睡眠一会</span></span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1,定义一个类实现Runnable</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 2.重写run方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//3.将要执行的代码写在run方法中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 内部匿名类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  </span>&#123;</span><br><span class="line">        <span class="comment">//1,将Runnable的子类对象传递给Thread的构造方法</span></span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="comment">//2,重写run方法</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="comment">//3,将要执行的代码写在run方法中</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="comment">//4,开启线程</span></span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、通过-Callable-和-Future-创建线程">3、通过 Callable 和 Future 创建线程</h4>
+<ol>
+<li>创建 Callable 接口的实现类，并实现 call() 方法，该 call() 方法将作为线程执行体，并且有返回值。</li>
+<li>创建 Callable 实现类的实例，使用 FutureTask 类来包装 Callable 对象，该 FutureTask 对象封装了该 Callable 对象的 call() 方法的返回值。</li>
+<li>使用 FutureTask 对象作为 Thread 对象的 target 创建并启动新线程。</li>
+<li>调用 FutureTask 对象的 get() 方法来获得子线程执行结束后的返回值。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        MyCallable mc = <span class="keyword">new</span> MyCallable(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        FutureTask&lt;Integer&gt; f = <span class="keyword">new</span> FutureTask&lt;&gt;(mc);</span><br><span class="line">        <span class="keyword">new</span> Thread(f).start();</span><br><span class="line"></span><br><span class="line">        System.out.println(f.get());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number;</span><br><span class="line">    <span class="comment">//实现从1加到100并返回结果</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyCallable</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number = number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= number; x++) &#123;</span><br><span class="line">            sum += x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4、创建线程的三种方法对比">4、创建线程的三种方法对比</h4>
+<ol>
+<li>采用实现 Runnable、Callable 接口的方式创建多线程时，线程类只是实现了 Runnable 接口或 Callable 接口，还可以继承其他类。</li>
+<li>使用继承 Thread 类的方式创建多线程时，编写简单，如果需要访问当前线程，则无需使用 Thread.currentThread() 方法，直接使用 this 即可获得当前线程。</li>
+</ol>
+<h4 id="5、线程池">5、线程池</h4>
+<p>Java中创建和销毁一个线程是比较昂贵的操作，需要系统调用。频繁创建和销毁线程会影响系统性能。于是线程池应运而生。其好处是可以抛出异常和有返回值。</p>
+<ul>
+<li>创建线程池对象</li>
+<li>创建Runnable实例</li>
+<li>提交Runnable实例</li>
+<li>关闭线程池</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 提交Runnable</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        ExecutorService pool = Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 可以执行Runnable对象或者Callable对象代表的线程</span></span><br><span class="line">        pool.submit(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">        pool.submit(<span class="keyword">new</span> MyRunnable());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//结束线程池</span></span><br><span class="line">        pool.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1,定义一个类实现Runnable</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 2.重写run方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//3.将要执行的代码写在run方法中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//提交Callable</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建线程池对象</span></span><br><span class="line">        ExecutorService pool = Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 可以执行Runnable对象或者Callable对象代表的线程</span></span><br><span class="line">        Future&lt;Integer&gt; f1 = pool.submit(<span class="keyword">new</span> MyCallable(<span class="number">100</span>));</span><br><span class="line">        Future&lt;Integer&gt; f2 = pool.submit(<span class="keyword">new</span> MyCallable(<span class="number">200</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// V get()</span></span><br><span class="line">        Integer i1 = f1.get();</span><br><span class="line">        Integer i2 = f2.get();</span><br><span class="line"></span><br><span class="line">        System.out.println(i1);</span><br><span class="line">        System.out.println(i2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 结束</span></span><br><span class="line">        pool.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number;</span><br><span class="line">    <span class="comment">//实现从1加到100并返回结果</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyCallable</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number = number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= number; x++) &#123;</span><br><span class="line">            sum += x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考文章：</p>
+<p><a href="https://www.runoob.com/java/java-multithreading.html" target="_blank" rel="noopener">https://www.runoob.com/java/java-multithreading.html</a></p>
+<p><a href="https://blog.csdn.net/qq_40298054/article/details/87870297" target="_blank" rel="noopener">https://blog.csdn.net/qq_40298054/article/details/87870297</a></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux常用命令操作</title>
     <url>/posts/2940781e.html</url>
     <content><![CDATA[<h4 id="1、文件目录操作">1、文件目录操作</h4>
