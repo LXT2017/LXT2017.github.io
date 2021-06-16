@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png">
 <meta property="article:published_time" content="2021-03-15T11:19:17.000Z">
-<meta property="article:modified_time" content="2021-03-15T11:22:29.690Z">
+<meta property="article:modified_time" content="2021-06-12T09:09:53.550Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -233,7 +233,7 @@ var _hmt = _hmt || [];
     <span class="post-time">
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3k字</span>
+        <span class="post-count">3.1k字</span>
       </span>
     </span>
 
@@ -264,33 +264,33 @@ var _hmt = _hmt || [];
 </p></center>
 
       
-        <h4 id="1、文件目录操作">1、文件目录操作</h4>
-<h5 id="ls命令">ls命令</h5>
+        <h3 id="1、文件目录操作">1、文件目录操作</h3>
+<p><strong>ls命令</strong></p>
 <p>所有ls可以进行组合使用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ls -a <span class="comment">#列出目录所有文件，包含以.开始的隐藏文件</span></span><br><span class="line">ls -A <span class="comment">#列出除.及..的其它文件</span></span><br><span class="line">ls -r <span class="comment">#反序排列</span></span><br><span class="line">ls -t <span class="comment">#以文件修改时间排序</span></span><br><span class="line">ls -S <span class="comment">#以文件大小排序</span></span><br><span class="line">ls -h <span class="comment">#以易读大小显示</span></span><br><span class="line">ls -l <span class="comment">#除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#列出当前目录中以“l"开头的目录的详细内容</span></span><br><span class="line">ls -l l*</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h5 id="cd命令">cd命令</h5>
+<p><strong>cd命令</strong></p>
 <p>切换目录，其中 ./指当前目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#进去当前账户home目录</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
-<h5 id="pwd命令">pwd命令</h5>
+<p><strong>pwd命令</strong></p>
 <p>查看当前工作目录路径</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示当前目录</span></span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="comment">#显示当前软连接的实际目录</span></span><br><span class="line"><span class="built_in">pwd</span> -P</span><br></pre></td></tr></table></figure>
-<h5 id="mkdir-命令">mkdir 命令</h5>
+<p><strong>mkdir 命令</strong></p>
 <p>创建文件夹</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在当前目录下创建目录</span></span><br><span class="line">mkdir <span class="built_in">test</span></span><br><span class="line"><span class="comment">#在/tmp下创建建目录(不存在就创建)</span></span><br><span class="line">mkdir -p /tmp/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<h5 id="rmdir命令">rmdir命令</h5>
+<p><strong>rmdir命令</strong></p>
 <p>删除文件夹，递归删除多个目录需要添加<code>-P</code>，另外只能删除空目录</p>
-<h5 id="mv命令">mv命令</h5>
+<p><strong>mv命令</strong></p>
 <p>移动或修改文件名</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#重命名，不同路径代表移动文件</span></span><br><span class="line">mv test.txt test.json</span><br><span class="line"><span class="comment">#将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖</span></span><br><span class="line">mv -i log1.txt log2.txt</span><br><span class="line"><span class="comment">#将本级所有文件移动到上一级</span></span><br><span class="line">mv * ../</span><br></pre></td></tr></table></figure>
-<h5 id="cp命令">cp命令</h5>
+<p><strong>cp命令</strong></p>
 <p>复制文件或目录到新的路径，和mv操作类似</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i <span class="comment">#提示</span></span><br><span class="line">-r <span class="comment">#复制目录及目录内所有项目</span></span><br><span class="line">-a <span class="comment">#复制的文件与原文件时间一样</span></span><br><span class="line">-p <span class="comment">#连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</span></span><br></pre></td></tr></table></figure>
-<h5 id="rm命令">rm命令</h5>
+<p><strong>rm命令</strong></p>
 <p>删除文件或目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-f  <span class="comment">#忽略不存在的文件，不会出现警告，强制删除！</span></span><br><span class="line">-r  <span class="comment">#递归删除目录！</span></span><br><span class="line">-i  <span class="comment">#提示，删除询问是否删除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除任何 .log 文件，删除前逐一询问确认</span></span><br><span class="line">rm -i *.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<h5 id="ln命令">ln命令</h5>
+<p><strong>ln命令</strong></p>
 <blockquote>
 <p>硬链接：A—B，假设B是A的硬链接，那么他们两个指向了同一个文件！允许一个文件拥有多个路径，用户可以通过这种机制建立硬链接到一些重要文件上，防止误删！<br>
 软链接： 类似Window下的快捷方式，删除的源文件，快捷方式也访问不了！</p>
@@ -306,19 +306,20 @@ var _hmt = _hmt || [];
 </ul>
 <p><code> ln [参数][源文件或目录][目标文件或目录]</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建软连接</span></span><br><span class="line">ln -s test1.log link2013</span><br></pre></td></tr></table></figure>
-<h5 id="tar命令">tar命令</h5>
+<p><strong>tar命令</strong></p>
 <p>文件打包与解压</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文件打包</span></span><br><span class="line">tar -zcvf 打包名 文件</span><br><span class="line"><span class="comment">#举例</span></span><br><span class="line">tar -zcvf design.tar.gz design/</span><br><span class="line"><span class="comment">#文件解压</span></span><br><span class="line">tar -zxvf 文件名</span><br></pre></td></tr></table></figure>
-<h5 id="scp命令">scp命令</h5>
+<p><strong>scp命令</strong></p>
 <p>Linux远程拷贝文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#上传文件</span></span><br><span class="line">scp 文件名 用户名@ip:服务器绝对路径目录</span><br><span class="line"><span class="comment">#上传design.tar.gz到服务器/shawn目录下</span></span><br><span class="line">scp design.tar.gz root@114.215.200.70:/shawn</span><br><span class="line"><span class="comment">#上传目录</span></span><br><span class="line">scp -r 目录 用户名@ip:服务器绝对路径目录</span><br></pre></td></tr></table></figure>
-<h5 id="echo命令">echo命令</h5>
+<p>echo命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 若不存在就创建，存在就覆盖，使用&gt;&gt;为追加</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'hello world'</span> &gt; hw.text</span><br></pre></td></tr></table></figure>
-<h5 id="find命令">find命令</h5>
+<p><strong>find命令</strong></p>
 <p><code>find 目录 参数</code></p>
-<h5 id="touch命令">touch命令</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [目录] -name <span class="string">"*.c"</span></span><br></pre></td></tr></table></figure>
+<p><strong>touch命令</strong></p>
 <p>创建新文件，也可以使用vim/vi创建</p>
-<h4 id="2、文件基本属性">2、文件基本属性</h4>
+<h3 id="2、文件基本属性">2、文件基本属性</h3>
 <p>Linux系统是一种典型的多用户系统，不同的用户处于不同的地位，拥有不同的权限。在Linux中我们可以使用 <code>ll</code> 或者 <code>ls –l </code>命令来显示一个文件的属性以及文件所属的用户和组</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx.   1 root root    7 5月  11 2019 bin -&gt; usr/bin</span><br><span class="line">dr-xr-xr-x.   5 root root 4096 11月 14 14:11 boot</span><br><span class="line">drwxr-xr-x    7 root root   73 1月   2 11:29 data</span><br></pre></td></tr></table></figure>
 <p>在Linux中第一个字符代表这个文件是目录、文件或者链接文件等等。</p>
@@ -339,13 +340,13 @@ var _hmt = _hmt || [];
 <li>第3、6、9位表示可执行权限，如果用&quot;x&quot;字符表示，则有执行权限，如果用&quot;-&quot;字符表示，则没有执行权限。</li>
 </ul>
 <p>对于文件来说，它都有一个特定的所有者，也就是对该文件具有所有权的用户。同时，在Linux系统中，用户是按组分类的，一个用户属于一个或多个组。文件所有者以外的用户又可以分为文件所有者的同组用户和其他用户。因此，Linux系统按文件所有者、文件所有者同组用户和其他用户来规定了不同的文件访问权限。</p>
-<h5 id="chgrp命令">chgrp命令</h5>
+<p><strong>chgrp命令</strong></p>
 <p>更改文件属组</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-R表示递归更改文件属组，就是在更改某个文件的属组时，如果加上-R的参数，那么该目录下的所有文件的属组都会更改。</span></span><br><span class="line">chgrp [-R] 属组名 文件名</span><br></pre></td></tr></table></figure>
-<h5 id="chown命令">chown命令</h5>
+<p><strong>chown命令</strong></p>
 <p>更改文件的属主，也可以同时更改文件的属组</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chown [-R] 属主名 文件名</span><br><span class="line">chown [-R] 属主名:属组名 文件名</span><br><span class="line"></span><br><span class="line"><span class="comment">#将install.log的拥有者与属组改回root</span></span><br><span class="line">chown root:root install.log</span><br></pre></td></tr></table></figure>
-<h5 id="chmod命令-重要">chmod命令(重要)</h5>
+<p><strong>chmod命令(重要)</strong></p>
 <p>更改文件9个属性</p>
 <p>Linux文件属性由两种设置方法，一种是数字，一种是符号。Linux文件的基本权限就有9个，分别是owner、group、others三种分别各有自己的read、write、execute权限。其中</p>
 <ul>
@@ -353,8 +354,8 @@ var _hmt = _hmt || [];
 <li>w:2</li>
 <li>x:1</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将test目录下所有文件启动所有权限</span></span><br><span class="line">chmod -R 777 <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<h4 id="3、文件内容查看">3、文件内容查看</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将test目录下所有文件启动所有权限</span></span><br><span class="line">chmod -R 777 <span class="built_in">test</span></span><br><span class="line"><span class="comment">#给文件增加执行权限</span></span><br><span class="line">chown +x <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h3 id="3、文件内容查看">3、文件内容查看</h3>
 <p>Linux系统中使用以下命令来查看文件的内容：</p>
 <ul>
 <li>cat 由第一行开始显示文件内容</li>
@@ -366,9 +367,9 @@ var _hmt = _hmt || [];
 <li>tail 只看尾巴几行</li>
 </ul>
 <p>可以使用*man [命令]*来查看各个命令的使用文档</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat 文件</span><br><span class="line">nl [-bnw] 文件</span><br><span class="line">head [-n number] 文件</span><br></pre></td></tr></table></figure>
-<h4 id="4、磁盘管理">4、磁盘管理</h4>
-<h5 id="df命令">df命令</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat 文件</span><br><span class="line">nl [-bnw] 文件</span><br><span class="line">head [-n number] 文件 </span><br><span class="line"><span class="comment">#对于文本处理工具还有sed和awk两个强大的工具</span></span><br></pre></td></tr></table></figure>
+<h3 id="4、磁盘管理">4、磁盘管理</h3>
+<p><strong>df命令</strong></p>
 <p>检查文件系统的磁盘空间占用情况。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。</p>
 <p><code>df [-ahikHTm] [目录或文件名]</code></p>
 <p>选项与参数：</p>
@@ -381,7 +382,7 @@ var _hmt = _hmt || [];
 <li>-T ：显示文件系统类型, 连同该 partition 的 filesystem 名称 (例如 ext3) 也列出；</li>
 <li>-i ：不用硬盘容量，而以 inode 的数量来显示</li>
 </ul>
-<h5 id="du命令">du命令</h5>
+<p><strong>du命令</strong></p>
 <p><code>du [-ahskm] 文件或目录名称</code></p>
 <p>选项与参数：</p>
 <ul>
@@ -393,21 +394,21 @@ var _hmt = _hmt || [];
 <li>-m ：以 MBytes 列出容量显示；</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询目录大小</span></span><br><span class="line">du -sh design/</span><br></pre></td></tr></table></figure>
-<h4 id="5、账户管理">5、账户管理</h4>
-<h5 id="useradd命令">useradd命令</h5>
+<h3 id="5、账户管理">5、账户管理</h3>
+<p><strong>useradd命令</strong></p>
 <p>添加用户</p>
 <ul>
 <li>-m： 自动创建这个用户的主目录 /home/shawn</li>
 <li>-G : 给用户分配组！</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建用户，主目录 /home/shawn，本质往/etc/passwd写入了信息</span></span><br><span class="line">useradd -m shawn</span><br></pre></td></tr></table></figure>
-<h5 id="userdel命令">userdel命令</h5>
+<p><strong>userdel命令</strong></p>
 <p>删除用户</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加上-r即删除时将目录空间一并删除</span></span><br><span class="line">userdel [-r] shawn</span><br></pre></td></tr></table></figure>
-<h5 id="usermod命令">usermod命令</h5>
+<p><strong>usermod命令</strong></p>
 <p>修改账户信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改主目录</span></span><br><span class="line">usermod -d /home/shawn22 shawn</span><br></pre></td></tr></table></figure>
-<h5 id="passwd命令">passwd命令</h5>
+<p><strong>passwd命令</strong></p>
 <p>用户口令的管理，用户管理的一项重要内容是用户口令的管理。用户账号刚创建时没有口令，但是被系统锁定，无法使用，必须为其指定口令后才可以使用，即使是指定空口令。</p>
 <p><code>passwd 选项 用户名</code></p>
 <p>可使用的选项：</p>
@@ -420,14 +421,14 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>普通用户修改自己的口令时，passwd命令会先询问原口令，验证后再要求用户输入两遍新口令，如果两次输入的口令一致，则将这个口令指定给用户；而超级用户为用户指定口令时，就不需要知道原口令。</p>
 </blockquote>
-<h4 id="6、进程管理">6、进程管理</h4>
+<h3 id="6、进程管理">6、进程管理</h3>
 <ul>
 <li>在Linux中，每一个程序都是有自己的一个进程，每一个进程都有一个id号</li>
 <li>每一个进程呢，都会有一个父进程！</li>
 <li>进程可以有两种存在方式：前台/后台运行</li>
 <li>一般的话服务都是后台运行的，基本的程序都是前台运行的！</li>
 </ul>
-<h5 id="ps命令">ps命令</h5>
+<p><strong>ps命令</strong></p>
 <p>查看系统当前正在执行的各种进程信息</p>
 <p><code>ps -xx</code></p>
 <p>命令参数：</p>
@@ -447,11 +448,11 @@ var _hmt = _hmt || [];
 <li>-au 显示较详细的资讯</li>
 <li>-aux 显示所有包含其他使用者的行程</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux 查看所有的进程</span></span><br><span class="line">ps -aux|grep mysql </span><br><span class="line"><span class="comment"># |  在Linux这个叫做管道符    A|B </span></span><br><span class="line"><span class="comment"># grep 查找文件中符合条件的字符串！</span></span><br><span class="line"><span class="comment"># 看父进程我们一般可以通过目录树结构来查看！</span></span><br><span class="line">ps -ef|grep mysql </span><br><span class="line"><span class="comment">#进程树，-p显示父id， -u显示用户组</span></span><br><span class="line">pstree -pu</span><br></pre></td></tr></table></figure>
-<h5 id="kill命令">kill命令</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux 查看所有的进程</span></span><br><span class="line">ps -aux|grep mysql </span><br><span class="line"><span class="comment"># |  在Linux这个叫做管道符    A|B 相当于前面的操作结果通过管道当做后面命令的输入</span></span><br><span class="line"><span class="comment"># grep 查找文件中符合条件的字符串！</span></span><br><span class="line"><span class="comment"># 看父进程我们一般可以通过目录树结构来查看！</span></span><br><span class="line">ps -ef|grep mysql </span><br><span class="line"><span class="comment">#进程树，-p显示父id， -u显示用户组</span></span><br><span class="line">pstree -pu</span><br></pre></td></tr></table></figure>
+<p><strong>kill命令</strong></p>
 <p>杀死进程，结束任务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#表示强制结束该进程,进程id可通过ps查看</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程的id</span><br></pre></td></tr></table></figure>
-<h5 id="nohup命令-后台">nohup命令(后台)</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#表示强制结束该进程,进程id可通过ps查看</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程的id</span><br><span class="line"><span class="comment">#正常停止一个进程</span></span><br><span class="line"><span class="built_in">kill</span> -15 进程的id</span><br><span class="line"><span class="comment">#杀死所有相关的进程</span></span><br><span class="line">killall 进程名字</span><br></pre></td></tr></table></figure>
+<p><strong>nohup命令(后台)</strong></p>
 <p>后台执行程序(no hang up不挂起)</p>
 <p><code>nohup command &gt; myout.file 2&gt;&amp;1 &amp;</code></p>
 <ul>
@@ -465,6 +466,8 @@ var _hmt = _hmt || [];
 <li>Ctrl+c 终止前台命令。</li>
 <li>jobs 查看当前有多少在后台运行的命令。jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。</li>
 </ul>
+<hr>
+<p>对于shell的学习，可以参考：<a href="https://book.apeland.cn/details/274/" target="_blank" rel="noopener">https://book.apeland.cn/details/274/</a></p>
 
       
 
@@ -667,7 +670,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、文件目录操作"><span class="toc-number">1.</span> <span class="toc-text">1、文件目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ls命令"><span class="toc-number">1.1.</span> <span class="toc-text">ls命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#cd命令"><span class="toc-number">1.2.</span> <span class="toc-text">cd命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pwd命令"><span class="toc-number">1.3.</span> <span class="toc-text">pwd命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mkdir-命令"><span class="toc-number">1.4.</span> <span class="toc-text">mkdir 命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rmdir命令"><span class="toc-number">1.5.</span> <span class="toc-text">rmdir命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mv命令"><span class="toc-number">1.6.</span> <span class="toc-text">mv命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#cp命令"><span class="toc-number">1.7.</span> <span class="toc-text">cp命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rm命令"><span class="toc-number">1.8.</span> <span class="toc-text">rm命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ln命令"><span class="toc-number">1.9.</span> <span class="toc-text">ln命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tar命令"><span class="toc-number">1.10.</span> <span class="toc-text">tar命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#scp命令"><span class="toc-number">1.11.</span> <span class="toc-text">scp命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#echo命令"><span class="toc-number">1.12.</span> <span class="toc-text">echo命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#find命令"><span class="toc-number">1.13.</span> <span class="toc-text">find命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#touch命令"><span class="toc-number">1.14.</span> <span class="toc-text">touch命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、文件基本属性"><span class="toc-number">2.</span> <span class="toc-text">2、文件基本属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#chgrp命令"><span class="toc-number">2.1.</span> <span class="toc-text">chgrp命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#chown命令"><span class="toc-number">2.2.</span> <span class="toc-text">chown命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#chmod命令-重要"><span class="toc-number">2.3.</span> <span class="toc-text">chmod命令(重要)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、文件内容查看"><span class="toc-number">3.</span> <span class="toc-text">3、文件内容查看</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、磁盘管理"><span class="toc-number">4.</span> <span class="toc-text">4、磁盘管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#df命令"><span class="toc-number">4.1.</span> <span class="toc-text">df命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#du命令"><span class="toc-number">4.2.</span> <span class="toc-text">du命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、账户管理"><span class="toc-number">5.</span> <span class="toc-text">5、账户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#useradd命令"><span class="toc-number">5.1.</span> <span class="toc-text">useradd命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#userdel命令"><span class="toc-number">5.2.</span> <span class="toc-text">userdel命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#usermod命令"><span class="toc-number">5.3.</span> <span class="toc-text">usermod命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#passwd命令"><span class="toc-number">5.4.</span> <span class="toc-text">passwd命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、进程管理"><span class="toc-number">6.</span> <span class="toc-text">6、进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ps命令"><span class="toc-number">6.1.</span> <span class="toc-text">ps命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#kill命令"><span class="toc-number">6.2.</span> <span class="toc-text">kill命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#nohup命令-后台"><span class="toc-number">6.3.</span> <span class="toc-text">nohup命令(后台)</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、文件目录操作"><span class="toc-number">1.</span> <span class="toc-text">1、文件目录操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、文件基本属性"><span class="toc-number">2.</span> <span class="toc-text">2、文件基本属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、文件内容查看"><span class="toc-number">3.</span> <span class="toc-text">3、文件内容查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、磁盘管理"><span class="toc-number">4.</span> <span class="toc-text">4、磁盘管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、账户管理"><span class="toc-number">5.</span> <span class="toc-text">5、账户管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、进程管理"><span class="toc-number">6.</span> <span class="toc-text">6、进程管理</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -975,6 +978,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
             
             <div class="clearfix"></div>
