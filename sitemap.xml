@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.shawn22.xyz/photos/data.json</loc>
+    
+    <lastmod>2021-06-16T04:27:50.968Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.shawn22.xyz/posts/2940781e.html</loc>
     
     <lastmod>2021-06-12T09:09:53.550Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://www.shawn22.xyz/posts/8a2dddd9.html</loc>
     
     <lastmod>2021-06-01T07:40:35.478Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.shawn22.xyz/photos/data.json</loc>
-    
-    <lastmod>2021-05-17T08:54:51.795Z</lastmod>
     
   </url>
   
