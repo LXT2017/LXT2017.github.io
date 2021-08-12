@@ -16,8 +16,9 @@
 <meta property="og:description" content="1、文件目录操作 ls命令 所有ls可以进行组合使用 1234567ls -a #列出目录所有文件，包含以.开始的隐藏文件ls -A #列出除.及..的其它文件ls -r #反序排列ls -t #以文件修改时间排序ls -S #以文件大小排序ls -h #以易读大小显示ls -l #除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来 12#列出当前目录中以“l&quot;开头的目录的详细内容l">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c6a0c06991494f6c8fc6df2395c670ff.png">
 <meta property="article:published_time" content="2021-03-15T11:19:17.000Z">
-<meta property="article:modified_time" content="2021-06-12T09:09:53.550Z">
+<meta property="article:modified_time" content="2021-08-09T13:12:03.478Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -233,7 +234,7 @@ var _hmt = _hmt || [];
     <span class="post-time">
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">4k字</span>
       </span>
     </span>
 
@@ -241,7 +242,7 @@ var _hmt = _hmt || [];
       &nbsp; | &nbsp;
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">14分</span>
       </span>
     </span>
 </div>
@@ -449,6 +450,39 @@ var _hmt = _hmt || [];
 <li>-aux 显示所有包含其他使用者的行程</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux 查看所有的进程</span></span><br><span class="line">ps -aux|grep mysql </span><br><span class="line"><span class="comment"># |  在Linux这个叫做管道符    A|B 相当于前面的操作结果通过管道当做后面命令的输入</span></span><br><span class="line"><span class="comment"># grep 查找文件中符合条件的字符串！</span></span><br><span class="line"><span class="comment"># 看父进程我们一般可以通过目录树结构来查看！</span></span><br><span class="line">ps -ef|grep mysql </span><br><span class="line"><span class="comment">#进程树，-p显示父id， -u显示用户组</span></span><br><span class="line">pstree -pu</span><br></pre></td></tr></table></figure>
+<p><strong>top命令</strong></p>
+<p>cpu状态显示：</p>
+<ul>
+<li>us, user： 运行(未调整优先级的) 用户进程的CPU时间</li>
+<li>sy，system: 运行内核进程的CPU时间</li>
+<li>ni，niced：运行已调整优先级的用户进程的CPU时间</li>
+<li>wa，IO wait: 用于等待IO完成的CPU时间</li>
+<li>hi：处理硬件中断的CPU时间</li>
+<li>si: 处理软件中断的CPU时间</li>
+<li>st：这个虚拟机被hypervisor偷去的CPU时间（译注：如果当前处于一个hypervisor下的vm，实际上hypervisor也是要消耗一部分CPU处理时间的）。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/c6a0c06991494f6c8fc6df2395c670ff.png" alt="请添加图片描述"><br>
+各进程（任务）的状态监控:</p>
+<p>PID：进程ID，进程的唯一标识符<br>
+USER：进程所有者的实际用户名。<br>
+PR：进程的调度优先级。这个字段的一些值是’rt’。这意味这这些进程运行在实时态。<br>
+NI：进程的nice值（优先级）。越小的值意味着越高的优先级。负值表示高优先级，正值表示低优先级<br>
+VIRT：进程使用的虚拟内存。进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES<br>
+RES：驻留内存大小。驻留内存是任务使用的非交换物理内存大小。进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA<br>
+SHR：SHR是进程使用的共享内存。共享内存大小，单位kb<br>
+S：这个是进程的状态。它有以下不同的值:</p>
+<ul>
+<li>D - 不可中断的睡眠态。</li>
+<li>R – 运行态</li>
+<li>S – 睡眠态</li>
+<li>T – 被跟踪或已停止</li>
+<li>Z – 僵尸态</li>
+</ul>
+<p>%CPU：自从上一次更新时到现在任务所使用的CPU时间百分比。<br>
+%MEM：进程使用的可用物理内存百分比。<br>
+TIME+：任务启动后到现在所使用的全部CPU时间，精确到百分之一秒。<br>
+COMMAND：运行进程所使用的命令。进程名称（命令名/命令行）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">c： 显示完整的命令</span><br><span class="line">d： 更改刷新频率</span><br><span class="line">f： 增加或减少要显示的列(选中的会变成大写并加*号)</span><br><span class="line">F： 选择排序的列</span><br><span class="line">h： 显示帮助画面</span><br><span class="line">H： 显示线程</span><br><span class="line">i： 忽略闲置和僵死进程</span><br><span class="line">k： 通过给予一个PID和一个signal来终止一个进程。（默认signal为15。在安全模式中此命令被屏蔽）</span><br><span class="line">l:  显示平均负载以及启动时间（即显示影藏第一行）</span><br><span class="line">m： 显示内存信息</span><br><span class="line">M： 根据内存资源使用大小进行排序</span><br><span class="line">N： 按PID由高到低排列</span><br><span class="line">o： 改变列显示的顺序</span><br><span class="line">O： 选择排序的列，与F完全相同</span><br><span class="line">P： 根据CPU资源使用大小进行排序</span><br><span class="line">q： 退出top命令</span><br><span class="line">r： 修改进程的nice值(优先级)。优先级默认为10，正值使优先级降低，反之则提高的优先级</span><br><span class="line">s： 设置刷新频率（默认单位为秒，如有小数则换算成ms）。默认值是5s，输入0值则系统将不断刷新</span><br><span class="line">S： 累计模式（把已完成或退出的子进程占用的CPU时间累计到父进程的MITE+ ）</span><br><span class="line">T： 根据进程使用CPU的累积时间排序</span><br><span class="line">t： 显示进程和CPU状态信息（即显示影藏CPU行）</span><br><span class="line">u： 指定用户进程</span><br><span class="line">W： 将当前设置写入~/.toprc文件，下次启动自动调用toprc文件的设置</span><br><span class="line">&lt;： 向前翻页</span><br><span class="line">&gt;： 向后翻页</span><br><span class="line">?： 显示帮助画面</span><br><span class="line">1(数字1)： 显示每个CPU的详细情况</span><br></pre></td></tr></table></figure>
 <p><strong>kill命令</strong></p>
 <p>杀死进程，结束任务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#表示强制结束该进程,进程id可通过ps查看</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程的id</span><br><span class="line"><span class="comment">#正常停止一个进程</span></span><br><span class="line"><span class="built_in">kill</span> -15 进程的id</span><br><span class="line"><span class="comment">#杀死所有相关的进程</span></span><br><span class="line">killall 进程名字</span><br></pre></td></tr></table></figure>
@@ -1002,6 +1036,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">java8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
             
             <div class="clearfix"></div>
