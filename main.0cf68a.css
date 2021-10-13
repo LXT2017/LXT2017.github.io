@@ -321,7 +321,7 @@ pre .css~* .id, pre .id {
     }
 }
 /* 手机端CSS代码 */
- @media screen and (max-width: 960px) {
+ @media screen and (max-width: 800px) {
     .category-count {
         text-align:center;
         line-height:1;
@@ -607,16 +607,71 @@ a {
     margin: 5px 30px 4px 30px;
     background: #fff;
     -webkit-transition: all 0.2s ease-in;
-    height:45px;
+    height:38px;
     font-family: '微软雅黑';
-    border-radius:5px;
+    border-radius:10px;
     padding-left:10px;
+    float: right;
 }
 
 /* 今日诗词 */
 #jinrishici-sentence{
   color:#27d7a1;
-  padding-left: 10px;
-  line-height: 45px;
-  font-size: 15px;
+  padding-top: 5px;
+  padding-left: 33px;
+  line-height: 38px;
+  font-size: 14px;
+}
+
+@media screen and (max-width:800px) {
+.page-header {
+    position: relative;
+    border: 1px solid #fff;
+    /* margin: 5px 30px 4px 30px; */
+    background: #fff;
+    -webkit-transition: all 0.2s ease-in;
+    height: 45px;
+    font-family: '微软雅黑';
+    border-radius: 5px;
+    padding-left: 2px;
+}
+}
+
+/* 手机端 */
+@media screen and (max-width:800px) {
+.local-search {
+    position: absolute;
+    text-align: left;
+    display:inline-block;
+    margin-bottom: 0px;
+    right: -5%;
+}
+.local-search-plugin .local-search-input-cls {
+    opacity: .6;
+    width: 100px;
+    transition: all .3s;
+}
+.local-search-result-cls {
+    right: 2px;
+}
+.local-search-result-cls ul {
+    width: 360px;
+    max-height: 400px;
+    min-height: 0;
+    height: auto;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 3px 4px 10px #7dc3d8;
+    margin-top: 20px;
+}
+}
+
+/* 手机端 */
+@media screen and (max-width:800px) {
+    .local-search {
+        display:none;
+        /* right: -5%; */
+    }
 }
