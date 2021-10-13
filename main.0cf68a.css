@@ -531,7 +531,7 @@ body {
 @media screen and (max-width:800px) {
     body {
 		background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-		url('https://s1.ax1x.com/2020/09/24/0pcEjO.jpg') no-repeat fixed top;
+		url('https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/0pcEjO.jpg') no-repeat fixed top;
     }
 }
 /* 因为超链接默认情况下是：cursor: pointer; 显示为手，这里进行设置 */
@@ -598,4 +598,25 @@ a {
     background-image: linear-gradient(#8fecc5,#0badf7);
 
     background-color: #4d4d4d;
+}
+
+/* 页面头部：包含‘今日诗词’，站内搜索 */
+.page-header {
+    position: relative;
+    border: 1px solid #fff;
+    margin: 5px 30px 4px 30px;
+    background: #fff;
+    -webkit-transition: all 0.2s ease-in;
+    height:45px;
+    font-family: '微软雅黑';
+    border-radius:5px;
+    padding-left:10px;
+}
+
+/* 今日诗词 */
+#jinrishici-sentence{
+  color:#27d7a1;
+  padding-left: 10px;
+  line-height: 45px;
+  font-size: 15px;
 }

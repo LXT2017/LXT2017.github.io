@@ -25,6 +25,7 @@
     <link rel="icon" href="/img/1.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+<link rel="stylesheet" type="text/css" href="/./search.css">
   
   <link rel="stylesheet" type="text/css" href="/./avatarrotation.css">
   
@@ -198,6 +199,38 @@ var _hmt = _hmt || [];
 	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
 </nav>
 
+
+
+            
+      <div class="page-header" style="">
+          
+          <span>🍻  
+              <span id="jinrishici-sentence" title="今日诗词">正在加载今日诗词....</span>
+          </span>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+          
+          <script type="text/javascript" src="/js/search.js"></script>
+          <span id="local-search" class="local-search local-search-plugin" style="">
+            <input type="search" placeholder="站内搜索" id="local-search-input" class="local-search-input-cls" style="">
+            <i id="local-search-icon-search" class="icon" aria-hidden="true" title="站内搜索">🔍</i>
+            <div id="local-search-result" class="local-search-result-cls"></div>
+          </span>
+
+          <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+          <script>
+              if ($('.local-search').size()) {
+                $.getScript('/js/search.js', function() {
+                  searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+                });
+              }
+          </script>
+          
+      </div>
+      
+
+
+
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
           <div class="canvas-wrap">
@@ -212,13 +245,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/78413d01.html">mysqlbinlog简单入门实践</a>
-    </h1>
-  
-
         
         <a href="/posts/78413d01.html" class="archive-article-date">
   	<time datetime="2021-10-10T03:17:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-10</time>
@@ -362,13 +388,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/a31fee08.html">ShardingSphere数据库中间件</a>
-    </h1>
-  
-
         
         <a href="/posts/a31fee08.html" class="archive-article-date">
   	<time datetime="2021-09-22T05:20:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-22</time>
@@ -517,13 +536,6 @@ var _hmt = _hmt || [];
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/12cb1ce6.html">java反编译JVM指令入门</a>
-    </h1>
-  
-
-        
         <a href="/posts/12cb1ce6.html" class="archive-article-date">
   	<time datetime="2021-09-16T06:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-16</time>
   	
@@ -669,13 +681,6 @@ var _hmt = _hmt || [];
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/b59fddd6.html">springboot父子工程</a>
-    </h1>
-  
-
-        
         <a href="/posts/b59fddd6.html" class="archive-article-date">
   	<time datetime="2021-08-12T13:46:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
   	
@@ -817,13 +822,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/dcbafa8c.html">SpringCloud-2020.0.3版本简单入门</a>
-    </h1>
-  
-
         
         <a href="/posts/dcbafa8c.html" class="archive-article-date">
   	<time datetime="2021-08-12T13:02:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
@@ -1002,13 +1000,6 @@ var _hmt = _hmt || [];
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/c54dc8f8.html">java8常用新特性</a>
-    </h1>
-  
-
-        
         <a href="/posts/c54dc8f8.html" class="archive-article-date">
   	<time datetime="2021-08-05T04:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
   	
@@ -1149,13 +1140,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/4c4cc90e.html">vue3打包后部分页面空白</a>
-    </h1>
-  
-
         
         <a href="/posts/4c4cc90e.html" class="archive-article-date">
   	<time datetime="2021-08-03T03:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
@@ -1299,13 +1283,6 @@ var _hmt = _hmt || [];
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/202ae1e9.html">EAIBOT小车树莓派3B网络问题</a>
-    </h1>
-  
-
-        
         <a href="/posts/202ae1e9.html" class="archive-article-date">
   	<time datetime="2021-07-27T07:51:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-27</time>
   	
@@ -1447,13 +1424,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/177bfdaa.html">docker学习笔记</a>
-    </h1>
-  
-
         
         <a href="/posts/177bfdaa.html" class="archive-article-date">
   	<time datetime="2021-06-17T02:16:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-17</time>
@@ -1599,13 +1569,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/8eda3648.html">Redis学习笔记</a>
-    </h1>
-  
-
         
         <a href="/posts/8eda3648.html" class="archive-article-date">
   	<time datetime="2021-06-08T10:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-08</time>

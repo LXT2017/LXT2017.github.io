@@ -5622,4 +5622,1106 @@ alias 实际访问文件路径不会拼接URL中的路径</p>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/photos/data.json</url>
+    <content><![CDATA[{"list":[{"date":"2021-08","arr":{"year":2021,"month":8,"link":["2021-08-12_神里绫华1.png","2021-08-12_神里绫华2.jpg","2021-08-12_神里绫华3.jpg","2021-08-12_神里绫华4.jpg","2021-08-12_神里绫华5.jpg","2021-08-12_神里绫华7.jpg"],"text":["神里绫华1","神里绫华2","神里绫华3","神里绫华4","神里绫华5","神里绫华7"],"type":["image","image","image","image","image","image"]}},{"date":"2020-06","arr":{"year":2020,"month":6,"link":["2020-06-16_可莉1.jpg","2020-06-16_可莉10.jpg","2020-06-16_可莉2.jpg","2020-06-16_可莉3.jpg","2020-06-16_可莉4.jpg","2020-06-16_可莉5.jpg","2020-06-16_可莉6.jpg","2020-06-16_可莉7.jpg","2020-06-16_可莉8.jpg","2020-06-16_可莉9.jpg"],"text":["可莉1","可莉10","可莉2","可莉3","可莉4","可莉5","可莉6","可莉7","可莉8","可莉9"],"type":["image","image","image","image","image","image","image","image","image","image"]}},{"date":"2020-05","arr":{"year":2020,"month":5,"link":["2020-05-01_动漫1.jpg","2020-05-01_动漫2.png","2020-05-01_动漫3.jpg","2020-05-01_动漫4.jpg","2020-05-01_动漫5.jpg","2020-05-17_动漫1.jpg"],"text":["动漫1","动漫2","动漫3","动漫4","动漫5","动漫1"],"type":["image","image","image","image","image","image"]}},{"date":"2020-01","arr":{"year":2020,"month":1,"link":["2020-01-01_风景1.png","2020-01-01_风景2.jpg"],"text":["风景1","风景2"],"type":["image","image"]}}]}]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/photos/ins.css</url>
+    <content><![CDATA[#post-instagram{
+	padding: 30px;
+}
+#post-instagram .article-entry{
+	padding-right: 0;
+}
+.instagram{
+	position: relative;
+	min-height: 500px;
+}
+.instagram img {
+	width: 100%;
+}
+.instagram .year {
+	font-size: 16px;
+}
+.instagram .open-ins{
+	padding: 10px 0;
+	color: #cdcdcd;
+}
+.instagram .open-ins:hover{
+	color: #657b83;
+}
+.instagram .year{
+	display: inline;
+}
+.instagram .thumb {
+	width: 25%;
+	height: 0; 
+	padding-bottom: 25%;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	background: #ededed;
+	outline: 1px solid #ddd;
+}
+.instagram .thumb a {
+	position: relative;
+}
+.instagram .album h1 em{
+	font-style: normal;
+	font-size: 14px;
+	margin-left: 10px;
+}
+.instagram .album ul{
+	display: flex;
+	flex-wrap: wrap;
+	clear: both;
+	width: 100%;
+	text-align: left;
+}
+.instagram .album li{
+	list-style: none;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 5px;
+	margin-bottom: -10px;
+	height: 0;
+	width: 25%;
+	position: relative;
+	padding-bottom: 25%;
+}
+.instagram .album li:before{
+	display: none;
+}
+.instagram .album div.img-box{
+	position: absolute;
+	width: 90%;
+	height: 90%;
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 1px 0 1px rgba(255,255,255,0.1);
+	-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 1px 0 1px rgba(255,255,255,0.1);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 1px 0 1px rgba(255,255,255,0.1);
+}
+.instagram .album div.img-box img{
+	width: 100%;
+	height: 100%;
+    position: absolute;
+    z-index: 2;
+}
+.instagram .album div.img-box .img-bg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0px;
+	width: 100%;
+	margin: -5px;
+	padding: 5px;
+	-webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.04), 0 1px 5px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 0 0 1px rgba(0,0,0,.04), 0 1px 5px rgba(0,0,0,0.1);
+	box-shadow: 0 0 0 1px rgba(0,0,0,.04), 0 1px 5px rgba(0,0,0,0.1);
+	-webkit-transition: all 0.15s ease-out 0.1s;
+	-moz-transition: all 0.15s ease-out 0.1s;
+	-o-transition: all 0.15s ease-out 0.1s;
+	transition: all 0.15s ease-out 0.1s;
+	opacity: 0.2;
+	cursor: pointer;
+	display: block;
+	z-index: 3;
+}
+.instagram .album div.img-box .icon {
+    font-size: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -7px;
+    margin-top: -7px;
+    color: #999;
+    z-index: 1;
+}
+.instagram .album div.img-box .img-bg:hover{
+	opacity: 0;
+}
+.photos-btn-wrap {
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 20px;
+}
+.photos-btn {
+	font-size: 16px;
+	color: #333;
+	margin-bottom: -4px;
+	padding: 5px 8px 3px;
+}
+.photos-btn.active {
+	color: #08c;
+	border: 1px solid #e5e5e5;
+	border-bottom: 5px solid #fff;
+}
+
+@media screen and (max-width:600px) {
+	.instagram .thumb {
+		width: 50%;
+		padding-bottom: 50%;
+	}
+	.instagram .album li {
+		width: 100%;
+		position: relative;
+		padding-bottom: 100%;
+		text-align: center;
+	}
+	.instagram .album div.img-box{
+		margin: 0;
+		width: 90%;
+		height: 90%;
+	}
+}
+
+/* ====== video ===== */
+ .video-container {
+    z-index: 1;
+    position: relative;
+    padding-bottom: 56.25%;
+    margin: 0 auto;
+}
+.video-container iframe, .video-container object, .video-container embed {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 7%;
+    width: 85%;
+    height: 85%;
+    box-shadow: 0px 0px 20px 2px #888888;
+}]]></content>
+  </entry>
+  <entry>
+    <title>相册</title>
+    <url>/photos/videos.html</url>
+    <content><![CDATA[<link rel="stylesheet" href="./ins.css">
+<div class="photos-btn-wrap">	<a class="photos-btn" href="/photos">Photos</a>
+	<a class="photos-btn active" href="/photos/videos.html">Videos</a>
+</div>
+<center>
+    <h1>星轨</h1>
+</center>
+<hr/>
+<center>
+    <div class="video-container">
+        <iframe height="80%" width="80%" src="http://114.215.200.70/vue-web/vedio/star.mp4" frameborder=0 allowfullscreen></iframe>
+    </div>
+</center>
+<hr/>
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>相册</title>
+    <url>/photos/index.html</url>
+    <content><![CDATA[<link rel="stylesheet" href="./ins.css">
+<div class="photos-btn-wrap">
+	<a class="photos-btn active" href="javascript:void(0)">Photos</a>
+	<a class="photos-btn" href="/photos/videos.html">Vedio</a>
+</div>
+<div class="instagram itemscope">
+	<a href="https://www.instagram.com/lawlitewang20/" target="_blank" class="open-ins">图片正在加载中…</a>
+</div>
+<script>
+  (function() {
+    var loadScript = function(path) {
+      var $script = document.createElement('script')
+      document.getElementsByTagName('body')[0].appendChild($script)
+      $script.setAttribute('src', path)
+    }
+    setTimeout(function() {
+      loadScript('./ins.js')
+    }, 0)
+  })()
+</script>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/photos/lazyload.min.js</url>
+    <content><![CDATA[/*!
+ * An jQuery | zepto plugin for lazy loading images.
+ * author -> jieyou
+ * see https://github.com/jieyou/lazyload
+ * use some tuupola's code https://github.com/tuupola/jquery_lazyload (BSD)
+ * use component's throttle https://github.com/component/throttle (MIT)
+ */
+!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):a(window.jQuery||window.Zepto)}(function(a){function g(){}function h(a,b){var e;return e=b._$container==d?("innerHeight"in c?c.innerHeight:d.height())+d.scrollTop():b._$container.offset().top+b._$container.height(),e<=a.offset().top-b.threshold}function i(b,e){var f;return f=e._$container==d?d.width()+(a.fn.scrollLeft?d.scrollLeft():c.pageXOffset):e._$container.offset().left+e._$container.width(),f<=b.offset().left-e.threshold}function j(a,b){var c;return c=b._$container==d?d.scrollTop():b._$container.offset().top,c>=a.offset().top+b.threshold+a.height()}function k(b,e){var f;return f=e._$container==d?a.fn.scrollLeft?d.scrollLeft():c.pageXOffset:e._$container.offset().left,f>=b.offset().left+e.threshold+b.width()}function l(a,b){var c=0;a.each(function(d){function g(){f.trigger("_lazyload_appear"),c=0}var f=a.eq(d);if(!(f.width()<=0&&f.height()<=0||"none"===f.css("display")))if(b.vertical_only)if(j(f,b));else if(h(f,b)){if(++c>b.failure_limit)return!1}else g();else if(j(f,b)||k(f,b));else if(h(f,b)||i(f,b)){if(++c>b.failure_limit)return!1}else g()})}function m(a){return a.filter(function(b){return!a.eq(b)._lazyload_loadStarted})}function n(a,b){function h(){f=0,g=+new Date,e=a.apply(c,d),c=null,d=null}var c,d,e,f,g=0;return function(){c=this,d=arguments;var a=new Date-g;return f||(a>=b?h():f=setTimeout(h,b-a)),e}}var f,c=window,d=a(c),e={threshold:0,failure_limit:0,event:"scroll",effect:"show",effect_params:null,container:c,data_attribute:"original",data_srcset_attribute:"original-srcset",skip_invisible:!0,appear:g,load:g,vertical_only:!1,check_appear_throttle_time:300,url_rewriter_fn:g,no_fake_img_loader:!1,placeholder_data_img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC",placeholder_real_img:"http://ditu.baidu.cn/yyfm/lazyload/0.0.1/img/placeholder.png"};f=function(){var a=Object.prototype.toString;return function(b){return a.call(b).replace("[object ","").replace("]","")}}(),a.fn.hasOwnProperty("lazyload")||(a.fn.lazyload=function(b){var i,j,k,h=this;return a.isPlainObject(b)||(b={}),a.each(e,function(g,h){var i=f(b[g]);-1!=a.inArray(g,["threshold","failure_limit","check_appear_throttle_time"])?"String"==i?b[g]=parseInt(b[g],10):"Number"!=i&&(b[g]=h):"container"==g?(b._$container=b.hasOwnProperty(g)?b[g]==c||b[g]==document?d:a(b[g]):d,delete b.container):!e.hasOwnProperty(g)||b.hasOwnProperty(g)&&i==f(e[g])||(b[g]=h)}),i="scroll"==b.event,k=0==b.check_appear_throttle_time?l:n(l,b.check_appear_throttle_time),j=i||"scrollstart"==b.event||"scrollstop"==b.event,h.each(function(c){var e=this,f=h.eq(c),i=f.attr("src"),k=f.attr("data-"+b.data_attribute),l=b.url_rewriter_fn==g?k:b.url_rewriter_fn.call(e,f,k),n=f.attr("data-"+b.data_srcset_attribute),o=f.is("img");return 1==f._lazyload_loadStarted||i==l?(f._lazyload_loadStarted=!0,h=m(h),void 0):(f._lazyload_loadStarted=!1,o&&!i&&f.one("error",function(){f.attr("src",b.placeholder_real_img)}).attr("src",b.placeholder_data_img),f.one("_lazyload_appear",function(){function i(){d&&f.hide(),o?(n&&f.attr("srcset",n),l&&f.attr("src",l)):f.css("background-image",'url("'+l+'")'),d&&f[b.effect].apply(f,c?b.effect_params:[]),h=m(h)}var d,c=a.isArray(b.effect_params);f._lazyload_loadStarted||(d="show"!=b.effect&&a.fn[b.effect]&&(!b.effect_params||c&&0==b.effect_params.length),b.appear!=g&&b.appear.call(e,f,h.length,b),f._lazyload_loadStarted=!0,b.no_fake_img_loader||n?(b.load!=g&&f.one("load",function(){b.load.call(e,f,h.length,b)}),i()):a("<img />").one("load",function(){i(),b.load!=g&&b.load.call(e,f,h.length,b)}).attr("src",l))}),j||f.on(b.event,function(){f._lazyload_loadStarted||f.trigger("_lazyload_appear")}),void 0)}),j&&b._$container.on(b.event,function(){k(h,b)}),d.on("resize load",function(){k(h,b)}),a(function(){k(h,b)}),this})});]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/photos/ins.js</url>
+    <content><![CDATA[/******/
+(function(modules) { // webpackBootstrap
+  /******/ // The module cache
+  /******/
+  var installedModules = {};
+  /******/
+  /******/ // The require function
+  /******/
+  function __webpack_require__(moduleId) {
+    /******/
+    /******/ // Check if module is in cache
+    /******/
+    if (installedModules[moduleId])
+    /******/
+      return installedModules[moduleId].exports;
+    /******/
+    /******/ // Create a new module (and put it into the cache)
+    /******/
+    var module = installedModules[moduleId] = {
+      /******/
+      exports: {},
+      /******/
+      id: moduleId,
+      /******/
+      loaded: false
+        /******/
+    };
+    /******/
+    /******/ // Execute the module function
+    /******/
+    modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+    /******/
+    /******/ // Flag the module as loaded
+    /******/
+    module.loaded = true;
+    /******/
+    /******/ // Return the exports of the module
+    /******/
+    return module.exports;
+    /******/
+  }
+  /******/
+  /******/
+  /******/ // expose the modules object (__webpack_modules__)
+  /******/
+  __webpack_require__.m = modules;
+  /******/
+  /******/ // expose the module cache
+  /******/
+  __webpack_require__.c = installedModules;
+  /******/
+  /******/ // __webpack_public_path__
+  /******/
+  __webpack_require__.p = "/dist/";
+  /******/
+  /******/ // Load entry module and return exports
+  /******/
+  return __webpack_require__(0);
+  /******/
+})
+/************************************************************************/
+/******/
+([
+  /* 0 */
+  /***/
+  function(module, exports, __webpack_require__) {
+
+    'use strict';
+
+    __webpack_require__(1);
+
+    var _view = __webpack_require__(2);
+
+    var _view2 = _interopRequireDefault(_view);
+
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : {
+        default: obj
+      };
+    }
+
+    /**
+     * @name impush-client 
+     * @description 这个项目让我发家致富…
+     * @date 2016-12-1
+     */
+
+    var _collection = [];
+    var _count = 0;
+    var searchData;
+
+    function addMask(elem) {
+      var rect = elem.getBoundingClientRect();
+      var style = getComputedStyle(elem, null);
+
+      var mask = document.createElement('i');
+      mask.className = 'icon-film';
+      mask.style.color = '#fff';
+      mask.style.fontSize = '26px';
+      mask.style.position = 'absolute';
+      mask.style.right = '10px';
+      mask.style.bottom = '10px';
+      mask.style.zIndex = 1;
+      elem.parentNode.appendChild(mask);
+    }
+
+    var createVideoIncon = function createVideoIncon() {
+      var $videoImg = document.querySelectorAll('.thumb a[data-type="video"]');
+      for (var i = 0, len = $videoImg.length; i < len; i++) {
+        addMask($videoImg[i]);
+      }
+    };
+    var render = function render(res) {
+      var ulTmpl = "";
+      for (var j = 0, len2 = res.list.length; j < len2; j++) {
+        var data = res.list[j].arr;
+        var liTmpl = "";
+        for (var i = 0, len = data.link.length; i < len; i++) {
+          // var minSrc = 'https://raw.githubusercontent.com/lawlite19/blog-back-up/master/min_photos/' + data.link[i];
+          // var src = 'https://raw.githubusercontent.com/lawlite19/blog-back-up/master/photos/' + data.link[i];
+          var minSrc = 'https://gitee.com/LXT2017/Picbed/raw/master/min_photos/' + data.link[i];
+          var src = 'https://gitee.com/LXT2017/Picbed/raw/master/photos/' + data.link[i];
+          var type = data.type[i];
+          var target = src + (type === 'video' ? '.mp4' : '.jpg');
+          src += '';
+
+          liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
+                <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
+                  <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" src="/assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
+                </a>\
+                <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
+            </figure>';
+        }
+        ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + '年<em>' + data.month + '月</em></h1>\
+        <ul class="img-box-ul">' + liTmpl + '</ul>\
+        </section>';
+      }
+      document.querySelector('.instagram').innerHTML = '<div class="photos" itemscope="" itemtype="http://schema.org/ImageGallery">' + ulTmpl + '</div>';
+      createVideoIncon();
+      _view2.default.init();
+    };
+
+    var replacer = function replacer(str) {
+      var arr = str.split("/");
+      return "/assets/ins/" + arr[arr.length - 1];
+    };
+
+    var ctrler = function ctrler(data) {
+      var imgObj = {};
+      for (var i = 0, len = data.length; i < len; i++) {
+        var y = data[i].y;
+        var m = data[i].m;
+        var src = replacer(data[i].src);
+        var text = data[i].text;
+        var key = y + "" + ((m + "").length == 1 ? "0" + m : m);
+        if (imgObj[key]) {
+          imgObj[key].srclist.push(src);
+          imgObj[key].text.push(text);
+        } else {
+          imgObj[key] = {
+            year: y,
+            month: m,
+            srclist: [src],
+            text: [text]
+          };
+        }
+      }
+      render(imgObj);
+    };
+
+    function loadData(success) {
+      if (!searchData) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './data.json?t=' + +new Date(), true);
+
+        xhr.onload = function() {
+          if (this.status >= 200 && this.status < 300) {
+            var res = JSON.parse(this.response);
+            searchData = res;
+            success(searchData);
+          } else {
+            console.error(this.statusText);
+          }
+        };
+
+        xhr.onerror = function() {
+          console.error(this.statusText);
+        };
+
+        xhr.send();
+      } else {
+        success(searchData);
+      }
+    }
+
+    var Ins = {
+      init: function init() {
+        loadData(function(data) {
+          render(data);
+        });
+      }
+    };
+
+    Ins.init();
+
+    // export default impush;
+
+    /***/
+  },
+  /* 1 */
+  /***/
+  function(module, exports, __webpack_require__) {
+
+    /* WEBPACK VAR INJECTION */
+    (function(global) {
+      'use strict';
+
+      var inViewport = __webpack_require__(3);
+      var lazyAttrs = ['data-src'];
+
+      global.lzld = lazyload();
+
+      // Provide libs using getAttribute early to get the good src
+      // and not the fake data-src
+      replaceGetAttribute('Image');
+      replaceGetAttribute('IFrame');
+
+      function registerLazyAttr(attr) {
+        if (indexOf.call(lazyAttrs, attr) === -1) {
+          lazyAttrs.push(attr);
+        }
+      }
+
+      function lazyload(opts) {
+        opts = merge({
+          'offset': 333,
+          'src': 'data-src',
+          'container': false
+        }, opts || {});
+
+        if (typeof opts.src === 'string') {
+          registerLazyAttr(opts.src);
+        }
+
+        var elts = [];
+
+        function show(elt) {
+          var src = findRealSrc(elt);
+
+          if (src) {
+            elt.src = src;
+          }
+
+          elt.setAttribute('data-lzled', true);
+          elts[indexOf.call(elts, elt)] = null;
+        }
+
+        function findRealSrc(elt) {
+          if (typeof opts.src === 'function') {
+            return opts.src(elt);
+          }
+
+          return elt.getAttribute(opts.src);
+        }
+
+        function register(elt) {
+          elt.onload = null;
+          elt.removeAttribute('onload');
+          elt.onerror = null;
+          elt.removeAttribute('onerror');
+
+          if (indexOf.call(elts, elt) === -1) {
+            inViewport(elt, opts, show);
+          }
+        }
+
+        return register;
+      }
+
+      function replaceGetAttribute(elementName) {
+        var fullname = 'HTML' + elementName + 'Element';
+        if (fullname in global === false) {
+          return;
+        }
+
+        var original = global[fullname].prototype.getAttribute;
+        global[fullname].prototype.getAttribute = function(name) {
+          if (name === 'src') {
+            var realSrc;
+            for (var i = 0, max = lazyAttrs.length; i < max; i++) {
+              realSrc = original.call(this, lazyAttrs[i]);
+              if (realSrc) {
+                break;
+              }
+            }
+
+            return realSrc || original.call(this, name);
+          }
+
+          // our own lazyloader will go through theses lines
+          // because we use getAttribute(opts.src)
+          return original.call(this, name);
+        };
+      }
+
+      function merge(defaults, opts) {
+        for (var name in defaults) {
+          if (opts[name] === undefined) {
+            opts[name] = defaults[name];
+          }
+        }
+
+        return opts;
+      }
+
+      // http://webreflection.blogspot.fr/2011/06/partial-polyfills.html
+      function indexOf(value) {
+        for (var i = this.length; i-- && this[i] !== value;) {}
+        return i;
+      }
+
+      module.exports = lazyload;
+
+      // export default impush;
+      /* WEBPACK VAR INJECTION */
+    }.call(exports, (function() {
+      return this;
+    }())))
+
+    /***/
+  },
+  /* 2 */
+  /***/
+  function(module, exports) {
+
+    'use strict';
+
+    var initPhotoSwipeFromDOM = function initPhotoSwipeFromDOM(gallerySelector) {
+
+      // parse slide data (url, title, size ...) from DOM elements 
+      // (children of gallerySelector)
+      var parseThumbnailElements = function parseThumbnailElements(el) {
+        el = el.parentNode.parentNode;
+        var thumbElements = el.getElementsByClassName('thumb'),
+          numNodes = thumbElements.length,
+          items = [],
+          figureEl,
+          linkEl,
+          size,
+          type,
+          // video or not
+          target,
+          item;
+
+        for (var i = 0; i < numNodes; i++) {
+
+          figureEl = thumbElements[i]; // 
+
+          // include only element nodes 
+          if (figureEl.nodeType !== 1) {
+            continue;
+          }
+
+          linkEl = figureEl.children[0]; // 
+
+          size = linkEl.getAttribute('data-size').split('x');
+          type = linkEl.getAttribute('data-type');
+          target = linkEl.getAttribute('data-target');
+          // create slide object
+          item = {
+            src: linkEl.getAttribute('href'),
+            w: parseInt(size[0], 10),
+            h: parseInt(size[1], 10)
+          };
+
+          if (figureEl.children.length > 1) {
+            item.title = figureEl.children[1].innerHTML;
+          }
+
+          if (linkEl.children.length > 0) {
+            item.msrc = linkEl.children[0].getAttribute('src');
+            item.type = type;
+            item.target = target;
+            item.html = '<video src="' + target + '" controls="controls" autoplay="autoplay"></video>';
+            if (type === 'video') {
+              //item.src = null;
+            }
+          }
+
+          item.el = figureEl; // save link to element for getThumbBoundsFn
+          items.push(item);
+        }
+
+        return items;
+      };
+
+      // find nearest parent element
+      var closest = function closest(el, fn) {
+        return el && (fn(el) ? el : closest(el.parentNode, fn));
+      };
+
+      // triggers when user clicks on thumbnail
+      var onThumbnailsClick = function onThumbnailsClick(e) {
+        e = e || window.event;
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+        var eTarget = e.target || e.srcElement;
+
+        // find root element of slide
+        var clickedListItem = closest(eTarget, function(el) {
+          return el.tagName && el.tagName.toUpperCase() === 'FIGURE';
+        });
+
+        if (!clickedListItem) {
+          return;
+        }
+
+        // find index of clicked item by looping through all child nodes
+        // alternatively, you may define index via data- attribute
+        var clickedGallery = clickedListItem.parentNode,
+
+          // childNodes = clickedListItem.parentNode.childNodes,
+          // numChildNodes = childNodes.length,
+          childNodes = document.getElementsByClassName('thumb'),
+          numChildNodes = childNodes.length,
+          nodeIndex = 0,
+          index;
+
+        for (var i = 0; i < numChildNodes; i++) {
+          if (childNodes[i].nodeType !== 1) {
+            continue;
+          }
+
+          if (childNodes[i] === clickedListItem) {
+            index = nodeIndex;
+            break;
+          }
+          nodeIndex++;
+        }
+
+        if (index >= 0) {
+          // open PhotoSwipe if valid index found
+          openPhotoSwipe(index, clickedGallery);
+        }
+        return false;
+      };
+
+      // parse picture index and gallery index from URL (#&pid=1&gid=2)
+      var photoswipeParseHash = function photoswipeParseHash() {
+        var hash = window.location.hash.substring(1),
+          params = {};
+
+        if (hash.length < 5) {
+          return params;
+        }
+
+        var vars = hash.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          if (!vars[i]) {
+            continue;
+          }
+          var pair = vars[i].split('=');
+          if (pair.length < 2) {
+            continue;
+          }
+          params[pair[0]] = pair[1];
+        }
+
+        if (params.gid) {
+          params.gid = parseInt(params.gid, 10);
+        }
+
+        return params;
+      };
+
+      var openPhotoSwipe = function openPhotoSwipe(index, galleryElement, disableAnimation, fromURL) {
+        var pswpElement = document.querySelectorAll('.pswp')[0],
+          gallery,
+          options,
+          items;
+
+        items = parseThumbnailElements(galleryElement);
+        // define options (if needed)
+        options = {
+
+          // define gallery index (for URL)
+          galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+          getThumbBoundsFn: function getThumbBoundsFn(index) {
+            // See Options -> getThumbBoundsFn section of documentation for more info
+            var thumbnail = items[index].el.getElementsByTagName('img')[0],
+              // find thumbnail
+              pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+              rect = thumbnail.getBoundingClientRect();
+
+            return {
+              x: rect.left,
+              y: rect.top + pageYScroll,
+              w: rect.width
+            };
+          }
+
+        };
+
+        // PhotoSwipe opened from URL
+        if (fromURL) {
+          if (options.galleryPIDs) {
+            // parse real index when custom PIDs are used 
+            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+            for (var j = 0; j < items.length; j++) {
+              if (items[j].pid == index) {
+                options.index = j;
+                break;
+              }
+            }
+          } else {
+            // in URL indexes start from 1
+            options.index = parseInt(index, 10) - 1;
+          }
+        } else {
+          options.index = parseInt(index, 10);
+        }
+
+        // exit if index not found
+        if (isNaN(options.index)) {
+          return;
+        }
+
+        if (disableAnimation) {
+          options.showAnimationDuration = 0;
+        }
+
+        // Pass data to PhotoSwipe and initialize it
+        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+
+        var $tempVideo;
+        var stopVideoHandle = function stopVideoHandle() {
+          if ($tempVideo) {
+            $tempVideo.remove();
+            $tempVideo = null;
+          }
+        };
+        var changeHandle = function changeHandle() {
+          var item = gallery.currItem;
+          stopVideoHandle();
+          if (item.type === 'video') {
+            var $ctn = item.container;
+            var style = $ctn.getElementsByClassName('pswp__img')[0].style;
+            var $video = document.createElement('video');
+            $video.setAttribute('autoplay', 'autoplay');
+            $video.setAttribute('controls', 'controls');
+            $video.setAttribute('src', item.target);
+            $video.style.width = style.width;
+            $video.style.height = style.height;
+            $video.style.position = 'absolute';
+            $video.style.zIndex = 2;
+            $tempVideo = $video;
+            $ctn.appendChild($video);
+          }
+        };
+        gallery.listen('initialZoomIn', changeHandle);
+        gallery.listen('afterChange', changeHandle);
+        gallery.listen('initialZoomOut', stopVideoHandle);
+      };
+
+      // loop through all gallery elements and bind events
+      var galleryElements = document.querySelectorAll(gallerySelector);
+      for (var i = 0, l = galleryElements.length; i < l; i++) {
+        galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+        galleryElements[i].onclick = onThumbnailsClick;
+      }
+
+      // Parse URL and open gallery if it contains #&pid=3&gid=1
+      var hashData = photoswipeParseHash();
+      if (hashData.pid && hashData.gid) {
+        openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+      }
+    };
+
+    var Viewer = function() {
+      function init() {
+        initPhotoSwipeFromDOM('.photos');
+      }
+      return {
+        init: init
+      };
+    }();
+
+    module.exports = Viewer;
+
+    /***/
+  },
+  /* 3 */
+  /***/
+  function(module, exports) {
+
+    /* WEBPACK VAR INJECTION */
+    (function(global) {
+      module.exports = inViewport;
+
+      var instances = [];
+      var supportsMutationObserver = typeof global.MutationObserver === 'function';
+
+      function inViewport(elt, params, cb) {
+        var opts = {
+          container: global.document.body,
+          offset: 0
+        };
+
+        if (params === undefined || typeof params === 'function') {
+          cb = params;
+          params = {};
+        }
+
+        var container = opts.container = params.container || opts.container;
+        var offset = opts.offset = params.offset || opts.offset;
+
+        for (var i = 0; i < instances.length; i++) {
+          if (instances[i].container === container) {
+            return instances[i].isInViewport(elt, offset, cb);
+          }
+        }
+
+        return instances[
+          instances.push(createInViewport(container)) - 1
+        ].isInViewport(elt, offset, cb);
+      }
+
+      function addEvent(el, type, fn) {
+        if (el.attachEvent) {
+          el.attachEvent('on' + type, fn);
+        } else {
+          el.addEventListener(type, fn, false);
+        }
+      }
+
+      function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+          var context = this,
+            args = arguments;
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+
+          function later() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+          }
+        };
+      }
+
+      // https://github.com/jquery/sizzle/blob/3136f48b90e3edc84cbaaa6f6f7734ef03775a07/sizzle.js#L708
+      var contains = function() {
+        if (!global.document) {
+          return true;
+        }
+        return global.document.documentElement.compareDocumentPosition ?
+          function(a, b) {
+            return !!(a.compareDocumentPosition(b) & 16);
+          } :
+          global.document.documentElement.contains ?
+          function(a, b) {
+            return a !== b && (a.contains ? a.contains(b) : false);
+          } :
+          function(a, b) {
+            while (b = b.parentNode) {
+              if (b === a) {
+                return true;
+              }
+            }
+            return false;
+          };
+      }
+
+      function createInViewport(container) {
+        var watches = createWatches();
+
+        var scrollContainer = container === global.document.body ? global : container;
+        var debouncedCheck = debounce(watches.checkAll(watchInViewport), 15);
+
+        addEvent(scrollContainer, 'scroll', debouncedCheck);
+
+        if (scrollContainer === global) {
+          addEvent(global, 'resize', debouncedCheck);
+        }
+
+        if (supportsMutationObserver) {
+          observeDOM(watches, container, debouncedCheck);
+        }
+
+        // failsafe check, every 200ms we check for visible images
+        // usecase: a hidden parent containing eleements
+        // when the parent becomes visible, we have no event that the children
+        // became visible
+        setInterval(debouncedCheck, 150);
+
+        function isInViewport(elt, offset, cb) {
+          if (!cb) {
+            return isVisible(elt, offset);
+          }
+
+          var remote = createRemote(elt, offset, cb);
+          remote.watch();
+          return remote;
+        }
+
+        function createRemote(elt, offset, cb) {
+          function watch() {
+            watches.add(elt, offset, cb);
+          }
+
+          function dispose() {
+            watches.remove(elt);
+          }
+
+          return {
+            watch: watch,
+            dispose: dispose
+          };
+        }
+
+        function watchInViewport(elt, offset, cb) {
+          if (isVisible(elt, offset)) {
+            watches.remove(elt);
+            cb(elt);
+          }
+        }
+
+        function isVisible(elt, offset) {
+          if (!contains(global.document.documentElement, elt) || !contains(global.document.documentElement, container)) {
+            return false;
+          }
+
+          // Check if the element is visible
+          // https://github.com/jquery/jquery/blob/740e190223d19a114d5373758127285d14d6b71e/src/css/hiddenVisibleSelectors.js
+          if (!elt.offsetWidth || !elt.offsetHeight) {
+            return false;
+          }
+
+          var eltRect = elt.getBoundingClientRect();
+          var viewport = {};
+
+          if (container === global.document.body) {
+            viewport = {
+              top: -offset,
+              left: -offset,
+              right: global.document.documentElement.clientWidth + offset,
+              bottom: global.document.documentElement.clientHeight + offset
+            };
+          } else {
+            var containerRect = container.getBoundingClientRect();
+            viewport = {
+              top: containerRect.top - offset,
+              left: containerRect.left - offset,
+              right: containerRect.right + offset,
+              bottom: containerRect.bottom + offset
+            };
+          }
+
+          // The element must overlap with the visible part of the viewport
+          var visible =
+            (
+              (eltRect.right > viewport.left) &&
+              (eltRect.left < viewport.right) &&
+              (eltRect.bottom > viewport.top) &&
+              (eltRect.top < viewport.bottom)
+            );
+
+          return visible;
+        }
+
+        return {
+          container: container,
+          isInViewport: isInViewport
+        };
+      }
+
+      function createWatches() {
+        var watches = [];
+
+        function add(elt, offset, cb) {
+          if (!isWatched(elt)) {
+            watches.push([elt, offset, cb]);
+          }
+        }
+
+        function remove(elt) {
+          var pos = indexOf(elt);
+          if (pos !== -1) {
+            watches.splice(pos, 1);
+          }
+        }
+
+        function indexOf(elt) {
+          for (var i = watches.length - 1; i >= 0; i--) {
+            if (watches[i][0] === elt) {
+              return i;
+            }
+          }
+          return -1;
+        }
+
+        function isWatched(elt) {
+          return indexOf(elt) !== -1;
+        }
+
+        function checkAll(cb) {
+          return function() {
+            for (var i = watches.length - 1; i >= 0; i--) {
+              cb.apply(this, watches[i]);
+            }
+          };
+        }
+
+        return {
+          add: add,
+          remove: remove,
+          isWatched: isWatched,
+          checkAll: checkAll
+        };
+      }
+
+      function observeDOM(watches, container, cb) {
+        var observer = new MutationObserver(watch);
+        var filter = Array.prototype.filter;
+        var concat = Array.prototype.concat;
+
+        observer.observe(container, {
+          childList: true,
+          subtree: true,
+          // changes like style/width/height/display will be catched
+          attributes: true
+        });
+
+        function watch(mutations) {
+          // some new DOM nodes where previously watched
+          // we should check their positions
+          if (mutations.some(knownNodes) === true) {
+            setTimeout(cb, 0);
+          }
+        }
+
+        function knownNodes(mutation) {
+          var nodes = concat.call([],
+            Array.prototype.slice.call(mutation.addedNodes),
+            mutation.target
+          );
+          return filter.call(nodes, watches.isWatched).length > 0;
+        }
+      }
+
+      /* WEBPACK VAR INJECTION */
+    }.call(exports, (function() {
+      return this;
+    }())))
+
+    /***/
+  }
+  /******/
+]);]]></content>
+  </entry>
 </search>

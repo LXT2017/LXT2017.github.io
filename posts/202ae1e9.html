@@ -30,6 +30,7 @@
     <link rel="icon" href="/img/1.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+<link rel="stylesheet" type="text/css" href="/./search.css">
   
   <link rel="stylesheet" type="text/css" href="/./avatarrotation.css">
   
@@ -203,6 +204,38 @@ var _hmt = _hmt || [];
 	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
 </nav>
 
+
+
+            
+      <div class="page-header" style="">
+          
+          <span>🍻  
+              <span id="jinrishici-sentence" title="今日诗词">正在加载今日诗词....</span>
+          </span>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+          
+          <script type="text/javascript" src="/js/search.js"></script>
+          <span id="local-search" class="local-search local-search-plugin" style="">
+            <input type="search" placeholder="站内搜索" id="local-search-input" class="local-search-input-cls" style="">
+            <i id="local-search-icon-search" class="icon" aria-hidden="true" title="站内搜索">🔍</i>
+            <div id="local-search-result" class="local-search-result-cls"></div>
+          </span>
+
+          <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+          <script>
+              if ($('.local-search').size()) {
+                $.getScript('/js/search.js', function() {
+                  searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+                });
+              }
+          </script>
+          
+      </div>
+      
+
+
+
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
           <div class="canvas-wrap">
@@ -215,13 +248,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 class="article-title" itemprop="name">
-      EAIBOT小车树莓派3B网络问题
-    </h1>
-  
-
         
         <a href="/posts/202ae1e9.html" class="archive-article-date">
   	<time datetime="2021-07-27T07:51:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-27</time>

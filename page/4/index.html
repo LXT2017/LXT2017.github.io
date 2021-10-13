@@ -25,6 +25,7 @@
     <link rel="icon" href="/img/1.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+<link rel="stylesheet" type="text/css" href="/./search.css">
   
   <link rel="stylesheet" type="text/css" href="/./avatarrotation.css">
   
@@ -198,6 +199,38 @@ var _hmt = _hmt || [];
 	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
 </nav>
 
+
+
+            
+      <div class="page-header" style="">
+          
+          <span>🍻  
+              <span id="jinrishici-sentence" title="今日诗词">正在加载今日诗词....</span>
+          </span>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+          
+          <script type="text/javascript" src="/js/search.js"></script>
+          <span id="local-search" class="local-search local-search-plugin" style="">
+            <input type="search" placeholder="站内搜索" id="local-search-input" class="local-search-input-cls" style="">
+            <i id="local-search-icon-search" class="icon" aria-hidden="true" title="站内搜索">🔍</i>
+            <div id="local-search-result" class="local-search-result-cls"></div>
+          </span>
+
+          <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+          <script>
+              if ($('.local-search').size()) {
+                $.getScript('/js/search.js', function() {
+                  searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+                });
+              }
+          </script>
+          
+      </div>
+      
+
+
+
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
           <div class="canvas-wrap">
@@ -212,13 +245,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/49a72762.html">Android组件点击事件三种实现方法</a>
-    </h1>
-  
-
         
         <a href="/posts/49a72762.html" class="archive-article-date">
   	<time datetime="2020-10-28T15:13:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
@@ -351,13 +377,6 @@ var _hmt = _hmt || [];
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/a283ce74.html">Lombok常用注解</a>
-    </h1>
-  
-
         
         <a href="/posts/a283ce74.html" class="archive-article-date">
   	<time datetime="2020-10-23T12:52:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-23</time>
@@ -504,13 +523,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/d5aff0bc.html">Java实现生成和解析二维码</a>
-    </h1>
-  
-
-        
         <a href="/posts/d5aff0bc.html" class="archive-article-date">
   	<time datetime="2020-10-18T14:27:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
   	
@@ -656,13 +668,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/1af375c2.html">Java8 日期时间类整理</a>
-    </h1>
-  
-
-        
         <a href="/posts/1af375c2.html" class="archive-article-date">
   	<time datetime="2020-10-18T07:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
   	
@@ -804,13 +809,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/2163f62e.html">git命令清单</a>
-    </h1>
-  
-
         
         <a href="/posts/2163f62e.html" class="archive-article-date">
   	<time datetime="2020-10-16T13:44:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
@@ -960,13 +958,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/50ca3841.html">Android Studio入门配置</a>
-    </h1>
-  
-
-        
         <a href="/posts/50ca3841.html" class="archive-article-date">
   	<time datetime="2020-10-13T13:10:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-13</time>
   	
@@ -1101,13 +1092,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/557d179e.html">SpringBoot后端接口规范</a>
-    </h1>
-  
-
         
         <a href="/posts/557d179e.html" class="archive-article-date">
   	<time datetime="2020-08-30T13:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
@@ -1249,13 +1233,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/db133795.html">Spring Boot整合knife4j实现Api文档</a>
-    </h1>
-  
-
         
         <a href="/posts/db133795.html" class="archive-article-date">
   	<time datetime="2020-08-26T12:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
@@ -1403,13 +1380,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
 
         
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/1e9a5ba7.html">Vue打包部署出现白屏</a>
-    </h1>
-  
-
-        
         <a href="/posts/1e9a5ba7.html" class="archive-article-date">
   	<time datetime="2020-07-04T15:20:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
   	
@@ -1550,13 +1520,6 @@ github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" 
       <header class="article-header">
 
         
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/18a55fe7.html">Linux上使用docker运行酷Q机器人</a>
-    </h1>
-  
-
         
         <a href="/posts/18a55fe7.html" class="archive-article-date">
   	<time datetime="2020-05-22T12:37:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
