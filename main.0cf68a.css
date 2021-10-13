@@ -487,7 +487,7 @@ https://ianlunn.github.io/Hover/ */
 }
 
 
-@media screen and (max-width:800px) {
+@media screen and (max-width:600px) {
     #container, body, html {
         height:auto;
         overflow-x:hidden;
@@ -559,7 +559,7 @@ a {
     /* background:#fff */
     background: rgba(255,255,255,.5);
 }
-@media screen and (max-width:800px) {
+@media screen and (max-width:600px) {
     .comments {
         margin:auto;
         padding:5px;
