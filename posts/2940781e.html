@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="1、文件目录操作 ls命令 所有ls可以进行组合使用 1234567ls -a #列出目录所有文件，包含以.开始的隐藏文件ls -A #列出除.及..的其它文件ls -r #反序排列ls -t #以文件修改时间排序ls -S #以文件大小排序ls -h #以易读大小显示ls -l #除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来 12#列出当前目录中以“l&quot;开头的目录的详细内容l">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/8a540c96301297649f2e01eb85b0a654.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/c6a0c06991494f6c8fc6df2395c670ff.png">
 <meta property="article:published_time" content="2021-03-15T11:19:17.000Z">
-<meta property="article:modified_time" content="2021-08-09T13:12:03.478Z">
+<meta property="article:modified_time" content="2021-09-26T06:06:18.667Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/8a540c96301297649f2e01eb85b0a654.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -234,7 +234,7 @@ var _hmt = _hmt || [];
     <span class="post-time">
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4k字</span>
+        <span class="post-count">4.8k字</span>
       </span>
     </span>
 
@@ -242,7 +242,7 @@ var _hmt = _hmt || [];
       &nbsp; | &nbsp;
       <span class="post-meta-item-icon">
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
+        <span class="post-count">18分</span>
       </span>
     </span>
 </div>
@@ -270,10 +270,9 @@ var _hmt = _hmt || [];
 <p>所有ls可以进行组合使用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ls -a <span class="comment">#列出目录所有文件，包含以.开始的隐藏文件</span></span><br><span class="line">ls -A <span class="comment">#列出除.及..的其它文件</span></span><br><span class="line">ls -r <span class="comment">#反序排列</span></span><br><span class="line">ls -t <span class="comment">#以文件修改时间排序</span></span><br><span class="line">ls -S <span class="comment">#以文件大小排序</span></span><br><span class="line">ls -h <span class="comment">#以易读大小显示</span></span><br><span class="line">ls -l <span class="comment">#除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#列出当前目录中以“l"开头的目录的详细内容</span></span><br><span class="line">ls -l l*</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p><strong>cd命令</strong></p>
 <p>切换目录，其中 ./指当前目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#进去当前账户home目录</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="comment">#进去当前账户home目录</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="comment">#返回上次所在的目录</span></span><br><span class="line"><span class="built_in">cd</span> -</span><br></pre></td></tr></table></figure>
 <p><strong>pwd命令</strong></p>
 <p>查看当前工作目录路径</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示当前目录</span></span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="comment">#显示当前软连接的实际目录</span></span><br><span class="line"><span class="built_in">pwd</span> -P</span><br></pre></td></tr></table></figure>
@@ -284,10 +283,10 @@ var _hmt = _hmt || [];
 <p>删除文件夹，递归删除多个目录需要添加<code>-P</code>，另外只能删除空目录</p>
 <p><strong>mv命令</strong></p>
 <p>移动或修改文件名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#重命名，不同路径代表移动文件</span></span><br><span class="line">mv test.txt test.json</span><br><span class="line"><span class="comment">#将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖</span></span><br><span class="line">mv -i log1.txt log2.txt</span><br><span class="line"><span class="comment">#将本级所有文件移动到上一级</span></span><br><span class="line">mv * ../</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-f <span class="comment">#force强制的意思，如果目标文件已经存在，不会询问而直接覆盖</span></span><br><span class="line">-i <span class="comment">#若目标文件已经存在，就会询问是否覆盖</span></span><br><span class="line">-u <span class="comment">#若目标文件已经存在，且比目标文件新，才会更新</span></span><br><span class="line"><span class="comment">#重命名，不同路径代表移动文件</span></span><br><span class="line">mv test.txt test.json</span><br><span class="line"><span class="comment">#将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖</span></span><br><span class="line">mv -i log1.txt log2.txt</span><br><span class="line"><span class="comment">#将本级所有文件移动到上一级</span></span><br><span class="line">mv * ../</span><br></pre></td></tr></table></figure>
 <p><strong>cp命令</strong></p>
 <p>复制文件或目录到新的路径，和mv操作类似</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i <span class="comment">#提示</span></span><br><span class="line">-r <span class="comment">#复制目录及目录内所有项目</span></span><br><span class="line">-a <span class="comment">#复制的文件与原文件时间一样</span></span><br><span class="line">-p <span class="comment">#连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-i <span class="comment">#提示</span></span><br><span class="line">-r <span class="comment">#复制目录及目录内所有项目</span></span><br><span class="line">-a <span class="comment">#复制的文件与原文件时间一样</span></span><br><span class="line">-p <span class="comment">#连同文件的属性一起复制过去，而非使用默认属性(备份常用)</span></span><br><span class="line">-u <span class="comment">#目标文件与源文件有差异时才会复制</span></span><br></pre></td></tr></table></figure>
 <p><strong>rm命令</strong></p>
 <p>删除文件或目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-f  <span class="comment">#忽略不存在的文件，不会出现警告，强制删除！</span></span><br><span class="line">-r  <span class="comment">#递归删除目录！</span></span><br><span class="line">-i  <span class="comment">#提示，删除询问是否删除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除任何 .log 文件，删除前逐一询问确认</span></span><br><span class="line">rm -i *.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
@@ -309,7 +308,7 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建软连接</span></span><br><span class="line">ln -s test1.log link2013</span><br></pre></td></tr></table></figure>
 <p><strong>tar命令</strong></p>
 <p>文件打包与解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文件打包</span></span><br><span class="line">tar -zcvf 打包名 文件</span><br><span class="line"><span class="comment">#举例</span></span><br><span class="line">tar -zcvf design.tar.gz design/</span><br><span class="line"><span class="comment">#文件解压</span></span><br><span class="line">tar -zxvf 文件名</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-c <span class="comment">#新建打包文件</span></span><br><span class="line">-t <span class="comment">#查看打包文件的内容含有哪些文件名</span></span><br><span class="line">-x <span class="comment">#解打包或解压缩的功能，可以搭配-C（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同一条命令中</span></span><br><span class="line">-j <span class="comment">#通过bzip2的支持进行压缩/解压缩</span></span><br><span class="line">-z <span class="comment">#通过gzip的支持进行压缩/解压缩</span></span><br><span class="line">-v <span class="comment">#在压缩/解压缩过程中，将正在处理的文件名显示出来</span></span><br><span class="line">-f filename <span class="comment">#filename为要处理的文件</span></span><br><span class="line">-C dir <span class="comment">#指定压缩/解压缩的目录dir</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#文件打包</span></span><br><span class="line">tar -zcvf 打包名 文件</span><br><span class="line"><span class="comment">#举例</span></span><br><span class="line">tar -zcvf design.tar.gz design/</span><br><span class="line"><span class="comment">#文件解压</span></span><br><span class="line">tar -zxvf 文件名</span><br></pre></td></tr></table></figure>
 <p><strong>scp命令</strong></p>
 <p>Linux远程拷贝文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#上传文件</span></span><br><span class="line">scp 文件名 用户名@ip:服务器绝对路径目录</span><br><span class="line"><span class="comment">#上传design.tar.gz到服务器/shawn目录下</span></span><br><span class="line">scp design.tar.gz root@114.215.200.70:/shawn</span><br><span class="line"><span class="comment">#上传目录</span></span><br><span class="line">scp -r 目录 用户名@ip:服务器绝对路径目录</span><br></pre></td></tr></table></figure>
@@ -317,10 +316,20 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 若不存在就创建，存在就覆盖，使用&gt;&gt;为追加</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'hello world'</span> &gt; hw.text</span><br></pre></td></tr></table></figure>
 <p><strong>find命令</strong></p>
 <p><code>find 目录 参数</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [目录] -name <span class="string">"*.c"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find [目录] -name <span class="string">"*.c"</span></span><br><span class="line">find /usr/bin -<span class="built_in">type</span> f -atime +100 <span class="comment">#搜索在过去100天内未被使用过的执行文件</span></span><br><span class="line">find /usr/bin -<span class="built_in">type</span> f -mtime -10 <span class="comment">#搜索在10天内被创建或者修改过的文件</span></span><br><span class="line">whereis halt <span class="comment">#显示一个二进制文件、源码或man的位置</span></span><br><span class="line"><span class="built_in">which</span> halt <span class="comment">#显示一个二进制文件或可执行文件的完整路径</span></span><br></pre></td></tr></table></figure>
 <p><strong>touch命令</strong></p>
 <p>创建新文件，也可以使用vim/vi创建</p>
-<h3 id="2、文件基本属性">2、文件基本属性</h3>
+<h3 id="2、文本处理">2、文本处理</h3>
+<p><strong>grep 命令</strong></p>
+<p>分析一行的信息，若当中有我们所需要的信息，就将该行显示出来，该命令通常与管道命令一起使用，用于对一些命令的输出进行筛选加工等等</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grep Aug /var/<span class="built_in">log</span>/messages  <span class="comment">#在文件 /var/log/messages中查找关键词"Aug"</span></span><br><span class="line">grep ^Aug /var/<span class="built_in">log</span>/messages <span class="comment">#在文件 /var/log/messages中查找以"Aug"开始的词汇</span></span><br><span class="line">grep [0-9] /var/<span class="built_in">log</span>/messages <span class="comment">#选择 /var/log/messages'文件中所有包含数字的行</span></span><br><span class="line">grep Aug -R /var/<span class="built_in">log</span>/* <span class="comment">#在目录 /var/log'及随后的目录中搜索字符串"Aug"</span></span><br><span class="line">sed <span class="string">'s/stringa1/stringa2/g'</span> example.txt <span class="comment">#将example.txt文件中的 "string1" 替换成 "string2"</span></span><br><span class="line">sed <span class="string">'/^$/d'</span> example.txt <span class="comment">#从example.txt文件中删除所有空白行</span></span><br></pre></td></tr></table></figure>
+<p><strong>paste 命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paste file1 file2 <span class="comment">#合并两个文件或两栏的内容</span></span><br><span class="line">paste -d <span class="string">'+'</span> file1 file2 <span class="comment">#合并两个文件或两栏的内容，中间用"+"区分</span></span><br></pre></td></tr></table></figure>
+<p><strong>sort 命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sort file1 file2 <span class="comment">#排序两个文件的内容</span></span><br><span class="line">sort file1 file2 | uniq <span class="comment">#取出两个文件的并集(重复的行只保留一份)</span></span><br><span class="line">sort file1 file2 | uniq -u <span class="comment">#删除交集，留下其他的行</span></span><br><span class="line">sort file1 file2 | uniq -d <span class="comment">#取出两个文件的交集(只留下同时存在于两个文件中的文件)</span></span><br></pre></td></tr></table></figure>
+<p><strong>comm 命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">comm -1 file1 file2 <span class="comment">#比较两个文件的内容只删除 'file1' 所包含的内容</span></span><br><span class="line">comm -2 file1 file2 <span class="comment">#比较两个文件的内容只删除 'file2' 所包含的内容</span></span><br><span class="line">comm -3 file1 file2 <span class="comment">#比较两个文件的内容只删除两个文件共有的部分</span></span><br></pre></td></tr></table></figure>
+<h3 id="3、文件基本属性">3、文件基本属性</h3>
 <p>Linux系统是一种典型的多用户系统，不同的用户处于不同的地位，拥有不同的权限。在Linux中我们可以使用 <code>ll</code> 或者 <code>ls –l </code>命令来显示一个文件的属性以及文件所属的用户和组</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx.   1 root root    7 5月  11 2019 bin -&gt; usr/bin</span><br><span class="line">dr-xr-xr-x.   5 root root 4096 11月 14 14:11 boot</span><br><span class="line">drwxr-xr-x    7 root root   73 1月   2 11:29 data</span><br></pre></td></tr></table></figure>
 <p>在Linux中第一个字符代表这个文件是目录、文件或者链接文件等等。</p>
@@ -331,7 +340,7 @@ var _hmt = _hmt || [];
 <li>若是【b】则表示为装置文件里面的可供储存的接口设备（可随机存取装置）</li>
 <li>若是【c】则表示为装置文件里面的串行端口设备，例如键盘、鼠标（一次性读取装置）。</li>
 </ul>
-<p><img src="https://www.runoob.com/wp-content/uploads/2014/06/363003_1227493859FdXT.png" alt="363003_1227493859FdXT"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8a540c96301297649f2e01eb85b0a654.png" alt="363003_1227493859FdXT"></p>
 <p>从左至右用0-9这些数字来表示。<br>
 第0位确定文件类型，第1-3位确定属主（该文件的所有者）拥有该文件的权限。第4-6位确定属组（所有者的同组用户）拥有该文件的权限，第7-9位确定其他用户拥有该文件的权限。<br>
 其中：</p>
@@ -356,20 +365,21 @@ var _hmt = _hmt || [];
 <li>x:1</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将test目录下所有文件启动所有权限</span></span><br><span class="line">chmod -R 777 <span class="built_in">test</span></span><br><span class="line"><span class="comment">#给文件增加执行权限</span></span><br><span class="line">chown +x <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<h3 id="3、文件内容查看">3、文件内容查看</h3>
+<h3 id="4、文件内容查看">4、文件内容查看</h3>
 <p>Linux系统中使用以下命令来查看文件的内容：</p>
 <ul>
 <li>cat 由第一行开始显示文件内容</li>
 <li>tac 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</li>
-<li>nl  显示的时候，顺道输出行号！</li>
+<li>n  显示的时候，顺道输出行号</li>
 <li>more 一页一页的显示文件内容</li>
 <li>less 与 more 类似，但是比 more 更好的是，他可以往前翻页！</li>
 <li>head 只看头几行</li>
 <li>tail 只看尾巴几行</li>
 </ul>
-<p>可以使用*man [命令]*来查看各个命令的使用文档</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">head -n 2 file <span class="comment">#查看一个文件的前两行</span></span><br><span class="line">tail -n 2 file <span class="comment">#查看一个文件的最后两行</span></span><br><span class="line">tail -n +1000 file  <span class="comment">#从1000行开始显示，显示1000行以后的</span></span><br><span class="line">cat filename | head -n 3000 | tail -n +1000  <span class="comment">#显示1000行到3000行</span></span><br><span class="line">cat filename | tail -n +3000 | head -n 1000  <span class="comment">#从第3000行开始，显示1000(即显示3000~3999行)</span></span><br></pre></td></tr></table></figure>
+<p>可以使用<code>man [命令]</code>来查看各个命令的使用文档</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat 文件</span><br><span class="line">nl [-bnw] 文件</span><br><span class="line">head [-n number] 文件 </span><br><span class="line"><span class="comment">#对于文本处理工具还有sed和awk两个强大的工具</span></span><br></pre></td></tr></table></figure>
-<h3 id="4、磁盘管理">4、磁盘管理</h3>
+<h3 id="5、磁盘管理">5、磁盘管理</h3>
 <p><strong>df命令</strong></p>
 <p>检查文件系统的磁盘空间占用情况。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。</p>
 <p><code>df [-ahikHTm] [目录或文件名]</code></p>
@@ -395,7 +405,7 @@ var _hmt = _hmt || [];
 <li>-m ：以 MBytes 列出容量显示；</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询目录大小</span></span><br><span class="line">du -sh design/</span><br></pre></td></tr></table></figure>
-<h3 id="5、账户管理">5、账户管理</h3>
+<h3 id="6、账户管理">6、账户管理</h3>
 <p><strong>useradd命令</strong></p>
 <p>添加用户</p>
 <ul>
@@ -422,7 +432,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>普通用户修改自己的口令时，passwd命令会先询问原口令，验证后再要求用户输入两遍新口令，如果两次输入的口令一致，则将这个口令指定给用户；而超级用户为用户指定口令时，就不需要知道原口令。</p>
 </blockquote>
-<h3 id="6、进程管理">6、进程管理</h3>
+<h3 id="7、进程管理">7、进程管理</h3>
 <ul>
 <li>在Linux中，每一个程序都是有自己的一个进程，每一个进程都有一个id号</li>
 <li>每一个进程呢，都会有一个父进程！</li>
@@ -449,7 +459,7 @@ var _hmt = _hmt || [];
 <li>-au 显示较详细的资讯</li>
 <li>-aux 显示所有包含其他使用者的行程</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux 查看所有的进程</span></span><br><span class="line">ps -aux|grep mysql </span><br><span class="line"><span class="comment"># |  在Linux这个叫做管道符    A|B 相当于前面的操作结果通过管道当做后面命令的输入</span></span><br><span class="line"><span class="comment"># grep 查找文件中符合条件的字符串！</span></span><br><span class="line"><span class="comment"># 看父进程我们一般可以通过目录树结构来查看！</span></span><br><span class="line">ps -ef|grep mysql </span><br><span class="line"><span class="comment">#进程树，-p显示父id， -u显示用户组</span></span><br><span class="line">pstree -pu</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps -aux 查看所有的进程</span></span><br><span class="line">ps -aux|grep mysql </span><br><span class="line"><span class="comment"># |  在Linux这个叫做管道符    A|B 相当于前面的操作结果通过管道当做后面命令的输入</span></span><br><span class="line"><span class="comment"># grep 查找文件中符合条件的字符串！</span></span><br><span class="line"><span class="comment"># 看父进程我们一般可以通过目录树结构来查看！</span></span><br><span class="line">ps -ef|grep mysql </span><br><span class="line"><span class="comment">#进程树，-p显示父id， -u显示用户组</span></span><br><span class="line">pstree -pu</span><br></pre></td></tr></table></figure>
 <p><strong>top命令</strong></p>
 <p>cpu状态显示：</p>
 <ul>
@@ -499,6 +509,18 @@ COMMAND：运行进程所使用的命令。进程名称（命令名/命令行）
 <li>ctrl + z 可以将一个正在前台执行的命令放到后台，并且处于暂停状态。</li>
 <li>Ctrl+c 终止前台命令。</li>
 <li>jobs 查看当前有多少在后台运行的命令。jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。</li>
+</ul>
+<h3 id="8、系统命令">8、系统命令</h3>
+<ul>
+<li>shutdown -h now 关闭系统(1)</li>
+<li>init 0 关闭系统(2)</li>
+<li>telinit 0 关闭系统(3)</li>
+<li>shutdown -h hours:minutes &amp; 按预定时间关闭系统</li>
+<li>shutdown -c 取消按预定时间关闭系统</li>
+<li>shutdown -r now 重启(1)</li>
+<li>reboot 重启(2)</li>
+<li>logout 注销</li>
+<li>time 测算一个命令（即程序）的执行时间</li>
 </ul>
 <hr>
 <p>对于shell的学习，可以参考：<a href="https://book.apeland.cn/details/274/" target="_blank" rel="noopener">https://book.apeland.cn/details/274/</a></p>
@@ -677,7 +699,7 @@ COMMAND：运行进程所使用的命令。进程名称（命令名/命令行）
   
   
     <a href="/posts/803c8798.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringBoot整合ElasticSearch7.x</div>
+      <div class="article-nav-title">ElasticSearch7.x学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -704,7 +726,7 @@ COMMAND：运行进程所使用的命令。进程名称（命令名/命令行）
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、文件目录操作"><span class="toc-number">1.</span> <span class="toc-text">1、文件目录操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、文件基本属性"><span class="toc-number">2.</span> <span class="toc-text">2、文件基本属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、文件内容查看"><span class="toc-number">3.</span> <span class="toc-text">3、文件内容查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、磁盘管理"><span class="toc-number">4.</span> <span class="toc-text">4、磁盘管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、账户管理"><span class="toc-number">5.</span> <span class="toc-text">5、账户管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、进程管理"><span class="toc-number">6.</span> <span class="toc-text">6、进程管理</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、文件目录操作"><span class="toc-number">1.</span> <span class="toc-text">1、文件目录操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、文本处理"><span class="toc-number">2.</span> <span class="toc-text">2、文本处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、文件基本属性"><span class="toc-number">3.</span> <span class="toc-text">3、文件基本属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、文件内容查看"><span class="toc-number">4.</span> <span class="toc-text">4、文件内容查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、磁盘管理"><span class="toc-number">5.</span> <span class="toc-text">5、磁盘管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、账户管理"><span class="toc-number">6.</span> <span class="toc-text">6、账户管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、进程管理"><span class="toc-number">7.</span> <span class="toc-text">7、进程管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、系统命令"><span class="toc-number">8.</span> <span class="toc-text">8、系统命令</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -766,7 +788,7 @@ COMMAND：运行进程所使用的命令。进程名称（命令名/命令行）
 <!-- 《网站备案号 -->
     
         <div class="BeiAn-info">
-            <img src="http://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png" title="备案管理系统">
+            <img src="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/china.png" title="备案管理系统">
             <a href="http://www.beian.miit.gov.cn/" style="color:#f72b07" target="_blank" title="备案号">
                 粤ICP备00000000号
             </a>
@@ -883,15 +905,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -899,7 +921,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -907,23 +941,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IP解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高并发</a>
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -931,19 +961,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -951,7 +973,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
+                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -963,59 +985,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">POI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,15 +993,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
+                <a href="javascript:void(0)" class="js-tag color5">IP解析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高并发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,7 +1029,47 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">POI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
             
             <div class="clearfix"></div>
