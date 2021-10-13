@@ -605,7 +605,8 @@ a {
     position: relative;
     border: 1px solid #fff;
     margin: 5px 30px 4px 30px;
-    background: #BEC1C5;
+    background: #fff;
+    opacity: 0.8;
     -webkit-transition: all 0.2s ease-in;
     height:45px;
     font-family: '微软雅黑';
@@ -626,7 +627,8 @@ a {
     position: relative;
     border: 1px solid #fff;
     /* margin: 5px 30px 4px 30px; */
-    background: #BEC1C5;
+    background: #fff;
+    opacity: 0.8;
     -webkit-transition: all 0.2s ease-in;
     height: 45px;
     font-family: '微软雅黑';
