@@ -341,16 +341,6 @@ var _hmt = _hmt || [];
 
 
     	
-            <!-- 不蒜子统计 -->
-            <span id="busuanzi_container_site_pv">
-                    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-            <span class="post-meta-divider">|</span>
-            <span id="busuanzi_container_site_uv" style='display:none'>
-                    本站访客数<span id="busuanzi_value_site_uv"></span>人
-            </span>
-            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        
     </div>
 </div>
 </div>
@@ -786,33 +776,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         }
     }
 </script>
+<script>
+    // 移动设备侦测
+    var isMobile = {
+      Android: function () {
+        return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+    };
+
+    if(isMobile.any()){
+        //手机端取消搜索功能
+        $('.local-search').css("display","none");
+    }
+
+    if ($('.local-search').size() && !isMobile.any()) {
+      $.getScript('/js/search.js', function() {
+        searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+      });
+    }
+</script>
 <!-- 添加折叠按钮脚本》 -->
 </html>
-<script type="text/javascript" src="/js/src/love.js"></script>    <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-  </div>
-  <!-- 雪花特效3 -->
-  
-    <script type="text/javascript" src="/js/snow3.js"></script>
-  
-<!-- 代码块复制功能 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="/js/clipboard_use.js"></script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":120,"height":300},"mobile":{"show":false},"log":false});</script></body>
-
-<!-- 《添加折叠按钮脚本 -->
-<script>
-    var hide = false;
-    function myFunction(x) {
+<script type="text/javascript" src="/js/src/love.js"></script>unction myFunction(x) {
         x.classList.toggle("change");
         if(hide == false){
             $(".left-col").css('display', 'none');
@@ -832,6 +832,40 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
             $(".mymenucontainer").css('left', '260px');
         }
+    }
+</script>
+<script>
+    // 移动设备侦测
+    var isMobile = {
+      Android: function () {
+        return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+    };
+
+    if(isMobile.any()){
+        //手机端取消搜索功能
+        $('.local-search').css("display","none");
+    }
+
+    if ($('.local-search').size() && !isMobile.any()) {
+      $.getScript('/js/search.js', function() {
+        searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+      });
     }
 </script>
 <!-- 添加折叠按钮脚本》 -->

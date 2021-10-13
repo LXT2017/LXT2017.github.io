@@ -306,12 +306,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -446,12 +443,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -586,12 +580,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -725,12 +716,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -868,12 +856,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -1004,12 +989,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -1153,12 +1135,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -1305,12 +1284,9 @@ var _hmt = _hmt || [];
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare" hidden="hidden"></div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -1410,16 +1386,6 @@ var _hmt = _hmt || [];
 
 
     	
-            <!-- 不蒜子统计 -->
-            <span id="busuanzi_container_site_pv">
-                    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-            <span class="post-meta-divider">|</span>
-            <span id="busuanzi_container_site_uv" style='display:none'>
-                    本站访客数<span id="busuanzi_value_site_uv"></span>人
-            </span>
-            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        
     </div>
 </div>
 </div>
@@ -1853,6 +1819,40 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
             $(".mymenucontainer").css('left', '260px');
         }
+    }
+</script>
+<script>
+    // 移动设备侦测
+    var isMobile = {
+      Android: function () {
+        return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+    };
+
+    if(isMobile.any()){
+        //手机端取消搜索功能
+        $('.local-search').css("display","none");
+    }
+
+    if ($('.local-search').size() && !isMobile.any()) {
+      $.getScript('/js/search.js', function() {
+        searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+      });
     }
 </script>
 <!-- 添加折叠按钮脚本》 -->

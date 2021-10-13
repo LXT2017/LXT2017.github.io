@@ -607,20 +607,18 @@ a {
     margin: 5px 30px 4px 30px;
     background: #fff;
     -webkit-transition: all 0.2s ease-in;
-    height:38px;
+    height:45px;
     font-family: '微软雅黑';
-    border-radius:10px;
+    border-radius:5px;
     padding-left:10px;
-    float: right;
 }
 
 /* 今日诗词 */
 #jinrishici-sentence{
   color:#27d7a1;
-  padding-top: 5px;
-  padding-left: 33px;
-  line-height: 38px;
-  font-size: 14px;
+  padding-left: 10px;
+  line-height: 45px;
+  font-size: 15px;
 }
 
 @media screen and (max-width:800px) {

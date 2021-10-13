@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shawn22.xyz">
-  <title>Tag: PyTorch | 星星的猫(&gt;^ω^&lt;)喵</title>
+  <title>Tag: Pytorch | 星星的猫(&gt;^ω^&lt;)喵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Shawn的个人记录网站">
 <meta property="og:type" content="website">
 <meta property="og:title" content="星星的猫(&gt;^ω^&lt;)喵">
-<meta property="og:url" content="https://www.shawn22.xyz/tags/PyTorch/index.html">
+<meta property="og:url" content="https://www.shawn22.xyz/tags/Pytorch/index.html">
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="Shawn的个人记录网站">
 <meta property="og:locale" content="zh_CN">
@@ -254,15 +254,15 @@ var _hmt = _hmt || [];
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
-	      	<a href="/posts/2f275aa8.html" class="archive-article-date">
-  	<time datetime="2021-06-06T04:57:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-06</time>
+	      	<a href="/posts/561aebde.html" class="archive-article-date">
+  	<time datetime="2021-06-06T04:57:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-06</time>
   	
 </a>
         </div>
     	 
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/2f275aa8.html">mmdetection2 config详解</a>
+      <a class="archive-article-title" href="/posts/561aebde.html">Pytorch神经网络简单入门</a>
     </h1>
   
 
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Pytorch</a>
         		</li>
       		
 		</ul>
@@ -352,16 +352,6 @@ var _hmt = _hmt || [];
 
 
     	
-            <!-- 不蒜子统计 -->
-            <span id="busuanzi_container_site_pv">
-                    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-            <span class="post-meta-divider">|</span>
-            <span id="busuanzi_container_site_uv" style='display:none'>
-                    本站访客数<span id="busuanzi_value_site_uv"></span>人
-            </span>
-            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        
     </div>
 </div>
 </div>
@@ -797,6 +787,40 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         }
     }
 </script>
+<script>
+    // 移动设备侦测
+    var isMobile = {
+      Android: function () {
+        return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+    };
+
+    if(isMobile.any()){
+        //手机端取消搜索功能
+        $('.local-search').css("display","none");
+    }
+
+    if ($('.local-search').size() && !isMobile.any()) {
+      $.getScript('/js/search.js', function() {
+        searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+      });
+    }
+</script>
 <!-- 添加折叠按钮脚本》 -->
 </html>
-<script type="text/javascript" src="/js/src/love.js"></script>cript>
+<script type="text/javascript" src="/js/src/love.js"></script>

@@ -258,11 +258,6 @@ var _hmt = _hmt || [];
         <a href="/posts/5f51afa8.html" class="archive-article-date">
   	<time datetime="2020-11-06T15:46:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-06</time>
   	
-        <!-- 不蒜子统计 -->
-        <span id="busuanzi_container_page_pv"  class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
 </a>
         
 
@@ -417,29 +412,9 @@ Codota基于数百万个开源Java程序和您的上下文来完成代码行，�
     <!-- 添加完成 -->
 
 
-    <!-- 开始添加版权声明-->
+      <!-- 《添加版权声明 -->
       
-      
-        <div class="declare">
-          <ul><li><strong>本文作者：</strong>
-          
-            Shawn
-          
-        </li></ul>
-          <ul><li><strong>本文链接：</strong>
-         <a href="https://www.shawn22.xyz/posts/5f51afa8.html" target="_blank" rel="noopener">https://www.shawn22.xyz/posts/5f51afa8.html</a>
-        </li></ul>
-          <ul><li><strong>版权声明：</strong>
-          本作品采用
-          <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
-          进行许可。转载请注明出处！
-          
-        </li></ul>
-            <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="/img/internation.png"/></a>
-          
-        </div>
-      
-      <!-- 添加完成 -->
+      <!-- 添加版权声明》 -->
 
     <div class="article-info article-info-index">
       
@@ -666,16 +641,6 @@ Codota基于数百万个开源Java程序和您的上下文来完成代码行，�
 
 
     	
-            <!-- 不蒜子统计 -->
-            <span id="busuanzi_container_site_pv">
-                    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-            <span class="post-meta-divider">|</span>
-            <span id="busuanzi_container_site_uv" style='display:none'>
-                    本站访客数<span id="busuanzi_value_site_uv"></span>人
-            </span>
-            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        
     </div>
 </div>
 </div>
@@ -1109,6 +1074,40 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
             $(".mymenucontainer").css('left', '260px');
         }
+    }
+</script>
+<script>
+    // 移动设备侦测
+    var isMobile = {
+      Android: function () {
+        return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+    };
+
+    if(isMobile.any()){
+        //手机端取消搜索功能
+        $('.local-search').css("display","none");
+    }
+
+    if ($('.local-search').size() && !isMobile.any()) {
+      $.getScript('/js/search.js', function() {
+        searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+      });
     }
 </script>
 <!-- 添加折叠按钮脚本》 -->
