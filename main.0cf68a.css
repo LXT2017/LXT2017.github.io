@@ -338,7 +338,7 @@ pre .css~* .id, pre .id {
     margin:0 1em .5em 0;
     padding:4px;
     /* border:1px solid #aaaaaa; */
-    font-size:1.2rem
+    font-size:1.8rem
 }
 .category-list li.category-list-item a{
     text-decoration: none;
@@ -604,9 +604,11 @@ a {
 .page-header {
     position: relative;
     border: 1px solid #fff;
-    margin: 5px 30px 4px 30px;
-    background: #fff;
-    opacity: 0.9;
+    margin: 5px 20px 2px 20px;
+    /*background: #fff;*/
+    background-color: rgba(255,255,255,0.6);
+    /*这个用了会失效*/
+    /*opacity: 0.9;*/
     -webkit-transition: all 0.2s ease-in;
     height:45px;
     font-family: '微软雅黑';
@@ -628,11 +630,11 @@ a {
     border: 1px solid #fff;
     /* margin: 5px 30px 4px 30px; */
     background: #fff;
-    opacity: .9;
+    opacity: .6;
     -webkit-transition: all 0.2s ease-in;
     height: 45px;
     font-family: '微软雅黑';
-    border-radius: 5px;
+    border-radius: 8px;
     padding-left: 2px;
 }
 }
@@ -674,4 +676,27 @@ a {
         display:none;
         /* right: -5%; */
     }
+}
+
+/* 添加码云和CSDN的标签的图标 */
+.icon-gitee:before {
+    content:"码"
+}
+.icon-csdn:before {
+    content:"C"
+}
+/* 下面两个是新增的csdn和gitee */
+#header .header-nav .social a.csdn {
+    background:#C71D23;
+    border:1px solid #C71D23;
+}
+#header .header-nav .social a.csdn:hover {
+    border:1px solid #C71D23;
+}
+#header .header-nav .social a.gitee {
+    background:#C71D23;
+    border:1px solid #C71D23;
+}
+#header .header-nav .social a.gitee:hover {
+    border:1px solid #C71D23;
 }
