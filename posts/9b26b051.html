@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、简介  Mybatis-plus官网：https:&#x2F;&#x2F;mp.baomidou.com&#x2F;  MyBatis-Plus（简称 MP）是一个 MyBatis (opens new window)的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生，它具有以下特性">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-15T09:38:09.000Z">
-<meta property="article:modified_time" content="2021-08-14T03:43:15.997Z">
+<meta property="article:modified_time" content="2022-02-11T09:15:32.632Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：62
+			总文章数：88
 		</ul>
 		
 		<nav class="header-nav">
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">4.2k字</span>
       </span>
     </span>
 
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">14分</span>
+        <span class="post-count">18分</span>
       </span>
     </span>
 </div>
@@ -296,7 +296,7 @@ var _hmt = _hmt || [];
 </p></center>
 
       
-        <h2 id="一、简介">一、简介</h2>
+        <h1>一、简介</h1>
 <blockquote>
 <p>Mybatis-plus官网：<a href="https://mp.baomidou.com/" target="_blank" rel="noopener">https://mp.baomidou.com/</a></p>
 </blockquote>
@@ -316,7 +316,7 @@ var _hmt = _hmt || [];
 <li><strong>内置性能分析插件</strong>：可输出 Sql 语句以及其执行时间，建议开发测试时启用该功能，能快速揪出慢查询</li>
 <li><strong>内置全局拦截插件</strong>：提供全表 delete 、 update 操作智能分析阻断，也可自定义拦截规则，预防误操作</li>
 </ul>
-<h2 id="二、快速入门">二、快速入门</h2>
+<h1>二、快速入门</h1>
 <p>首先在数据库创建ssmdemo数据库，运行sql语句</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="keyword">user</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">user</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'主键ID'</span>,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">30</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'姓名'</span>,</span><br><span class="line">age <span class="built_in">INT</span>(<span class="number">11</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'年龄'</span>,</span><br><span class="line">email <span class="built_in">VARCHAR</span>(<span class="number">50</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'邮箱'</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">user</span> (<span class="keyword">id</span>, <span class="keyword">name</span>, age, email) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="string">'Jone'</span>, <span class="number">18</span>, <span class="string">'test1@baomidou.com'</span>),</span><br><span class="line">(<span class="number">2</span>, <span class="string">'Jack'</span>, <span class="number">20</span>, <span class="string">'test2@baomidou.com'</span>),</span><br><span class="line">(<span class="number">3</span>, <span class="string">'Tom'</span>, <span class="number">28</span>, <span class="string">'test3@baomidou.com'</span>),</span><br><span class="line">(<span class="number">4</span>, <span class="string">'Sandy'</span>, <span class="number">21</span>, <span class="string">'test4@baomidou.com'</span>),</span><br><span class="line">(<span class="number">5</span>, <span class="string">'Billie'</span>, <span class="number">24</span>, <span class="string">'test5@baomidou.com'</span>);</span><br><span class="line"><span class="comment">-- 真实开发中，version（乐观锁）、deleted（逻辑删除）、gmt_create、gmt_modified</span></span><br></pre></td></tr></table></figure>
 <p>创建springboot项目，引入依赖文件</p>
@@ -331,8 +331,8 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.mybatis.demo.mapper"</span>)</span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DemoApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后在测试类中测试</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MybatisPlusApplicationTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 继承了BaseMapper，所有的方法都来自己父类</span></span><br><span class="line">    <span class="comment">// 我们也可以编写自己的扩展方法！</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 参数是一个 Wrapper ，条件构造器，这里我们先不用 null</span></span><br><span class="line">    <span class="comment">// 查询全部用户</span></span><br><span class="line">    List&lt;User&gt; users = userMapper.selectList(<span class="keyword">null</span>);</span><br><span class="line">    users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 测试插入</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInsert</span><span class="params">()</span></span>&#123;</span><br><span class="line">        User user = <span class="keyword">new</span> User();</span><br><span class="line">        user.setName(<span class="string">"test"</span>);</span><br><span class="line">        user.setAge(<span class="number">3</span>);</span><br><span class="line">        user.setEmail(<span class="string">"24736743@qq.com"</span>);</span><br><span class="line">        <span class="keyword">int</span> result = userMapper.insert(user); <span class="comment">// 帮我们自动生成id</span></span><br><span class="line">        System.out.println(result); <span class="comment">// 受影响的行数</span></span><br><span class="line">        System.out.println(user); <span class="comment">// 发现，id会自动回填</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="comment">// 测试更新</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpdate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        User user = <span class="keyword">new</span> User();</span><br><span class="line">        <span class="comment">// 通过条件自动拼接动态sql</span></span><br><span class="line">        user.setId(<span class="number">5L</span>);</span><br><span class="line">        user.setName(<span class="string">"123456"</span>);</span><br><span class="line">        user.setAge(<span class="number">18</span>);</span><br><span class="line">        <span class="comment">// 注意：updateById 但是参数是一个 对象！</span></span><br><span class="line">        <span class="keyword">int</span> i = userMapper.updateById(user);</span><br><span class="line">        System.out.println(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="三、CRUD扩展">三、CRUD扩展</h2>
-<h3 id="1、主键生成策略">1、主键生成策略</h3>
+<h1>三、CRUD扩展</h1>
+<h2 id="1、主键生成策略">1、主键生成策略</h2>
 <p>实体类字段上 <code>@TableId(type = IdType.xxx)</code>，其中IdTyoe的枚举类型如下</p>
 <table>
 <thead>
@@ -371,33 +371,28 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
 <li>实体类字段上 <code>@TableId(type = IdType.AUTO)</code></li>
 <li>数据库字段一定要是自增！</li>
 </ol>
-<h3 id="2、自动填充">2、自动填充</h3>
+<h2 id="2、自动填充">2、自动填充</h2>
+<blockquote>
 <p>创建时间、修改时间！这些个操作一遍都是自动化完成的，我们不希望手动更新！</p>
+</blockquote>
+<h3 id="2-1-数据库级别（工作中不允许修改数据库）">2.1 <strong>数据库级别</strong>（工作中不允许修改数据库）</h3>
 <ul>
-<li>
-<h4 id="数据库级别（工作中不允许修改数据库）"><strong>数据库级别</strong>（工作中不允许修改数据库）</h4>
-</li>
-</ul>
-<ol>
 <li>首先在MySql数据库中添加两个字段<code>create_time</code>和<code>update_time</code>，同时设置默认值为<code>根据当前时间戳更新</code></li>
 <li>在实体类User插入两个字段</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Date createTime;</span><br><span class="line"><span class="keyword">private</span> Date updateTime;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<h4 id="代码级别">代码级别</h4>
-</li>
 </ul>
-<ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Date createTime;</span><br><span class="line"><span class="keyword">private</span> Date updateTime;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-代码级别">2.2 <strong>代码级别</strong></h3>
+<ul>
 <li>删除数据库datetime的默认值</li>
 <li>实体类字段属性上增加注解</li>
-</ol>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字段添加填充内容</span></span><br><span class="line"><span class="meta">@TableField</span>(fill = FieldFill.INSERT)</span><br><span class="line"><span class="keyword">private</span> Date createTime;</span><br><span class="line"><span class="meta">@TableField</span>(fill = FieldFill.INSERT_UPDATE)</span><br><span class="line"><span class="keyword">private</span> Date updateTime;</span><br></pre></td></tr></table></figure>
-<ol start="3">
+<ul>
 <li>编写处理器来处理这个注解</li>
-</ol>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMetaObjectHandler</span> <span class="keyword">implements</span> <span class="title">MetaObjectHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入时的填充策略</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertFill</span><span class="params">(MetaObject metaObject)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"start insert fill....."</span>);</span><br><span class="line">        <span class="comment">// setFieldValByName(String fieldName, Object fieldVal, MetaObject,metaObject</span></span><br><span class="line">        <span class="keyword">this</span>.setFieldValByName(<span class="string">"createTime"</span>,<span class="keyword">new</span> Date(),metaObject);</span><br><span class="line">        <span class="keyword">this</span>.setFieldValByName(<span class="string">"updateTime"</span>,<span class="keyword">new</span> Date(),metaObject);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 更新时的填充策略</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateFill</span><span class="params">(MetaObject metaObject)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"start update fill....."</span>);</span><br><span class="line">        <span class="keyword">this</span>.setFieldValByName(<span class="string">"updateTime"</span>,<span class="keyword">new</span> Date(),metaObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3、乐观锁">3、乐观锁</h3>
+<h2 id="3、乐观锁">3、乐观锁</h2>
+<h3 id="3-1-介绍">3.1 介绍</h3>
 <blockquote>
 <p>乐观锁 : 故名思意十分乐观，它总是认为不会出现问题，无论干什么不去上锁！如果出现了问题，再次更新值测试<br>
 悲观锁：故名思意十分悲观，它总是认为总是出现问题，无论干什么都会上锁！再去操作！</p>
@@ -409,59 +404,94 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
 <li>执行更新时， set version = newVersion where version = oldVersion</li>
 <li>如果version不对，就更新失败</li>
 </ul>
-<p>操作步骤</p>
-<ol>
+<h3 id="3-2-操作步骤">3.2 操作步骤</h3>
+<ul>
 <li>给数据库增加version字段</li>
 <li>在User实体类增加对应的字段</li>
-</ol>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Version</span> <span class="comment">//乐观锁Version注解</span></span><br><span class="line"><span class="keyword">private</span> Integer version;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>注册组件</li>
-</ol>
+<ul>
+<li>注册组件，同时启用事务管理</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 扫描我们的 mapper 文件夹</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.mybatis.demo.mapper"</span>)</span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@Configuration</span> <span class="comment">// 配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBatisPlusConfig</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MybatisPlusInterceptor <span class="title">mybatisPlusInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MybatisPlusInterceptor interceptor = <span class="keyword">new</span> MybatisPlusInterceptor();</span><br><span class="line">        interceptor.addInnerInterceptor(<span class="keyword">new</span> OptimisticLockerInnerInterceptor());</span><br><span class="line">        <span class="keyword">return</span> interceptor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
+<ul>
 <li>测试</li>
-</ol>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试乐观锁成功！</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOptimisticLocker</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">// 1、查询用户信息</span></span><br><span class="line">User user = userMapper.selectById(<span class="number">1L</span>);</span><br><span class="line"><span class="comment">// 2、修改用户信息</span></span><br><span class="line">user.setName(<span class="string">"test"</span>);</span><br><span class="line">user.setEmail(<span class="string">"zzzzz@163.com"</span>);</span><br><span class="line"><span class="comment">// 3、执行更新操作</span></span><br><span class="line">userMapper.updateById(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4、普通查询操作">4、普通查询操作</h3>
+<h2 id="4、普通查询操作">4、普通查询操作</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSelectById</span><span class="params">()</span></span>&#123;</span><br><span class="line">    User user = userMapper.selectById(<span class="number">1L</span>);</span><br><span class="line">    System.out.println(user);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 测试批量查询！</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSelectByBatchId</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List&lt;User&gt; users = userMapper.selectBatchIds(Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line">    users.forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 按条件查询之一使用map操作</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSelectByBatchIds</span><span class="params">()</span></span>&#123;</span><br><span class="line">    HashMap&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// 自定义要查询</span></span><br><span class="line">    map.put(<span class="string">"name"</span>,<span class="string">"1234567"</span>);</span><br><span class="line">    map.put(<span class="string">"age"</span>,<span class="number">3</span>);</span><br><span class="line">    List&lt;User&gt; users = userMapper.selectByMap(map);</span><br><span class="line">    users.forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="5、分页查询">5、分页查询</h3>
-<ol>
+<h2 id="5、分页查询">5、分页查询</h2>
+<ul>
 <li>配置拦截器</li>
-</ol>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 扫描我们的 mapper 文件夹</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.mybatis.demo.mapper"</span>)</span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@Configuration</span> <span class="comment">// 配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBatisPlusConfig</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 新的分页插件,一缓和二缓遵循mybatis的规则,需要设置 MybatisConfiguration#useDeprecatedExecutor = false 避免缓存出现问题(该属性会在旧插件移除后一同移除)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MybatisPlusInterceptor <span class="title">mybatisPlusInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MybatisPlusInterceptor interceptor = <span class="keyword">new</span> MybatisPlusInterceptor();</span><br><span class="line">        interceptor.addInnerInterceptor(<span class="keyword">new</span> OptimisticLockerInnerInterceptor());</span><br><span class="line">        interceptor.addInnerInterceptor(<span class="keyword">new</span> PaginationInnerInterceptor(DbType.MYSQL));</span><br><span class="line">        <span class="keyword">return</span> interceptor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ConfigurationCustomizer <span class="title">configurationCustomizer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> configuration -&gt; configuration.setUseDeprecatedExecutor(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ul>
 <li>测试类</li>
-</ol>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试分页查询</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPage</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 参数一：当前页</span></span><br><span class="line">    <span class="comment">// 参数二：页面大小</span></span><br><span class="line">    <span class="comment">// 使用了分页插件之后，所有的分页操作也变得简单的！</span></span><br><span class="line">    Page&lt;User&gt; page = <span class="keyword">new</span> Page&lt;&gt;(<span class="number">2</span>,<span class="number">5</span>);</span><br><span class="line">    userMapper.selectPage(page,<span class="keyword">null</span>);</span><br><span class="line">    page.getRecords().forEach(System.out::println);</span><br><span class="line">    System.out.println(page.getTotal());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="6、逻辑删除">6、逻辑删除</h3>
-<ol>
+<h2 id="6、逻辑删除">6、逻辑删除</h2>
+<ul>
 <li>首先在数据库中插入字段<code>deleted</code>，代表逻辑删除字段，设置默认为0</li>
 <li>在User实体类添加属性</li>
-</ol>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TableLogic</span> <span class="comment">//逻辑删除</span></span><br><span class="line"><span class="keyword">private</span> Integer deleted;</span><br></pre></td></tr></table></figure>
-<ol start="3">
+<ul>
 <li>配置<code>application.yml</code></li>
-</ol>
+</ul>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置日志</span></span><br><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">configuration:</span></span><br><span class="line">    <span class="attr">log-impl:</span> <span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="attr">logic-delete-value:</span> <span class="number">1</span> <span class="comment"># 逻辑已删除值(默认为 1)</span></span><br><span class="line">      <span class="attr">logic-not-delete-value:</span> <span class="number">0</span> <span class="comment"># 逻辑未删除值(默认为 0)</span></span><br></pre></td></tr></table></figure>
-<ol start="4">
+<ul>
 <li>测试</li>
-</ol>
+</ul>
 <p>配置好之后使用delete操作不会物理删除，而是进行逻辑删除，同时查询时自动过滤已被逻辑删除的数据</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试删除</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDeleteById</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        userMapper.deleteById(<span class="number">1L</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="7、条件生成器">7、条件生成器</h3>
+<h2 id="7、条件生成器">7、条件生成器</h2>
 <blockquote>
-<p>详情请查看https://mp.baomidou.com/guide/wrapper.html</p>
+<p>详情请查看<a href="https://mp.baomidou.com/guide/wrapper.html" target="_blank" rel="noopener">https://mp.baomidou.com/guide/wrapper.html</a></p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">contextLoads1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 查询name不为空的用户，并且邮箱不为空的用户，年龄大于等于12</span></span><br><span class="line">    QueryWrapper&lt;User&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">    wrapper</span><br><span class="line">    .isNotNull(<span class="string">"name"</span>)</span><br><span class="line">    .isNotNull(<span class="string">"email"</span>)</span><br><span class="line">    .ge(<span class="string">"age"</span>,<span class="number">12</span>);</span><br><span class="line">    userMapper.selectList(wrapper).forEach(System.out::println); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="8、逆向工程">8、逆向工程</h3>
+<h2 id="8、逆向工程">8、逆向工程</h2>
 <p>在<code>pom.xml</code>引入依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-generator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.velocity<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>velocity-engine-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>编写代码生成器</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodeGenerator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 模块名 */</span></span><br><span class="line">        String moduleName = <span class="string">"bean"</span>;</span><br><span class="line">        <span class="comment">/** 基本包名 */</span></span><br><span class="line">        String basePackage = <span class="string">"com.zstu"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 作者 */</span></span><br><span class="line">        String authorName = <span class="string">"shawn"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 要生成的表名 */</span></span><br><span class="line">        String[] tables = &#123;<span class="string">"tb_student"</span>,<span class="string">"tb_label"</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** table前缀 */</span></span><br><span class="line">        String prefix = <span class="string">"tb_"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 代码生成路径 */</span></span><br><span class="line">        String codePath = System.getProperty(<span class="string">"user.dir"</span>) + <span class="string">"/bean/src/main/java"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//1、获取代码生成器对象</span></span><br><span class="line">        AutoGenerator mpg = <span class="keyword">new</span> AutoGenerator();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、全局配置</span></span><br><span class="line">        GlobalConfig gc = <span class="keyword">new</span> GlobalConfig();</span><br><span class="line">        <span class="comment">//代码生成路径</span></span><br><span class="line">        gc.setOutputDir(codePath);</span><br><span class="line">        <span class="comment">//作者信息</span></span><br><span class="line">        gc.setAuthor(authorName);</span><br><span class="line">        gc.setOpen(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">//生成ID类型</span></span><br><span class="line">        gc.setIdType(IdType.AUTO);</span><br><span class="line">        gc.setDateType(DateType.ONLY_DATE);</span><br><span class="line">        gc.setFileOverride(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//去掉Servce前缀</span></span><br><span class="line">        gc.setMapperName(<span class="string">"%sMapper"</span>);</span><br><span class="line">        <span class="comment">//对于IDEA系列编辑器，XML 文件是不能放在 java 文件夹中的，要移到resource文件</span></span><br><span class="line">        <span class="comment">//多模块在配置文件要设置mapper-locations，在启动类要加上扫描的路径mapper以及spring扫描包</span></span><br><span class="line">        gc.setXmlName(<span class="string">"%sMapper"</span>);</span><br><span class="line">        gc.setServiceName(<span class="string">"%sService"</span>);</span><br><span class="line">        gc.setServiceImplName(<span class="string">"%sServiceImpl"</span>);</span><br><span class="line">        gc.setEntityName(<span class="string">"%sEntity"</span>);</span><br><span class="line">        mpg.setGlobalConfig(gc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3、数据源配置</span></span><br><span class="line">        DataSourceConfig dsc = <span class="keyword">new</span> DataSourceConfig();</span><br><span class="line">        dsc.setUrl(<span class="string">"jdbc:mysql://localhost:3306/intelligent_lamp?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"</span>);</span><br><span class="line">        dsc.setDriverName(<span class="string">"com.mysql.cj.jdbc.Driver"</span>);</span><br><span class="line">        dsc.setUsername(<span class="string">"root"</span>);</span><br><span class="line">        dsc.setPassword(<span class="string">"root"</span>);</span><br><span class="line">        dsc.setDbType(DbType.MYSQL);</span><br><span class="line">        mpg.setDataSource(dsc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4、包配置</span></span><br><span class="line">        PackageConfig pc = <span class="keyword">new</span> PackageConfig();</span><br><span class="line">        <span class="comment">//设置模块名</span></span><br><span class="line">        <span class="comment">//没有第0步时此代码必写</span></span><br><span class="line">        pc.setModuleName(moduleName);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//5、设置工程名</span></span><br><span class="line">        pc.setParent(basePackage);</span><br><span class="line">        <span class="comment">//设置包名</span></span><br><span class="line">        pc.setEntity(<span class="string">"entity"</span>);</span><br><span class="line">        pc.setMapper(<span class="string">"mapper"</span>);</span><br><span class="line">        pc.setService(<span class="string">"service"</span>);</span><br><span class="line">        pc.setController(<span class="string">"controller"</span>);</span><br><span class="line">        mpg.setPackageInfo(pc);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//6、策略配置</span></span><br><span class="line">        StrategyConfig strategy = <span class="keyword">new</span> StrategyConfig();</span><br><span class="line">        <span class="comment">//去除前缀</span></span><br><span class="line">        strategy.setTablePrefix(prefix);</span><br><span class="line">        <span class="comment">//数据库表名优先映射,配置</span></span><br><span class="line">        strategy.setInclude(tables);</span><br><span class="line">        <span class="comment">//下划线转驼峰命名的策略</span></span><br><span class="line">        strategy.setNaming(NamingStrategy.underline_to_camel);</span><br><span class="line">        <span class="comment">//数据库命名规则</span></span><br><span class="line">        strategy.setColumnNaming(NamingStrategy.underline_to_camel);</span><br><span class="line">        <span class="comment">//自动生成lombok注解</span></span><br><span class="line">        strategy.setEntityLombokModel(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//自动添加控制结构</span></span><br><span class="line">        strategy.setRestControllerStyle(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//自动添加逻辑删除策略</span></span><br><span class="line">        strategy.setLogicDeleteFieldName(<span class="string">"deleted"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//7、设置自动填充策略</span></span><br><span class="line">        TableFill gmtCreatereate = <span class="keyword">new</span> TableFill(<span class="string">"create_time"</span>, FieldFill.INSERT);</span><br><span class="line">        <span class="comment">//设置自动更新时间策略</span></span><br><span class="line">        TableFill gmtModifiedodified = <span class="keyword">new</span> TableFill(<span class="string">"update_time"</span>, FieldFill.UPDATE);</span><br><span class="line">        <span class="comment">//获取自动填充对象</span></span><br><span class="line">        ArrayList&lt;TableFill&gt; tableFills = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//添加填充策略</span></span><br><span class="line">        tableFills.add(gmtCreatereate);</span><br><span class="line">        tableFills.add(gmtModifiedodified);</span><br><span class="line">        strategy.setTableFillList(tableFills);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//8、设置乐观锁策略</span></span><br><span class="line">        strategy.setVersionFieldName(<span class="string">"version"</span>);</span><br><span class="line">        <span class="comment">//设置Restful风格</span></span><br><span class="line">        strategy.setRestControllerStyle(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//设置连接请求 http://localhost:8080/hello_id_2</span></span><br><span class="line">        strategy.setControllerMappingHyphenStyle(<span class="keyword">true</span>);</span><br><span class="line">        mpg.setStrategy(strategy);</span><br><span class="line">        mpg.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="9、其他">9、其他</h4>
+<h2 id="9、其他">9、其他</h2>
 <p>Sql性能分析</p>
-
+<h1>四、其他错误</h1>
+<p>如果要用到xml文件的话,就必须再加两个配置，且IntelliJ Idea 出现 <code>Could not autowire. No beans of 'xxxx' type found</code> 的错误提示，并且发现编译生成的Classes没有xml文件夹，这时候需要进行简单配置<br>
+<strong>解决方法</strong><br>
+首先在<code>pom.xml</code>文件里添加,这个是全局的，一般写在父工程里就行</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其次在<code>application.yml</code>添加配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">configuration:</span> <span class="comment">#sql日志</span></span><br><span class="line">    <span class="attr">log-impl:</span> <span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:com/shawn/demo/mapper/xml/*.xml</span></span><br></pre></td></tr></table></figure>
+<h1>五、时区处理</h1>
+<h2 id="1、Mysql数据库">1、Mysql数据库</h2>
+<h3 id="1-1-数据库与JDBC时区">1.1 数据库与JDBC时区</h3>
+<p>数据库MySQL是存在时区的概念的，<code>show variables like &quot;%time_zone%&quot;;</code>命令可以查询当前时区</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认配置</span></span><br><span class="line">+<span class="comment">------------------+--------+</span></span><br><span class="line">| Variable_name  | Value |</span><br><span class="line">+<span class="comment">------------------+--------+</span></span><br><span class="line">| system_time_zone | CST  |</span><br><span class="line">| time_zone    | SYSTEM |</span><br><span class="line">+<span class="comment">------------------+--------+</span></span><br></pre></td></tr></table></figure>
+<p><strong>问题描述</strong></p>
+<p>默认CST指的是MySQL所在主机的系统时间，是中国标准时间的缩写(China Standard Time UT+8:00)。MySQL 中，如果 time_zone 为默认的 SYSTEM 值，则时区会继承为系统时区 CST，MySQL 内部将其认为是 UTC+08:00；而 jdbc 会将 CST 认为是美国中部时间，这会导致两者时间出现时区上的偏差（差8/13/14小时都可能是这个问题）</p>
+<p><strong>解决方法</strong></p>
+<p>明确指定 MySQL 数据库的时区，不使用引发误解的 CST，可以将** time_zone 改为’+8:00’**，同时 jdbc 连接串中也可以增加 <strong>serverTimezone=Asia/Shanghai</strong></p>
+<p><strong>举例</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#第一种方法通过代码修改</span></span><br><span class="line"><span class="comment">##修改mysql全局时区为北京时间，即我们所在的东8区</span></span><br><span class="line"><span class="built_in">set</span> global time_zone = <span class="string">'+8:00'</span>; </span><br><span class="line"><span class="comment">##修改当前会话时区,并使其立即生效</span></span><br><span class="line"><span class="built_in">set</span> time_zone = <span class="string">'+8:00'</span>; </span><br><span class="line">flush privileges; </span><br><span class="line"><span class="comment">#-----------------#</span></span><br><span class="line"><span class="comment">#第二种方法通过配置文件修改</span></span><br><span class="line"><span class="comment"># vim /etc/my.cnf ##在[mysqld]区域中加上</span></span><br><span class="line">default-time_zone = <span class="string">'+8:00'</span></span><br><span class="line"><span class="comment"># /etc/init.d/mysqld restart ##重启mysql使新时区生效</span></span><br><span class="line"><span class="comment">#-----------------#</span></span><br><span class="line"><span class="comment">#这是我在用的jdbc连接</span></span><br><span class="line">jdbc:mysql://ip:port/sql_name?useSSL=<span class="literal">false</span>&amp;useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8&amp;allowPublicKeyRetrieval=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-DateTime和TimeStamp异同">1.2 DateTime和TimeStamp异同</h3>
+<ul>
+<li>默认都精确到秒</li>
+<li>时间范围不一样，TIMESTAMP 要小很多且最大范围为<code>2038-01-19 03:14:07.999999</code>，而datetime范围是<code>'1000-01-01 00:00:00'</code> to <code>'9999-12-31 23:59:59'</code></li>
+<li><strong>TIMESTAMP</strong>把客户端插入的时间从当前时区转化为UTC（世界标准时间）进行存储；查询时，将其又转化为客户端当前时区进行返回。即存储的时候如果数据库换了时区，其存储的时间也会相应发生变化</li>
+<li><strong>DATETIME</strong>存储时不做任何改变，基本上是原样输入和输出</li>
+</ul>
+<h2 id="2、Java框架">2、Java框架</h2>
+<h3 id="2-1-LocalDateTime和Date">2.1 LocalDateTime和Date</h3>
+<p>LocalDateTime本身不包含时区信息，它存储的是年、月、日、时分秒，纳秒这样的数字；Date存储的是一个毫秒数，准确说是从1970-01-01 00:00:00到现在经过的毫秒数，而这个毫秒数是有时区的，它存储的永远是现在针对UTC时区时的1970年零点，经过的毫秒数。</p>
+<p>对于Date类来说，解析字符串成Date对象和格式化Date对象成字符串都会涉及时区</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">// 默认是系统时区</span></span><br><span class="line">System.out.println(date);</span><br><span class="line"><span class="comment">// 修改默认时区</span></span><br><span class="line">TimeZone.setDefault(TimeZone.getTimeZone(<span class="string">"GMT"</span>));</span><br><span class="line">System.out.println(date);</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line">Fri Feb <span class="number">11</span> <span class="number">16</span>:<span class="number">51</span>:<span class="number">58</span> CST <span class="number">2022</span></span><br><span class="line">Fri Feb <span class="number">11</span> <span class="number">08</span>:<span class="number">51</span>:<span class="number">58</span> GMT <span class="number">2022</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*-------------------*/</span></span><br><span class="line">Date date1 = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">// 默认是系统时区</span></span><br><span class="line">SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">System.out.println(dateFormat.format(date1));</span><br><span class="line"><span class="comment">// 设置时区</span></span><br><span class="line">dateFormat.setTimeZone(TimeZone.getTimeZone(<span class="string">"GMT+8:00"</span>));</span><br><span class="line">System.out.println(dateFormat.format(date1));</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">2022</span>-<span class="number">02</span>-<span class="number">11</span> <span class="number">08</span>:<span class="number">51</span>:<span class="number">58</span></span><br><span class="line"><span class="number">2022</span>-<span class="number">02</span>-<span class="number">11</span> <span class="number">16</span>:<span class="number">51</span>:<span class="number">58</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*--------------------*/</span></span><br><span class="line">String dateStr = <span class="string">"2022-2-11 08:00:00"</span>;</span><br><span class="line"><span class="comment">// 默认是系统时区</span></span><br><span class="line">SimpleDateFormat dateFormat1 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">Date date2 = dateFormat1.parse(dateStr);</span><br><span class="line">System.out.println(date2.getTime());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置时区</span></span><br><span class="line">dateFormat1.setTimeZone(TimeZone.getTimeZone(<span class="string">"GMT+8:00"</span>));</span><br><span class="line">Date date3 = dateFormat1.parse(dateStr);</span><br><span class="line">System.out.println(date3.getTime());</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">1644566400000</span></span><br><span class="line"><span class="number">1644537600000</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-Json传值给前端">2.2 Json传值给前端</h3>
+<blockquote>
+<p>参考：<a href="https://blog.csdn.net/lemon_TT/article/details/109145432" target="_blank" rel="noopener">Java8 日期时间类整理</a></p>
+</blockquote>
+<p>jackson也有自己的时区问题，默认情况下会将时区设置为UTC，这里仅需要在yml文件中设置全局配置即可</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#时间戳统一转换</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">jackson:</span></span><br><span class="line">    <span class="attr">date-format:</span> <span class="string">yyyy-MM-dd</span> <span class="string">HH:mm:ss</span></span><br><span class="line">    <span class="attr">time-zone:</span> <span class="string">GMT+8</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -523,7 +553,7 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
     2021-03-15
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-08-14
+    2022-02-11
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/9b26b051.html" title="MyBatisPlus学习笔记" target="_blank">MyBatisPlus学习笔记</a>
@@ -572,7 +602,7 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -679,7 +709,7 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、简介"><span class="toc-number">1.</span> <span class="toc-text">一、简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、快速入门"><span class="toc-number">2.</span> <span class="toc-text">二、快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、CRUD扩展"><span class="toc-number">3.</span> <span class="toc-text">三、CRUD扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、主键生成策略"><span class="toc-number">3.1.</span> <span class="toc-text">1、主键生成策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、自动填充"><span class="toc-number">3.2.</span> <span class="toc-text">2、自动填充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库级别（工作中不允许修改数据库）"><span class="toc-number">3.2.1.</span> <span class="toc-text">数据库级别（工作中不允许修改数据库）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码级别"><span class="toc-number">3.2.2.</span> <span class="toc-text">代码级别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、乐观锁"><span class="toc-number">3.3.</span> <span class="toc-text">3、乐观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、普通查询操作"><span class="toc-number">3.4.</span> <span class="toc-text">4、普通查询操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、分页查询"><span class="toc-number">3.5.</span> <span class="toc-text">5、分页查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、逻辑删除"><span class="toc-number">3.6.</span> <span class="toc-text">6、逻辑删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、条件生成器"><span class="toc-number">3.7.</span> <span class="toc-text">7、条件生成器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、逆向工程"><span class="toc-number">3.8.</span> <span class="toc-text">8、逆向工程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9、其他"><span class="toc-number">3.8.1.</span> <span class="toc-text">9、其他</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">一、简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">二、快速入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">三、CRUD扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、主键生成策略"><span class="toc-number">3.1.</span> <span class="toc-text">1、主键生成策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、自动填充"><span class="toc-number">3.2.</span> <span class="toc-text">2、自动填充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-数据库级别（工作中不允许修改数据库）"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.1 数据库级别（工作中不允许修改数据库）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-代码级别"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2 代码级别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、乐观锁"><span class="toc-number">3.3.</span> <span class="toc-text">3、乐观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-介绍"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-操作步骤"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.2 操作步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、普通查询操作"><span class="toc-number">3.4.</span> <span class="toc-text">4、普通查询操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、分页查询"><span class="toc-number">3.5.</span> <span class="toc-text">5、分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、逻辑删除"><span class="toc-number">3.6.</span> <span class="toc-text">6、逻辑删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、条件生成器"><span class="toc-number">3.7.</span> <span class="toc-text">7、条件生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、逆向工程"><span class="toc-number">3.8.</span> <span class="toc-text">8、逆向工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、其他"><span class="toc-number">3.9.</span> <span class="toc-text">9、其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">4.</span> <span class="toc-text">四、其他错误</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">5.</span> <span class="toc-text">五、时区处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、Mysql数据库"><span class="toc-number">5.1.</span> <span class="toc-text">1、Mysql数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-数据库与JDBC时区"><span class="toc-number">5.1.1.</span> <span class="toc-text">1.1 数据库与JDBC时区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-DateTime和TimeStamp异同"><span class="toc-number">5.1.2.</span> <span class="toc-text">1.2 DateTime和TimeStamp异同</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Java框架"><span class="toc-number">5.2.</span> <span class="toc-text">2、Java框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-LocalDateTime和Date"><span class="toc-number">5.2.1.</span> <span class="toc-text">2.1 LocalDateTime和Date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Json传值给前端"><span class="toc-number">5.2.2.</span> <span class="toc-text">2.2 Json传值给前端</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -732,7 +762,7 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020-2021
+                &copy; 2020-2022
             
             Shawn
         </div>
@@ -860,47 +890,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lombok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -916,27 +910,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IP解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -944,51 +918,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二维码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java8</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">POI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1004,19 +934,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
             
             <div class="clearfix"></div>

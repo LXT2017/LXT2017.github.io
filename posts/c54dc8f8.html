@@ -16,9 +16,9 @@
 <meta property="og:description" content="1、Lambda 表达式 1234567891011121314151617181920212223&#x2F;&#x2F; 1. 不需要参数,返回值为 5  () -&gt; 5  &#x2F;&#x2F; 2. 接收一个参数(数字类型),返回其2倍的值  x -&gt; 2 * x  &#x2F;&#x2F; 3. 接受2个参数(数字),并返回他们的差值  (x, y) -&gt; x – y  &#x2F;&#x2F; 4. 接收2个int型整数,返回他们的和  (in">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-05T04:19:00.000Z">
-<meta property="article:modified_time" content="2021-10-14T04:38:12.864Z">
+<meta property="article:modified_time" content="2021-11-26T01:45:36.927Z">
 <meta property="article:author" content="Shawn">
-<meta property="article:tag" content="java8">
+<meta property="article:tag" content="Java基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：62
+			总文章数：88
 		</ul>
 		
 		<nav class="header-nav">
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.6k字</span>
+        <span class="post-count">2.9k字</span>
       </span>
     </span>
 
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">12分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
 </div>
@@ -360,6 +360,8 @@ var _hmt = _hmt || [];
 </table>
 <p>常用的方法举例</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java8FunctionalTests</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Predicate&lt;Integer&gt; predicate = x -&gt; x &gt; <span class="number">170</span>;</span><br><span class="line">        Student student = <span class="keyword">new</span> Student(<span class="string">"shawn"</span>, <span class="number">175</span>);</span><br><span class="line">        System.out.println(<span class="string">"shawn的身高有超过170吗？"</span> + predicate.test(student.getHeight()));</span><br><span class="line"></span><br><span class="line">        Consumer&lt;String&gt; consumer = System.out::println;</span><br><span class="line">        consumer.accept(<span class="string">"我命由我不命天"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Student映射成String</span></span><br><span class="line">        Function&lt;Student, String&gt; function = Student::getName;</span><br><span class="line">        String name = function.apply(student);</span><br><span class="line">        System.out.println(name);</span><br><span class="line"></span><br><span class="line">        Supplier&lt;Integer&gt; supplier =</span><br><span class="line">                () -&gt; Integer.valueOf(BigDecimal.TEN.toString());</span><br><span class="line">        System.out.println(supplier.get());</span><br><span class="line"></span><br><span class="line">        UnaryOperator&lt;Boolean&gt; unaryOperator = flag -&gt; !flag;</span><br><span class="line">        Boolean apply2 = unaryOperator.apply(<span class="keyword">true</span>);</span><br><span class="line">        System.out.println(apply2);</span><br><span class="line"></span><br><span class="line">        BinaryOperator&lt;Integer&gt; operator = (x, y) -&gt; x * y;</span><br><span class="line">        Integer integer = operator.apply(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">        System.out.println(integer);</span><br><span class="line"></span><br><span class="line">        test(() -&gt; <span class="string">"我是一个演示的函数式接口"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 演示自定义函数式接口使用</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> worker</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Worker worker)</span> </span>&#123;</span><br><span class="line">        String work = worker.work();</span><br><span class="line">        System.out.println(work);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="meta">@FunctionalInterface</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Worker</span> </span>&#123;</span><br><span class="line">        <span class="function">String <span class="title">work</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一种使用就是可以消除大量if-else，给代码解耦合，这里我简单贴部分demo</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 里面可以分几个类，这里我全写在一起了</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 这里相当于进行了if else操作了，代码更加简洁</span></span><br><span class="line">        <span class="comment">// 有内容输出内容，没有内容输出空字符串</span></span><br><span class="line">        isBlankOrNoBlank(<span class="string">"hello world"</span>)</span><br><span class="line">                .presentOrElseHandle(System.out::println,()-&gt;&#123;</span><br><span class="line">                    System.out.println(<span class="string">"空字符串"</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 空值与非空值分支处理</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@FunctionalInterface</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BranchHandle</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * if else两种处理函数</span></span><br><span class="line"><span class="comment">         * &lt;? extends T&gt; 表示类型的上界，表示参数化类型的可能是T 或是 T的子类;</span></span><br><span class="line"><span class="comment">         * &lt;? super T&gt; 表示类型下界（Java Core中叫超类型限定），表示参数化类型是此类型的超类型（父类型），直至Object;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">presentOrElseHandle</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; action, Runnable emptyAction)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 参数为true或false时，分别进行不同的操作</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> BranchHandle&lt;?&gt; isBlankOrNoBlank(String str)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (consumer, runnable) -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (str == <span class="keyword">null</span> || str.length() == <span class="number">0</span>)&#123;</span><br><span class="line">                runnable.run();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                consumer.accept(str);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3、Stream流式编程">3、Stream流式编程</h2>
 <p>Stream（流）是一个来自数据源的元素队列并支持聚合操作</p>
 <ul>
@@ -512,7 +514,7 @@ var _hmt = _hmt || [];
     2021-08-05
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-10-14
+    2021-11-26
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/c54dc8f8.html" title="java8常用新特性" target="_blank">java8常用新特性</a>
@@ -542,7 +544,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">java8</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
         		</li>
       		
 		</ul>
@@ -562,10 +564,6 @@ var _hmt = _hmt || [];
 			 
         		<li class="article-tag-list-item">
         			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java/java基础//" class="article-tag-list-link color2">java基础</a>
         		</li>
       		
 		</ul>
@@ -725,7 +723,7 @@ var _hmt = _hmt || [];
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020-2021
+                &copy; 2020-2022
             
             Shawn
         </div>
@@ -853,47 +851,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lombok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -909,27 +871,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IP解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -937,51 +879,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二维码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java8</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">POI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,19 +895,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
             
             <div class="clearfix"></div>

@@ -115,7 +115,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：62
+			总文章数：88
 		</ul>
 		
 		<nav class="header-nav">
@@ -245,14 +245,14 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringBoot后端接口规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mmdetection2-config详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/557d179e.html" class="archive-article-date">
-  	<time datetime="2020-08-30T13:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
+        <a href="/posts/2f275aa8.html" class="archive-article-date">
+  	<time datetime="2021-06-06T04:57:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-06</time>
   	
 </a>
         
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
+        <span class="post-count">3.5k字</span>
       </span>
     </span>
 
@@ -290,166 +290,17 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/557d179e.html">SpringBoot后端接口规范</a>
+      <a class="article-title_code_ant" href="/posts/2f275aa8.html">mmdetection2 config详解</a>
     </h1>
   
 </p></center>
 
       
-        <h1>一、前言</h1>
-<p> 一个后端接口大致分为四个部分组成：接口地址（url）、接口请求方式（get、post等）、请求数据（request）、响应数据（response）。虽然说后端接口的编写并没有统一规范要求，而且如何构建这几个部分每个公司要求都不同，没有什么“一定是最好的”标准，但其中最重要的关键点就是看是否规范。</p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/557d179e.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-Spring-Boot整合knife4j实现Api文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/db133795.html" class="archive-article-date">
-  	<time datetime="2020-08-26T12:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">4分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/db133795.html">Spring Boot整合knife4j实现Api文档</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h1>一、简介</h1>
-<blockquote>
-<p> knife4j是为Java MVC框架集成Swagger生成Api文档的增强解决方案,前身是swagger-bootstrap-ui,取名kni4j是希望她能像一把匕首一样小巧,轻量,并且功能强悍!<br>
-　knife4j的前身是swagger-bootstrap-ui，为了契合微服务的架构发展,由于原来swagger-bootstrap-ui采用的是后端Java代码+前端Ui混合打包的方式,在微服务架构下显的很臃肿,因此项目正式更名为knife4j</p>
+        <blockquote>
+<p>官方文档config详情：<a href="https://mmdetection.readthedocs.io/en/latest/tutorials/config.html" target="_blank" rel="noopener">https://mmdetection.readthedocs.io/en/latest/tutorials/config.html</a></p>
 </blockquote>
-<p><a href="https://doc.xiaominfo.com/knife4j/" target="_blank" rel="noopener">knife4j官方文档</a><br>
-<a href="https://gitee.com/xiaoym/knife4j" target="_blank" rel="noopener">码云仓库地址</a></p>
+<h3 id="1、配置文件结构">1、配置文件结构</h3>
+<p>在<code>config/_base_</code>文件夹下面总共有4个基础的组件，它们分别是：dataset、model、schedule、default_runtime。</p>
         
       
 
@@ -486,596 +337,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/db133795.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-Vue打包部署出现白屏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/1e9a5ba7.html" class="archive-article-date">
-  	<time datetime="2020-07-04T15:20:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">375字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/1e9a5ba7.html">Vue打包部署出现白屏</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h4 id="1、问题描述">1、问题描述</h4>
-<p> 我们用vue项目在本地跑的时候一切正常，当时我们用<code>npm run build</code>命令打包并部署服务器后，发现Index展示的是白屏，控制台显示资源都能正确访问到<img src="https://img-blog.csdnimg.cn/20200704175746282.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/1e9a5ba7.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-Linux上使用docker运行酷Q机器人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/18a55fe7.html" class="archive-article-date">
-  	<time datetime="2020-05-22T12:37:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">493字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/18a55fe7.html">Linux上使用docker运行酷Q机器人</a>
-    </h1>
-  
-</p></center>
-
-      
-        <p> 我们知道酷Q机器人是运行在windows上的，配合图灵机器人的API可以实现QQ或者微信的自动对话，但是如果想让机器人不间断24小时运行，那就需要使用云服务了，并且需要使用docker作为运行的容器来运行酷Q机器人。</p>
-<h3 id="1、安装和运行docker">1、安装和运行docker</h3>
-<p>这里我用了Centos的linux操作系统，使用其他Linux的也大同小异，不过这里的操作都需要root权限，没有的话需要<code>sudo su</code>获得root权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载docker</span></span><br><span class="line">yum install docker</span><br><span class="line"><span class="comment">#运行docker</span></span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/18a55fe7.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-Centos启动Ipv4地址进行远程连接和Yum换源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/2a55c286.html" class="archive-article-date">
-  	<time datetime="2020-05-18T08:52:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">314字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/2a55c286.html">Centos启动Ipv4地址进行远程连接和Yum换源</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h3 id="启动Ipv4地址">启动Ipv4地址</h3>
-<p> 好多时候，在虚拟机中安装完后，进去centos中，使用<code>ifconfig</code>发现没有此命令，可使用<code>ip a</code>查看IP，但是有时你会发现没有显示ipv4的地址，这样我们也无法进行远程连接，这个问题原因是安装centos的时候没有启用默认的网卡<br>
-解决办法:<br>
-CentOS配置网卡开机自动获取IP地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/sysconfig/network-scripts</span><br><span class="line"><span class="comment">#注意这是我的网卡配置，具体机器需要ls查看一下</span></span><br><span class="line">vim ifcfg-ens33</span><br></pre></td></tr></table></figure>
-<p>进入配置后将 <code>ONBOOT=”no”</code> 改为 <code>ONBOOT=”yes”</code><br>
-保存后执行<code>systemctl restart network</code></p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">虚拟机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/2a55c286.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-Centos7安装Anaconda实现远程Jupyter登陆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/191c082b.html" class="archive-article-date">
-  	<time datetime="2020-05-07T14:15:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">585字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">2分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/191c082b.html">Centos7安装Anaconda实现远程Jupyter登陆</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h3 id="1、下载Anaconda">1、下载Anaconda</h3>
-<blockquote>
-<p>官方下载: <a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">https://www.anaconda.com/download/</a><br>
-清华镜像下载: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=N&amp;O=D" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=N&amp;O=D</a></p>
-</blockquote>
-<p> centos在线下载最新版Anaconda</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2020.02-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">服务器Jupyter</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
         		</li>
       		
 		</ul>
@@ -1103,7 +365,7 @@ CentOS配置网卡开机自动获取IP地址</p>
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/191c082b.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/2f275aa8.html">展开全文 >></a>
       </p>
     
 
@@ -1133,14 +395,14 @@ CentOS配置网卡开机自动获取IP地址</p>
 
 
   
-    <article id="post-python实现Synology-NAS的关机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Pytorch神经网络简单入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/461ef441.html" class="archive-article-date">
-  	<time datetime="2020-04-29T03:14:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+        <a href="/posts/561aebde.html" class="archive-article-date">
+  	<time datetime="2021-06-06T04:57:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-06</time>
   	
 </a>
         
@@ -1152,7 +414,7 @@ CentOS配置网卡开机自动获取IP地址</p>
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">438字</span>
+        <span class="post-count">4k字</span>
       </span>
     </span>
 
@@ -1161,7 +423,7 @@ CentOS配置网卡开机自动获取IP地址</p>
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">1分</span>
+        <span class="post-count">19分</span>
       </span>
     </span>
 </div>
@@ -1178,14 +440,28 @@ CentOS配置网卡开机自动获取IP地址</p>
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/461ef441.html">python实现Synology NAS的关机</a>
+      <a class="article-title_code_ant" href="/posts/561aebde.html">Pytorch神经网络简单入门</a>
     </h1>
   
 </p></center>
 
       
-        <h4 id="一、问题描述">一、问题描述</h4>
-<p> 因为需要使用编程进行NAS的关机，而且这个程序不能在NAS内部运行，因此想到了使用远程连接来进行NAS的关机操作。因为NAS是一种定制的LINUX系统，因此可以利用Python使用SSH来远程连接，并使用命令行关机指令<code>shutdown -h now</code>实现远程关机。</p>
+        <h2 id="一、框架说明">一、框架说明</h2>
+<p>Pytorch具体的APi操作详见<a href="https://pytorch.org/docs/stable/torch.html" target="_blank" rel="noopener">Pytorch官方Api文档</a>，torchvision具体Api操作详见<a href="https://pytorch.org/vision/stable/index.html" target="_blank" rel="noopener">torchvision官方Api</a>，下面介绍一下常用的包</p>
+<ul>
+<li><code>torch</code>：张量的常见运算。如创建、索引、连接、转置、加减乘除、切片等</li>
+<li><code>torch.nn</code>: 包含搭建神经网络层的模块（Modules）和一系列loss函数。如全连接、卷积、BN批处理、dropout、CrossEntryLoss、MSELoss等</li>
+<li><code>torch.nn.functional</code>:常用的激活函数relu、leaky_relu、sigmoid等</li>
+<li><code>torch.autograd</code>:提供Tensor所有操作的自动求导方法</li>
+<li><code>torch.cuda</code>：提供对CUDA张量类型的支持，可以让模型使用gpu运行</li>
+<li><code>torch.optim</code>:各种参数优化方法，例如SGD、AdaGrad、Adam、RMSProp等</li>
+<li><code>torch.utils.data</code>:用于加载数据</li>
+<li><code>torch.nn.init</code>:可以用它更改nn.Module的默认参数初始化方式</li>
+<li><code>torchvision.datasets</code>:常用数据集。MNIST、COCO、CIFAR10、Imagenet等</li>
+<li><code>torchvision.modules</code>:常用模型。AlexNet、VGG、ResNet、DenseNet等</li>
+<li><code>torchvision.transforms</code>:图片相关处理。裁剪、尺寸缩放、归一化等</li>
+<li><code>torchvision.utils</code>:将给定的Tensor保存成image文件</li>
+</ul>
         
       
 
@@ -1222,7 +498,7 @@ CentOS配置网卡开机自动获取IP地址</p>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云计算</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
         		</li>
       		
 		</ul>
@@ -1241,7 +517,7 @@ CentOS配置网卡开机自动获取IP地址</p>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/云计算//" class="article-tag-list-link color4">云计算</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1250,7 +526,7 @@ CentOS配置网卡开机自动获取IP地址</p>
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/461ef441.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/561aebde.html">展开全文 >></a>
       </p>
     
 
@@ -1280,14 +556,14 @@ CentOS配置网卡开机自动获取IP地址</p>
 
 
   
-    <article id="post-java设计模式-代理模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MySql基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/31773db5.html" class="archive-article-date">
-  	<time datetime="2020-04-14T12:11:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-14</time>
+        <a href="/posts/8a2dddd9.html" class="archive-article-date">
+  	<time datetime="2021-06-01T07:01:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-01</time>
   	
 </a>
         
@@ -1299,7 +575,7 @@ CentOS配置网卡开机自动获取IP地址</p>
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">4.9k字</span>
       </span>
     </span>
 
@@ -1308,7 +584,7 @@ CentOS配置网卡开机自动获取IP地址</p>
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">6分</span>
+        <span class="post-count">20分</span>
       </span>
     </span>
 </div>
@@ -1325,16 +601,15 @@ CentOS配置网卡开机自动获取IP地址</p>
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/31773db5.html">java设计模式----代理模式</a>
+      <a class="article-title_code_ant" href="/posts/8a2dddd9.html">MySql基础</a>
     </h1>
   
 </p></center>
 
       
-        <h3 id="一、代理模式介绍">一、代理模式介绍</h3>
-<p> 代理模式(Proxy Pattern)，是23种设计模式之一，它关心的主要是过程，而不是结果。代理模式主要提供了对目标对象的间接访问方式，即通过代理对象来访问目标对象，这样可以在目标对象实现的基础上，==增强额外的功能操作，即扩展目标对象的功能==，<em>SpringAop</em>便是一个很好的例子。而被代理的对象可以是远程对象、创建开销大的对象或需要安全控制的对象。代理模式的简单示意图如下。<br>
-<img src="https://img-blog.csdnimg.cn/2020041418500189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="代理模式示意图"><br>
- 代理模式主要有三种实现方式 <strong>静态代理</strong>、<strong>动态代理</strong>(JDK代理、接口代理)和<strong>Cglib代理</strong>(不需要实现接口)。</p>
+        <h3 id="一、数据库基本知识">一、数据库基本知识</h3>
+<h4 id="1、数据库基本介绍">1、数据库基本介绍</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本地进入可不输入-h命令,-u和-p后面没有空格！</span></span><br><span class="line">mysql [-h 服务器主机地址] -u用户名 -p密码</span><br><span class="line"><span class="comment"># 修改数据库密码</span></span><br><span class="line">mysqladmin -u用户名 -p密码 password 新密码;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示所有数据库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>; </span><br><span class="line"><span class="comment"># 打开某个数据库</span></span><br><span class="line"><span class="keyword">use</span> dbname； </span><br><span class="line"><span class="comment"># 显示表mysql数据库中user表的列信息</span></span><br><span class="line"><span class="keyword">describe</span> <span class="keyword">user</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据库</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> [<span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span>] 数据库名;</span><br><span class="line"><span class="comment"># 删除数据库</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> [<span class="keyword">if</span> <span class="keyword">exists</span>] 数据库名;</span><br><span class="line"><span class="comment"># 显示数据库中所有的表</span></span><br><span class="line"><span class="keyword">show</span> 数据库名;</span><br><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line"><span class="keyword">use</span> 数据库名; </span><br><span class="line"></span><br><span class="line">exit; 退出Mysql</span><br><span class="line">? 命令关键词 : 寻求帮助</span><br><span class="line"><span class="comment">-- 表示注释</span></span><br></pre></td></tr></table></figure>
         
       
 
@@ -1371,7 +646,7 @@ CentOS配置网卡开机自动获取IP地址</p>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
         		</li>
       		
 		</ul>
@@ -1399,7 +674,7 @@ CentOS配置网卡开机自动获取IP地址</p>
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/31773db5.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/8a2dddd9.html">展开全文 >></a>
       </p>
     
 
@@ -1429,14 +704,14 @@ CentOS配置网卡开机自动获取IP地址</p>
 
 
   
-    <article id="post-Docker制作自己的镜像-ubuntu16-04构建Python和Paddlepaddle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-＜img＞标签src缓存问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/e1b007ae.html" class="archive-article-date">
-  	<time datetime="2020-04-10T12:44:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+        <a href="/posts/d39ecf00.html" class="archive-article-date">
+  	<time datetime="2021-05-01T06:26:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-01</time>
   	
 </a>
         
@@ -1448,7 +723,7 @@ CentOS配置网卡开机自动获取IP地址</p>
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">774字</span>
+        <span class="post-count">316字</span>
       </span>
     </span>
 
@@ -1457,7 +732,7 @@ CentOS配置网卡开机自动获取IP地址</p>
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">3分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -1474,21 +749,14 @@ CentOS配置网卡开机自动获取IP地址</p>
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/e1b007ae.html">Docker制作自己的镜像--ubuntu16.04构建Python和Paddlepaddle</a>
+      <a class="article-title_code_ant" href="/posts/d39ecf00.html">＜img＞标签src缓存问题</a>
     </h1>
   
 </p></center>
 
       
-        <h3 id="1、拉取ubuntu16-04纯净镜像">1、拉取ubuntu16.04纯净镜像</h3>
-<p>首先进入虚拟机管理员，将ubuntu16基础镜像从中心仓库拉下来，输入命令<code>docker pull ubuntu:16.04</code>,<br>
-docker就会自动下载ubuntu16的镜像了<br>
-<img src="https://img-blog.csdnimg.cn/20200410202138280.png" alt="在这里插入图片描述"><br>
-用<code>docker images</code> 查看下载好的镜像<br>
-<img src="https://img-blog.csdnimg.cn/20200410202204654.png" alt="在这里插入图片描述"><br>
-因为需要制作自己的容器，因此先下载好python3.7的tar包，这里我们选择编译安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在线下载python3.7，如果嫌慢可以先下载好直接拖进来</span></span><br><span class="line">wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200410202353342.png" alt="在这里插入图片描述"></p>
+        <h4 id="问题描述：">问题描述：</h4>
+<p>最近在使用vue做目标检测算法可视化的时候发现了一个问题，我在前端传入原始图片到后端，经过后端算法检测后生成检测图片，前端vue直接调用该图片路径。本来想着输入不同图片，后端会不断覆盖result.jpg，最终前端也会实时变化，但是最终结果出现了意外，如图后连输入图不管如何变化，结果图都是同一张图片。</p>
         
       
 
@@ -1525,7 +793,143 @@ docker就会自动下载ubuntu16的镜像了<br>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/d39ecf00.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-SSH原理与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/ec679095.html" class="archive-article-date">
+  	<time datetime="2021-03-26T11:19:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-26</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/ec679095.html">SSH原理与使用</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h2 id="一、SSH介绍">一、SSH介绍</h2>
+<p>SSH是Secure Shell Protocol的简写，用于加密两台计算机之间的通信，并且支持各种身份验证机制。SSH先对联机数据包通过加密技术进行加密处理，加密后在进行数据传输。确保了传递的数据安全。</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux基础</a>
         		</li>
       		
 		</ul>
@@ -1553,7 +957,7 @@ docker就会自动下载ubuntu16的镜像了<br>
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/e1b007ae.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/ec679095.html">展开全文 >></a>
       </p>
     
 
@@ -1583,14 +987,14 @@ docker就会自动下载ubuntu16的镜像了<br>
 
 
   
-    <article id="post-Synology安装并实现在linux和win下使用ISCSI存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java多线程几种实现方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/63c06a7a.html" class="archive-article-date">
-  	<time datetime="2020-04-08T06:10:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+        <a href="/posts/d5b482ca.html" class="archive-article-date">
+  	<time datetime="2021-03-19T03:15:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-19</time>
   	
 </a>
         
@@ -1602,7 +1006,7 @@ docker就会自动下载ubuntu16的镜像了<br>
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">801字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -1611,7 +1015,7 @@ docker就会自动下载ubuntu16的镜像了<br>
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">2分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
 </div>
@@ -1628,32 +1032,16 @@ docker就会自动下载ubuntu16的镜像了<br>
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/63c06a7a.html">Synology安装并实现在linux和win下使用ISCSI存储</a>
+      <a class="article-title_code_ant" href="/posts/d5b482ca.html">Java多线程几种实现方式</a>
     </h1>
   
 </p></center>
 
       
-        <h3 id="1、虚拟机安装Synology需要准备的工具">1、虚拟机安装Synology需要准备的工具</h3>
-<ul>
-<li>
-<p>Synology Assistant</p>
-</li>
-<li>
-<p>DSM_DS3615xs_5967.pat</p>
-</li>
-<li>
-<p>XPEnoboot_DS3615xs_5.2-5967.1.iso</p>
-</li>
-</ul>
+        <h4 id="1、继承Thread类">1、继承Thread类</h4>
 <blockquote>
-<p>链接：<a href="https://pan.baidu.com/s/1vU0WDlJV_pxTTt0d02KLKg" target="_blank" rel="noopener">https://pan.baidu.com/s/1vU0WDlJV_pxTTt0d02KLKg</a>  提取码：0sy9<br>
-或者https://download.csdn.net/download/lemon_TT/14945706</p>
+<p>继承类必须重写 run() 方法，该方法是新线程的入口点。它也必须调用 start() 方法才能执行。该方法尽管被列为一种多线程实现方式，但是本质上也是实现了 Runnable 接口的一个实例。</p>
 </blockquote>
-<p>注意DSM和XPEnoboot的版本要一致，如上都是DS3615xs_5967</p>
-<p>XPEnoboot_DS3615xs_5.1-5967.1.iso用于引导镜像</p>
-<p>DSM是系统文件</p>
-<p>Synology Assistant是客户端管理工具</p>
         
       
 
@@ -1690,7 +1078,7 @@ docker就会自动下载ubuntu16的镜像了<br>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">云计算</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
         		</li>
       		
 		</ul>
@@ -1709,7 +1097,7 @@ docker就会自动下载ubuntu16的镜像了<br>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/云计算//" class="article-tag-list-link color4">云计算</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -1718,7 +1106,601 @@ docker就会自动下载ubuntu16的镜像了<br>
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/63c06a7a.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/d5b482ca.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-ElasticSearch7.x学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/803c8798.html" class="archive-article-date">
+  	<time datetime="2021-03-15T11:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-15</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/803c8798.html">ElasticSearch7.x学习笔记</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h2 id="一、简介和下载">一、简介和下载</h2>
+<h4 id="1、windows-es下载安装">1、windows es下载安装</h4>
+<blockquote>
+<p>**Elasticsearch(ES)**是一个基于<a href="https://zh.wikipedia.org/wiki/Lucene" target="_blank" rel="noopener">Lucene</a>库的<a href="https://zh.wikipedia.org/wiki/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E" target="_blank" rel="noopener">搜索引擎</a>。它提供了一个分布式、支持多租户的<a href="https://zh.wikipedia.org/wiki/%E5%85%A8%E6%96%87%E6%AA%A2%E7%B4%A2" target="_blank" rel="noopener">全文搜索</a>引擎，具有<a href="https://zh.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP</a> Web接口和无模式<a href="https://zh.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON</a>文档。Elasticsearch是用<a href="https://zh.wikipedia.org/wiki/Java" target="_blank" rel="noopener">Java</a>开发的，并在<a href="https://zh.wikipedia.org/wiki/Apache%E8%AE%B8%E5%8F%AF%E8%AF%81" target="_blank" rel="noopener">Apache许可证</a>下作为开源软件发布。Elasticsearch可以用于搜索各种文档。它提供可扩展的搜索，具有接近实时的搜索，并支持多租户。</p>
+</blockquote>
+<p><a href="https://elasticsearch.cn/download/" target="_blank" rel="noopener">Elasticsearch下载地址</a></p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/803c8798.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-SpringBoot日志总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/ece49569.html" class="archive-article-date">
+  	<time datetime="2021-03-15T11:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-15</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/ece49569.html">SpringBoot日志总结</a>
+    </h1>
+  
+</p></center>
+
+      
+        <p>在开发中，我们经常使用 <code>System.out.println()</code> 来打印一些信息，但是这样不好，因为大量的使用 <code>System.out</code> 会增加资源的消耗，而且部署在Linux上时只能通过日志来查看输出。我们实际项目中使用的是 <code>slf4j</code> 的 <code>logback</code> 来输出日志,<code>slf4j+logback</code>也是springboot的默认日志框架，当然<code>logback</code>也可以换成性能更好的<code>log4j2</code>框架。</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/ece49569.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-SpringBoot异步、邮件、定时任务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/87f335be.html" class="archive-article-date">
+  	<time datetime="2021-03-15T11:07:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-15</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">812字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/87f335be.html">SpringBoot异步、邮件、定时任务</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h2 id="一、异步任务">一、异步任务</h2>
+<p>首先在service服务类上添加注解<code>@Async</code>，然后在Application启动类上添加<code>@EnableAsync</code>注解即可</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/87f335be.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-spring整合POI及EasyExcel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/d48f4301.html" class="archive-article-date">
+  	<time datetime="2021-03-15T09:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-15</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/d48f4301.html">spring整合POI及EasyExcel</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h3 id="1、POI与EasyExcel介绍">1、POI与EasyExcel介绍</h3>
+<p>Apache POI官网: <a href="https://poi.apache.org/" target="_blank" rel="noopener">https://poi.apache.org/</a></p>
+<blockquote>
+<p>Apache POI 简介是用Java编写的免费开源的跨平台的 Java API，Apache POI提供API给Java程式对Microsoft Office（Excel、WORD、PowerPoint、Visio等）格式档案读和写的功能。</p>
+</blockquote>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/d48f4301.html">展开全文 >></a>
       </p>
     
 
@@ -1750,7 +1732,7 @@ docker就会自动下载ubuntu16的镜像了<br>
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
     </nav>
   
 
@@ -1764,7 +1746,7 @@ docker就会自动下载ubuntu16的镜像了<br>
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020-2021
+                &copy; 2020-2022
             
             Shawn
         </div>
@@ -1892,47 +1874,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lombok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1948,27 +1894,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IP解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1976,51 +1902,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二维码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java8</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">POI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2036,19 +1918,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
             
             <div class="clearfix"></div>

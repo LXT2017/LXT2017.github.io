@@ -39,9 +39,9 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2cf8c010ac6a4292aa7d83068b5e0fa8.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/e49acb62ac5e4d68867b20c962dde14b.png#pic_center">
 <meta property="article:published_time" content="2021-10-24T03:25:12.000Z">
-<meta property="article:modified_time" content="2021-10-24T03:30:06.429Z">
+<meta property="article:modified_time" content="2021-11-25T08:57:43.143Z">
 <meta property="article:author" content="Shawn">
-<meta property="article:tag" content="RabbitMQ">
+<meta property="article:tag" content="中间件">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/46fec18887ec4fd7b76b32e6b8eb8eef.png#pic_center">
   
@@ -141,7 +141,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：62
+			总文章数：88
 		</ul>
 		
 		<nav class="header-nav">
@@ -288,7 +288,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">11.4k字</span>
+        <span class="post-count">11.6k字</span>
       </span>
     </span>
 
@@ -297,7 +297,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">49分</span>
+        <span class="post-count">50分</span>
       </span>
     </span>
 </div>
@@ -661,6 +661,13 @@ SIMPLE值经测试有两种效果，其一效果和CORRELATED值一样会触发�
 <li>try+catch+手动ack</li>
 <li>try+catch+手动ack+死信队列处理</li>
 </ul>
+<h2 id="7、序列化和反序列化">7、序列化和反序列化</h2>
+<p>传输bean对象时可能会出现list无法传输，有两种方案</p>
+<ul>
+<li>始终转换推断类型converter.setAlwaysConvertToInferredType(true);</li>
+<li>将 spring-amqp 升级到 2.2.13.RELEASE 或以上</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Shawn</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021年11月25日15:35</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RabbitMQConfig</span> <span class="keyword">implements</span> <span class="title">RabbitListenerConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以将json串反序列化为对象</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureRabbitListeners</span><span class="params">(RabbitListenerEndpointRegistrar rabbitListenerEndpointRegistrar)</span> </span>&#123;</span><br><span class="line">        rabbitListenerEndpointRegistrar.setMessageHandlerMethodFactory(messageHandlerMethodFactory());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">MessageHandlerMethodFactory <span class="title">messageHandlerMethodFactory</span><span class="params">()</span></span>&#123;</span><br><span class="line">        DefaultMessageHandlerMethodFactory messageHandlerMethodFactory = <span class="keyword">new</span> DefaultMessageHandlerMethodFactory();</span><br><span class="line">        messageHandlerMethodFactory.setMessageConverter(mappingJackson2MessageConverter());</span><br><span class="line">        <span class="keyword">return</span> messageHandlerMethodFactory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MappingJackson2MessageConverter <span class="title">mappingJackson2MessageConverter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  <span class="keyword">new</span> MappingJackson2MessageConverter();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 提供自定义RabbitTemplate,将对象序列化为json串</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RabbitTemplate <span class="title">jacksonRabbitTemplate</span><span class="params">(ConnectionFactory connectionFactory)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        RabbitTemplate rabbitTemplate = <span class="keyword">new</span> RabbitTemplate(connectionFactory);</span><br><span class="line">        Jackson2JsonMessageConverter jackson2JsonMessageConverter = <span class="keyword">new</span> Jackson2JsonMessageConverter();</span><br><span class="line">        jackson2JsonMessageConverter.setAlwaysConvertToInferredType(<span class="keyword">true</span>);</span><br><span class="line">        rabbitTemplate.setMessageConverter(jackson2JsonMessageConverter);</span><br><span class="line">        <span class="keyword">return</span> rabbitTemplate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1>五、RabbitMQ内存磁盘的监控</h1>
 <h2 id="1、概述-v6">1、概述</h2>
 <p>​	把消息默认放在内存中是为了加快传输和消费的速度，存入磁盘是保证消息数据的持久化。</p>
@@ -840,7 +847,7 @@ SIMPLE值经测试有两种效果，其一效果和CORRELATED值一样会触发�
     2021-10-24
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-10-24
+    2021-11-25
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/d439760d.html" title="RabbitMQ学习笔记" target="_blank">RabbitMQ学习笔记</a>
@@ -870,7 +877,7 @@ SIMPLE值经测试有两种效果，其一效果和CORRELATED值一样会触发�
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
         		</li>
       		
 		</ul>
@@ -890,10 +897,6 @@ SIMPLE值经测试有两种效果，其一效果和CORRELATED值一样会触发�
 			 
         		<li class="article-tag-list-item">
         			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java/中间件//" class="article-tag-list-link color4">中间件</a>
         		</li>
       		
 		</ul>
@@ -1000,7 +1003,7 @@ SIMPLE值经测试有两种效果，其一效果和CORRELATED值一样会触发�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、中间件概述"><span class="toc-number">1.1.</span> <span class="toc-text">1、中间件概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、消息中间件概述"><span class="toc-number">1.2.</span> <span class="toc-text">2、消息中间件概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、应用场景"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、核心组成部分"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、核心组成部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、其他"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、其他</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">二、RabbitMQ安装与入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、概述-v2"><span class="toc-number">2.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、RabbitMQ安装"><span class="toc-number">2.2.</span> <span class="toc-text">2、RabbitMQ安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、环境准备"><span class="toc-number">2.2.1.</span> <span class="toc-text">1、环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Erlang安装"><span class="toc-number">2.2.2.</span> <span class="toc-text">2、Erlang安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、RabbitMQ安装"><span class="toc-number">2.2.3.</span> <span class="toc-text">3、RabbitMQ安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、RabbitMQ运行"><span class="toc-number">2.2.4.</span> <span class="toc-text">4、RabbitMQ运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、MQ的相关端口"><span class="toc-number">2.2.5.</span> <span class="toc-text">5、MQ的相关端口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、RabbitMQWeb管理界面及授权操作"><span class="toc-number">2.3.</span> <span class="toc-text">3、RabbitMQWeb管理界面及授权操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、RabbitMQ管理界面安装"><span class="toc-number">2.3.1.</span> <span class="toc-text">1、RabbitMQ管理界面安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、授权账号和密码"><span class="toc-number">2.3.2.</span> <span class="toc-text">2、授权账号和密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Docker安装RabbitMQ"><span class="toc-number">2.4.</span> <span class="toc-text">4、Docker安装RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Docker安装"><span class="toc-number">2.4.1.</span> <span class="toc-text">1、Docker安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、docker相关命令"><span class="toc-number">2.4.2.</span> <span class="toc-text">2、docker相关命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、RabbitMQ安装运行"><span class="toc-number">2.4.3.</span> <span class="toc-text">3、RabbitMQ安装运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、RabbitMQ角色介绍"><span class="toc-number">2.5.</span> <span class="toc-text">5、RabbitMQ角色介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、none"><span class="toc-number">2.5.1.</span> <span class="toc-text">1、none</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、management：查看自己相关节点信息"><span class="toc-number">2.5.2.</span> <span class="toc-text">2、management：查看自己相关节点信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、Policymaker"><span class="toc-number">2.5.3.</span> <span class="toc-text">3、Policymaker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、Monitoring"><span class="toc-number">2.5.4.</span> <span class="toc-text">4、Monitoring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、Administrator"><span class="toc-number">2.5.5.</span> <span class="toc-text">5、Administrator</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">三、RabbitMQ入门实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、概述-v3"><span class="toc-number">3.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Simple简单模式"><span class="toc-number">3.2.</span> <span class="toc-text">2、Simple简单模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、代码实现"><span class="toc-number">3.2.1.</span> <span class="toc-text">1、代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Web界面操作"><span class="toc-number">3.2.2.</span> <span class="toc-text">2、Web界面操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、work工作模式"><span class="toc-number">3.3.</span> <span class="toc-text">3、work工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述-v4"><span class="toc-number">3.3.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、代码实现"><span class="toc-number">3.3.2.</span> <span class="toc-text">2、代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、fanout发布订阅模式"><span class="toc-number">3.4.</span> <span class="toc-text">4、fanout发布订阅模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述-v5"><span class="toc-number">3.4.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、代码实现-v2"><span class="toc-number">3.4.2.</span> <span class="toc-text">2、代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、direct路由模式"><span class="toc-number">3.5.</span> <span class="toc-text">5、direct路由模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、topic主题模式"><span class="toc-number">3.6.</span> <span class="toc-text">6、topic主题模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、headers参数模式"><span class="toc-number">3.7.</span> <span class="toc-text">7、headers参数模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">4.</span> <span class="toc-text">四、SPringBoot整合RabbitMQ入门实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、环境准备-v2"><span class="toc-number">4.1.</span> <span class="toc-text">1、环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、fanout模式"><span class="toc-number">4.2.</span> <span class="toc-text">2、fanout模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、创建生产者模块"><span class="toc-number">4.2.1.</span> <span class="toc-text">1、创建生产者模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、创建消费者模块"><span class="toc-number">4.2.2.</span> <span class="toc-text">2、创建消费者模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、direct模式"><span class="toc-number">4.3.</span> <span class="toc-text">3、direct模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、topic模式"><span class="toc-number">4.4.</span> <span class="toc-text">4、topic模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、过期时间ttl和死信队列-★"><span class="toc-number">4.5.</span> <span class="toc-text">5、过期时间ttl和死信队列(★)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、消息确认机制的配置"><span class="toc-number">4.6.</span> <span class="toc-text">6、消息确认机制的配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">5.</span> <span class="toc-text">五、RabbitMQ内存磁盘的监控</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、概述-v6"><span class="toc-number">5.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、RabbitMQ的内存控制"><span class="toc-number">5.2.</span> <span class="toc-text">2、RabbitMQ的内存控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、RabbitMQ的内存换页"><span class="toc-number">5.3.</span> <span class="toc-text">3、RabbitMQ的内存换页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、RabbitMQ的磁盘预警"><span class="toc-number">5.4.</span> <span class="toc-text">4、RabbitMQ的磁盘预警</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">6.</span> <span class="toc-text">六、RabbitMQ高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、消息队列高可用和高可靠"><span class="toc-number">6.1.</span> <span class="toc-text">1、消息队列高可用和高可靠</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、-Master-slave主从共享数据模式"><span class="toc-number">6.1.1.</span> <span class="toc-text">1、 Master-slave主从共享数据模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Master-slave主从同步模式"><span class="toc-number">6.1.2.</span> <span class="toc-text">2、Master- slave主从同步模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、多主集群同步部署模式"><span class="toc-number">6.1.3.</span> <span class="toc-text">3、多主集群同步部署模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、多主集群转发部署模式"><span class="toc-number">6.1.4.</span> <span class="toc-text">4、多主集群转发部署模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、Master-slave与Breoker-cluster组合的方案"><span class="toc-number">6.1.5.</span> <span class="toc-text">5、Master-slave与Breoker-cluster组合的方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、集群搭建"><span class="toc-number">6.2.</span> <span class="toc-text">2、集群搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述-v7"><span class="toc-number">6.2.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、环境准备"><span class="toc-number">6.2.2.</span> <span class="toc-text">2、环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、单机多实例搭建"><span class="toc-number">6.2.3.</span> <span class="toc-text">3、单机多实例搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、其他-v2"><span class="toc-number">6.2.4.</span> <span class="toc-text">4、其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、下单配送分布式高可用实战"><span class="toc-number">6.3.</span> <span class="toc-text">3、下单配送分布式高可用实战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、其他配置详解"><span class="toc-number">6.4.</span> <span class="toc-text">4、其他配置详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、application-yml详解"><span class="toc-number">6.4.1.</span> <span class="toc-text">1、application.yml详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、通过java-bean方式配置"><span class="toc-number">6.4.2.</span> <span class="toc-text">2、通过java bean方式配置</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、中间件概述"><span class="toc-number">1.1.</span> <span class="toc-text">1、中间件概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、消息中间件概述"><span class="toc-number">1.2.</span> <span class="toc-text">2、消息中间件概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、应用场景"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、核心组成部分"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、核心组成部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、其他"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、其他</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">二、RabbitMQ安装与入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、概述-v2"><span class="toc-number">2.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、RabbitMQ安装"><span class="toc-number">2.2.</span> <span class="toc-text">2、RabbitMQ安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、环境准备"><span class="toc-number">2.2.1.</span> <span class="toc-text">1、环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Erlang安装"><span class="toc-number">2.2.2.</span> <span class="toc-text">2、Erlang安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、RabbitMQ安装"><span class="toc-number">2.2.3.</span> <span class="toc-text">3、RabbitMQ安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、RabbitMQ运行"><span class="toc-number">2.2.4.</span> <span class="toc-text">4、RabbitMQ运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、MQ的相关端口"><span class="toc-number">2.2.5.</span> <span class="toc-text">5、MQ的相关端口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、RabbitMQWeb管理界面及授权操作"><span class="toc-number">2.3.</span> <span class="toc-text">3、RabbitMQWeb管理界面及授权操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、RabbitMQ管理界面安装"><span class="toc-number">2.3.1.</span> <span class="toc-text">1、RabbitMQ管理界面安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、授权账号和密码"><span class="toc-number">2.3.2.</span> <span class="toc-text">2、授权账号和密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Docker安装RabbitMQ"><span class="toc-number">2.4.</span> <span class="toc-text">4、Docker安装RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Docker安装"><span class="toc-number">2.4.1.</span> <span class="toc-text">1、Docker安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、docker相关命令"><span class="toc-number">2.4.2.</span> <span class="toc-text">2、docker相关命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、RabbitMQ安装运行"><span class="toc-number">2.4.3.</span> <span class="toc-text">3、RabbitMQ安装运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、RabbitMQ角色介绍"><span class="toc-number">2.5.</span> <span class="toc-text">5、RabbitMQ角色介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、none"><span class="toc-number">2.5.1.</span> <span class="toc-text">1、none</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、management：查看自己相关节点信息"><span class="toc-number">2.5.2.</span> <span class="toc-text">2、management：查看自己相关节点信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、Policymaker"><span class="toc-number">2.5.3.</span> <span class="toc-text">3、Policymaker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、Monitoring"><span class="toc-number">2.5.4.</span> <span class="toc-text">4、Monitoring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、Administrator"><span class="toc-number">2.5.5.</span> <span class="toc-text">5、Administrator</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">三、RabbitMQ入门实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、概述-v3"><span class="toc-number">3.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Simple简单模式"><span class="toc-number">3.2.</span> <span class="toc-text">2、Simple简单模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、代码实现"><span class="toc-number">3.2.1.</span> <span class="toc-text">1、代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Web界面操作"><span class="toc-number">3.2.2.</span> <span class="toc-text">2、Web界面操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、work工作模式"><span class="toc-number">3.3.</span> <span class="toc-text">3、work工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述-v4"><span class="toc-number">3.3.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、代码实现"><span class="toc-number">3.3.2.</span> <span class="toc-text">2、代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、fanout发布订阅模式"><span class="toc-number">3.4.</span> <span class="toc-text">4、fanout发布订阅模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述-v5"><span class="toc-number">3.4.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、代码实现-v2"><span class="toc-number">3.4.2.</span> <span class="toc-text">2、代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、direct路由模式"><span class="toc-number">3.5.</span> <span class="toc-text">5、direct路由模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、topic主题模式"><span class="toc-number">3.6.</span> <span class="toc-text">6、topic主题模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、headers参数模式"><span class="toc-number">3.7.</span> <span class="toc-text">7、headers参数模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">4.</span> <span class="toc-text">四、SPringBoot整合RabbitMQ入门实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、环境准备-v2"><span class="toc-number">4.1.</span> <span class="toc-text">1、环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、fanout模式"><span class="toc-number">4.2.</span> <span class="toc-text">2、fanout模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、创建生产者模块"><span class="toc-number">4.2.1.</span> <span class="toc-text">1、创建生产者模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、创建消费者模块"><span class="toc-number">4.2.2.</span> <span class="toc-text">2、创建消费者模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、direct模式"><span class="toc-number">4.3.</span> <span class="toc-text">3、direct模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、topic模式"><span class="toc-number">4.4.</span> <span class="toc-text">4、topic模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、过期时间ttl和死信队列-★"><span class="toc-number">4.5.</span> <span class="toc-text">5、过期时间ttl和死信队列(★)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、消息确认机制的配置"><span class="toc-number">4.6.</span> <span class="toc-text">6、消息确认机制的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、序列化和反序列化"><span class="toc-number">4.7.</span> <span class="toc-text">7、序列化和反序列化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">5.</span> <span class="toc-text">五、RabbitMQ内存磁盘的监控</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、概述-v6"><span class="toc-number">5.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、RabbitMQ的内存控制"><span class="toc-number">5.2.</span> <span class="toc-text">2、RabbitMQ的内存控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、RabbitMQ的内存换页"><span class="toc-number">5.3.</span> <span class="toc-text">3、RabbitMQ的内存换页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、RabbitMQ的磁盘预警"><span class="toc-number">5.4.</span> <span class="toc-text">4、RabbitMQ的磁盘预警</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">6.</span> <span class="toc-text">六、RabbitMQ高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、消息队列高可用和高可靠"><span class="toc-number">6.1.</span> <span class="toc-text">1、消息队列高可用和高可靠</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、-Master-slave主从共享数据模式"><span class="toc-number">6.1.1.</span> <span class="toc-text">1、 Master-slave主从共享数据模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Master-slave主从同步模式"><span class="toc-number">6.1.2.</span> <span class="toc-text">2、Master- slave主从同步模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、多主集群同步部署模式"><span class="toc-number">6.1.3.</span> <span class="toc-text">3、多主集群同步部署模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、多主集群转发部署模式"><span class="toc-number">6.1.4.</span> <span class="toc-text">4、多主集群转发部署模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、Master-slave与Breoker-cluster组合的方案"><span class="toc-number">6.1.5.</span> <span class="toc-text">5、Master-slave与Breoker-cluster组合的方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、集群搭建"><span class="toc-number">6.2.</span> <span class="toc-text">2、集群搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、概述-v7"><span class="toc-number">6.2.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、环境准备"><span class="toc-number">6.2.2.</span> <span class="toc-text">2、环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、单机多实例搭建"><span class="toc-number">6.2.3.</span> <span class="toc-text">3、单机多实例搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、其他-v2"><span class="toc-number">6.2.4.</span> <span class="toc-text">4、其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、下单配送分布式高可用实战"><span class="toc-number">6.3.</span> <span class="toc-text">3、下单配送分布式高可用实战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、其他配置详解"><span class="toc-number">6.4.</span> <span class="toc-text">4、其他配置详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、application-yml详解"><span class="toc-number">6.4.1.</span> <span class="toc-text">1、application.yml详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、通过java-bean方式配置"><span class="toc-number">6.4.2.</span> <span class="toc-text">2、通过java bean方式配置</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -1053,7 +1056,7 @@ SIMPLE值经测试有两种效果，其一效果和CORRELATED值一样会触发�
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020-2021
+                &copy; 2020-2022
             
             Shawn
         </div>
@@ -1181,47 +1184,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lombok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1237,27 +1204,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IP解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1265,51 +1212,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二维码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java8</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">POI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,19 +1228,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
             
             <div class="clearfix"></div>

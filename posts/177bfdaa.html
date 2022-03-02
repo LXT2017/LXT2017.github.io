@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://www.shawn22.xyz">
   <title>docker学习笔记 | 星星的猫(&gt;^ω^&lt;)喵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、Docker概述 1、Docker历史  更详细的关于Docker历史详见百度百科  Docker 公司起初是一家名为 dotCloud 的平台即服务（Platform-as-a-Service, PaaS）提供商。底层技术上，dotCloud平台利用了 Linux 容器技术。2013年，dotCloud 的 PaaS 业务并不景气，公司需要寻求新的突破。2013 年 3 月，dotCloud">
+  <meta name="description" content="@[TOC] 一、Docker概述 1、Docker历史  更详细的关于Docker历史详见百度百科  Docker 公司起初是一家名为 dotCloud 的平台即服务（Platform-as-a-Service, PaaS）提供商。底层技术上，dotCloud平台利用了 Linux 容器技术。2013年，dotCloud 的 PaaS 业务并不景气，公司需要寻求新的突破。2013 年 3 月，d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker学习笔记">
 <meta property="og:url" content="https://www.shawn22.xyz/posts/177bfdaa.html">
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
-<meta property="og:description" content="一、Docker概述 1、Docker历史  更详细的关于Docker历史详见百度百科  Docker 公司起初是一家名为 dotCloud 的平台即服务（Platform-as-a-Service, PaaS）提供商。底层技术上，dotCloud平台利用了 Linux 容器技术。2013年，dotCloud 的 PaaS 业务并不景气，公司需要寻求新的突破。2013 年 3 月，dotCloud">
+<meta property="og:description" content="@[TOC] 一、Docker概述 1、Docker历史  更详细的关于Docker历史详见百度百科  Docker 公司起初是一家名为 dotCloud 的平台即服务（Platform-as-a-Service, PaaS）提供商。底层技术上，dotCloud平台利用了 Linux 容器技术。2013年，dotCloud 的 PaaS 业务并不景气，公司需要寻求新的突破。2013 年 3 月，d">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210617101257800.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/085c7dc4c3eb49044e133cd8aa2c3517.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210617100810621.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/1f1dee52f056b5fb36118044d13426b4.png">
 <meta property="article:published_time" content="2021-06-17T02:16:39.000Z">
-<meta property="article:modified_time" content="2021-06-17T02:21:17.636Z">
+<meta property="article:modified_time" content="2022-01-11T01:36:07.790Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -134,7 +134,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：62
+			总文章数：88
 		</ul>
 		
 		<nav class="header-nav">
@@ -281,7 +281,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">8.1k字</span>
+        <span class="post-count">8.5k字</span>
       </span>
     </span>
 
@@ -290,7 +290,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">34分</span>
+        <span class="post-count">35分</span>
       </span>
     </span>
 </div>
@@ -313,7 +313,8 @@ var _hmt = _hmt || [];
 </p></center>
 
       
-        <h2 id="一、Docker概述">一、Docker概述</h2>
+        <p>@[TOC]</p>
+<h2 id="一、Docker概述">一、Docker概述</h2>
 <h3 id="1、Docker历史">1、Docker历史</h3>
 <blockquote>
 <p>更详细的关于Docker历史详见<a href="https://baike.baidu.com/item/Docker/13344470?fr=aladdin" target="_blank" rel="noopener">百度百科</a></p>
@@ -356,25 +357,47 @@ Docker Hub官网：<a href="https://hub.docker.com" target="_blank" rel="noopene
 <li>仓库是放了一堆镜像的地方，我们可以把镜像发布到仓库中，需要的时候从仓库中拉下来就可以了。</li>
 </ul>
 <h3 id="2、安装过程">2、安装过程</h3>
-<p>1、官网安装手册：<a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">https://docs.docker.com/engine/install/centos/</a></p>
-<p>2、linux内核推荐3.8及以上，这里我使用了centos8</p>
+<ol>
+<li>
+<p>官网安装手册：<a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">https://docs.docker.com/engine/install/centos/</a></p>
+</li>
+<li>
+<p>linux内核推荐3.8及以上，这里我使用了centos8</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看内核版本</span></span><br><span class="line">uname -r</span><br><span class="line"><span class="comment">#查看系统版本信息</span></span><br><span class="line">cat /etc/os-release</span><br></pre></td></tr></table></figure>
-<p>3、yum安装gcc相关环境</p>
+</li>
+<li>
+<p>yum安装gcc相关环境</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc </span><br><span class="line">yum -y install gcc-c++</span><br></pre></td></tr></table></figure>
-<p>4、卸载旧环境</p>
+</li>
+<li>
+<p>卸载旧环境</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">    docker-client \</span><br><span class="line">    docker-client-latest \</span><br><span class="line">    docker-common \</span><br><span class="line">    docker-latest \</span><br><span class="line">    docker-latest-logrotate \</span><br><span class="line">    docker-logrotate \</span><br><span class="line">    docker-engine</span><br></pre></td></tr></table></figure>
-<p>5、安装需要的软件包</p>
+</li>
+<li>
+<p>安装需要的软件包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
-<p>6、设置仓库镜像</p>
+</li>
+<li>
+<p>设置仓库镜像</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 官方源是国外的，用国内源代替</span></span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-<p>7、更新yum软件包索引</p>
+</li>
+<li>
+<p>更新yum软件包索引</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#centos8使用该命令，其他版本可能会有些许不同</span></span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-<p>8、安装Docker CE（社区版）</p>
+</li>
+<li>
+<p>安装Docker CE（社区版）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
-<p>9、Docker启动、测试</p>
+</li>
+<li>
+<p>Docker启动、测试</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#启动</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">#查看版本信息</span></span><br><span class="line">docker version</span><br><span class="line"><span class="comment">#运行hello-word，在这里因为本地镜像没有会先拉远程镜像然后启动容器，如果没有找到就报错</span></span><br><span class="line">docker run hello-world</span><br><span class="line"><span class="comment">#查看镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p>10、Docker卸载</p>
+</li>
+<li>
+<p>Docker卸载</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先停止docker</span></span><br><span class="line">systemctl stop docker</span><br><span class="line"><span class="comment">#卸载docker</span></span><br><span class="line">yum -y remove docker-ce docker-ce-cli containerd.io</span><br><span class="line"><span class="comment">#删除目录</span></span><br><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h3 id="3、阿里云镜像加速">3、阿里云镜像加速</h3>
 <p>进入阿里云搜索镜像容器服务，选择管理控制台，找到镜像工具下的镜像加速器，找到相应版本的，每个人都有自己的加速器地址</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建目录</span></span><br><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line"><span class="comment">#设置加速</span></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://raw0m61v.mirror.aliyuncs.com"</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"><span class="comment">#重载配置</span></span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line"><span class="comment">#重启</span></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
@@ -394,6 +417,9 @@ Docker Hub官网：<a href="https://hub.docker.com" target="_blank" rel="noopene
 <p><strong>docker rmi</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker rmi -f 镜像id  		<span class="comment">#删除单个</span></span><br><span class="line">docker rmi -f 镜像名:tag 镜像名:tag   <span class="comment">#删除多个</span></span><br><span class="line">docker rmi -f $(docker images -qa)   <span class="comment"># 删除全部</span></span><br></pre></td></tr></table></figure>
 <h3 id="3、容器命令">3、容器命令</h3>
+<blockquote>
+<p><a href="https://docs.docker.com/engine/reference/run/" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/run/</a></p>
+</blockquote>
 <p>==有镜像才能创建容器==</p>
 <p><strong>新建容器并启动</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先拉取一下镜像</span></span><br><span class="line">docker pull centos</span><br><span class="line"><span class="comment"># 命令</span></span><br><span class="line">docker run [OPTIONS] IMAGE [COMMAND][ARG...]</span><br><span class="line"><span class="comment"># 常用参数说明</span></span><br><span class="line">--name=<span class="string">"Name"</span>		<span class="comment"># 给容器指定一个名字</span></span><br><span class="line">-d					<span class="comment"># 后台方式运行容器，并返回容器的id！</span></span><br><span class="line">-i					<span class="comment"># 以交互模式运行容器，通过和 -t 一起使用</span></span><br><span class="line">-t					<span class="comment"># 给容器重新分配一个终端，通常和 -i 一起使用</span></span><br><span class="line">-P					<span class="comment"># 随机端口映射（大写）</span></span><br><span class="line">-p					<span class="comment"># 指定端口映射（小结），一般可以有四种写法</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用centos进行用交互模式启动容器，在容器内执行/bin/bash命令！</span></span><br><span class="line">docker run -it centos /bin/bash</span><br><span class="line"><span class="comment">#退出容器可以使用exit</span></span><br></pre></td></tr></table></figure>
@@ -407,7 +433,26 @@ Docker Hub官网：<a href="https://hub.docker.com" target="_blank" rel="noopene
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器id                  <span class="comment"># 删除指定容器</span></span><br><span class="line">docker rm -f $(docker ps -a -q)  <span class="comment"># 删除所有容器</span></span><br><span class="line">docker ps -a -q|xargs docker rm  <span class="comment"># 删除所有容器</span></span><br></pre></td></tr></table></figure>
 <h3 id="4、常用其他命令">4、常用其他命令</h3>
 <p><strong>后台启动容器</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令</span></span><br><span class="line">docker run -d 容器名</span><br><span class="line"><span class="comment"># 例子</span></span><br><span class="line">docker run -d centos <span class="comment"># 启动centos，使用后台方式启动</span></span><br><span class="line"><span class="comment"># 问题： 使用docker ps 查看，发现容器已经退出了！</span></span><br><span class="line"><span class="comment"># 解释：Docker容器后台运行，就必须有一个前台进程，容器运行的命令如果不是那些一直挂起的命令，就会自动退出。</span></span><br><span class="line"><span class="comment"># 比如，你运行了nginx服务，但是docker前台没有运行应用，这种情况下，容器启动后，会立即自杀，因为他觉得没有程序了，所以最好的情况是，将你的应用使用前台进程的方式运行启动。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令</span></span><br><span class="line">docker run -d 容器名</span><br><span class="line"><span class="comment"># 例子</span></span><br><span class="line">docker run -d centos <span class="comment"># 启动centos，使用后台方式启动</span></span><br><span class="line"><span class="comment"># 问题： 使用docker ps 查看，发现容器已经退出了！</span></span><br><span class="line"><span class="comment"># 解释：Docker容器后台运行，就必须有一个前台进程，容器运行的命令如果不是那些一直挂起的命令，就会自动退出。</span></span><br><span class="line"><span class="comment"># 比如，你运行了nginx服务，但是docker前台没有运行应用，这种情况下，容器启动后，会立即自杀，因为他觉得没有程序了，所以最好的情况是，将你的应用使用前台进程的方式运行启动。</span></span><br><span class="line"><span class="comment">#因为没有后台命令，要启动容器必须使用前台进程启动,同时--rm参数表示如果存在该容器将自动删除</span></span><br><span class="line">docker run -it --rm centos</span><br></pre></td></tr></table></figure>
+<p><strong>容器的重启策略</strong></p>
+<p>Docker容器的重启策略如下：</p>
+<ul>
+<li>no，默认策略，在容器退出时不重启容器</li>
+<li>on-failure，在容器非正常退出时（退出状态非0），才会重启容器</li>
+<li>on-failure:3，在容器非正常退出时重启容器，最多重启3次</li>
+<li>always，在容器退出时总是重启容器</li>
+<li>unless-stopped，在容器退出时总是重启容器，但是不考虑在Docker守护进程启动时就已经停止了的容器</li>
+</ul>
+<p>docker run的退出状态码如下：</p>
+<ul>
+<li>0，表示正常退出</li>
+<li>非0，表示异常退出（退出状态码采用chroot标准）</li>
+<li>125，Docker守护进程本身的错误</li>
+<li>126，容器启动后，要执行的默认命令无法调用</li>
+<li>127，容器启动后，要执行的默认命令不存在</li>
+<li>其他命令状态码，容器启动后正常执行命令，退出命令时该命令的返回状态码作为容器的退出状态码</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#这将以总是的重启策略运行redis容器，这样如果容器退出，Docker将重启它重试10次</span></span><br><span class="line">docker run --restart=on-failure:10 redis</span><br></pre></td></tr></table></figure>
 <p><strong>查看日志</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令</span></span><br><span class="line">docker logs -f -t --tail 容器id</span><br></pre></td></tr></table></figure>
 <p><strong>查看容器中运行的进程信息，支持 ps 命令参数。</strong></p>
@@ -713,7 +758,7 @@ rootfs (root ﬁle system) ，在bootfs之上。包含的就是典型 Linux 系�
     2021-06-17
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-06-17
+    2022-01-11
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/177bfdaa.html" title="docker学习笔记" target="_blank">docker学习笔记</a>
@@ -922,7 +967,7 @@ rootfs (root ﬁle system) ，在bootfs之上。包含的就是典型 Linux 系�
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020-2021
+                &copy; 2020-2022
             
             Shawn
         </div>
@@ -1050,47 +1095,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">服务器Jupyter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">java8时间类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Lombok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ownCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">云计算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1106,27 +1115,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IP解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Centos集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vue-cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1134,51 +1123,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二维码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高并发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java8</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">POI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,19 +1139,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
             
             <div class="clearfix"></div>
