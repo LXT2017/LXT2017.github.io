@@ -522,7 +522,7 @@ body {
     /* background-color:#fff; */
     min-height:100%;
     background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4)), 
-        url('https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/PCbody.jpg') no-repeat 0% 0%/ cover;
+        url('https://pic.shawn22.xyz/background/PCbody.jpg') no-repeat 0% 0%/ cover;
         /*https://s3.ax1x.com/2021/01/18/syBWOU.jpg*/
         /*https://oss.yansheng.xyz/wallpaper/qinshimingyue.jpg*/
     cursor:url('https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.1.6/images/mouse.cur'), default;
@@ -532,7 +532,8 @@ body {
 @media screen and (max-width:800px) {
     body {
 		background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-		url('https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/love.jpg') no-repeat fixed top;
+		url('https://pic.shawn22.xyz/background/love.jpg') no-repeat fixed top;
+		/*url('https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/love.jpg') no-repeat fixed top;*/
     }
 }
 /* 因为超链接默认情况下是：cursor: pointer; 显示为手，这里进行设置 */
@@ -543,7 +544,7 @@ a {
 .left-col {
     /* background:#fff; */
     background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    url('https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/left-col.jpg') no-repeat 0% 20%/ cover;
+    url('https://pic.shawn22.xyz/background/left-col.jpg') no-repeat 0% 20%/ cover;
 /*    https://s3.ax1x.com/2021/01/18/syBql6.jpg*/
     /*http://bucket836.oss-cn-shenzhen.aliyuncs.com/wallpaper/381535373.jpeg*/
     width:300px;
