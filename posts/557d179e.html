@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200830204830239.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200830211916735.png">
 <meta property="article:published_time" content="2020-08-30T13:47:00.000Z">
-<meta property="article:modified_time" content="2022-01-10T11:53:15.934Z">
+<meta property="article:modified_time" content="2022-04-09T03:31:32.924Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
@@ -121,7 +121,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：89
+			总文章数：118
 		</ul>
 		
 		<nav class="header-nav">
@@ -268,7 +268,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4k字</span>
+        <span class="post-count">4.3k字</span>
       </span>
     </span>
 
@@ -277,7 +277,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">16分</span>
+        <span class="post-count">18分</span>
       </span>
     </span>
 </div>
@@ -439,7 +439,7 @@ var _hmt = _hmt || [];
 <p> 参数校验失败会自动引发异常，我们当然不可能再去手动捕捉异常进行处理。但我们又不想手动捕捉这个异常，又要对这个异常进行处理，那正好使用SpringBoot全局异常处理来达到一劳永逸的效果！</p>
 <h2 id="基本使用">基本使用</h2>
 <p>首先，我们需要新建一个类，在这个类上加上<code>@ControllerAdvice</code>或<code>@RestControllerAdvice</code>注解，这个类就配置成全局处理类了。（这个根据你的Controller层用的是<code>@Controller</code>还是<code>@RestController</code>来决定） 然后在类中新建方法，在方法上加上<code>@ExceptionHandler</code>注解并指定你想处理的异常类型，接着在方法内编写对该异常的操作逻辑，就完成了对该异常的全局处理！我们现在就来演示一下对参数校验失败抛出的<code>MethodArgumentNotValidException</code>全局处理：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.csdn.demo1.global;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.validation.ObjectError;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.MethodArgumentNotValidException;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestControllerAdvice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionControllerAdvice</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(MethodArgumentNotValidException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    @<span class="title">ResponseStatus</span>(<span class="title">HttpStatus</span>.<span class="title">BAD_REQUEST</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">String</span> <span class="title">MethodArgumentNotValidExceptionHandler</span>(<span class="title">MethodArgumentNotValidException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 从异常对象中拿到ObjectError对象</span></span><br><span class="line">        ObjectError objectError = e.getBindingResult().getAllErrors().get(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 然后提取错误提示信息进行返回</span></span><br><span class="line">        <span class="keyword">return</span> objectError.getDefaultMessage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.csdn.demo1.global;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.validation.ObjectError;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.MethodArgumentNotValidException;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestControllerAdvice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionControllerAdvice</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(MethodArgumentNotValidException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    @<span class="title">ResponseStatus</span>(<span class="title">HttpStatus</span>.<span class="title">BAD_REQUEST</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">String</span> <span class="title">MethodArgumentNotValidExceptionHandler</span>(<span class="title">MethodArgumentNotValidException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 从异常对象中拿到ObjectError对象</span></span><br><span class="line">        ObjectError objectError = e.getBindingResult().getAllErrors().get(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 然后提取错误提示信息进行返回</span></span><br><span class="line">        <span class="keyword">return</span> objectError.getDefaultMessage();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 系统异常 预期以外异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(Exception<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    @<span class="title">ResponseStatus</span>(<span class="title">value</span> </span>= HttpStatus.INTERNAL_SERVER_ERROR)</span><br><span class="line">    <span class="keyword">public</span> ResultVO&lt;?&gt; handleUnexpectedServer(Exception ex) &#123;</span><br><span class="line">        log.error(<span class="string">"系统异常："</span>, ex);</span><br><span class="line">        <span class="comment">// GlobalMsgEnum.ERROR是我自己定义的枚举类</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResultVO&lt;&gt;(GlobalMsgEnum.ERROR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 所以异常的拦截</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(Throwable<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    @<span class="title">ResponseStatus</span>(<span class="title">value</span> </span>= HttpStatus.INTERNAL_SERVER_ERROR)</span><br><span class="line">    <span class="keyword">public</span> ResultVO&lt;?&gt; exception(Throwable ex) &#123;</span><br><span class="line">        log.error(<span class="string">"系统异常："</span>, ex);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResultVO&lt;&gt;(GlobalMsgEnum.ERROR);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 我们再次进行测试，这次返回的就是我们制定的错误提示信息！我们通过全局异常处理优雅的实现了我们想要的功能！以后我们再想写接口参数校验，就只需要在入参的成员变量上加上Validator校验规则注解，然后在参数上加上@Valid注解即可完成校验，校验失败会自动返回错误提示信息，无需任何其他代码！<br>
 <img src="https://img-blog.csdnimg.cn/20200830204830239.png" alt="在这里插入图片描述"></p>
 <h2 id="自定义异常">自定义异常</h2>
@@ -466,6 +466,8 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/getUser"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultVO&lt;User&gt; <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        User user = <span class="keyword">new</span> User();</span><br><span class="line">        user.setId(<span class="number">1L</span>);</span><br><span class="line">        user.setAccount(<span class="string">"12345678"</span>);</span><br><span class="line">        user.setPassword(<span class="string">"12345678"</span>);</span><br><span class="line">        user.setEmail(<span class="string">"123@qq.com"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResultVO&lt;&gt;(user);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p> 经过测试，这样响应码和响应信息只能是枚举规定的那几个，就真正做到了响应数据格式、响应码和响应信息规范化、统一化！<br>
 <img src="https://img-blog.csdnimg.cn/20200830211916735.png" alt="在这里插入图片描述"></p>
+<p>还有一种全局返回类如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Msg</span> </span>&#123;</span><br><span class="line">    <span class="comment">//状态码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</span><br><span class="line">    <span class="comment">//提示信息</span></span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line">    <span class="comment">//用户返回给浏览器的数据</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String,Object&gt; data = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Msg <span class="title">success</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Msg result = <span class="keyword">new</span> Msg();</span><br><span class="line">        result.setCode(<span class="number">200</span>);</span><br><span class="line">        result.setMsg(<span class="string">"请求成功！"</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Msg <span class="title">fail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Msg result = <span class="keyword">new</span> Msg();</span><br><span class="line">        result.setCode(<span class="number">400</span>);</span><br><span class="line">        result.setMsg(<span class="string">"请求失败！"</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Msg <span class="title">fail</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        Msg result = <span class="keyword">new</span> Msg();</span><br><span class="line">        result.setCode(<span class="number">400</span>);</span><br><span class="line">        result.setMsg(msg);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Msg</span><span class="params">(ReturnResult returnResult)</span></span>&#123;</span><br><span class="line">        code = returnResult.getCode();</span><br><span class="line">        msg = returnResult.getMsg();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Msg <span class="title">add</span><span class="params">(String key,Object value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.getData().put(key, value);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1>六、全局处理响应数据(可选择)</h1>
 <p> 接口返回统一响应体 + 异常也返回统一响应体，其实这样已经很好了，但还是有可以优化的地方。要知道一个项目下来定义的接口搞个几百个太正常不过了，要是每一个接口返回数据时都要用响应体来包装一下好像有点麻烦，有没有办法省去这个包装过程呢？当然是有的，还是要用到全局处理。但是为了扩展性，就是允许绕过数据统一响应（这样就可以提供多方使用），我们可以自定义注解，利用注解来选择是否进行全局响应包装。<br>
  首先创建自定义注解，作用相当于全局处理类开关：</p>
@@ -481,6 +483,14 @@ var _hmt = _hmt || [];
 <li>通过全局异常处理 + 自定义异常完成了异常操作的规范</li>
 <li>通过数据统一响应完成了响应数据的规范</li>
 <li>多个方面组装非常优雅的完成了后端接口的协调，让开发人员有更多的经历注重业务逻辑代码，轻松构建后端接口</li>
+</ul>
+<p>这里再说几点</p>
+<ul>
+<li>controller做好try-catch工作，及时捕获异常，可以再次抛出到全局，统一格式返回前端</li>
+<li>做好日志系统，关键位置一定要有日志</li>
+<li>做好全局统一返回类，整个项目规范好定义好</li>
+<li>controller入参字段可以抽象出一个公共基类，在此基础上进行继承扩充</li>
+<li>controller层做好入参参数校验</li>
 </ul>
 <hr>
 <p><a href="https://github.com/RudeCrab/rude-java/blob/master/project-practice/validation-and-exception-handler/validation-and-exception-handler.md" target="_blank" rel="noopener">参考文章</a></p>
@@ -546,7 +556,7 @@ var _hmt = _hmt || [];
     2020-08-30
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-01-10
+    2022-04-09
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/557d179e.html" title="SpringBoot后端接口规范" target="_blank">SpringBoot后端接口规范</a>
@@ -871,10 +881,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
@@ -908,10 +914,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -964,6 +966,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ROS</a>
               </li>
             
             <div class="clearfix"></div>

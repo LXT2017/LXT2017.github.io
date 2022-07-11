@@ -16,7 +16,7 @@
 <meta property="og:description" content="1、Linux日志介绍 Linux日志文件包括以下三种类型   内核及系统日志 这种日志数据由系统服务syslog统一管理，根据其主配置文件&#x2F;etc&#x2F;syslog.conf中的设置决定将内核消息及各种系统程序消息记录到什么位置。系统中有相当一部分程序会把自己的日志文件交由syslog管理，因而这些程序使用的日志记录也具有相似的格式。   用户日志 这种日志数据用于记录Linux系统用户登录及退出系">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-04T05:19:23.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:26:29.608Z">
+<meta property="article:modified_time" content="2022-04-14T06:49:02.071Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：89
+			总文章数：118
 		</ul>
 		
 		<nav class="header-nav">
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.1k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -342,7 +342,7 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="5、查看相关文件实例">5、查看相关文件实例</h2>
 <p>​	一般来说，是查看Linux查看<code>/var/log/wtmp</code>或者<code>/var/log/lastlog</code>文件查看可疑IP登陆，然后查看<code>/var/log/secure</code>文件寻找可疑IP登陆次数；对于系统问题，查看<code>/var/log/messages</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#取2020-11-11开始最近的十条登录事件</span></span><br><span class="line">last -s 2020-11-11 -n 10</span><br><span class="line"><span class="comment">#查看各个用户的登录情况</span></span><br><span class="line">lastlog</span><br><span class="line"><span class="comment">#查看secure文件的倒数100行</span></span><br><span class="line">cat secure | tail -n 100</span><br><span class="line"><span class="comment">#查看当前设备数</span></span><br><span class="line">ls /dev/pt*</span><br><span class="line"><span class="comment">#同一个用户开启多个终端，可以在不同终端打印</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span> &gt; /dev/pts/2</span><br><span class="line"><span class="comment">#可以查看进程是当前哪个终端连接</span></span><br><span class="line">ps -aux | grep [进程名]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#取2020-11-11开始最近的十条登录事件</span></span><br><span class="line">last -s 2020-11-11 -n 10</span><br><span class="line"><span class="comment">#查看各个用户的登录情况</span></span><br><span class="line">lastlog</span><br><span class="line"><span class="comment">#查看secure文件的倒数100行</span></span><br><span class="line">cat secure | tail -n 100</span><br><span class="line"><span class="comment">#查看当前设备数</span></span><br><span class="line">ls /dev/pt*</span><br><span class="line"><span class="comment">#同一个用户开启多个终端，可以在不同终端打印</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span> &gt; /dev/pts/2</span><br><span class="line"><span class="comment">#可以查看进程是当前哪个终端连接</span></span><br><span class="line">ps -aux | grep [进程名]</span><br><span class="line"></span><br><span class="line"><span class="comment">#-------安全相关--------</span></span><br><span class="line"><span class="comment">#如果发现自己服务器异常，要检查一下自己的.ssh/authorized_keys中是否异常，其次查看相应日志</span></span><br><span class="line"><span class="comment">#尝试IP和尝试的用户名</span></span><br><span class="line">cat /var/<span class="built_in">log</span>/auth.log | grep <span class="string">'Invalid'</span> | awk <span class="string">'&#123;print $10 "\t" $8&#125;'</span> | sort</span><br><span class="line"><span class="comment">#用户名次数统计</span></span><br><span class="line">cat /var/<span class="built_in">log</span>/auth.log | grep <span class="string">'Invalid'</span> | awk <span class="string">'&#123;print $8&#125;'</span> | sort | uniq -c | sort -bn</span><br></pre></td></tr></table></figure>
 <h2 id="6、linux中log文件夹各个log文件内容">6、linux中log文件夹各个log文件内容</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/var/<span class="built_in">log</span>/messages <span class="comment">#包括整体系统信息，其中也包含系统启动期间的日志。此外，mail，cron，daemon，kern和auth等内容也记录在var/log/messages日志中。</span></span><br><span class="line">/var/<span class="built_in">log</span>/dmesg <span class="comment"># 包含内核缓冲信息（kernel ring buffer）。在系统启动时，会在屏幕上显示许多与硬件有关的信息。可以用dmesg查看它们。</span></span><br><span class="line">/var/<span class="built_in">log</span>/auth.log <span class="comment"># 包含系统授权信息，包括用户登录和使用的权限机制等。</span></span><br><span class="line">/var/<span class="built_in">log</span>/boot.log <span class="comment"># 包含系统启动时的日志。</span></span><br><span class="line">/var/<span class="built_in">log</span>/daemon.log <span class="comment"># 包含各种系统后台守护进程日志信息。</span></span><br><span class="line">/var/<span class="built_in">log</span>/dpkg.log <span class="comment">#包括安装或dpkg命令清除软件包的日志。</span></span><br><span class="line">/var/<span class="built_in">log</span>/kern.log <span class="comment">#包含内核产生的日志，有助于在定制内核时解决问题。</span></span><br><span class="line">/var/<span class="built_in">log</span>/lastlog <span class="comment">#记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。</span></span><br><span class="line">/var/<span class="built_in">log</span>/maillog /var/<span class="built_in">log</span>/mail.log <span class="comment">#包含来着系统运行电子邮件服务器的日志信息。例如，sendmail日志信息就全部送到这个文件中。</span></span><br><span class="line">/var/<span class="built_in">log</span>/user.log <span class="comment">#记录所有等级用户信息的日志。</span></span><br><span class="line">/var/<span class="built_in">log</span>/Xorg.x.log <span class="comment">#来自X的日志信息。</span></span><br><span class="line">/var/<span class="built_in">log</span>/alternatives.log <span class="comment">#更新替代信息都记录在这个文件中。</span></span><br><span class="line">/var/<span class="built_in">log</span>/btmp <span class="comment">#记录所有失败登录信息。使用last命令可以查看btmp文件。例如，”last -f /var/log/btmp | more“。</span></span><br><span class="line">/var/<span class="built_in">log</span>/cups <span class="comment">#涉及所有打印信息的日志。</span></span><br><span class="line">/var/<span class="built_in">log</span>/anaconda.log <span class="comment">#在安装Linux时，所有安装信息都储存在这个文件中。</span></span><br><span class="line">/var/<span class="built_in">log</span>/yum.log <span class="comment">#包含使用yum安装的软件包信息。</span></span><br><span class="line">/var/<span class="built_in">log</span>/cron <span class="comment">#每当cron进程开始一个工作时，就会将相关信息记录在这个文件中。</span></span><br><span class="line">/var/<span class="built_in">log</span>/secure <span class="comment">#包含验证和授权方面信息。例如，sshd会将所有信息记录（其中包括失败登录）在这里。</span></span><br><span class="line">/var/<span class="built_in">log</span>/wtmp或/var/<span class="built_in">log</span>/utmp <span class="comment">#包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。</span></span><br><span class="line">/var/<span class="built_in">log</span>/faillog <span class="comment">#包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。除了上述Log文件以外，</span></span><br><span class="line">---------------------------------------</span><br><span class="line"><span class="comment">#/var/log还基于系统的具体应用包含以下一些子目录：</span></span><br><span class="line">----------------------------------------</span><br><span class="line">/var/<span class="built_in">log</span>/httpd/或/var/<span class="built_in">log</span>/apache2 <span class="comment">#包含服务器access_log和error_log信息。</span></span><br><span class="line">/var/<span class="built_in">log</span>/lighttpd/ <span class="comment">#包含light HTTPD的access_log和error_log。</span></span><br><span class="line">/var/<span class="built_in">log</span>/mail/ <span class="comment">#这个子目录包含邮件服务器的额外日志。</span></span><br><span class="line">/var/<span class="built_in">log</span>/prelink/ <span class="comment">#包含.so文件被prelink修改的信息。</span></span><br><span class="line">/var/<span class="built_in">log</span>/audit/ <span class="comment">#包含被 Linux audit daemon储存的信息。</span></span><br><span class="line">/var/<span class="built_in">log</span>/samba/ <span class="comment">#包含由samba存储的信息。</span></span><br><span class="line">/var/<span class="built_in">log</span>/sa/ <span class="comment">#包含每日由sysstat软件包收集的sar文件。</span></span><br><span class="line">/var/<span class="built_in">log</span>/sssd/ <span class="comment">#用于守护进程安全服务。</span></span><br></pre></td></tr></table></figure>
 <hr>
@@ -412,7 +412,7 @@ var _hmt = _hmt || [];
     2021-11-04
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2022-04-14
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/955628de.html" title="Linux日志系统初探" target="_blank">Linux日志系统初探</a>
@@ -737,10 +737,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
@@ -774,10 +770,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,6 +822,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ROS</a>
               </li>
             
             <div class="clearfix"></div>

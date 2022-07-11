@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、SSH介绍 SSH是Secure Shell Protocol的简写，用于加密两台计算机之间的通信，并且支持各种身份验证机制。SSH先对联机数据包通过加密技术进行加密处理，加密后在进行数据传输。确保了传递的数据安全。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-26T11:19:37.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:31:30.670Z">
+<meta property="article:modified_time" content="2022-05-12T11:37:23.296Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：89
+			总文章数：118
 		</ul>
 		
 		<nav class="header-nav">
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.7k字</span>
+        <span class="post-count">2.9k字</span>
       </span>
     </span>
 
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">9分</span>
+        <span class="post-count">11分</span>
       </span>
     </span>
 </div>
@@ -369,11 +369,18 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接</span></span><br><span class="line">sftp username@hostname</span><br><span class="line"><span class="comment"># 本地文件传输到远程主机。</span></span><br><span class="line">put localfile</span><br><span class="line"><span class="comment"># 远程文件传输到本地。</span></span><br><span class="line">get remotefile</span><br></pre></td></tr></table></figure>
 <h3 id="3、rsync-命令">3、rsync 命令</h3>
 <p>rsync 是一个常用的 Linux 应用程序，用于文件同步。</p>
+<h2 id="五、其他">五、其他</h2>
+<h3 id="1、ssh登录显示系统配置信息">1、ssh登录显示系统配置信息</h3>
+<p>比如以下信息，显示登录的时间，显示当前进程数，IP，内存，硬盘等一些使用情况，还能知道上次登录的时间以及IP</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-47-generic x86_64)</span><br><span class="line">  - Documentation:  [https://help.ubuntu.com](https://help.ubuntu.com)</span><br><span class="line">  - Management:     [https://landscape.canonical.com](https://landscape.canonical.com)</span><br><span class="line">  - Support:        [https://ubuntu.com/advantage](https://ubuntu.com/advantage)</span><br><span class="line">  </span><br><span class="line">      System information as of Wed 11 May 2022 10:12:28 AM CST</span><br><span class="line">      </span><br><span class="line">      System load:                      0.29</span><br><span class="line">      Usage of /:                       32.2% of 78.62GB</span><br><span class="line">      Memory usage:                     33%</span><br><span class="line">      Swap usage:                       0%</span><br><span class="line">      Processes:                        148</span><br><span class="line">      Users logged <span class="keyword">in</span>:                  0</span><br><span class="line">      IPv4 address <span class="keyword">for</span> br-2aa214d6db7a: 172.27.0.1</span><br><span class="line">      IPv4 address <span class="keyword">for</span> br-3801d35d4bc6: 172.18.0.1</span><br><span class="line">      IPv4 address <span class="keyword">for</span> br-90313e36abad: 172.24.0.1</span><br><span class="line">      IPv4 address <span class="keyword">for</span> docker0:         172.17.0.1</span><br><span class="line">      IPv4 address <span class="keyword">for</span> eth0:            172.26.4.1</span><br><span class="line"></span><br><span class="line">Welcome to Alibaba Cloud Elastic Compute Service !</span><br><span class="line"></span><br><span class="line">Last login: Wed May 11 10:09:36 2022 from 221.13.170.101</span><br></pre></td></tr></table></figure>
+<p>安装也很简单，执行命令即可，也可以进入<a href="https://pkgs.org/download/landscape-common" target="_blank" rel="noopener">landscape-common下载页</a>手动安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install landscape-common</span><br></pre></td></tr></table></figure>
 <hr>
 <p>参考文章:</p>
 <p><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html</a></p>
 <p><a href="https://wangdoc.com/ssh/port-forwarding.html" target="_blank" rel="noopener">https://wangdoc.com/ssh/port-forwarding.html</a></p>
 <p><a href="https://abcdabcd987.com/ssh/" target="_blank" rel="noopener">https://abcdabcd987.com/ssh/</a></p>
+<p><a href="https://blog.csdn.net/qq_42877824/article/details/119319811" target="_blank" rel="noopener">ubuntu、debian等Linux系统ssh登陆显示系统信息</a></p>
 
       
 
@@ -436,7 +443,7 @@ var _hmt = _hmt || [];
     2021-03-26
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2022-05-12
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/ec679095.html" title="SSH原理与使用" target="_blank">SSH原理与使用</a>
@@ -592,7 +599,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SSH介绍"><span class="toc-number">1.</span> <span class="toc-text">一、SSH介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、SSH登录"><span class="toc-number">2.</span> <span class="toc-text">二、SSH登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、基本用法"><span class="toc-number">2.1.</span> <span class="toc-text">1、基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、口令登录"><span class="toc-number">2.2.</span> <span class="toc-text">2、口令登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、公钥登录"><span class="toc-number">2.3.</span> <span class="toc-text">3、公钥登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、SSH端口转发"><span class="toc-number">3.</span> <span class="toc-text">三、SSH端口转发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、动态转发"><span class="toc-number">3.1.</span> <span class="toc-text">1、动态转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、本地转发"><span class="toc-number">3.2.</span> <span class="toc-text">2、本地转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、远程端口转发"><span class="toc-number">3.3.</span> <span class="toc-text">3、远程端口转发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、SSH其他命令"><span class="toc-number">4.</span> <span class="toc-text">四、SSH其他命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、scp命令"><span class="toc-number">4.1.</span> <span class="toc-text">1、scp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、sftp-命令"><span class="toc-number">4.2.</span> <span class="toc-text">2、sftp 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、rsync-命令"><span class="toc-number">4.3.</span> <span class="toc-text">3、rsync 命令</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SSH介绍"><span class="toc-number">1.</span> <span class="toc-text">一、SSH介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、SSH登录"><span class="toc-number">2.</span> <span class="toc-text">二、SSH登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、基本用法"><span class="toc-number">2.1.</span> <span class="toc-text">1、基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、口令登录"><span class="toc-number">2.2.</span> <span class="toc-text">2、口令登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、公钥登录"><span class="toc-number">2.3.</span> <span class="toc-text">3、公钥登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、SSH端口转发"><span class="toc-number">3.</span> <span class="toc-text">三、SSH端口转发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、动态转发"><span class="toc-number">3.1.</span> <span class="toc-text">1、动态转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、本地转发"><span class="toc-number">3.2.</span> <span class="toc-text">2、本地转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、远程端口转发"><span class="toc-number">3.3.</span> <span class="toc-text">3、远程端口转发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、SSH其他命令"><span class="toc-number">4.</span> <span class="toc-text">四、SSH其他命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、scp命令"><span class="toc-number">4.1.</span> <span class="toc-text">1、scp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、sftp-命令"><span class="toc-number">4.2.</span> <span class="toc-text">2、sftp 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、rsync-命令"><span class="toc-number">4.3.</span> <span class="toc-text">3、rsync 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、其他"><span class="toc-number">5.</span> <span class="toc-text">五、其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、ssh登录显示系统配置信息"><span class="toc-number">5.1.</span> <span class="toc-text">1、ssh登录显示系统配置信息</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -761,10 +768,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
@@ -798,10 +801,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -854,6 +853,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ROS</a>
               </li>
             
             <div class="clearfix"></div>

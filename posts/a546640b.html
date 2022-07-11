@@ -8,18 +8,21 @@
   <link rel="dns-prefetch" href="https://www.shawn22.xyz">
   <title>Java8异步编程 | 星星的猫(&gt;^ω^&lt;)喵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、引言 参考Java多线程几种实现方式，我们可以很快速的通过new Thread(...).start()开启一个新的线程，但是这样创建线程会有很多坏处：   每次都要新建一个对象，性能差；   建出来的很多个对象是独立的，缺乏统一的管理。如果在代码中无限新建线程会导致这些线程相互竞争，占用过多的系统资源从而导致死机或者 oom ；   缺乏许多功能如定时执行、中断等。   因此Java给我们提">
+  <meta name="description" content="一、引言 参考Java多线程几种实现方式，我们可以很快速的通过new Thread(...).start()开启一个新的线程，但是这样创建线程会有很多坏处：  每次都要新建一个对象，性能差； 建出来的很多个对象是独立的，缺乏统一的管理。如果在代码中无限新建线程会导致这些线程相互竞争，占用过多的系统资源从而导致死机或者 oom； 缺乏许多功能如定时执行、中断等。  因此Java给我们提供好一个十分好">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8异步编程">
 <meta property="og:url" content="https://www.shawn22.xyz/posts/a546640b.html">
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
-<meta property="og:description" content="一、引言 参考Java多线程几种实现方式，我们可以很快速的通过new Thread(...).start()开启一个新的线程，但是这样创建线程会有很多坏处：   每次都要新建一个对象，性能差；   建出来的很多个对象是独立的，缺乏统一的管理。如果在代码中无限新建线程会导致这些线程相互竞争，占用过多的系统资源从而导致死机或者 oom ；   缺乏许多功能如定时执行、中断等。   因此Java给我们提">
+<meta property="og:description" content="一、引言 参考Java多线程几种实现方式，我们可以很快速的通过new Thread(...).start()开启一个新的线程，但是这样创建线程会有很多坏处：  每次都要新建一个对象，性能差； 建出来的很多个对象是独立的，缺乏统一的管理。如果在代码中无限新建线程会导致这些线程相互竞争，占用过多的系统资源从而导致死机或者 oom； 缺乏许多功能如定时执行、中断等。  因此Java给我们提供好一个十分好">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/aa8b48e136e1429cbc2a3fcc9609912b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2614ce803cdc48dd8c17f61c7872e09c.png">
 <meta property="article:published_time" content="2021-11-26T07:38:58.000Z">
-<meta property="article:modified_time" content="2021-12-28T09:57:28.366Z">
+<meta property="article:modified_time" content="2022-05-30T12:33:46.764Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Java基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/aa8b48e136e1429cbc2a3fcc9609912b.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -117,7 +120,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：89
+			总文章数：118
 		</ul>
 		
 		<nav class="header-nav">
@@ -264,7 +267,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.2k字</span>
+        <span class="post-count">5.9k字</span>
       </span>
     </span>
 
@@ -273,7 +276,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">9分</span>
+        <span class="post-count">24分</span>
       </span>
     </span>
 </div>
@@ -299,81 +302,139 @@ var _hmt = _hmt || [];
         <h1>一、引言</h1>
 <p>参考<a href="https://blog.csdn.net/lemon_TT/article/details/115002211" target="_blank" rel="noopener">Java多线程几种实现方式</a>，我们可以很快速的通过<code>new Thread(...).start()</code>开启一个新的线程，但是这样创建线程会有很多坏处：</p>
 <ul>
-<li>
-<p>每次都要新建一个对象，性能差；</p>
-</li>
-<li>
-<p>建出来的很多个对象是独立的，缺乏统一的管理。如果在代码中无限新建线程会导致这些线程相互竞争，占用过多的系统资源从而导致死机或者 <strong>oom</strong> ；</p>
-</li>
-<li>
-<p>缺乏许多功能如定时执行、中断等。</p>
-</li>
+<li>每次都要新建一个对象，性能差；</li>
+<li>建出来的很多个对象是独立的，缺乏统一的管理。如果在代码中无限新建线程会导致这些线程相互竞争，占用过多的系统资源从而导致死机或者 <strong>oom</strong>；</li>
+<li>缺乏许多功能如定时执行、中断等。</li>
 </ul>
-<p>因此Java给我们提供好一个十分好用的工具，那就是<strong>线程池</strong></p>
+<p>因此Java给我们提供好一个十分好用的工具，那就是<strong>线程池</strong>。<strong>线程池</strong>（ThreadPool）是一种基于池化思想管理和使用线程的机制。它是将多个线程预先存储在一个&quot;池子&quot;内，当有任务出现时可以避免重新创建和销毁线程所带来性能开销，只需要从&quot;池子&quot;内取出相应的线程执行对应的任务即可。</p>
 <a id="more"></a>
-<h1>二、Java线程池</h1>
-<h2 id="1、Java线程池概述">1、Java线程池概述</h2>
-<p>Java提供了一个工厂类来构造我们需要的线程池，这个工厂类就是 Executors 。这里主要讲4个创建线程池的方法，即</p>
+<h1>二、Java Executors线程池</h1>
+<h2 id="1、Java-线程池概述">1、Java 线程池概述</h2>
+<p>Java提供了一个工厂类来构造我们需要的线程池，这个工厂类就是 Executors 。这里主要讲6个创建线程池的方法。默认拒绝策略都为<code>AbortPolicy</code>，即丢弃任务并抛出<code>RejectedExecutionException</code>异常</p>
 <ul>
-<li>
-<p>newCachedThreadPool()</p>
-</li>
-<li>
-<p>newFixedThreadPool(int nThreads)</p>
-</li>
-<li>
-<p>newScheduledThreadPool(int corePoolSize)</p>
-</li>
-<li>
-<p>newSingleThreadExecutor()</p>
-</li>
+<li>newCachedThreadPool()</li>
+<li>newFixedThreadPool(int nThreads)</li>
+<li>newScheduledThreadPool(int corePoolSize)</li>
+<li>newSingleThreadExecutor()</li>
+<li>newSingleThreadScheduledExecutor()</li>
+<li>newWorkStealingPool()</li>
 </ul>
 <h2 id="2、newCachedThreadPool">2、newCachedThreadPool()</h2>
-<p>创建缓存线程池。缓存的意思就是这个线程池会<strong>根据需要创建新的线程</strong> ，在有新任务的时候会优先使用先前创建出的线程。线程一旦创建了就一直在这个池子里面了，执行完任务后后续还有任务需要会<strong>重用这个线程</strong> ，若是<strong>线程不够用了再去新建线程</strong> 。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> index = i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每次发布任务前根据奇偶不同等待一段时间，如1s，这样就会创建两个线程</span></span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行任务</span></span><br><span class="line">    cachedThreadPool.execute(() -&gt; System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + index));</span><br></pre></td></tr></table></figure>
-<p>注意这里的线程池是<strong>无限大的</strong> ，并没有规定他的大小</p>
+<p>创建缓存线程池。缓存的意思就是这个线程池会<strong>根据需要创建新的线程</strong>，在有新任务的时候会优先使用先前创建出的线程。线程一旦创建了就一直在这个池子里面了，执行完任务后后续还有任务需要会<strong>重用这个线程</strong>，若是<strong>线程不够用了再去新建线程</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</span><br><span class="line">                                  <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">                                  <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</span><br></pre></td></tr></table></figure>
+<ul>
+<li>corePoolSize = 0</li>
+<li>maximumPoolSize = Integer.MAX_VALUE，即线程数量几乎无限制</li>
+<li>keepAliveTime = 60s，线程空闲 60s 后自动结束</li>
+<li>workQueue 为 SynchronousQueue 同步队列，这个队列类似于一个接力棒，入队出队必须同时传递，因为 CachedThreadPool 线程创建无限制，不会有队列等待，所以使用 SynchronousQueue</li>
+</ul>
+<p>适用场景：<strong>快速处理大量耗时较短的任务</strong>，如 <code>Netty</code> 的 NIO 接受请求时，可使用 <code>CachedThreadPool</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> index = i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每次发布任务前根据奇偶不同等待一段时间，如1s，这样就会创建两个线程</span></span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行任务</span></span><br><span class="line">    executorService.execute(() -&gt; System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + index));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但注意这里的线程池是<strong>无限大的</strong>，并没有规定他的大小</p>
 <h2 id="3、newFixedThreadPool-int-nThreads">3、newFixedThreadPool(int nThreads)</h2>
-<p>创建定长线程池，参数是线程池的大小。也就是说，在同一时间执行的线程数量只能是 nThreads 这么多，这个线程池可以有效的控制最大并发数从而防止占用过多资源。超出的线程会放在线程池的一个<strong>无界队列里等待</strong> 其他线程执行完。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>创建定长线程池，参数是线程池的大小。也就是说，在同一时间执行的线程数量只能是 nThreads 这么多，这个线程池可以有效的控制最大并发数从而防止占用过多资源。超出的线程会放在线程池的一个<strong>无界队列里等待</strong>其他线程执行完。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newFixedThreadPool</span><span class="params">(<span class="keyword">int</span> nThreads)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(nThreads, nThreads,</span><br><span class="line">                                  <span class="number">0L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">                                  <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>corePoolSize 与 maximumPoolSize 相等，即其线程全为核心线程，是一个固定大小的线程池，是其优势；</li>
+<li>keepAliveTime = 0 该参数默认对核心线程无效，而 FixedThreadPool 全部为核心线程；</li>
+<li>workQueue 为 LinkedBlockingQueue（无界阻塞队列），队列最大值为 Integer.MAX_VALUE。如果任务提交速度持续大于任务处理速度，会造成队列大量阻塞。因为队列很大，很有可能在拒绝策略前，内存溢出。是其劣势；</li>
+<li>FixedThreadPool 的任务执行是无序的；</li>
+</ul>
+<p>适用场景：可用于 Web 服务瞬时削峰，但需注意长时间持续高峰情况造成的队列阻塞。</p>
 <h2 id="4、newScheduledThreadPool-int-corePoolSize">4、newScheduledThreadPool(int corePoolSize)</h2>
-<p>第3个坏处线程池的坏处就是缺乏定时执行功能，这个Scheduled代表是支持的，这个线程池也是定长的，参数 corePoolSize 就是线程池的大小，即在空闲状态下要保留在池中的线程数量。而要实现调度需要使用这个线程池的 schedule() 方法</p>
+<p>ScheduledThreadPool创建一个可以执行延迟任务的线程池，同时这个线程池也是定长的，参数 corePoolSize 就是线程池的大小，即在空闲状态下要保留在池中的线程数量。而要实现调度需要使用这个线程池的 schedule() 方法，队列使用了DelayedWorkQueue延迟队列</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(<span class="number">5</span>);</span><br><span class="line"><span class="comment">// 三秒后执行</span></span><br><span class="line">scheduledExecutorService.schedule(() -&gt; System.out.println(Thread.currentThread().getName() + <span class="string">": 我会在3秒后执行。"</span>),</span><br><span class="line">                <span class="number">3</span>, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
 <h2 id="5、newSingleThreadExecutor">5、newSingleThreadExecutor()</h2>
-<p>创建<strong>单线程池</strong> ，只使用<strong>一个线程</strong> 来执行任务。但是它与 <code>newFixedThreadPool(1, threadFactory)</code> 不同，它会<strong>保证创建的这个线程池不会被重新配置为使用其他的线程</strong> ，也就是说这个线程池里的线程始终如一。</p>
+<p>创建<strong>单线程池</strong>，只使用<strong>一个线程</strong>来执行任务。但是它与 <code>newFixedThreadPool(1, threadFactory)</code> 不同，它会<strong>保证创建的这个线程池不会被重新配置为使用其他的线程</strong>，也就是说这个线程池里的线程始终如一，同时可以保证先进先出的执行顺序</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br></pre></td></tr></table></figure>
-<h2 id="6、线程池的关闭">6、线程池的关闭</h2>
+<h2 id="6、newSingleThreadScheduledExecutor">6、newSingleThreadScheduledExecutor()</h2>
+<p>创建一个单线程的可以执行延迟任务的线程池</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ScheduledExecutorService threadPool = Executors.newSingleThreadScheduledExecutor();</span><br><span class="line">System.out.println(<span class="string">"添加任务,时间:"</span> + <span class="keyword">new</span> Date());</span><br><span class="line">threadPool.schedule(() -&gt; &#123;</span><br><span class="line">    System.out.println(<span class="string">"任务被执行,时间:"</span> + <span class="keyword">new</span> Date());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">2</span>, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+<h2 id="7、newWorkStealingPool">7、newWorkStealingPool()</h2>
+<p>创建一个抢占式执行的线程池（任务执行顺序不确定），注意此方法只有在 JDK 1.8+ 版本中才能使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService threadPool = Executors.newWorkStealingPool();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> index = i;</span><br><span class="line">    threadPool.execute(() -&gt; &#123;</span><br><span class="line">        System.out.println(index + <span class="string">" 被执行,线程名:"</span> + Thread.currentThread().getName());</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 确保任务执行完成</span></span><br><span class="line"><span class="keyword">while</span> (!threadPool.isTerminated()) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8、线程池的关闭">8、线程池的关闭</h2>
 <p>线程池启动后需要手动关闭，否则会一直不结束</p>
 <ul>
-<li>
-<p><code>shutdown()</code> : 将线程池状态置成 <code>SHUTDOWN</code>，此时<strong>不再接受新的任务</strong> ，<strong>等待线程池中已有任务执行完成后结束</strong> ；</p>
-</li>
-<li>
-<p><code>shutdownNow()</code> : 将线程池状态置成 <code>SHUTDOWN</code>，将线程池中<strong>所有线程中断</strong> （调用线程的 <code>interrupt()</code> 操作），清空队列，并返回<strong>正在等待执行的任务列表</strong> 。</p>
-</li>
+<li><code>shutdown()</code> : 将线程池状态置成 <code>SHUTDOWN</code>，此时<strong>不再接受新的任务</strong>，<strong>等待线程池中已有任务执行完成后结束</strong>；</li>
+<li><code>shutdownNow()</code> : 将线程池状态置成 <code>SHUTDOWN</code>，将线程池中<strong>所有线程中断</strong>（调用线程的 <code>interrupt()</code> 操作），清空队列，并返回<strong>正在等待执行的任务列表</strong>。</li>
 </ul>
 <p>并且它还提供了查看线程池是否关闭和是否终止的方法，分别为 <code>isShutdown()</code> 和 <code>isTerminated()</code> 。</p>
-<h1>三、几种函数式接口</h1>
+<h1>三、自定义线程池ThreadPoolExecutor</h1>
+<h2 id="1、概述">1、概述</h2>
+<p>阿里巴巴的JAVA开发手册推荐用ThreadPoolExecutor创建线程池，可以规避资源耗尽的风险。因为<code>Executors</code>线程池都不支持自定义拒绝策略。<code>newFixedThreadPool </code>和 <code>newSingleThreadExecutor</code>主要问题是堆积的请求处理队列可能会耗费非常大的内存，甚至 OOM。<code>newCachedThreadPool </code>和 <code>newScheduledThreadPool</code>主要问题是线程数最大数是 <code>Integer.MAX_VALUE</code>，可能会创建数量非常多的线程，甚至 OOM。</p>
+<h2 id="2、自定义线程池参数介绍">2、自定义线程池参数介绍</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                              TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                              BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                              ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                              RejectedExecutionHandler handler)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>corePoolSize</code>：核心线程数，线程池中始终存活的线程数</li>
+<li><code>maximumPoolSize</code>：最大线程数，线程池中允许的最大线程数，当线程池的任务队列满了之后可以创建的最大线程数</li>
+<li><code>keepAliveTime</code>：最大线程数可以存活的时间，当线程中没有任务执行时，最大线程就会销毁一部分，最终保持核心线程数量的线程</li>
+<li><code>unit</code>：keepAliveTime的时间单位，和<code>keepAliveTime</code>配合使用</li>
+<li><code>workQueue</code>：一个阻塞队列，用来存储线程池等待执行的任务，均为线程安全。它一般分为直接提交队列、有界任务队列、无界任务队列、优先任务队列几种
+<ul>
+<li><code>SynchronousQueue</code><strong>(常用)</strong>：直接提交队列。SynchronousQueue没有容量，所以实际上提交的任务不会被添加到任务队列，总是将新任务提交给线程执行，如果没有空闲的线程，则尝试创建新的线程，如果线程数量已经达到最大值（maximumPoolSize），则执行拒绝策略</li>
+<li><code>LinkedBlockingQueue</code><strong>(常用)</strong>：无界的任务队列。当有新的任务来到时，若系统的线程数小于corePoolSize，线程池会创建新的线程执行任务；当系统的线程数量等于corePoolSize后，因为是无界的任务队列，总是能成功将任务添加到任务队列中，所以线程数量不再增加。若任务创建的速度远大于任务处理的速度，无界队列会快速增长，直到内存耗尽。</li>
+<li><code>ArrayBlockingQueue</code>：一个由数组结构组成的有界阻塞队列</li>
+<li><code>PriorityBlockingQueue</code>：一个支持优先级排序的无界阻塞队列</li>
+<li><code>DelayQueue</code>：一个使用优先级队列实现的无界阻塞队列，只有在延迟期满时才能从中提取元素</li>
+<li><code>LinkedTransferQueue</code>：一个由链表结构组成的无界阻塞队列。与SynchronousQueue类似，还含有非阻塞方法</li>
+<li><code>LinkedBlockingDeque</code>：一个由链表结构组成的双向阻塞队列</li>
+</ul>
+</li>
+<li><code>threadFactory</code>：线程工厂，用于创建线程，一般情况下使用默认的，即Executors类的静态方法defaultThreadFactory()；</li>
+<li><code>handler</code>：拒绝策略。当任务太多来不及处理时，如何拒绝任务。系统提供四种，默认策略为 <code>AbortPolicy</code>
+<ul>
+<li><code>DiscardOldestPolicy</code>：丢弃任务队列中最早添加的任务，并尝试提交当前任务</li>
+<li><code>CallerRunsPolicy</code>：调用主线程执行被拒绝的任务，这提供了一种简单的反馈控制机制，将降低新任务的提交速度</li>
+<li><code>DiscardPolicy</code>：默默丢弃无法处理的任务，不予任何处理</li>
+<li><code>AbortPolicy</code>：直接抛出异常，阻止系统正常工作</li>
+</ul>
+</li>
+</ul>
+<p><strong>线程池的执行流程</strong></p>
+<ul>
+<li>当线程数小于核心线程数时，创建线程</li>
+<li>当线程数大于等于核心线程数，且任务队列未满时，将任务放入任务队列</li>
+<li>当线程数大于等于核心线程数，且任务队列已满：若线程数小于最大线程数，创建线程；若线程数等于最大线程数，抛出异常，拒绝任务</li>
+</ul>
+<h2 id="3、自定义线程池demo">3、自定义线程池demo</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadPoolService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        BlockingQueue&lt;Runnable&gt; workQueue = <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class="number">2</span>);</span><br><span class="line">        NameThreadFactory threadFactory = <span class="keyword">new</span> NameThreadFactory();</span><br><span class="line">        RejectedExecutionHandler handler = <span class="keyword">new</span> MyIgnorePolicy();</span><br><span class="line">        <span class="comment">//默认线程工程 Executors.defaultThreadFactory()</span></span><br><span class="line">        <span class="comment">//默认拒绝策略 new ThreadPoolExecutor.AbortPolicy()</span></span><br><span class="line">        ThreadPoolExecutor executor = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">2</span>, <span class="number">4</span>, <span class="number">2000</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">                workQueue, threadFactory,  handler);</span><br><span class="line">        <span class="comment">// 预启动所有核心线程</span></span><br><span class="line">        executor.prestartAllCoreThreads();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">            MyTask task = <span class="keyword">new</span> MyTask(String.valueOf(i));</span><br><span class="line">            executor.execute(task);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//阻塞主线程</span></span><br><span class="line">        System.in.read();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Description:自定义线程名字</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NameThreadFactory</span> <span class="keyword">implements</span> <span class="title">ThreadFactory</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger mThreadNum = <span class="keyword">new</span> AtomicInteger(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(Runnable r)</span> </span>&#123;</span><br><span class="line">            Thread t = <span class="keyword">new</span> Thread(r, <span class="string">"my-thread-"</span> + mThreadNum.getAndIncrement());</span><br><span class="line">            System.out.println(t.getName() + <span class="string">" has been created"</span>);</span><br><span class="line">            <span class="keyword">return</span> t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyIgnorePolicy</span> <span class="keyword">implements</span> <span class="title">RejectedExecutionHandler</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rejectedExecution</span><span class="params">(Runnable r, ThreadPoolExecutor executor)</span> </span>&#123;</span><br><span class="line">            doLog(r, executor);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doLog</span><span class="params">(Runnable r, ThreadPoolExecutor e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 可做日志记录等</span></span><br><span class="line">            System.err.println( r.toString() + <span class="string">" rejected"</span>);</span><br><span class="line">            System.out.println(<span class="string">"completedTaskCount: "</span> + e.getCompletedTaskCount());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyTask</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="keyword">this</span>.toString() + <span class="string">" is running!"</span>);</span><br><span class="line">                <span class="comment">// 让任务执行慢点</span></span><br><span class="line">                Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"MyTask [name="</span> + name + <span class="string">"]"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>四、异步编程函数式接口</h1>
 <h2 id="1、简介">1、简介</h2>
 <p>函数式接口可以参考<a href="https://blog.csdn.net/lemon_TT/article/details/119415154" target="_blank" rel="noopener">java8常用新特性</a>，这里主要介绍几种函数式接口，Callable、Runnable、Future、CompletableFuture和FutureTask</p>
 <h2 id="2、Callable和Runnable异同">2、Callable和Runnable异同</h2>
-<p>两个接口的定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callable</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function">V <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两个接口的定义</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callable</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function">V <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>相同点</strong></p>
 <p>都是接口，都可以编写多线程程序，都可以通过线程池启动线程</p>
 <p><strong>不同点</strong></p>
 <p>Runnable没有返回值，Callable可以返回执行结果，是个泛型；Callable接口的call()方法允许抛出异常；而Runnable接口的run()方法的异常只能在内部消化，不能继续上抛；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Min</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Max</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">        <span class="meta">@SneakyThrows</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> Min());</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> Max());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3、Future类">3、Future类</h2>
+<h3 id="3-1-future介绍">3.1 future介绍</h3>
+<blockquote>
+<p>Future是Java5新加的一个接口，它提供了一种异步并行计算的功能。如果主线程需要执行一个很耗时的计算任务，我们就可以通过future把这个任务放到异步线程中执行。主线程继续处理其他任务，处理完成后，再通过Future获取计算结果</p>
+</blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Since:1.5</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">//取消任务的执行,参数指定是否立即中断任务执行，或者等等任务结束</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">cancel</span><span class="params">(<span class="keyword">boolean</span> mayInterruptIfRunning)</span></span>;</span><br><span class="line">    <span class="comment">//任务是否已经取消,任务正常完成前将其取消，则返回 true</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isCancelled</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//任务是否已经完成。需要注意的是如果任务正常终止、异常或取消，都将返回true</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDone</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//等待任务执行结束，然后获得V类型的结果。InterruptedException 线程被中断异常， ExecutionException任务执行异常,如果任务被取消，还会抛出CancellationException</span></span><br><span class="line">    <span class="function">V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException</span>;</span><br><span class="line">    <span class="comment">//同上面的get功能一样，多了设置超时时间。超时会抛出TimeoutException</span></span><br><span class="line">    <span class="function">V <span class="title">get</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException, ExecutionException, TimeoutException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一般情况下，我们会结合Callable和Future一起使用，通过ExecutorService的submit方法执行Callable，并返回Future。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException, TimeoutException </span>&#123;</span><br><span class="line">       ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">       <span class="comment">//Lambda 是一个 callable， 提交后便立即执行，这里返回的是 FutureTask 实例</span></span><br><span class="line">       Future&lt;String&gt; future = executor.submit(() -&gt; &#123;</span><br><span class="line">           System.out.println(<span class="string">"running task"</span>);</span><br><span class="line">           Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"return task"</span>;</span><br><span class="line">       &#125;);</span><br><span class="line">       future.get(<span class="number">2</span>, TimeUnit.SECONDS);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>当然Future模式也有它的缺点，它没有提供通知的机制，我们无法得知Future什么时候完成。如果要在<code>future.get()</code>的地方等待future返回的结果，那只能通过<code>isDone()</code>轮询查询。</p>
+<h3 id="3-2-FutureTask">3.2 FutureTask</h3>
+<blockquote>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html</a></p>
+</blockquote>
+<p>Future是一个接口，是无法生成一个实例的，所以又有了FutureTask。FutureTask实现了RunnableFuture接口，RunnableFuture接口又实现了Runnable接口和Future接口。所以FutureTask既可以被当做Runnable来执行，也可以被当做Future来获取Callable的返回结果。</p>
 <h2 id="4、CompletableFuture类">4、CompletableFuture类</h2>
+<h3 id="4-1-介绍">4.1 介绍</h3>
 <blockquote>
 <p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html</a></p>
 </blockquote>
-<p>CompletableFuture能够将回调放到与任务不同的线程中执行，也能将回调作为继续执行的同步函数，在与任务相同的线程中执行。它避免了传统回调最大的问题，那就是能够将控制流分离到不同的事件处理器中。CompletableFuture弥补了Future模式的缺点。在异步的任务完成后，需要用其结果继续操作时，无需等待。可以直接通过thenAccept、thenApply、thenCompose等方式将前面异步处理的结果交给另外一个异步事件处理线程来处理。</p>
-<p>CompletableFuture的静态工厂方法，其中runAsync 和 supplyAsync 方法的区别是runAsync返回的CompletableFuture是没有返回值的。</p>
+<p><code>CompletableFuture</code>能够将回调放到与任务不同的线程中执行，也能将回调作为继续执行的同步函数，在与任务相同的线程中执行。它避免了传统回调最大的问题，那就是能够将控制流分离到不同的事件处理器中。CompletableFuture弥补了Future模式的缺点。在异步的任务完成后，需要用其结果继续操作时，无需等待。可以直接通过thenAccept、thenApply、thenCompose等方式将前面异步处理的结果交给另外一个异步事件处理线程来处理。</p>
+<h3 id="4-2-异步任务创建">4.2 异步任务创建</h3>
+<p><code>CompletableFuture</code>创建异步任务，一般有<code>supplyAsync</code>和<code>runAsync</code>两个方法</p>
+<ul>
+<li><code>supplyAsync</code>执行CompletableFuture任务，支持返回值</li>
+<li><code>runAsync</code>执行CompletableFuture任务，没有返回值</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -391,62 +452,134 @@ var _hmt = _hmt || [];
 <td>使用指定的thread pool执行异步代码</td>
 </tr>
 <tr>
-<td>supplyAsync(Supplier<U> supplier)</U></td>
+<td>supplyAsync(Supplier supplier)</td>
 <td>使用ForkJoinPool.commonPool()作为它的线程池执行异步代码，异步操作有返回值</td>
 </tr>
 <tr>
-<td>supplyAsync(Supplier<U> supplier, Executor executor)</U></td>
+<td>supplyAsync(Supplier supplier, Executor executor)</td>
 <td>使用指定的thread pool执行异步代码，异步操作有返回值</td>
 </tr>
-<tr>
-<td>allOf(CompletableFuture&lt;?&gt;… cfs)</td>
-<td>等待所有任务完成，构造后CompletableFuture完成</td>
-</tr>
-<tr>
-<td>anyOf(CompletableFuture&lt;?&gt;… cfs)</td>
-<td>只要有一个任务完成，构造后CompletableFuture就完成</td>
-</tr>
 </tbody>
 </table>
-<p>对于变量的方法，常用有这几种方法</p>
-<table>
-<thead>
-<tr>
-<th><strong>方法名</strong></th>
-<th><strong>描述</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>complete(T t)</td>
-<td>完成异步执行的话返回执行结果，若不是返回设置的值</td>
-</tr>
-<tr>
-<td>completeExceptionally(Throwable ex)</td>
-<td>完成异步执行的话返回执行结果，若不是返回一个异常</td>
-</tr>
-<tr>
-<td>thenApply(Function&lt;? super T,? extends U&gt; fn)</td>
-<td>返回一个新的CompletionStage，当这个阶段正常完成时，它将以这个阶段的结果作为所提供函数的参数执行</td>
-</tr>
-<tr>
-<td>thenAccept(Consumer&lt;? super T&gt; action)</td>
-<td>返回一个新的CompletionStage，当这个阶段正常完成时，它将以这个阶段的结果作为提供的操作的参数执行。</td>
-</tr>
-</tbody>
-</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//可以自定义线程池</span></span><br><span class="line">    ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">    <span class="comment">//runAsync的使用</span></span><br><span class="line">    CompletableFuture&lt;Void&gt; runFuture = CompletableFuture.runAsync(() -&gt; System.out.println(<span class="string">"run,shawn"</span>), executor);</span><br><span class="line">    <span class="comment">//supplyAsync的使用</span></span><br><span class="line">    CompletableFuture&lt;String&gt; supplyFuture = CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">                System.out.print(<span class="string">"supply,shawn"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"shawn"</span>; &#125;, executor);</span><br><span class="line">    <span class="comment">//runAsync的future没有返回值，输出null</span></span><br><span class="line">    System.out.println(runFuture.join());</span><br><span class="line">    <span class="comment">//supplyAsync的future，有返回值</span></span><br><span class="line">    System.out.println(supplyFuture.join());</span><br><span class="line">    executor.shutdown(); <span class="comment">// 线程池需要关闭</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-任务异步回调">4.3 任务异步回调</h3>
+<p><img src="https://img-blog.csdnimg.cn/aa8b48e136e1429cbc2a3fcc9609912b.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>
+<p><strong>thenRun/thenRunAsync</strong></p>
+<p><strong>做完第一个任务后，再做第二个任务</strong>。某个任务执行完成后，执行回调方法；但是前后两个任务<strong>没有参数传递，第二个任务也没有返回值</strong></p>
+</li>
+<li>
+<p><strong>thenAccept/thenAcceptAsync</strong></p>
+<p>第一个任务执行完成后，执行第二个回调方法任务，会将该任务的执行结果，作为入参，传递到回调方法中，但是回调方法是<strong>没有返回值</strong>的。</p>
+</li>
+<li>
+<p><strong>thenApply/thenApplyAsync</strong></p>
+<p>第一个任务执行完成后，执行第二个回调方法任务，会将该任务的执行结果，作为入参，传递到回调方法中，并且回调方法是<strong>有返回值</strong>的。</p>
+</li>
+</ul>
+<p><strong>注意</strong>：上述三个方法如果执行第一个任务的时候，传入了一个自定义线程池：</p>
+<ul>
+<li>调用xxx方法执行第二个任务时，则第二个任务和第一个任务是<strong>共用同一个线程池</strong>。</li>
+<li>调用xxxAsync执行第二个任务时，则第一个任务使用的是你自己传入的线程池，<strong>第二个任务使用的是ForkJoin线程池</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//举个例子</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        CompletableFuture&lt;String&gt; orgFuture = CompletableFuture.supplyAsync(</span><br><span class="line">                ()-&gt;&#123;</span><br><span class="line">                    System.out.println(<span class="string">"原始CompletableFuture方法任务"</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">"shawn"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br><span class="line">        CompletableFuture&lt;String&gt; thenApplyFuture = orgFuture.thenApply((a) -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"shawn"</span>.equals(a)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"确实很帅"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"考虑考虑"</span>;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        System.out.println(thenApplyFuture.get());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>exceptionally</strong></p>
+<p>某个任务执行异常时，执行的回调方法;并且有<strong>抛出异常作为参数</strong>，传递到回调方法</p>
+</li>
+<li>
+<p><strong>whenComplete</strong></p>
+<p>某个任务执行完成后，执行的回调方法，<strong>无返回值</strong>；并且whenComplete方法返回的CompletableFuture的<strong>result是上个任务的结果</strong></p>
+</li>
+<li>
+<p><strong>handle</strong></p>
+<p><strong>某个任务执行完成后，执行回调方法，并且是有返回值的</strong>;并且handle方法返回的CompletableFuture的result是<strong>回调方法</strong>执行的结果</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//举例</span></span><br><span class="line">CompletableFuture&lt;String&gt; orgFuture = CompletableFuture.supplyAsync(</span><br><span class="line">            ()-&gt;&#123;</span><br><span class="line">                System.out.println(<span class="string">"当前线程名称："</span> + Thread.currentThread().getName());</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">2000L</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"shawn"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">//exceptionally使用方法是orgFuture.exceptionally((e)-&gt;&#123;...&#125;)</span></span><br><span class="line">    CompletableFuture&lt;String&gt; rstFuture = orgFuture.handle((a, throwable) -&gt; &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"上个任务执行完啦，还把"</span> + a + <span class="string">"传过来"</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"shawn"</span>.equals(a)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"666"</span>);</span><br><span class="line">            <span class="comment">//whenComplete没有返回</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">"好帅啊"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"233333"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    System.out.println(rstFuture.get());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后对于complete方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException, TimeoutException </span>&#123;</span><br><span class="line">        CompletableFuture&lt;String&gt; future = CompletableFuture.supplyAsync(() -&gt; <span class="string">"Hello"</span>);</span><br><span class="line">        <span class="comment">//在这里执行返回值为World</span></span><br><span class="line">        <span class="comment">// future.complete("World");</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在这里执行结果为Hello</span></span><br><span class="line">        future.complete(<span class="string">"World"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//get() 方法会抛出经检查的异常，可被捕获，自定义处理或者直接抛出。join() 会抛出未经检查的异常。</span></span><br><span class="line">            System.out.println(future.get());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//thenApplyhello shawn</span></span><br><span class="line"><span class="comment">// thenAccept shawn</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line">    <span class="comment">//thenApply</span></span><br><span class="line">    CompletableFuture&lt;String&gt; cfuture =</span><br><span class="line">            CompletableFuture.supplyAsync(() -&gt; <span class="string">"shawn"</span>).thenApply(data -&gt; <span class="string">"hello "</span>+ data);</span><br><span class="line">    System.out.println(<span class="string">"thenApply"</span> + cfuture.get());</span><br><span class="line">    <span class="comment">//thenAccept</span></span><br><span class="line">    CompletableFuture.supplyAsync(() -&gt; <span class="string">"thenAccept shawn"</span>).thenAccept(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5、FutureTask">5、FutureTask</h2>
-<blockquote>
-<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html</a></p>
-</blockquote>
-<p>Future是一个接口，是无法生成一个实例的，所以又有了FutureTask。FutureTask实现了RunnableFuture接口，RunnableFuture接口又实现了Runnable接口和Future接口。所以FutureTask既可以被当做Runnable来执行，也可以被当做Future来获取Callable的返回结果。</p>
+<h3 id="4-4-多个任务组合处理">4.4 多个任务组合处理</h3>
+<p><img src="https://img-blog.csdnimg.cn/2614ce803cdc48dd8c17f61c7872e09c.png" alt></p>
+<ul>
+<li>
+<p><strong>AND组合关系</strong></p>
+<p>thenCombine / thenAcceptBoth / runAfterBoth都表示：<strong>将两个CompletableFuture组合起来，只有这两个都正常执行完了，才会执行某个任务</strong>。</p>
+<p>区别在于：</p>
+<ul>
+<li><code>thenCombine</code>：会将两个任务的执行结果作为方法入参，传递到指定方法中，且<strong>有返回值</strong></li>
+<li><code>thenAcceptBoth</code>: 会将两个任务的执行结果作为方法入参，传递到指定方法中，且<strong>无返回值</strong></li>
+<li><code>runAfterBoth </code><strong>不会把执行结果当做方法入参</strong>，且没有返回值。</li>
+</ul>
+</li>
+<li>
+<p><strong>OR组合关系</strong></p>
+<p>applyToEither / acceptEither / runAfterEither 都表示：将<strong>两个CompletableFuture组合起来，只要其中一个执行完了,就会执行某个任务</strong>。</p>
+<p>区别在于：</p>
+<ul>
+<li><code>applyToEither</code>：会将已经执行完成的任务，作为方法入参，传递到指定方法中，且<strong>有返回值</strong></li>
+<li><code>acceptEither</code>: 会将已经执行完成的任务，作为方法入参，传递到指定方法中，且<strong>无返回值</strong></li>
+<li><code>runAfterEither</code>：不会把执行结果当做方法入参，且<strong>没有返回值</strong>。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//举个例子</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//第一个异步任务，休眠2秒，保证它执行晚点</span></span><br><span class="line">    CompletableFuture&lt;String&gt; first = CompletableFuture.supplyAsync(()-&gt;&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">            Thread.sleep(<span class="number">2000L</span>);</span><br><span class="line">            System.out.println(<span class="string">"执行完第一个异步任务"</span>);&#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"第一个任务异常"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"第一个异步任务"</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    ExecutorService executor = Executors.newSingleThreadExecutor();</span><br><span class="line">    CompletableFuture&lt;Void&gt; future = CompletableFuture</span><br><span class="line">            <span class="comment">//第二个异步任务</span></span><br><span class="line">            .supplyAsync(() -&gt; &#123;</span><br><span class="line">                        System.out.println(<span class="string">"执行完第二个任务"</span>);</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"第二个任务"</span>;&#125;</span><br><span class="line">                    , executor)</span><br><span class="line">            <span class="comment">//第三个任务</span></span><br><span class="line">            .acceptEitherAsync(first, System.out::println, executor);</span><br><span class="line"></span><br><span class="line">    executor.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>AllOf</strong></p>
+<p>所有任务都执行完成后，才执行 allOf返回的CompletableFuture。如果任意一个任务异常，allOf的CompletableFuture，执行get方法，会抛出异常</p>
+</li>
+<li>
+<p><strong>AnyOf</strong></p>
+<p>任意一个任务执行完，就执行anyOf返回的CompletableFuture。如果执行的任务异常，anyOf的CompletableFuture，执行get方法，会抛出异常</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//举例</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    CompletableFuture&lt;Void&gt; a = CompletableFuture.runAsync(()-&gt;&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">3000L</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"我执行完了"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    CompletableFuture&lt;Void&gt; b = CompletableFuture.runAsync(() -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">"我也执行完了"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    CompletableFuture&lt;Object&gt; anyOfFuture = CompletableFuture.anyOf(a, b).whenComplete((m,k)-&gt;&#123;</span><br><span class="line">        System.out.println(<span class="string">"finish"</span>);</span><br><span class="line">        <span class="comment">//handle可以返回</span></span><br><span class="line"><span class="comment">//            return "shawn";</span></span><br><span class="line">    &#125;);</span><br><span class="line">    anyOfFuture.join();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>thenCompose</strong></p>
+<p>thenCompose方法会在某个任务执行完成后，将该任务的执行结果,作为方法入参,去执行指定的方法。该方法会返回一个新的CompletableFuture实例</p>
+<ul>
+<li>如果该CompletableFuture实例的result不为null，则返回一个基于该result新的CompletableFuture实例；</li>
+<li>如果该CompletableFuture实例为null，然后就执行这个新任务</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//举个例子</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">    CompletableFuture&lt;String&gt; f = CompletableFuture.completedFuture(<span class="string">"第一个任务"</span>);</span><br><span class="line">    <span class="comment">//第二个异步任务</span></span><br><span class="line">    ExecutorService executor = Executors.newSingleThreadExecutor();</span><br><span class="line">    CompletableFuture&lt;String&gt; future = CompletableFuture</span><br><span class="line">            .supplyAsync(() -&gt; <span class="string">"第二个任务"</span>, executor)</span><br><span class="line">            .thenComposeAsync(data -&gt; &#123;</span><br><span class="line">                System.out.println(data); <span class="keyword">return</span> f; <span class="comment">//使用第一个任务作为返回</span></span><br><span class="line">            &#125;, executor);</span><br><span class="line">    <span class="comment">//get() 方法会抛出经检查的异常，可被捕获，自定义处理或者直接抛出。而 join() 会抛出未经检查的异常。</span></span><br><span class="line">    System.out.println(future.join());</span><br><span class="line">    executor.shutdown();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-5-CompletableFuture使用注意点">4.5 CompletableFuture使用注意点</h3>
+<ul>
+<li>
+<p><strong>Future需要获取返回值，才能获取异常信息</strong></p>
+<p>Future需要获取返回值，才能获取到异常信息。如果不加 <code>get()/join()</code>方法，看不到异常信息。小伙伴们使用的时候，注意一下哈,考虑是否加<code>try...catch...</code>或者使用<code>exceptionally</code>方法</p>
+</li>
+<li>
+<p><strong>CompletableFuture的get()方法是阻塞的</strong></p>
+<p>CompletableFuture的get()方法是阻塞的，如果使用它来获取异步调用的返回值，需要添加超时时间</p>
+</li>
+<li>
+<p><strong>默认线程池的注意点</strong></p>
+<p>CompletableFuture代码中又使用了默认的线程池，处理的线程个数是电脑CPU核数-1。在<strong>大量请求过来的时候，处理逻辑复杂的话，响应会很慢</strong>。一般建议使用自定义线程池，优化线程池配置参数。</p>
+</li>
+<li>
+<p><strong>自定义线程池时，注意饱和策略</strong></p>
+<p>如果线程池拒绝策略是<code>DiscardPolicy</code>或者<code>DiscardOldestPolicy</code>，当线程池饱和时，会直接丢弃任务，不会抛弃异常。因此建议CompletableFuture线程池策略<strong>最好使用AbortPolicy</strong>，然后耗时的异步线程，做好<strong>线程池隔离</strong></p>
+</li>
+</ul>
+<h2 id="5、CompletionService使用">5、CompletionService使用</h2>
+<h3 id="5-1-介绍">5.1 介绍</h3>
+<p>和<code>CompletableFuture</code>类似，<code>CompletionService</code>是对定义<code>ExecutorService</code>进行了包装，可以一边生成任务，一边获取任务的返回值。让这两件事分开执行,任务之间不会互相阻塞，可以获取最先完成的任务结果。</p>
+<p><code>CompletionService</code>的实现原理比较简单，底层通过FutureTask+阻塞队列，实现了任务先完成的话，可优先获取到。也就是说任务执行结果按照完成的先后顺序来排序，先完成可以优化获取到。内部有一个先进先出的阻塞队列，用于保存已经执行完成的Future，你调用<code>CompletionService</code>的poll或take方法即可获取到一个已经执行完成的Future，进而通过调用Future接口实现类的get方法获取最终的结果</p>
+<h3 id="5-2-demo代码">5.2 demo代码</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executor = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line"><span class="comment">//查询用户信息</span></span><br><span class="line">CompletionService&lt;Object&gt; baseDTOCompletionService = <span class="keyword">new</span> ExecutorCompletionService&lt;Object&gt;(executor);</span><br><span class="line">Callable&lt;Object&gt; userInfoDTOCallableTask = () -&gt; &#123;</span><br><span class="line">    UserInfoParam userInfoParam = buildUserParam(req);</span><br><span class="line">    <span class="keyword">return</span> userService.queryUserInfo(userInfoParam);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//banner信息任务</span></span><br><span class="line">Callable&lt;Object&gt; bannerDTOCallableTask = () -&gt; &#123;</span><br><span class="line">    BannerParam bannerParam = buildBannerParam(req);</span><br><span class="line">    <span class="keyword">return</span> bannerService.queryBannerInfo(bannerParam);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//提交用户信息任务</span></span><br><span class="line">baseDTOCompletionService.submit(userInfoDTOCallableTask);</span><br><span class="line"><span class="comment">//提交banner信息任务</span></span><br><span class="line">baseDTOCompletionService.submit(bannerDTOCallableTask);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Future&lt;Object&gt; baseRspDTOFuture = baseDTOCompletionService.poll(1, TimeUnit.SECONDS);</span></span><br></pre></td></tr></table></figure>
 <hr>
 <p>参考文章</p>
 <p><a href="https://juejin.cn/post/6970607007669682212" target="_blank" rel="noopener">https://juejin.cn/post/6970607007669682212</a></p>
 <p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html#call--" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html#call</a></p>
 <p><a href="https://www.jianshu.com/p/dff9063e1ab6" target="_blank" rel="noopener">https://www.jianshu.com/p/dff9063e1ab6</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=Mzg3NzU5NTIwNg==&amp;mid=2247490456&amp;idx=1&amp;sn=95836324db57673a4d7aea4fb233c0d2&amp;chksm=cf21c4b1f8564da72dc7b39279362bcf965b1374540f3b339413d138599f7de59a5f977e3b0e&amp;token=1260947715&amp;lang=zh_CN#rd" target="_blank" rel="noopener">CompletableFuture详解</a></p>
+<p><a href="https://blog.csdn.net/sco5282/article/details/120963463" target="_blank" rel="noopener">线程池的 7 种创建方式及自定义线程池</a></p>
 
       
 
@@ -509,7 +642,7 @@ var _hmt = _hmt || [];
     2021-11-26
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-12-28
+    2022-05-30
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/a546640b.html" title="Java8异步编程" target="_blank">Java8异步编程</a>
@@ -665,7 +798,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">一、引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">二、Java线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、Java线程池概述"><span class="toc-number">2.1.</span> <span class="toc-text">1、Java线程池概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、newCachedThreadPool"><span class="toc-number">2.2.</span> <span class="toc-text">2、newCachedThreadPool()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、newFixedThreadPool-int-nThreads"><span class="toc-number">2.3.</span> <span class="toc-text">3、newFixedThreadPool(int nThreads)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、newScheduledThreadPool-int-corePoolSize"><span class="toc-number">2.4.</span> <span class="toc-text">4、newScheduledThreadPool(int corePoolSize)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、newSingleThreadExecutor"><span class="toc-number">2.5.</span> <span class="toc-text">5、newSingleThreadExecutor()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、线程池的关闭"><span class="toc-number">2.6.</span> <span class="toc-text">6、线程池的关闭</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">三、几种函数式接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、简介"><span class="toc-number">3.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Callable和Runnable异同"><span class="toc-number">3.2.</span> <span class="toc-text">2、Callable和Runnable异同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Future类"><span class="toc-number">3.3.</span> <span class="toc-text">3、Future类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、CompletableFuture类"><span class="toc-number">3.4.</span> <span class="toc-text">4、CompletableFuture类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、FutureTask"><span class="toc-number">3.5.</span> <span class="toc-text">5、FutureTask</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">一、引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">二、Java Executors线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、Java-线程池概述"><span class="toc-number">2.1.</span> <span class="toc-text">1、Java 线程池概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、newCachedThreadPool"><span class="toc-number">2.2.</span> <span class="toc-text">2、newCachedThreadPool()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、newFixedThreadPool-int-nThreads"><span class="toc-number">2.3.</span> <span class="toc-text">3、newFixedThreadPool(int nThreads)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、newScheduledThreadPool-int-corePoolSize"><span class="toc-number">2.4.</span> <span class="toc-text">4、newScheduledThreadPool(int corePoolSize)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、newSingleThreadExecutor"><span class="toc-number">2.5.</span> <span class="toc-text">5、newSingleThreadExecutor()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、newSingleThreadScheduledExecutor"><span class="toc-number">2.6.</span> <span class="toc-text">6、newSingleThreadScheduledExecutor()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、newWorkStealingPool"><span class="toc-number">2.7.</span> <span class="toc-text">7、newWorkStealingPool()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、线程池的关闭"><span class="toc-number">2.8.</span> <span class="toc-text">8、线程池的关闭</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">三、自定义线程池ThreadPoolExecutor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、概述"><span class="toc-number">3.1.</span> <span class="toc-text">1、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、自定义线程池参数介绍"><span class="toc-number">3.2.</span> <span class="toc-text">2、自定义线程池参数介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、自定义线程池demo"><span class="toc-number">3.3.</span> <span class="toc-text">3、自定义线程池demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">4.</span> <span class="toc-text">四、异步编程函数式接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、简介"><span class="toc-number">4.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Callable和Runnable异同"><span class="toc-number">4.2.</span> <span class="toc-text">2、Callable和Runnable异同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Future类"><span class="toc-number">4.3.</span> <span class="toc-text">3、Future类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-future介绍"><span class="toc-number">4.3.1.</span> <span class="toc-text">3.1 future介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-FutureTask"><span class="toc-number">4.3.2.</span> <span class="toc-text">3.2 FutureTask</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、CompletableFuture类"><span class="toc-number">4.4.</span> <span class="toc-text">4、CompletableFuture类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-介绍"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-异步任务创建"><span class="toc-number">4.4.2.</span> <span class="toc-text">4.2 异步任务创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-任务异步回调"><span class="toc-number">4.4.3.</span> <span class="toc-text">4.3 任务异步回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-多个任务组合处理"><span class="toc-number">4.4.4.</span> <span class="toc-text">4.4 多个任务组合处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-CompletableFuture使用注意点"><span class="toc-number">4.4.5.</span> <span class="toc-text">4.5 CompletableFuture使用注意点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、CompletionService使用"><span class="toc-number">4.5.</span> <span class="toc-text">5、CompletionService使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-介绍"><span class="toc-number">4.5.1.</span> <span class="toc-text">5.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-demo代码"><span class="toc-number">4.5.2.</span> <span class="toc-text">5.2 demo代码</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -834,10 +967,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
@@ -871,10 +1000,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -927,6 +1052,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ROS</a>
               </li>
             
             <div class="clearfix"></div>
