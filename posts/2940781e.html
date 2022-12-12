@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/8a540c96301297649f2e01eb85b0a654.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/c6a0c06991494f6c8fc6df2395c670ff.png">
 <meta property="article:published_time" content="2021-03-15T05:21:16.000Z">
-<meta property="article:modified_time" content="2022-04-08T08:59:58.799Z">
+<meta property="article:modified_time" content="2022-12-02T09:39:23.046Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
@@ -267,7 +267,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.1k字</span>
+        <span class="post-count">5.6k字</span>
       </span>
     </span>
 
@@ -276,7 +276,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">19分</span>
+        <span class="post-count">21分</span>
       </span>
     </span>
 </div>
@@ -591,7 +591,9 @@ COMMAND：运行进程所使用的命令。进程名称（命令名/命令行）
 </li>
 </ul>
 <h3 id="9、网络相关">9、网络相关</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置dns</span></span><br><span class="line">vim /etc/resolv.conf</span><br><span class="line"><span class="comment">#查看域名路由表</span></span><br><span class="line">nslookup google.com</span><br><span class="line"><span class="comment"># 最近登录的5个账号</span></span><br><span class="line"><span class="comment">#可以参考https://blog.csdn.net/lemon_TT/article/details/121140378</span></span><br><span class="line">last -n 5</span><br><span class="line"><span class="comment">#查看什么进程使用了该端口</span></span><br><span class="line">lsof -i:port</span><br><span class="line"><span class="comment">#另外还会有nc、tcpdump、traceroute、ss等tcp调试命令</span></span><br><span class="line"><span class="comment"># ssh相关可以参考https://blog.csdn.net/lemon_TT/article/details/115253490</span></span><br><span class="line">netstat -anp |grep 端口号 <span class="comment">#查看网络端口号占用情况</span></span><br><span class="line">netstat -anp |grep 进程号 <span class="comment">#查看该进程网络信息</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置dns</span></span><br><span class="line">vim /etc/resolv.conf</span><br><span class="line"><span class="comment">#查看域名路由表</span></span><br><span class="line">nslookup google.com</span><br><span class="line"><span class="comment"># 最近登录的5个账号</span></span><br><span class="line"><span class="comment">#可以参考https://blog.csdn.net/lemon_TT/article/details/121140378</span></span><br><span class="line">last -n 5</span><br><span class="line"><span class="comment">#查看什么进程使用了该端口</span></span><br><span class="line">lsof -i:port</span><br><span class="line"><span class="comment">#另外还会有nc、tcpdump、traceroute、ss等tcp调试命令</span></span><br><span class="line"><span class="comment"># ssh相关可以参考https://blog.csdn.net/lemon_TT/article/details/115253490</span></span><br></pre></td></tr></table></figure>
+<p>还有iperf3带宽测试，iperf3是一款带宽测试工具，它支持调节各种参数，比如通信协议，数据包个数，发送持续时间，测试完会报告网络带宽，丢包率和其他参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先安装</span></span><br><span class="line">sudo apt install iperf3</span><br><span class="line"></span><br><span class="line"><span class="comment"># Interval表示时间间隔，Transfer表示时间间隔里面转输的数据量，Bandwidth是时间间隔里的传输速率</span></span><br><span class="line"><span class="comment"># 服务端先开启iperf服务器模式，指定TCP端口1314</span></span><br><span class="line">iperf3 -s -i 1 -p 1314</span><br><span class="line"><span class="comment"># 然后打开A（内）做client端，连接服务器端1314端口</span></span><br><span class="line">iperf3 -c 10.10.0.2 -i 1 -t 60 -p 1314</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面是测试UDP</span></span><br><span class="line">iperf3 -s -i 1 -p 1314</span><br><span class="line">iperf3 -u -c 10.10.0.2 -b 100m -t 60 -p 1314</span><br><span class="line"><span class="comment"># 进行上下行带宽测试（TCP双向传输）</span></span><br><span class="line">iperf3 -c 192.168.0.120 -d -t 60</span><br><span class="line"><span class="comment"># 测试多线程TCP吞吐量,如果没有指定发送方式，iPerf客户端只会使用单线程</span></span><br><span class="line">iperf3 -c 192.168.0.120 -P 30 -t 60</span><br><span class="line"><span class="comment"># 测试上下行带宽（UDP双向传输）</span></span><br><span class="line">iperf3 -u -c  192.168.1.1 -b 100M -d -t 60</span><br><span class="line"></span><br><span class="line"><span class="comment"># iperf3常用参数</span></span><br><span class="line"><span class="comment"># -s,--server：iperf服务器模式，默认启动的监听端口为5201，eg：iperf -s</span></span><br><span class="line"><span class="comment"># -c,--client host：iperf客户端模式，host是server端地址，eg：iperf -c 222.35.11.23</span></span><br><span class="line"><span class="comment"># -i，--interval：指定每次报告之间的时间间隔，单位为秒，eg：iperf3 -c 192.168.12.168 -i 2</span></span><br><span class="line"><span class="comment"># -p，--port：指定服务器端监听的端口或客户端所连接的端口，默认是5001端口。</span></span><br><span class="line"><span class="comment"># -u，--udp：表示采用UDP协议发送报文，不带该参数表示采用TCP协议。</span></span><br><span class="line"><span class="comment"># -l，--len：设置读写缓冲区的长度，单位为 Byte。TCP方式默认为8KB，UDP方式默认为1470字节。通常测试 PPS 的时候该值为16，测试BPS时该值为1400。</span></span><br><span class="line"><span class="comment"># -b，--bandwidth [K|M|G]：指定UDP模式使用的带宽，单位bits/sec，默认值是1 Mbit/sec。</span></span><br><span class="line"><span class="comment"># -t，--time：指定数据传输的总时间，即在指定的时间内，重复发送指定长度的数据包。默认10秒。</span></span><br><span class="line"><span class="comment"># -A：CPU亲和性，可以将具体的iperf3进程绑定对应编号的逻辑CPU，避免iperf进程在不同的CPU间调度。</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>加深版：<a href="https://mp.weixin.qq.com/s/iWST4cIIhf12rjYWAZqURQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/iWST4cIIhf12rjYWAZqURQ</a></p>
 </blockquote>
@@ -660,7 +662,7 @@ COMMAND：运行进程所使用的命令。进程名称（命令名/命令行）
     2021-03-15
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-04-08
+    2022-12-02
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/2940781e.html" title="Linux常用命令操作" target="_blank">Linux常用命令操作</a>
