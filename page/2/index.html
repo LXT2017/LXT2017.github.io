@@ -115,7 +115,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：142
+			总文章数：160
 		</ul>
 		
 		<nav class="header-nav">
@@ -245,14 +245,14 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-常见Shell编程脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MySQL8-0高级篇-上-架构与索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/4c942ca3.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
+        <a href="/posts/f2fcb8fb.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:17:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
   	
 </a>
         
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">12.7k字</span>
+        <span class="post-count">46.8k字</span>
       </span>
     </span>
 
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">56分</span>
+        <span class="post-count">171分</span>
       </span>
     </span>
 </div>
@@ -290,16 +290,163 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/4c942ca3.html">常见Shell编程脚本</a>
+      <a class="article-title_code_ant" href="/posts/f2fcb8fb.html">MySQL8.0高级篇(上)-架构与索引</a>
     </h1>
   
 </p></center>
 
       
-        <h2 id="一、Linux运维监控相关">一、Linux运维监控相关</h2>
-<h3 id="1、创建-Linux-系统账户及密码">1、创建 Linux 系统账户及密码</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 通过位置变量创建 Linux 系统账户及密码</span></span><br><span class="line"><span class="comment">#$1 是执行脚本的第一个参数,$2 是执行脚本的第二个参数</span></span><br><span class="line">useradd    <span class="string">"<span class="variable">$1</span>"</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$2</span>"</span>  |  passwd  ‐‐stdin  <span class="string">"<span class="variable">$1</span>"</span></span><br></pre></td></tr></table></figure>
-<p>提示用户输入用户名和密码,脚本自动创建相应的账户及配置密码。如果用户不输入账户名,则提示必须输入账户名并退出脚本;如果用户不输入密码,则统一使用默认的 123456 作为默认密码</p>
+        <h1>一、MySQL环境安装与介绍</h1>
+<h2 id="1、MySQL安装">1、MySQL安装</h2>
+<h3 id="1-1-安装前说明">1.1 安装前说明</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果你是用rpm安装, 检查一下RPM PACKAGE</span></span><br><span class="line">rpm -qa | grep -i mysql <span class="comment"># -i 忽略大小写</span></span><br><span class="line"><span class="comment"># 检查mysql service</span></span><br><span class="line">systemctl status mysqld.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># MySQL的卸载</span></span><br><span class="line"><span class="comment"># 关闭 mysql 服务</span></span><br><span class="line">systemctl stop mysqld.service</span><br><span class="line">rpm -qa | grep -i mysql</span><br><span class="line"><span class="comment"># 查看当前 mysql 安装状况</span></span><br><span class="line">yum list installed | grep mysql</span><br><span class="line"><span class="comment"># 卸载上述命令查询出的已安装程序</span></span><br><span class="line">yum remove mysql-xxx mysql-xxx mysql-xxx mysqk-xxxx</span><br><span class="line"><span class="comment"># 务必卸载干净，反复执行rpm -qa | grep -i mysql确认是否有卸载残留</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 mysql 相关文件</span></span><br><span class="line">find / -name mysql</span><br><span class="line">rm -rf xxx</span><br><span class="line"><span class="comment"># 删除 my.cnf</span></span><br><span class="line">rm -rf /etc/my.cnf</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/f2fcb8fb.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-Linux中curl详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/4bb6ed86.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:17:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">8分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/4bb6ed86.html">Linux中curl详解</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h1>一、简介</h1>
+<p>curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具</p>
         
       
 
@@ -364,7 +511,7 @@ var _hmt = _hmt || [];
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/4c942ca3.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/4bb6ed86.html">展开全文 >></a>
       </p>
     
 
@@ -394,14 +541,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Linux-Systemd教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-KubeSphere实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/523c86a2.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:34:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
+        <a href="/posts/f1b2e745.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:16:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
   	
 </a>
         
@@ -413,7 +560,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">7.7k字</span>
+        <span class="post-count">6.2k字</span>
       </span>
     </span>
 
@@ -439,18 +586,19 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/523c86a2.html">Linux-Systemd教程</a>
+      <a class="article-title_code_ant" href="/posts/f1b2e745.html">KubeSphere实战</a>
     </h1>
   
 </p></center>
 
       
-        <h1>一、Systemd 概述</h1>
-<h2 id="1、简介">1、简介</h2>
-<p>Systemd 是一系列工具的集合，其作用也远远不仅是启动操作系统，它还接管了后台服务、结束、状态查询，以及日志归档、设备管理、电源管理、定时任务等许多职责，并支持通过特定事件（如插入特定 USB 设备）和特定端口数据触发的 On-demand（按需）任务。</p>
-<p>Systemd 的后台服务还有一个特殊的身份——它是系统中 PID 值为 1 的进程。</p>
-<h2 id="2、Systemd-架构">2、Systemd 架构</h2>
-<p><img src="https://img-blog.csdnimg.cn/b4d8019a19b54fe3a57a30c21a0c6934.png" alt="在这里插入图片描述"></p>
+        <h1>一、KubeSphere平台安装</h1>
+<blockquote>
+<p>官网：<a href="https://kubesphere.com.cn/" target="_blank" rel="noopener" title="https://kubesphere.com.cn/">https://kubesphere.com.cn/</a></p>
+</blockquote>
+<h2 id="1、Kubernetes上安装KubeSphere">1、Kubernetes上安装KubeSphere</h2>
+<h3 id="1-1-安装docker">1.1 安装docker</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># centos7.9，建议机器4核8G</span></span><br><span class="line">sudo yum remove docker*</span><br><span class="line">sudo yum install -y yum-utils</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置docker的yum地址</span></span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">--add-repo \</span><br><span class="line">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装指定版本</span></span><br><span class="line">sudo yum install -y docker-ce-20.10.7 docker-ce-cli-20.10.7 containerd.io-1.4.6</span><br><span class="line"></span><br><span class="line"><span class="comment">#  启动&amp;开机启动docker</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker --now</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker加速配置</span></span><br><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://82m9ar63.mirror.aliyuncs.com"</span>],</span><br><span class="line">  <span class="string">"exec-opts"</span>: [<span class="string">"native.cgroupdriver=systemd"</span>],</span><br><span class="line">  <span class="string">"log-driver"</span>: <span class="string">"json-file"</span>,</span><br><span class="line">  <span class="string">"log-opts"</span>: &#123;</span><br><span class="line">    <span class="string">"max-size"</span>: <span class="string">"100m"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"storage-driver"</span>: <span class="string">"overlay2"</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
         
       
 
@@ -487,7 +635,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">K8S</a>
         		</li>
       		
 		</ul>
@@ -515,7 +663,7 @@ var _hmt = _hmt || [];
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/523c86a2.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/f1b2e745.html">展开全文 >></a>
       </p>
     
 
@@ -545,14 +693,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Jenkins学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Kubernetes-1-18学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/bbbabdc0.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:33:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
+        <a href="/posts/3d05dea1.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:15:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
   	
 </a>
         
@@ -564,7 +712,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.7k字</span>
+        <span class="post-count">25.2k字</span>
       </span>
     </span>
 
@@ -573,7 +721,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">20分</span>
+        <span class="post-count">112分</span>
       </span>
     </span>
 </div>
@@ -590,19 +738,22 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/bbbabdc0.html">Jenkins学习笔记</a>
+      <a class="article-title_code_ant" href="/posts/3d05dea1.html">Kubernetes 1.18学习笔记</a>
     </h1>
   
 </p></center>
 
       
-        <h1>一、CICD环境介绍与安装</h1>
-<h2 id="1、简介">1、简介</h2>
-<blockquote>
-<p>Jenkins，原名 Hudson，2011 年改为现在的名字。它是一个开源的实现持续集成的软件工具。<br>
-官方网站：<a href="https://www.jenkins.io/" target="_blank" rel="noopener">https://www.jenkins.io/</a></p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/ebe57cb4d97a4292a3e7380541501708.png#pic_center" alt="在这里插入图片描述"></p>
+        <h1>一、Kubernetes 概述和架构</h1>
+<h2 id="1、kubernetes-基本介绍">1、kubernetes 基本介绍</h2>
+<p>kubernetes，简称K8s，是用8 代替8 个字符&quot;ubernete&quot;而成的缩写。是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes 的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes 提供了应用部署，规划，更新，维护的一种机制。</p>
+<p>传统的应用部署方式是通过插件或脚本来安装应用。这样做的缺点是应用的运行、配置、管理、所有生存周期将与当前操作系统绑定，这样做并不利于应用的升级更新/回滚等操作，当然也可以通过创建虚拟机的方式来实现某些功能，但是虚拟机非常重，并不利于可移植性。新的方式是通过部署容器方式实现，每个容器之间互相隔离，每个容器有自己的文件系统，容器之间进程不会相互影响，能区分计算资源。相对于虚拟机，容器能快速部署，由于容器与底层设施、机器文件系统解耦的</p>
+<ul>
+<li>K8s是谷歌在2014年发布的容器化集群管理系统</li>
+<li>使用k8s进行容器化应用部署</li>
+<li>使用k8s利于应用扩展</li>
+<li>k8s目标实施让部署容器化应用更加简洁和高效</li>
+</ul>
         
       
 
@@ -639,7 +790,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux运维</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">K8S</a>
         		</li>
       		
 		</ul>
@@ -667,7 +818,7 @@ var _hmt = _hmt || [];
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/bbbabdc0.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/3d05dea1.html">展开全文 >></a>
       </p>
     
 
@@ -697,14 +848,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-分布式文件存储系统MinIO笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-k8s快速入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/5ce99483.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:33:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
+        <a href="/posts/407f91da.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:15:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
   	
 </a>
         
@@ -716,7 +867,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">7.5k字</span>
+        <span class="post-count">8k字</span>
       </span>
     </span>
 
@@ -742,35 +893,343 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/5ce99483.html">分布式文件存储系统MinIO笔记</a>
+      <a class="article-title_code_ant" href="/posts/407f91da.html">k8s快速入门</a>
     </h1>
   
 </p></center>
 
       
-        <h1>一、MinIO介绍</h1>
-<h2 id="1、文件系统应用场景">1、文件系统应用场景</h2>
+        <h1>一、Kubernetes（K8S）简介</h1>
+<h2 id="1、概念">1、概念</h2>
 <blockquote>
-<p>对象存储服务（Object Storage Service，OSS）是一种海量、安全、低成本、高可靠的云存储服<br>
-务，适合存放任意类型的文件。容量和处理能力弹性扩展，多种存储类型供选择，全面优化存储成<br>
-本</p>
+<p>官网：<a href="https://kubernetes.io/zh-cn/docs/home/" target="_blank" rel="noopener" title="https://kubernetes.io/zh-cn/docs/home/">https://kubernetes.io/zh-cn/docs/home/</a></p>
 </blockquote>
-<p>互联网海量非结构化数据的存储需求</p>
+<h3 id="1-1-Kubernetes-K8S-是什么">1.1 Kubernetes (K8S) 是什么</h3>
+<p>它是一个为 <strong>容器化</strong> 应用提供集群部署和管理的开源工具，由 Google 开发。K8S 是负责自动化运维管理多个跨机器 Docker 程序的集群</p>
+<h3 id="1-2-核心特性">1.2 核心特性</h3>
 <ul>
-<li>
-<p>电商网站：海量商品图片</p>
-</li>
-<li>
-<p>视频网站：海量视频文件</p>
-</li>
-<li>
-<p>网盘 : 海量文件</p>
-</li>
-<li>
-<p>社交网站：海量图片</p>
-</li>
+<li>服务发现与负载均衡：无需修改你的应用程序即可使用陌生的服务发现机制</li>
+<li>存储编排：自动挂载所选存储系统，包括本地存储</li>
+<li>Secret和配置管理：部署更新Secrets和应用程序的配置时不必重新构建容器镜像，且不必将软件堆栈配置中的秘密信息暴露出来</li>
+<li>批量执行：除了服务之外，Kubernetes还可以管理你的批处理和CI工作负载，在期望时替换掉失效的容器</li>
+<li>水平扩缩：使用一个简单的命令、一个UI或基于CPU使用情况自动对应用程序进行扩缩</li>
+<li>自动化上线和回滚：Kubernetes会分步骤地将针对应用或其配置的更改上线，同时监视应用程序运行状况以确保你不会同时终止所有实例</li>
+<li>自动装箱：根据资源需求和其他约束自动放置容器，同时避免影响可用性</li>
+<li>自我修复：重新启动失败的容器，在节点死亡时替换并重新调度容器，杀死不响应用户定义的健康检查的容器</li>
 </ul>
-<p>参考：<a href="https://blog.csdn.net/lemon_TT/article/details/124675675" target="_blank" rel="noopener" title="MinIO分布式文件服务器搭建与入门">MinIO分布式文件服务器搭建与入门</a></p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">K8S</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/407f91da.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-Java验证码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/34dda368.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:13:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">10分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/34dda368.html">Java验证码</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h1>一、验证码概述</h1>
+<blockquote>
+<p><strong>验证码</strong>（CAPTCHA）是“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序</p>
+</blockquote>
+<p><strong>验证码的作用：</strong></p>
+<ul>
+<li><strong>防止刷票、论坛灌水、刷页</strong></li>
+<li><strong>防止黑客恶意破解密码，盗取用户数据</strong></li>
+</ul>
+<p>验证码通常使用一些线条和一些不规则的字符组成，主要作用是为了防止一些黑客把密码数据化盗取。有效防止某个黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登录尝试，实际上使用验证码是现在很多网站通行的方式（比如招商银行的网上个人银行，百度社区），我们利用比较简易的方式实现了这个功能。虽然登录麻烦一点，但是对网友的密码安全来说这个功能还是很有必要，也很重要</p>
+<ul>
+<li><strong>防止恶意注册、登录</strong></li>
+</ul>
+<p>验证码一般是防止批量注册的，人眼看起来都费劲，何况是机器。几乎所有正规的论坛都要求注册时输入验证码，这是为了防止乱发垃圾广告的人用注册机来恶意注册</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/34dda368.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-Elasticsearch7学习笔记-尚硅谷" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/83d7c18a.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:13:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">29.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">117分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/83d7c18a.html">Elasticsearch7学习笔记(尚硅谷)</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h1>一、ElasticSearch概述</h1>
+<h2 id="1、ElasticSearch是什么">1、ElasticSearch是什么</h2>
+<p>Elasticsearch是一个<strong>实时的分布式搜索和分析引擎</strong>。它可以帮助你用前所未有的速度去处理大规模数据。它可以用于<strong>全文搜索，结构化搜索以及分析</strong>，当然你也可以将这三者进行组合。</p>
+<p>Elasticsearch是一个建<strong>立在全文搜索引擎 Apache Lucene™ 基础</strong>上的搜索引擎，可以说Lucene是当今最先进，最高效的全功能开源搜索引擎框架。但是Lucene只是一个框架，要充分利用它的功能，需要使用JAVA，并且在程序中集成Lucene。当然Elasticsearch并不仅仅是Lucene这么简单，它不但包括了全文搜索功能，还可以进行以下工作:</p>
+<ul>
+<li>分布式实时文件存储，并将每一个字段都编入索引，使其可以被搜索。</li>
+<li>实时分析的分布式搜索引擎。</li>
+<li>可以扩展到上百台服务器，处理PB级别的结构化或非结构化数据。</li>
+</ul>
         
       
 
@@ -835,7 +1294,7 @@ var _hmt = _hmt || [];
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/5ce99483.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/83d7c18a.html">展开全文 >></a>
       </p>
     
 
@@ -865,465 +1324,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-SpringBoot统一异常处理详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Druid-DataSource监控MySQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/f1e31382.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:32:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/f1e31382.html">SpringBoot统一异常处理详解</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h1>SpringBoot统一异常处理详解</h1>
-<h1>一、概述</h1>
-<blockquote>
-<p>后端规范入门参考：<a href="https://blog.csdn.net/lemon_TT/article/details/108309900" target="_blank" rel="noopener" title="Spring Boot后端接口规范">Spring Boot后端接口规范</a></p>
-</blockquote>
-<h2 id="1、统一异常处理介绍">1、统一异常处理介绍</h2>
-<p><code>Spring</code>在3.2版本增加了一个注解<code>@ControllerAdvice</code>，可以与<code>@ExceptionHandler</code>、<code>@InitBinder</code>、<code>@ModelAttribute</code> 等注解注解配套使用。不过跟异常处理相关的只有注解<code>@ExceptionHandler</code>，从字面上看，就是 <strong>异常处理器</strong> 的意思</p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/f1e31382.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-SpringBoot事务详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/ac74b1f.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:32:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">16分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/ac74b1f.html">SpringBoot事务详解</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h1>一、简介</h1>
-<h2 id="1、介绍">1、介绍</h2>
-<p>事务，就是一组操作数据库的动作集合。事务是现代数据库理论中的核心概念之一。如果一组处理步骤或者全部发生或者一步也不执行，我们称该组处理步骤为一个事务。当所有的步骤像一个操作一样被完整地执行，我们称该事务被提交。由于其中的一部分或多步执行失败，导致没有步骤被提交，则事务必须回滚到最初的系统状态。</p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Spring基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/ac74b1f.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-Jackson序列化与反序列化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/70fe9e1.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:32:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/70fe9e1.html">Jackson序列化与反序列化</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h1>一、Jackson简介</h1>
-<h2 id="1、什么是Jackson">1、什么是Jackson</h2>
-<blockquote>
-<p>Jackson被认为是&quot;Java JSON库&quot;或&quot;Java最好的JSON解析器&quot;。或简单地被当作&quot;JSON for Java&quot;。不仅如此，Jackson 还是一套用于 Java（和 JVM 平台）的数据处理工具，包括流式 <a href="https://en.wikipedia.org/wiki/JSON" target="_blank" rel="noopener" title="JSON">JSON</a> parser / generator库、匹配 data-binding 库（<a href="https://so.csdn.net/so/search?q=POJO&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener" title="POJO">POJO</a>和JSON相互转换），还有一个额外的 data format 模块来处理 <a href="https://github.com/FasterXML/jackson-dataformats-binary/blob/master/avro" target="_blank" rel="noopener" title="Avro">Avro</a>, <a href="https://github.com/michel-kraemer/bson4jackson" target="_blank" rel="noopener" title="BSON">BSON</a>, <a href="https://github.com/FasterXML/jackson-dataformats-binary/blob/master/cbor" target="_blank" rel="noopener" title="CBOR">CBOR</a>, <a href="https://github.com/FasterXML/jackson-dataformats-text/blob/master/csv" target="_blank" rel="noopener" title="CSV">CSV</a>, <a href="https://github.com/FasterXML/jackson-dataformats-binary/tree/master/smile" target="_blank" rel="noopener" title="Smile">Smile</a>, <a href="https://github.com/FasterXML/jackson-dataformats-text/blob/master/properties" target="_blank" rel="noopener" title="(Java) Properties">(Java) Properties</a>, <a href="https://github.com/FasterXML/jackson-dataformats-binary/tree/master/protobuf" target="_blank" rel="noopener" title="Protobuf">Protobuf</a>, <a href="https://github.com/FasterXML/jackson-dataformats-text/blob/2.13/toml" target="_blank" rel="noopener" title="TOML">TOML</a>, <a href="https://github.com/FasterXML/jackson-dataformat-xml" target="_blank" rel="noopener" title="XML">XML</a>, <a href="https://github.com/FasterXML/jackson-dataformats-text/blob/master/yaml" target="_blank" rel="noopener" title="YAML">YAML</a> 这些数据编码，甚至还有大量的数据格式模块，来支持被广泛使用的数据类型如 <a href="https://github.com/FasterXML/jackson-datatypes-collections" target="_blank" rel="noopener" title="Guava">Guava</a>, <a href="https://github.com/FasterXML/jackson-datatype-joda" target="_blank" rel="noopener" title="Joda">Joda</a>, <a href="https://github.com/FasterXML/jackson-datatypes-collections" target="_blank" rel="noopener" title="PCollections">PCollections</a> 等等</p>
-</blockquote>
-<p>核心组件存在于他们自己的项目下，包括三个核心包(<a href="https://github.com/FasterXML/jackson-core" target="_blank" rel="noopener" title="streaming">streaming</a>, <a href="https://github.com/FasterXML/jackson-databind" target="_blank" rel="noopener" title="databind">databind</a>, <a href="https://github.com/FasterXML/jackson-annotations" target="_blank" rel="noopener" title="annotations">annotations</a>)；数据格式库；数据类型库；<a href="https://github.com/FasterXML/jackson-jaxrs-providers" target="_blank" rel="noopener" title="JAX-RS provider">JAX-RS provider</a>；和一个复杂的扩展模块—这个project 连接各个模块的中心枢纽</p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/70fe9e1.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-SpringBoot生产监控" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/f72e74db.html" class="archive-article-date">
-  	<time datetime="2022-09-28T09:26:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
+        <a href="/posts/799f9c4.html" class="archive-article-date">
+  	<time datetime="2023-03-05T16:12:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
   	
 </a>
         
@@ -1361,19 +1369,19 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/f72e74db.html">SpringBoot生产监控</a>
+      <a class="article-title_code_ant" href="/posts/799f9c4.html">Druid-DataSource监控MySQL</a>
     </h1>
   
 </p></center>
 
       
-        <h1>一、健康监控简介</h1>
-<h2 id="1、介绍">1、介绍</h2>
-<p>开发完成后，生产就绪需要做哪些工作呢？我认为，以下三方面的工作最重要。</p>
+        <h2 id="1、基本概念">1、基本概念</h2>
+<p>我们都使用过连接池，比如<code>C3P0，DBCP，hikari， Druid</code>，虽然HikariCP的速度稍快，但Druid能够提供强大的监控和扩展功能，也是阿里巴巴的开源项目。Druid是阿里巴巴开发的号称为监控而生的数据库连接池，在功能、性能、扩展性方面，都超过其他数据库连接池，包括<code>DBCP、C3P0、BoneCP、Proxool、JBoss DataSource</code>等等，秒杀一切。</p>
+<p>Druid可以很好的监控DB池连接和SQL的执行情况，天生就是针对监控而生的DB连接池。Spring Boot默认数据源<code>HikariDataSource</code>与<code>JdbcTemplate</code>中已经介绍Spring Boot 2.x默认使用Hikari数据源，可以说Hikari与Driud都是当前Java Web上最优秀的数据源。而Druid已经在阿里巴巴部署了超过600个应用，经过好几年生产环境大规模部署的严苛考验！</p>
 <ul>
-<li><strong>提供健康检测接口</strong>。传统采用 ping 的方式对应用进行探活检测并不准确。有的时候，应用的关键内部或外部依赖已经离线，导致其根本无法正常工作，但其对外的 Web 端口或管理端口是可以 ping 通的。我们应该提供一个专有的监控检测接口，并尽可能触达一些内部组件。</li>
-<li><strong>暴露应用内部信息</strong>。应用内部诸如线程池、内存队列等组件，往往在应用内部扮演了重要的角色，如果应用或应用框架可以对外暴露这些重要信息，并加以监控，那么就有可能在诸如 OOM 等重大问题暴露之前发现蛛丝马迹，避免出现更大的问题。</li>
-<li><strong>建立应用指标 Metrics 监控</strong>。Metrics 可以翻译为度量或者指标，指的是对于一些关键信息以可聚合的、数值的形式做定期统计，并绘制出各种趋势图表。这里的指标监控，包括两个方面：一是，应用内部重要组件的指标监控，比如 JVM 的一些指标、接口的 QPS 等；二是，应用的业务数据的监控，比如电商订单量、游戏在线人数等。</li>
+<li><strong>stat：</strong> Druid内置提供一个<code>StatFilter</code>，用于统计监控信息。</li>
+<li><strong>wall：</strong> Druid防御SQL注入攻击的<code>WallFilter</code>就是通过Druid的SQL Parser分析。Druid提供的<code>SQL Parser</code>可以在JDBC层拦截SQL做相应处理，比如说分库分表、审计等。</li>
+<li><strong>log4j2：</strong> 这个就是 日志记录的功能，可以把sql语句打印到log4j2供排查问题。</li>
 </ul>
         
       
@@ -1411,7 +1419,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
         		</li>
       		
 		</ul>
@@ -1439,7 +1447,7 @@ var _hmt = _hmt || [];
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/f72e74db.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/799f9c4.html">展开全文 >></a>
       </p>
     
 
@@ -1469,14 +1477,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-JSON常用注解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ShardingSphere5学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/posts/c69f5ed2.html" class="archive-article-date">
-  	<time datetime="2022-07-29T12:34:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-29</time>
+        <a href="/posts/2738e02e.html" class="archive-article-date">
+  	<time datetime="2022-10-31T13:45:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-31</time>
   	
 </a>
         
@@ -1488,7 +1496,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.2k字</span>
+        <span class="post-count">10.3k字</span>
       </span>
     </span>
 
@@ -1497,7 +1505,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">9分</span>
+        <span class="post-count">46分</span>
       </span>
     </span>
 </div>
@@ -1514,16 +1522,171 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/c69f5ed2.html">JSON常用注解</a>
+      <a class="article-title_code_ant" href="/posts/2738e02e.html">ShardingSphere5学习笔记</a>
     </h1>
   
 </p></center>
 
       
-        <h1>一、介绍</h1>
-<h2 id="1、前言">1、前言</h2>
-<p>在使用Java开发时，一定会接触到Json，而选择前后端开发都是使用Json进行数据传输，以及和数据库打交道的Bean类，相信你一定遇到过字段类型不同而导致的烦恼，而使用这些注解可以很方便进行<strong>字段转换、字段忽略</strong>等等</p>
-<p>这里我使用Spring自带的Jackson和阿里巴巴的FastJson作为记录</p>
+        <h1>一、简介</h1>
+<h2 id="1、介绍">1、介绍</h2>
+<blockquote>
+<p>本文属于改参考文章的升级版，部分内容可以参考：<a href="https://blog.csdn.net/lemon_TT/article/details/120201007" target="_blank" rel="noopener" title="ShardingSphere数据库中间件基础学习">ShardingSphere数据库中间件基础学习</a></p>
+</blockquote>
+<p>互联网业务兴起之后，海量用户加上海量数据的特点，单个数据库服务器已经难以满足业务需要，必须考虑数据库集群的方式来提升性能。高性能数据库集群的第一种方式是&quot;<code>读写分离</code>&quot;，第二种方式是&quot;<code>数据库分片</code>&quot;；</p>
+<p>读写分离和数据分片具体的实现方式一般有两种： <code>程序代码封装</code>和<code>中间件封装</code>，中间件软件有**Apache ShardingSphere（程序级别和中间件级别）**和MyCat（数据库中间件）</p>
+        
+      
+
+      
+
+
+      
+    </div>
+
+    <!-- 添加本文结束标记-->
+    
+    <!-- 添加完成 -->
+
+
+      <!-- 《添加版权声明 -->
+      
+          <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+      
+      <!-- 添加版权声明》 -->
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+      <!-- 文末访问量统计（开始） -->
+      <!--<span id="busuanzi_container_page_pv">
+          |阅读量:<span id="busuanzi_value_page_pv"></span>次
+      </span>-->
+      <!-- 文末访问量统计（结束） -->
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+     
+      <p class="article-more-link">
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/2738e02e.html">展开全文 >></a>
+      </p>
+    
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+<!-- 评论 -->
+
+
+  
+    <article id="post-Java高级技术之Gradle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/posts/f064074e.html" class="archive-article-date">
+  	<time datetime="2022-10-31T13:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-31</time>
+  	
+</a>
+        
+
+        <!-- 开始添加字数统计-->
+            
+        <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">17.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长≈</span>
+        <span class="post-count">73分</span>
+      </span>
+    </span>
+</div>
+        
+        <!-- 添加完成 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+
+      
+      <center><p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/posts/f064074e.html">Java高级技术之Gradle</a>
+    </h1>
+  
+</p></center>
+
+      
+        <h1>一、Gradle入门</h1>
+<h2 id="1、简介">1、简介</h2>
+<blockquote>
+<p>Gradle 是一款Google 推出的基于 JVM、通用灵活的项目构建工具，支持 Maven，JCenter 多种第三方仓库;支持传递性依赖管理、废弃了繁杂的xml 文件，转而使用简洁的、支持多种语言(例如：java、groovy 等)的 build 脚本文件；<br>
+官网地址: <a href="https://gradle.org/" target="_blank" rel="noopener" title="https://gradle.org/">https://gradle.org/</a></p>
+</blockquote>
+<p>作为Java开发程序员,如果想下载Spring、SpringBoot等Spring家族的源码，基本上基于Gradle构建的，所以虽然目前市面上常见的项目构建工具有<strong>Ant、Maven、Gradle，主流还是Maven，但是未来趋势Gradle</strong>。</p>
         
       
 
@@ -1588,159 +1751,7 @@ var _hmt = _hmt || [];
 
      
       <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/c69f5ed2.html">展开全文 >></a>
-      </p>
-    
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-<!-- 评论 -->
-
-
-  
-    <article id="post-Spring事件监听" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/posts/cb9972ff.html" class="archive-article-date">
-  	<time datetime="2022-07-29T12:34:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-29</time>
-  	
-</a>
-        
-
-        <!-- 开始添加字数统计-->
-            
-        <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">993字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">4分</span>
-      </span>
-    </span>
-</div>
-        
-        <!-- 添加完成 -->
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-
-      
-      <center><p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/posts/cb9972ff.html">Spring事件监听</a>
-    </h1>
-  
-</p></center>
-
-      
-        <h1>Spring事件监听器</h1>
-<h1>一、简介</h1>
-<h2 id="1、Spring事件监听基本原理">1、Spring事件监听基本原理</h2>
-<blockquote>
-<p>Spring的事件监听机制和发布订阅机制是很相似的：发布了一个事件后，监听该类型事件的所有监听器会触发相应的处理逻辑。</p>
-</blockquote>
-<p>正如Spring官方文档上所说的，<strong>整个上就是一个观察者的模式</strong>。那么，我们不妨猜测下，Spring是如何来实现事件发布监听的：底层使用一个集合存储了所有的监听器，当发布了一个事件后，遍历事件监听器集合，然后过滤符合事件类型的监听器，最后触发相应的事件处理逻辑。</p>
-        
-      
-
-      
-
-
-      
-    </div>
-
-    <!-- 添加本文结束标记-->
-    
-    <!-- 添加完成 -->
-
-
-      <!-- 《添加版权声明 -->
-      
-          <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-      
-      <!-- 添加版权声明》 -->
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Spring基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-      <!-- 文末访问量统计（开始） -->
-      <!--<span id="busuanzi_container_page_pv">
-          |阅读量:<span id="busuanzi_value_page_pv"></span>次
-      </span>-->
-      <!-- 文末访问量统计（结束） -->
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-     
-      <p class="article-more-link">
-        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/cb9972ff.html">展开全文 >></a>
+        <a class="article-more-a  hvr-shutter-in-horizontal" href="/posts/f064074e.html">展开全文 >></a>
       </p>
     
 
@@ -1772,7 +1783,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+      <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
     </nav>
   
 
@@ -1995,6 +2006,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>
