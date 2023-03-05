@@ -3,13 +3,13 @@
     text-align: left;
     display:inline-block;
     margin-bottom: 0px;
-    right:10%;
+    right:5%;
 }
 .local-search-input-cls {
     width: 200px;
     /* margin: 10px 0; */
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 6px;
     border: 2px solid #5ad1ed;
     color: #666;
     font-size: 14px
@@ -111,12 +111,12 @@
 }
 .local-search-plugin .local-search-input-cls {
     opacity: .6;
-    width: 160px;
+    width: 180px;
     transition: all .3s
 }
 .local-search-plugin .local-search-input-cls:hover {
     opacity: 1;
-    width: 200px;
+    width: 220px;
     transition: all .3s
 }
 .local-search-plugin .icon {
