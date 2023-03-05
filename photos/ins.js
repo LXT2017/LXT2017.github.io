@@ -118,9 +118,7 @@
         for (var i = 0, len = data.link.length; i < len; i++) {
           // var minSrc = 'https://raw.githubusercontent.com/lawlite19/blog-back-up/master/min_photos/' + data.link[i];
           // var src = 'https://raw.githubusercontent.com/lawlite19/blog-back-up/master/photos/' + data.link[i];
-          // gitee图床外链已经失效
-          // var minSrc = 'https://gitee.com/LXT2017/Picbed/raw/master/min_photos/' + data.link[i];
-          // var src = 'https://gitee.com/LXT2017/Picbed/raw/master/photos/' + data.link[i];
+ 
           var minSrc = 'https://picblog.shawncoding.top/blogpic/min_photos/' + data.link[i];
           var src = 'https://picblog.shawncoding.top/blogpic/photos/' + data.link[i];
           var type = data.type[i];
