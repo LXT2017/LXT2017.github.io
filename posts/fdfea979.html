@@ -15,17 +15,17 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、介绍 1、对象存储和分布式文件简介  阿里云OSS对象存储：https:&#x2F;&#x2F;help.aliyun.com&#x2F;product&#x2F;31815.html  对象存储服务OSS（Object Storage Service）是一种海量、安全、低成本、高可靠的云存储服务，适合存放任意类型的文件。容量和处理能力弹性扩展，多种存储类型供选择，全面优化存储成本。对象存储最大的优势就在于它可以存储大容量的非结构化">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/16478b069b9445e695212b5b39c4f282.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9ae020ab6bb84cccac4f676630ea5c73.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/18da4584abeb48a0893e2a5ca05b06b4.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/5700b56ee50746b98e6baf7d386c569e.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b1162f1136f34cf38a414c00e08eea98.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/16478b069b9445e695212b5b39c4f282.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/9ae020ab6bb84cccac4f676630ea5c73.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/18da4584abeb48a0893e2a5ca05b06b4.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/5700b56ee50746b98e6baf7d386c569e.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b1162f1136f34cf38a414c00e08eea98.png">
 <meta property="article:published_time" content="2022-05-09T13:26:18.000Z">
-<meta property="article:modified_time" content="2022-05-09T13:33:12.665Z">
+<meta property="article:modified_time" content="2023-03-17T05:01:59.408Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/16478b069b9445e695212b5b39c4f282.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/16478b069b9445e695212b5b39c4f282.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -378,18 +378,18 @@ var _hmt = _hmt || [];
 </blockquote>
 <h3 id="3-1-新建存储桶">3.1 新建存储桶</h3>
 <p>首先登录<code>http://localhost:9001</code>，点击 <strong>[Create Bucket]</strong> 按钮，新建一个 Bucket 存储桶，用于稍后文件的上传</p>
-<p><img src="https://img-blog.csdnimg.cn/16478b069b9445e695212b5b39c4f282.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/16478b069b9445e695212b5b39c4f282.png" alt="在这里插入图片描述"></p>
 <p>这里存储桶名称长度必须⾄少为3且不超过63个字符，不得包含⼤写字符或下划线，必须以⼩写字母或数字开头。</p>
-<p><img src="https://img-blog.csdnimg.cn/9ae020ab6bb84cccac4f676630ea5c73.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/9ae020ab6bb84cccac4f676630ea5c73.png" alt="在这里插入图片描述"></p>
 <h3 id="3-2-添加访问规则">3.2 添加访问规则</h3>
 <p>默认配置下，访问存储桶是需要请求授权的。但是在实际场景下，我们往往希望允许直接访问，此时就需要添加一条 readonly 或readwrite访问规则；或者直接在[Access Policy]直接设置public(不安全)</p>
 <p>① 点击右上角的 [Manage] 设置图标，然后选择 [Access Rules] 菜单。</p>
-<p><img src="https://img-blog.csdnimg.cn/18da4584abeb48a0893e2a5ca05b06b4.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/18da4584abeb48a0893e2a5ca05b06b4.png" alt="在这里插入图片描述"></p>
 <p>② 点击 [Add Access Rule] 按钮，添加一条 Prefix 为 <code>/</code>或者<code>*</code> ，Access 为 <code>readwrite</code>的规则。</p>
-<p><img src="https://img-blog.csdnimg.cn/5700b56ee50746b98e6baf7d386c569e.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/5700b56ee50746b98e6baf7d386c569e.png" alt="在这里插入图片描述"></p>
 <h3 id="3-3-上传文件">3.3 上传文件</h3>
 <p>点击 [Upload] 按钮，点击 [Upload File] 选项，选择一个文件上传</p>
-<p><img src="https://img-blog.csdnimg.cn/b1162f1136f34cf38a414c00e08eea98.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/b1162f1136f34cf38a414c00e08eea98.png" alt="在这里插入图片描述"></p>
 <h3 id="3-4-访问文件">3.4 访问文件</h3>
 <p>文件的访问地址的格式为 <code>&lt;http://127.0.0.1:9000/{bucket}/{name}&gt;</code>，注意是 9000 端口。比如我的是<code>http://192.168.31.34:9000/textbook/yuanshen.png</code></p>
 <h1>三、SpringBoot整合MinIO</h1>
@@ -478,7 +478,7 @@ var _hmt = _hmt || [];
     2022-05-09
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-05-09
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/fdfea979.html" title="MinIO分布式文件服务器搭建与入门" target="_blank">MinIO分布式文件服务器搭建与入门</a>
@@ -803,15 +803,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -819,15 +819,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -839,11 +843,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,19 +855,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -871,35 +879,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

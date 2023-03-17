@@ -15,20 +15,20 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="1、拉取ubuntu16.04纯净镜像 首先进入虚拟机管理员，将ubuntu16基础镜像从中心仓库拉下来，输入命令docker pull ubuntu:16.04, docker就会自动下载ubuntu16的镜像了  用docker images 查看下载好的镜像  因为需要制作自己的容器，因此先下载好python3.7的tar包，这里我们选择编译安装 12#在线下载python3.7，如果嫌慢可">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202138280.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202204654.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202353342.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202325422.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202407936.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202416990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202427737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410202434190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202138280.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202204654.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202353342.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202325422.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202407936.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202416990.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202427737.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200410202434190.png">
 <meta property="article:published_time" content="2020-04-10T12:44:19.000Z">
-<meta property="article:modified_time" content="2021-03-15T08:48:56.963Z">
+<meta property="article:modified_time" content="2023-03-17T02:39:02.080Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200410202138280.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/20200410202138280.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -307,40 +307,40 @@ var _hmt = _hmt || [];
       
         <h3 id="1、拉取ubuntu16-04纯净镜像">1、拉取ubuntu16.04纯净镜像</h3>
 <p>首先进入虚拟机管理员，将ubuntu16基础镜像从中心仓库拉下来，输入命令<code>docker pull ubuntu:16.04</code>,<br>
-docker就会自动下载ubuntu16的镜像了<br>
-<img src="https://img-blog.csdnimg.cn/20200410202138280.png" alt="在这里插入图片描述"><br>
-用<code>docker images</code> 查看下载好的镜像<br>
-<img src="https://img-blog.csdnimg.cn/20200410202204654.png" alt="在这里插入图片描述"><br>
-因为需要制作自己的容器，因此先下载好python3.7的tar包，这里我们选择编译安装</p>
+docker就会自动下载ubuntu16的镜像了</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202138280.png" alt="在这里插入图片描述"></p>
+<p>用<code>docker images</code> 查看下载好的镜像</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202204654.png" alt="在这里插入图片描述"></p>
+<p>因为需要制作自己的容器，因此先下载好python3.7的tar包，这里我们选择编译安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在线下载python3.7，如果嫌慢可以先下载好直接拖进来</span></span><br><span class="line">wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200410202353342.png" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202353342.png" alt="在这里插入图片描述"></p>
 <a id="more"></a>
 <h3 id="2、ubuntu16-04容器内安装Python3-7和Paddlepaddle">2、ubuntu16.04容器内安装Python3.7和Paddlepaddle</h3>
-<p><code>docker run -it -v $PWD:/home/root123 ubuntu:16.04 /bin/bash</code>输入命令进入并运行容器，可以看见成功进入ubuntu容器了<br>
-<img src="https://img-blog.csdnimg.cn/20200410202325422.png" alt="在这里插入图片描述"><br>
-在这里有可能自带的apt源还是国外的，而且没有vi/vim可编辑软件，所以这里用了echo直接更新源</p>
+<p><code>docker run -it -v $PWD:/home/root123 ubuntu:16.04 /bin/bash</code>输入命令进入并运行容器，可以看见成功进入ubuntu容器了</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202325422.png" alt="在这里插入图片描述"></p>
+<p>在这里有可能自带的apt源还是国外的，而且没有vi/vim可编辑软件，所以这里用了echo直接更新源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/apt/sources.list /etc/apt/sources.list.bak</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse"</span> &gt;&gt;/etc/apt/sources.list</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse"</span> &gt;&gt;/etc/apt/sources.list</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse"</span> &gt;&gt;/etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 <p>之后进行必要的组件升级安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line"></span><br><span class="line">apt install vim	<span class="comment">#安装vim</span></span><br><span class="line"></span><br><span class="line">apt install gcc</span><br><span class="line"></span><br><span class="line"><span class="comment">###pythin必须的基础包</span></span><br><span class="line">apt-get install zlib1g-dev libbz2-dev libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev tk-dev libgdbm-dev libdb-dev libpcap-dev xz-utils libexpat1-dev</span><br><span class="line"></span><br><span class="line">apt-get install liblzma-dev libffi-dev libc6-dev</span><br></pre></td></tr></table></figure>
-<p>完成后进入与主机挂载的目录下，可以看见主机目录的文件成功映射到了虚拟机内<br>
-<img src="https://img-blog.csdnimg.cn/20200410202407936.png" alt="在这里插入图片描述"><br>
-解压<code>tar -zxvf Python-3.7.0.tgz</code>，完成后进入Python-3.7.0目录，后面就需要依次进行编译安装了，这步可能时间会有点长</p>
+<p>完成后进入与主机挂载的目录下，可以看见主机目录的文件成功映射到了虚拟机内</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202407936.png" alt="在这里插入图片描述"></p>
+<p>解压<code>tar -zxvf Python-3.7.0.tgz</code>，完成后进入Python-3.7.0目录，后面就需要依次进行编译安装了，这步可能时间会有点长</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#以下命令分开执行</span></span><br><span class="line">./configure --with-ssl --prefix=/usr/<span class="built_in">local</span>/python3 --<span class="built_in">enable</span>-optimizations</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <p>之后进行链接，依次输入一下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/python3/bin/python3.7 /usr/bin/python3</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/python3/bin/pip3.7 /usr/bin/pip3</span><br></pre></td></tr></table></figure>
-<p>到此为止Python就安装完了，验证一下发现很成功<br>
-<img src="https://img-blog.csdnimg.cn/20200410202416990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-接下来就进行Paddlepaddle的安装，这里因为安装了pip，因此使用pip安装，输入以下命令</p>
+<p>到此为止Python就安装完了，验证一下发现很成功</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202416990.png" alt="在这里插入图片描述"></p>
+<p>接下来就进行Paddlepaddle的安装，这里因为安装了pip，因此使用pip安装，输入以下命令</p>
 <p>当然也可以用其他方式安装，<a href="https://www.paddlepaddle.org.cn/install/quick" target="_blank" rel="noopener">其他安装方式</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pip install paddlepaddle -i https://mirror.baidu.com/pypi/simple</span><br></pre></td></tr></table></figure>
 <p>安装完成后，验证一下是否成功安装。</p>
-<p>先进入<code>python3</code>，然后输入<code>import paddle.fluid</code>，在输入<code>paddle.fluid.install_check.run_check()</code>，如果出现 <code>Your Paddle Fluid is installed successfully!</code>，说明已成功安装。<br>
-<img src="https://img-blog.csdnimg.cn/20200410202427737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>先进入<code>python3</code>，然后输入<code>import paddle.fluid</code>，在输入<code>paddle.fluid.install_check.run_check()</code>，如果出现 <code>Your Paddle Fluid is installed successfully!</code>，说明已成功安装。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202427737.png" alt="在这里插入图片描述"></p>
 <h3 id="3、制作自己的镜像">3、制作自己的镜像</h3>
 <p>退出容器后，我们需要构建自己的镜像,可以看到，我们成功的构建了属于我们自己的容器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看所有容器</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment">#-m后是说明文字 -a是作者 容器id 后面是镜像名字</span></span><br><span class="line">docker commit -m <span class="string">"add vim&amp;source"</span> -a <span class="string">"author"</span> 1db56d541f2c python:1.0</span><br><span class="line"><span class="comment">#完成后输入一下即可看见新的镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200410202434190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-最后可将容器保存为文件，存放于当前目录下</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200410202434190.png" alt="在这里插入图片描述"></p>
+<p>最后可将容器保存为文件，存放于当前目录下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save -o python.tar python3.7:1.0</span><br></pre></td></tr></table></figure>
 <p>而从外部装载时则需要输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -input python.tar</span><br></pre></td></tr></table></figure>
@@ -406,7 +406,7 @@ docker就会自动下载ubuntu16的镜像了<br>
     2020-04-10
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-03-15
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/e1b007ae.html" title="Docker制作自己的镜像--ubuntu16.04构建Python和Paddlepaddle" target="_blank">Docker制作自己的镜像--ubuntu16.04构建Python和Paddlepaddle</a>
@@ -455,7 +455,7 @@ docker就会自动下载ubuntu16的镜像了<br>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/云原生//" class="article-tag-list-link color4">云原生</a>
         		</li>
       		
 		</ul>
@@ -731,15 +731,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,15 +747,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,11 +771,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -779,19 +783,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -799,35 +807,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

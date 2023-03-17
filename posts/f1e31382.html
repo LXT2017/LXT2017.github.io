@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="SpringBoot统一异常处理详解 一、概述  后端规范入门参考：Spring Boot后端接口规范  1、统一异常处理介绍 Spring在3.2版本增加了一个注解@ControllerAdvice，可以与@ExceptionHandler、@InitBinder、@ModelAttribute 等注解注解配套使用。不过跟异常处理相关的只有注解@ExceptionHandler，从字面上看，就是">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2c25f6ebfb33885a951bf4292f4f8c75.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/2c25f6ebfb33885a951bf4292f4f8c75.png">
 <meta property="article:published_time" content="2022-09-28T09:32:59.000Z">
-<meta property="article:modified_time" content="2022-09-28T09:48:19.190Z">
+<meta property="article:modified_time" content="2023-03-17T06:00:32.721Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/2c25f6ebfb33885a951bf4292f4f8c75.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/2c25f6ebfb33885a951bf4292f4f8c75.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -309,7 +309,7 @@ var _hmt = _hmt || [];
 <h2 id="2、原理和目标">2、原理和目标</h2>
 <p>简单的说，该注解可以把异常处理器应用到所有控制器，而不是单个控制器。借助该注解，我们可以实现：在独立的某个地方，比如单独一个类，定义一套对各种异常的处理机制，然后在类的签名加上注解<code>@ControllerAdvice</code>，统一对 <code>不同阶段的</code>、<code>不同异常</code> 进行处理。这就是统一异常处理的原理。</p>
 <p>对异常按阶段进行分类，大体可以分成：进入<code>Controller</code>前的异常 和 <code>Service</code> 层异常</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/2c25f6ebfb33885a951bf4292f4f8c75.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/2c25f6ebfb33885a951bf4292f4f8c75.png" alt></p>
 <p>目标就是消灭95%以上的 <code>try catch</code> 代码块，并以优雅的 <code>Assert</code>(断言) 方式来校验业务的异常情况，只关注业务逻辑，而不用花费大量精力写冗余的 <code>try catch</code> 代码块。</p>
 <h1>二、Assert(断言)</h1>
 <h2 id="1、概述">1、概述</h2>
@@ -457,7 +457,7 @@ var _hmt = _hmt || [];
     2022-09-28
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-09-28
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/f1e31382.html" title="SpringBoot统一异常处理详解" target="_blank">SpringBoot统一异常处理详解</a>
@@ -782,15 +782,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,15 +798,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,11 +822,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,19 +834,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -850,35 +858,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

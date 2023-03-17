@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、正常方式搭建OwnCloud centos 7搭建owncloud个人私有网盘 基于宝塔面板和nextcloud搭建自己的网盘">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201114134654202.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201114135043686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20201114134654202.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20201114135043686.png">
 <meta property="article:published_time" content="2021-03-15T09:31:21.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:26:22.661Z">
+<meta property="article:modified_time" content="2023-03-17T04:57:58.152Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201114134654202.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/20201114134654202.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -308,10 +308,10 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拉取docker镜像</span></span><br><span class="line">docker pull owncloud</span><br><span class="line">docker pull mysql</span><br><span class="line"><span class="comment">#创建文件存储路径，自定义但要记住该路径,下面是我个人路径</span></span><br><span class="line">mkdir /lxt/data/mysql</span><br><span class="line">mkdir /lxt/data/mysql/owncloud</span><br><span class="line">mkdir /lxt/data/owncloud</span><br><span class="line"><span class="comment">#设置权限</span></span><br><span class="line">chmod 770 /lxt/data</span><br></pre></td></tr></table></figure>
 <p>分别运行以下两句代码，启动容器，注意要修改自己的个人路径，另外如果端口冲突可以自行设置端口号</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#启动数据库</span></span><br><span class="line">docker run --name mysql-owncloud  -v /lxt/data/mysql/owncloud:/var/lib/mysql  -e MYSQL_ROOT_PASSWORD=password  -e MYSQL_DATABASE=owncloud  -e MYSQL_USER=owncloud  -e MYSQL_PASSWORD=password  -d -p 3307:3306 --restart unless-stopped mysql</span><br><span class="line"><span class="comment">#启动owncloud</span></span><br><span class="line">docker run --name=owncloud --link=mysql-owncloud:mysql-owncloud -v /var/data/owncloud:/var/www/html/data -p 80:80 -d --restart unless-stopped owncloud</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20201114134654202.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/20201114134654202.png" alt="在这里插入图片描述"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看启动的docker容器</span></span><br><span class="line">docker ps</span><br></pre></td></tr></table></figure>
 <p>最后注意开放相应的端口号，这里我开放了8000端口，最后访问<code>ip:端口</code>即可<br>
-<img src="https://img-blog.csdnimg.cn/20201114135043686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/20201114135043686.png" alt="在这里插入图片描述"></p>
 <hr>
 <p>参考文章<br>
 <a href="https://blog.csdn.net/lionwerson/article/details/81775650?utm_medium=distribute.pc_relevant.none-task-blog-utm_term-2&amp;spm=1001.2101.3001.4242" target="_blank" rel="noopener">https://blog.csdn.net/lionwerson/article/details/81775650?utm_medium=distribute.pc_relevant.none-task-blog-utm_term-2&amp;spm=1001.2101.3001.4242</a></p>
@@ -377,7 +377,7 @@ var _hmt = _hmt || [];
     2021-03-15
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/11c723bd.html" title="Linux基于OwnCloud搭建私有云盘" target="_blank">Linux基于OwnCloud搭建私有云盘</a>
@@ -702,15 +702,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,15 +718,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,11 +742,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,19 +754,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,35 +778,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

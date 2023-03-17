@@ -15,21 +15,21 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、RabbitMQ核心概念 RabbitMQ是一个由erlang开发的AMQP(Advanved Message Queue Protocol)的开源实现。所有 MQ 产品从模型抽象上来说都是一样的过程：  消费者（consumer）订阅某个队列。生产者（producer）创建消息，然后发布到队列（queue）中，最后将消息发送到监听的消费者。   1、Message 消息，消息是不具名的，它由">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f2c700887fa3dfe1fae01a0dbe6ecf63.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/372d6ee73ac9f85bfbea86a0421b4906.png">
-<meta property="og:image" content="https://img-blog.csdn.net/20181022154515317?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NDc5MDQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20181022154545524?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NDc5MDQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f2c700887fa3dfe1fae01a0dbe6ecf63.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/372d6ee73ac9f85bfbea86a0421b4906.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20181022154515317">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20181022154545524">
 <meta property="og:image" content="https://img-blog.csdn.net/20181022154613161?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NDc5MDQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20181022154644143?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NDc5MDQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/58afb5845b1749c97694b90911235eda.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/5e3c0de2e5e49c14a7443cc9b7118db4.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/deed23c94bbfbfe9f072d28d0cf8bbd7.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20181022154644143">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/58afb5845b1749c97694b90911235eda.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/5e3c0de2e5e49c14a7443cc9b7118db4.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/deed23c94bbfbfe9f072d28d0cf8bbd7.png">
 <meta property="article:published_time" content="2020-03-29T09:23:58.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:30:46.241Z">
+<meta property="article:modified_time" content="2023-03-17T05:55:59.718Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/f2c700887fa3dfe1fae01a0dbe6ecf63.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/f2c700887fa3dfe1fae01a0dbe6ecf63.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -311,7 +311,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>消费者（consumer）订阅某个队列。生产者（producer）创建消息，然后发布到队列（queue）中，最后将消息发送到监听的消费者。</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/f2c700887fa3dfe1fae01a0dbe6ecf63.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/f2c700887fa3dfe1fae01a0dbe6ecf63.png" alt></p>
 <h5 id="1、Message">1、Message</h5>
 <p>消息，消息是不具名的，它由消息头和消息体组成。消息体是不透明的，而消息头则由一系列的可选属性组成，这些属性包括routing-key(路由键)、priority(相对于其他消息的优先权)、delivery-mode(指出该消息可能需要持久性存储)等。</p>
 <h5 id="2、Publisher">2、Publisher</h5>
@@ -333,17 +333,17 @@ var _hmt = _hmt || [];
 <h5 id="9、Virtual-Host">9、Virtual Host</h5>
 <p>虚拟主机，表示一批交换器、消息队列和相关对象。虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在连接时指定， RabbitMQ 默认的 vhost 是 / 。</p>
 <h5 id="10、Broker">10、Broker</h5>
-<p>表示消息队列服务器实体<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/372d6ee73ac9f85bfbea86a0421b4906.png" alt="GZ9M79.png"></p>
+<p>表示消息队列服务器实体</p>
+<p><img src="http://qnypic.shawncoding.top/blog/372d6ee73ac9f85bfbea86a0421b4906.png" alt="GZ9M79.png"></p>
 <h3 id="二、AMQP的消息路由">二、AMQP的消息路由</h3>
 <ol>
 <li>
-<p>AMQP 中消息的路由过程和 Java 开发者熟悉的 JMS 存在一些差别，AMQP 中增加了 Exchange 和 Binding 的角色。生产者把消息发布到 Exchange 上，消息最终到达队列并被消费者接收，而 Binding 决定交换器的消息应该发送到那个队列。<br>
-<img src="https://img-blog.csdn.net/20181022154515317?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NDc5MDQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+<p>AMQP 中消息的路由过程和 Java 开发者熟悉的 JMS 存在一些差别，AMQP 中增加了 Exchange 和 Binding 的角色。生产者把消息发布到 Exchange 上，消息最终到达队列并被消费者接收，而 Binding 决定交换器的消息应该发送到那个队列。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20181022154515317" alt></p>
 <h4 id="Exchange-类型"><strong>Exchange 类型</strong></h4>
 <p>Exchange分发消息时根据类型的不同分发策略有区别，目前共四种类型：direct、fanout、topic、headers 。headers 匹配 AMQP 消息的 header 而不是路由键，此外 headers 交换器和 direct 交换器完全一致，但性能差很多，目前几乎用不到了，所以直接看另外三种类型：</p>
 <h4 id="1、direct">1、direct</h4>
-<p><img src="https://img-blog.csdn.net/20181022154545524?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NDc5MDQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/20181022154545524" alt></p>
 <p>direct 交换器</p>
 <p>消息中的路由键（routing key）如果和 Binding 中的 binding key 一致， 交换器就将消息发到对应的队列中。路由键与队列名完全匹配，如果一个队列绑定到交换机要求路由键为“dog”，则只转发 routing key 标记为“dog”的消息，不会转发“dog.puppy”，也不会转发“dog.guard”等等。它是完全匹配、单播的模式。</p>
 <h4 id="2、fanout">2、fanout</h4>
@@ -351,7 +351,7 @@ var _hmt = _hmt || [];
 <p>fanout 交换器</p>
 <p>每个发到 fanout 类型交换器的消息都会分到所有绑定的队列上去。fanout 交换器不处理路由键，只是简单的将队列绑定到交换器上，每个发送到交换器的消息都会被转发到与该交换器绑定的所有队列上。很像子网广播，每台子网内的主机都获得了一份复制的消息。fanout 类型转发消息是最快的。</p>
 <h4 id="3、topic">3、topic</h4>
-<p><img src="https://img-blog.csdn.net/20181022154644143?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5NDc5MDQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/20181022154644143" alt></p>
 <p>topic 交换器</p>
 <p>topic 交换器通过模式匹配分配消息的路由键属性，将路由键和某个模式进行匹配，此时队列需要绑定到一个模式上。它将路由键和绑定键的字符串切分成单词，这些单词之间用点隔开。它同样也会识别两个通配符：符号“#”和符号“</p>
 <p>”。#匹配0个或多个单词，</p>
@@ -378,11 +378,11 @@ var _hmt = _hmt || [];
 </blockquote>
 <h3 id="四、springboot集成简单实践-点对点">四、springboot集成简单实践(点对点)</h3>
 <h5 id="1、打开管理界面，点击进入Exchanges，选择新建一个，这里我设置名字为exchange-direct，并且选择类型为direct-表示点对点。而如果要广播模式，就选择fanout模式，并且绑定的队列不需要设置路由键，这样只要有生产者生产，所有监听的消费者都能收到。">1、打开管理界面，点击进入Exchanges，选择新建一个，这里我设置名字为exchange.direct，并且选择类型为direct,表示点对点。而如果要广播模式，就选择fanout模式，并且绑定的队列不需要设置路由键，这样只要有生产者生产，所有监听的消费者都能收到。</h5>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/58afb5845b1749c97694b90911235eda.png" alt="GZkGLT.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/58afb5845b1749c97694b90911235eda.png" alt="GZkGLT.png"></p>
 <h5 id="2、点击Queues，新建一个队列，这里我新建了login的队列">2、点击Queues，新建一个队列，这里我新建了login的队列</h5>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/5e3c0de2e5e49c14a7443cc9b7118db4.png" alt="GZk8yV.md.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/5e3c0de2e5e49c14a7443cc9b7118db4.png" alt="GZk8yV.md.png"></p>
 <h5 id="3、返回刚才的Exchange交换器，点击进入我们刚才创建的exchange-direct，来对login队列进行绑定，这里路由键也设置为login">3、返回刚才的Exchange交换器，点击进入我们刚才创建的exchange.direct，来对login队列进行绑定，这里路由键也设置为login</h5>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/deed23c94bbfbfe9f072d28d0cf8bbd7.png" alt="GZkYeU.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/deed23c94bbfbfe9f072d28d0cf8bbd7.png" alt="GZkYeU.png"></p>
 <h5 id="4、springboot项目引入maven依赖">4、springboot项目引入maven依赖</h5>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 <h5 id="5、配置yml">5、配置yml</h5>
@@ -463,7 +463,7 @@ var _hmt = _hmt || [];
     2020-03-29
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/538a1b2.html" title="springboot集成RabbitMQ简单入门实践" target="_blank">springboot集成RabbitMQ简单入门实践</a>
@@ -788,15 +788,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -804,15 +804,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,11 +828,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,19 +840,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -856,35 +864,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

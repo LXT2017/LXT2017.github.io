@@ -15,18 +15,18 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Security简介 1、简介 Spring Security 是 Spring 家族中的一个安全管理框架。相比与另外一个安全框架Shiro，它提供了更丰富的功能，社区资源也比Shiro丰富。一般来说中大型的项目都是使用SpringSecurity 来做安全框架。小项目有Shiro的比较多，因为相比与SpringSecurity，Shiro的上手更加的简单。一般Web应用的需要进行认证和授权。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f7674870388642d094798f46626b6b7d.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b82685fb8e914d40a75af747438fd6d4.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9221e33d02474d65bea1d57549e7ecba.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/7ec1cdcd2adf4f2a88d32a38e9bfe883.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/01b13286436c4c388c2629130234e8c2.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8e517e67b97f43378c1d88dfde2bb5ce.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f7674870388642d094798f46626b6b7d.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b82685fb8e914d40a75af747438fd6d4.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/9221e33d02474d65bea1d57549e7ecba.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7ec1cdcd2adf4f2a88d32a38e9bfe883.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/01b13286436c4c388c2629130234e8c2.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/8e517e67b97f43378c1d88dfde2bb5ce.png">
 <meta property="article:published_time" content="2022-05-09T13:26:05.000Z">
-<meta property="article:modified_time" content="2022-05-09T13:33:12.671Z">
+<meta property="article:modified_time" content="2023-03-17T05:48:27.368Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f7674870388642d094798f46626b6b7d.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/f7674870388642d094798f46626b6b7d.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -323,7 +323,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"world"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1>二、Spring Security认证</h1>
 <h2 id="1、登录校验流程">1、登录校验流程</h2>
-<p><img src="https://img-blog.csdnimg.cn/f7674870388642d094798f46626b6b7d.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/f7674870388642d094798f46626b6b7d.png" alt="在这里插入图片描述"></p>
 <h2 id="2、SpringSecurity原理初探">2、SpringSecurity原理初探</h2>
 <h3 id="2-1-过滤器介绍">2.1 过滤器介绍</h3>
 <p>下图展示了核心过滤器，其它的非核心过滤器并没有在图中展示。</p>
@@ -335,12 +335,12 @@ var _hmt = _hmt || [];
 <p><strong>ExceptionTranslationFilter</strong>：处理过滤器链中抛出的任何AccessDeniedException和AuthenticationException </p>
 </li>
 <li>
-<p><strong>FilterSecurityInterceptor</strong>：负责权限校验的过滤器。<br>
-<img src="https://img-blog.csdnimg.cn/b82685fb8e914d40a75af747438fd6d4.png#pic_center" alt="在这里插入图片描述"></p>
+<p><strong>FilterSecurityInterceptor</strong>：负责权限校验的过滤器。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/b82685fb8e914d40a75af747438fd6d4.png" alt="在这里插入图片描述"></p>
 </li>
 </ul>
 <p>另外我们也可以通过Debug查看当前系统中SpringSecurity过滤器链中有哪些过滤器及它们的顺序。</p>
-<p><img src="https://img-blog.csdnimg.cn/9221e33d02474d65bea1d57549e7ecba.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/9221e33d02474d65bea1d57549e7ecba.png" alt="在这里插入图片描述"></p>
 <h3 id="2-2-认证流程详解">2.2 认证流程详解</h3>
 <ul>
 <li>
@@ -356,7 +356,7 @@ var _hmt = _hmt || [];
 <p><strong>UserDetails</strong>接口：提供核心用户信息。通过UserDetailsService根据用户名获取处理的用户信息要封装成UserDetails对象返回。然后将这些信息封装到Authentication对象中。</p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/7ec1cdcd2adf4f2a88d32a38e9bfe883.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/7ec1cdcd2adf4f2a88d32a38e9bfe883.png" alt="在这里插入图片描述"></p>
 <h2 id="3、SpringBoot整合前期准备">3、SpringBoot整合前期准备</h2>
 <h3 id="3-1-思路分析">3.1 思路分析</h3>
 <blockquote>
@@ -381,7 +381,7 @@ var _hmt = _hmt || [];
 <p>获取token解析；然后token获取其中的userid；接着从redis中获取用户信息存入SecurityContextHolder</p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/01b13286436c4c388c2629130234e8c2.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/01b13286436c4c388c2629130234e8c2.png" alt="在这里插入图片描述"></p>
 <h3 id="3-2-数据库与框架搭建">3.2 数据库与框架搭建</h3>
 <p>在之前的<code>pom.xml</code>中继续添加以下依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--redis依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--fastjson依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.80<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--jwt依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.jsonwebtoken<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jjwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--Java SE中将不再包含java EE 的Jar包。而在 java 6/7/8 时关于这个API 都是捆绑在一起的，因为用了jdk11，所以要引入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.28<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -468,7 +468,7 @@ var _hmt = _hmt || [];
 <p>所以我们在项目中只需要<strong>把当前登录用户的权限信息也存入Authentication</strong>，然后设置我们的资源所需要的权限即可。</p>
 <h3 id="1-3-RBAC权限模型">1.3 RBAC权限模型</h3>
 <p>RBAC权限模型（Role-Based Access Control）即：<strong>基于角色的权限控制</strong>。这是目前最常被开发者使用也是相对易用、通用权限模型</p>
-<p><img src="https://img-blog.csdnimg.cn/8e517e67b97f43378c1d88dfde2bb5ce.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/8e517e67b97f43378c1d88dfde2bb5ce.png" alt="在这里插入图片描述"></p>
 <h2 id="2、授权简单实现">2、授权简单实现</h2>
 <h4 id="2-1-限制访问资源所需权限">2.1 限制访问资源所需权限</h4>
 <p>SpringSecurity为我们提供了基于注解的权限控制方案，这也是我们项目中主要采用的方式。我们可以使用注解去指定访问对应的资源所需的权限。但是要使用它我们需要先开启相关配置，在config类上开启功能</p>
@@ -655,7 +655,7 @@ var _hmt = _hmt || [];
     2022-05-09
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-05-09
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/c1b7a70d.html" title="Spring Security学习笔记" target="_blank">Spring Security学习笔记</a>
@@ -980,15 +980,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -996,15 +996,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1016,11 +1020,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1028,19 +1032,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,35 +1056,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

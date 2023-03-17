@@ -15,20 +15,20 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、数据库基本知识 1、数据库基本介绍 123456789101112131415161718192021222324# 本地进入可不输入-h命令,-u和-p后面没有空格！mysql [-h 服务器主机地址] -u用户名 -p密码# 修改数据库密码mysqladmin -u用户名 -p密码 password 新密码;# 显示所有数据库show databases; # 打开某个数据库use dbn">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/7963c5409eeac83b1134262da55d7a38.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/a26ac686a37447eaa2255f888c2124b6.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/6217c5b9caae4d4f9a58ddc3ae107548.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/482b34ff9c5e4d0584c99ce99c42cc8c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/916dda31472c4f01ad2c2eb58241ca1c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/48a33c038ba04865955ef6bba4b91c63.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/4b8ee0e443464783913c3dac7a103c0f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e9be591055b64a848583b67faff1bb3e.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7963c5409eeac83b1134262da55d7a38.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/a26ac686a37447eaa2255f888c2124b6.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/6217c5b9caae4d4f9a58ddc3ae107548.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/482b34ff9c5e4d0584c99ce99c42cc8c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/916dda31472c4f01ad2c2eb58241ca1c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/48a33c038ba04865955ef6bba4b91c63.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/4b8ee0e443464783913c3dac7a103c0f.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e9be591055b64a848583b67faff1bb3e.png">
 <meta property="article:published_time" content="2021-06-01T07:01:01.000Z">
-<meta property="article:modified_time" content="2022-05-23T12:26:21.718Z">
+<meta property="article:modified_time" content="2023-03-17T05:25:38.718Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/7963c5409eeac83b1134262da55d7a38.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/7963c5409eeac83b1134262da55d7a38.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -537,7 +537,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>连接查询:<code>join</code>对比</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/7963c5409eeac83b1134262da55d7a38.png" alt="sql-join"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/7963c5409eeac83b1134262da55d7a38.png" alt="sql-join"></p>
 <ul>
 <li>排序和分页、子查询</li>
 </ul>
@@ -548,24 +548,24 @@ var _hmt = _hmt || [];
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 从含义上讲，count(1) 与 count(*) 都表示对全部数据行的查询。</span></span><br><span class="line"><span class="comment">-- count(字段) 会统计该字段在表中出现的次数，忽略字段为null 的情况。即不统计字段为null 的记录。</span></span><br><span class="line"><span class="comment">-- count(*) 包括了所有的列，相当于行数，在统计结果的时候，包含字段为null 的记录；</span></span><br><span class="line"><span class="comment">-- count(1) 用1代表代码行，在统计结果的时候，包含字段为null 的记录 。</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">很多人认为count(1)执行的效率会比count(*)高，原因是count(*)会存在全表扫描，而count(1)可以针对一个字段进行查询。其实不然，count(1)和count(*)都会对全表进行扫描，统计所有记录的条数，包括那些为null的记录，因此，它们的效率可以说是相差无几。而count(字段)则与前两者不同，它会统计该字段不为null的记录条数。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">下面它们之间的一些对比：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1）在表没有主键时，count(1)比count(*)快</span></span><br><span class="line"><span class="comment">2）有主键时，主键作为计算条件，count(主键)效率最高；</span></span><br><span class="line"><span class="comment">3）若表格只有一个字段，则count(*)效率较高。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <h1>MySql快速入门</h1>
 <h2 id="1、SQL语句的书写语法和规则">1、SQL语句的书写语法和规则</h2>
-<p><img src="https://img-blog.csdnimg.cn/a26ac686a37447eaa2255f888c2124b6.png" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/a26ac686a37447eaa2255f888c2124b6.png" alt="在这里插入图片描述"></p>
 <h2 id="2、基础查询">2、基础查询</h2>
 <p>利用最基础和最重要的select语句，对表中数据进行查询<br>
-<img src="https://img-blog.csdnimg.cn/6217c5b9caae4d4f9a58ddc3ae107548.png" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/6217c5b9caae4d4f9a58ddc3ae107548.png" alt="在这里插入图片描述"></p>
 <h2 id="3、聚合与排序">3、聚合与排序</h2>
 <p>面对大量数据我们时常需要对其做汇总的分析。这部分内容就是说明各类汇总操作的方法<br>
-<img src="https://img-blog.csdnimg.cn/482b34ff9c5e4d0584c99ce99c42cc8c.png" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/482b34ff9c5e4d0584c99ce99c42cc8c.png" alt="在这里插入图片描述"></p>
 <h2 id="4、数据更新">4、数据更新</h2>
 <p>处理数据库时，我们可能需要的不仅仅是“读”数据，更需要“写”数据，也就是对表进行更新和修改。这一天的内容侧重对表的修改操作，并学习重要的数据库管理方法——事务的创建<br>
-<img src="https://img-blog.csdnimg.cn/916dda31472c4f01ad2c2eb58241ca1c.png" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/916dda31472c4f01ad2c2eb58241ca1c.png" alt="在这里插入图片描述"></p>
 <h2 id="5、复杂查询">5、复杂查询</h2>
-<p><img src="https://img-blog.csdnimg.cn/48a33c038ba04865955ef6bba4b91c63.png" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/48a33c038ba04865955ef6bba4b91c63.png" alt="在这里插入图片描述"></p>
 <h2 id="6、复杂查询，函数、谓词、case表达式">6、复杂查询，函数、谓词、case表达式</h2>
 <p>如同所有编程语言一样，SQL也有好用的工具包——函数。利用函数，可以将很多复杂的问题在一行代码内解决完成<br>
-<img src="https://img-blog.csdnimg.cn/4b8ee0e443464783913c3dac7a103c0f.png" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/4b8ee0e443464783913c3dac7a103c0f.png" alt="在这里插入图片描述"></p>
 <h2 id="7、集合运算">7、集合运算</h2>
 <p>在有多张表的情况下，表和表之间的运算和联系就变得很重要，利用集合运算就可以将不同表中的数据整合起来。<br>
-<img src="https://img-blog.csdnimg.cn/e9be591055b64a848583b67faff1bb3e.png" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/e9be591055b64a848583b67faff1bb3e.png" alt="在这里插入图片描述"></p>
 <h1>四、事务</h1>
 <p>事务四大特性：<strong>ACID</strong>。原子性(Atomic)，一致性(Consist)，隔离性(Isolated)，持久性(Durable)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用set语句来改变自动提交模式</span></span><br><span class="line"><span class="keyword">SET</span> autocommit = <span class="number">0</span>;   <span class="comment">/*关闭*/</span></span><br><span class="line"><span class="keyword">SET</span> autocommit = <span class="number">1</span>;   <span class="comment">/*开启*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 注意:</span></span><br><span class="line"><span class="comment">--- 1.MySQL中默认是自动提交</span></span><br><span class="line"><span class="comment">--- 2.使用事务时应先关闭自动提交</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 开始一个事务,标记事务的起始点</span></span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 提交一个事务给数据库</span></span><br><span class="line"><span class="keyword">COMMIT</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 将事务回滚,数据回到本次事务的初始状态</span></span><br><span class="line"><span class="keyword">ROLLBACK</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 还原MySQL数据库的自动提交</span></span><br><span class="line"><span class="keyword">SET</span> autocommit =<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 保存点</span></span><br><span class="line"><span class="keyword">SAVEPOINT</span> 保存点名称 <span class="comment">-- 设置一个事务保存点</span></span><br><span class="line"><span class="keyword">ROLLBACK</span> <span class="keyword">TO</span> <span class="keyword">SAVEPOINT</span> 保存点名称 <span class="comment">-- 回滚到保存点</span></span><br><span class="line"><span class="keyword">RELEASE</span> <span class="keyword">SAVEPOINT</span> 保存点名称 <span class="comment">-- 删除保存点</span></span><br></pre></td></tr></table></figure>
@@ -700,7 +700,7 @@ var _hmt = _hmt || [];
     2021-06-01
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-05-23
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/8a2dddd9.html" title="MySql基础" target="_blank">MySql基础</a>
@@ -1025,15 +1025,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1041,15 +1041,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1061,11 +1065,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1073,19 +1077,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1093,35 +1101,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

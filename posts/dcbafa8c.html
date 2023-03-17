@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="Spring Cloud 2020.0.0版本北京时间2020.12.22发布，彻底删除掉了Netflix除Eureka外的所有组件，支持SpringBoot2.4.x Netflix 组件替代方案(Feign依旧是可以使用的，OpenFiegn，做REST客户端)    Netflix 推荐替代品 说明     Hystrix Resilience4j Hystrix自己也推荐你使用它代替自己">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/7deda8bc601a46acb7c6f0f7f8366bdd.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/891a903d69af4c14b166e0abea4934ea.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/474989a917cc4957b277d2a824e106a3.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/73912c06b369414abfb6091b36fd313e.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7deda8bc601a46acb7c6f0f7f8366bdd.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/891a903d69af4c14b166e0abea4934ea.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/474989a917cc4957b277d2a824e106a3.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/73912c06b369414abfb6091b36fd313e.png">
 <meta property="article:published_time" content="2021-08-12T13:02:53.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:31:21.347Z">
+<meta property="article:modified_time" content="2023-03-17T07:39:25.188Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringCloud">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/7deda8bc601a46acb7c6f0f7f8366bdd.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/7deda8bc601a46acb7c6f0f7f8366bdd.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -250,7 +250,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringCloud-2020-0-3版本简单入门" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringCloud-2020.0.3版本简单入门" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -352,7 +352,7 @@ var _hmt = _hmt || [];
 <p>CAP原则又称CAP定理，指的是在一个分布式系统中一致性（Consistency）、可用性（Availability）、分区容错性（Partition tolerance）。但这三个要素最多只能同时实现两点，不可能三者兼顾，一般来说是AP和CP。</p>
 <h3 id="2、Eureka介绍">2、Eureka介绍</h3>
 <p>Eureka是一个基于REST的服务，用于定位服务，以达到负载均衡和中间层服务故障转移的目的。SpringCloud将它集成在其子项目spring-cloud-netflix中，以实现SpringCloud的服务注册与发现功能。功能类似于Dubbo的注册中心，比如Zookeeper。Eureka 包含两个组件：Eureka Server和Eureka Client。<br>
-<img src="https://img-blog.csdnimg.cn/7deda8bc601a46acb7c6f0f7f8366bdd.png" alt="请添加图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/7deda8bc601a46acb7c6f0f7f8366bdd.png" alt="请添加图片描述"></p>
 <ul>
 <li>Eureka Server：服务注册中心（可以是一个集群），对外暴露自己的地址</li>
 <li>Service Provider：微服务(可以是java程序，也可以python)，启动后向Eureka注册自己信息（地址等）</li>
@@ -373,7 +373,7 @@ var _hmt = _hmt || [];
 <p>最后在启动类上添加<code>@EnableEurekaServer</code>注解</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EurekaServerApplication</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(EurekaServerApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>启动<code>localhost:8088</code>即可进入我的注册中心<br>
-<img src="https://img-blog.csdnimg.cn/891a903d69af4c14b166e0abea4934ea.png" alt="请添加图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/891a903d69af4c14b166e0abea4934ea.png" alt="请添加图片描述"></p>
 <ul>
 <li>System Status：系统信息</li>
 <li>DS Replicas：服务器副本</li>
@@ -406,7 +406,7 @@ var _hmt = _hmt || [];
 <p>最后创建Cntroller，远程调用服务</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这里引的包为org.springframework.cloud.client.discovery.DiscoveryClient</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    DiscoveryClient discoveryClient;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">discory</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Object template = restTemplate.getForObject(<span class="string">"http://STUDENT/"</span>,Object<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/py"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">discory1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String template = restTemplate.getForObject(<span class="string">"http://FLASKSERVER/"</span>,String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">discory2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        log.info(<span class="string">"尝试获取注册中心信息"</span>);</span><br><span class="line">        log.info(<span class="string">"getApplications"</span>+discoveryClient.getServices());</span><br><span class="line">        log.info(<span class="string">"getInstancesById"</span>+discoveryClient.getInstances(<span class="string">"STUDENT"</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"成功"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>启动后，此时通过8081端口访问即可获取8080以及flask服务端提供的服务<br>
-<img src="https://img-blog.csdnimg.cn/474989a917cc4957b277d2a824e106a3.png" alt="请添加图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/474989a917cc4957b277d2a824e106a3.png" alt="请添加图片描述"></p>
 <h3 id="5、优化与提高">5、优化与提高</h3>
 <p>对于Eureka，info、还有集群、zone、region等</p>
 <h1>OpenFeign负载均衡</h1>
@@ -446,7 +446,7 @@ var _hmt = _hmt || [];
 <li>易于编写断言和过滤器</li>
 <li>请求速率限制</li>
 <li>路径重写<br>
-<img src="https://img-blog.csdnimg.cn/73912c06b369414abfb6091b36fd313e.png" alt="请添加图片描述"></li>
+<img src="http://qnypic.shawncoding.top/blog/73912c06b369414abfb6091b36fd313e.png" alt="请添加图片描述"></li>
 </ul>
 <h2 id="二、服务构建-v3">二、服务构建</h2>
 <h3 id="1、Gateway网关搭建">1、Gateway网关搭建</h3>
@@ -523,7 +523,7 @@ var _hmt = _hmt || [];
     2021-08-12
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/dcbafa8c.html" title="SpringCloud-2020.0.3版本简单入门" target="_blank">SpringCloud-2020.0.3版本简单入门</a>
@@ -848,15 +848,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -864,15 +864,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -884,11 +888,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -896,19 +900,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -916,35 +924,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

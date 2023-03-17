@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="# 一、服务器配置选择 1、介绍 服务器一般是由CPU、内存、磁盘和网卡组成，因此选择服务器配置就是选择CPU核数、内存大小、磁盘大小及类型、网络带宽。 但是，服务器配置的选择是很难标准化的，也就是说很难推断出&quot;一台需要达到1000TPS的后端服务器&quot;的配置应该是什么样的。因为软件的最终运行性能与软件的实现方式是紧密相关的，即使是同一个后端应用程序中的两个接口，由于具体功能的差">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/3b41b8236592471f973c89ab1054100b.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/3b41b8236592471f973c89ab1054100b.png">
 <meta property="article:published_time" content="2022-07-29T12:30:28.000Z">
-<meta property="article:modified_time" content="2022-07-29T12:37:35.190Z">
+<meta property="article:modified_time" content="2023-03-17T04:57:34.359Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/3b41b8236592471f973c89ab1054100b.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/3b41b8236592471f973c89ab1054100b.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -320,7 +320,7 @@ var _hmt = _hmt || [];
 <p>平均负载指的是<strong>单位时间内平均的活跃进程数</strong>，是一个表示服务器负载的指标。一般情况下需要保证平均负载的值小于当前服务器的CPU核数。<strong>一般情况下服务器的平均负载需要小于当前服务器的CPU核数</strong>，为了应对突发状况，**服务器的平均负载应该在cpu核心数*75%**以下。监控里三个数分别代表1分钟，5分钟，15分钟的平均负载</p>
 <p>以上几种可以使用htop明显的观察</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Centos安装</span></span><br><span class="line">yum install htop -y</span><br><span class="line"><span class="comment">#ubuntu安装</span></span><br><span class="line">sudo apt install htop</span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">htop</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/3b41b8236592471f973c89ab1054100b.png#pic_center" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/3b41b8236592471f973c89ab1054100b.png" alt></p>
 <h2 id="5、iostat查看磁盘I-O">5、iostat查看磁盘I/O</h2>
 <p>磁盘I/O指的是磁盘的读写，在软件系统中，日志、文件操作、数据库操作都会造成磁盘读写压力，其中又以数据库操作为甚，在高并发情况下往往数据库会首先成为系统的瓶颈。磁盘监控可以使用iostat工具，可以很方便查看磁盘的使用情况</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">yum install sysstat -y</span><br><span class="line">sudo apt install sysstat </span><br><span class="line"><span class="comment"># 查看磁盘总体读写情况， 1代表每1秒读取一次数据</span></span><br><span class="line">iostat -x 1</span><br></pre></td></tr></table></figure>
@@ -430,7 +430,7 @@ var _hmt = _hmt || [];
     2022-07-29
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-07-29
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/fd4941ce.html" title="Linux服务器线上优化" target="_blank">Linux服务器线上优化</a>
@@ -755,15 +755,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,15 +771,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,11 +795,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,19 +807,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,35 +831,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

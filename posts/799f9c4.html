@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="1、基本概念 我们都使用过连接池，比如C3P0，DBCP，hikari， Druid，虽然HikariCP的速度稍快，但Druid能够提供强大的监控和扩展功能，也是阿里巴巴的开源项目。Druid是阿里巴巴开发的号称为监控而生的数据库连接池，在功能、性能、扩展性方面，都超过其他数据库连接池，包括DBCP、C3P0、BoneCP、Proxool、JBoss DataSource等等，秒杀一切。 Dru">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b308f1e1734b4094aac8f9ca7fd0b797.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/5a1ca5a87402427da8768473132bfd73.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b4e3c56954454dd386660adc140ed180.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/181cb48e155b4eeaa48ba3956d86e4cd.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b308f1e1734b4094aac8f9ca7fd0b797.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/5a1ca5a87402427da8768473132bfd73.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b4e3c56954454dd386660adc140ed180.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/181cb48e155b4eeaa48ba3956d86e4cd.png">
 <meta property="article:published_time" content="2023-03-05T16:12:17.000Z">
-<meta property="article:modified_time" content="2023-03-05T16:39:27.796Z">
+<meta property="article:modified_time" content="2023-03-17T03:28:00.484Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/b308f1e1734b4094aac8f9ca7fd0b797.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/b308f1e1734b4094aac8f9ca7fd0b797.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -340,20 +340,34 @@ var _hmt = _hmt || [];
 <h2 id="3、监控页面">3、监控页面</h2>
 <p>启动项目后，访问<code>http://localhost:8081/druid/login.html</code>来到登录页面，输入用户名密码登录</p>
 <ul>
-<li>数据源页面 是当前<code>DataSource</code>配置的基本信息，上述配置的<code>Filter</code>可以在里面找到，如果没有配置 Filter（一些信息会无法统计，例如<code>SQL监控</code>会无法获取<code>JDBC</code>相关的SQL执行信息）<br>
-<img src="https://img-blog.csdnimg.cn/b308f1e1734b4094aac8f9ca7fd0b797.png" alt="在这里插入图片描述"></li>
-<li><code>SQL</code>监控页面，统计了所有<code>SQL</code>语句的执行情况<br>
-<img src="https://img-blog.csdnimg.cn/5a1ca5a87402427da8768473132bfd73.png" alt="在这里插入图片描述"></li>
-<li><code>URL</code>监控页面，统计了所有<code>Controller</code>接口的访问以及执行情况<br>
-<img src="https://img-blog.csdnimg.cn/b4e3c56954454dd386660adc140ed180.png" alt="在这里插入图片描述"></li>
-<li><code>Spring</code>监控页面，利用<code>aop</code>对指定接口的执行时间，<code>jdbc</code>数进行记录<br>
-<img src="https://img-blog.csdnimg.cn/181cb48e155b4eeaa48ba3956d86e4cd.png" alt="在这里插入图片描述"></li>
-<li><code>SQL</code>防火墙页面<br>
-druid提供了黑白名单的访问，可以清楚的看到sql防护情况</li>
-<li><code>Session</code>监控页面<br>
-可以看到当前的<code>session</code>状况，创建时间、最后活跃时间、请求次数、请求时间等详细参数。</li>
-<li><code>JSONAPI</code>页面<br>
-通过<code>api</code>的形式访问<code>Druid</code>的监控接口，api接口返回<code>Json</code>形式数据</li>
+<li>
+<p>数据源页面 是当前<code>DataSource</code>配置的基本信息，上述配置的<code>Filter</code>可以在里面找到，如果没有配置 Filter（一些信息会无法统计，例如<code>SQL监控</code>会无法获取<code>JDBC</code>相关的SQL执行信息）</p>
+<p><img src="http://qnypic.shawncoding.top/blog/b308f1e1734b4094aac8f9ca7fd0b797.png" alt="在这里插入图片描述"></p>
+</li>
+<li>
+<p><code>SQL</code>监控页面，统计了所有<code>SQL</code>语句的执行情况</p>
+<p><img src="http://qnypic.shawncoding.top/blog/5a1ca5a87402427da8768473132bfd73.png" alt="在这里插入图片描述"></p>
+</li>
+<li>
+<p><code>URL</code>监控页面，统计了所有<code>Controller</code>接口的访问以及执行情况</p>
+<p><img src="http://qnypic.shawncoding.top/blog/b4e3c56954454dd386660adc140ed180.png" alt="在这里插入图片描述"></p>
+</li>
+<li>
+<p><code>Spring</code>监控页面，利用<code>aop</code>对指定接口的执行时间，<code>jdbc</code>数进行记录</p>
+<p><img src="http://qnypic.shawncoding.top/blog/181cb48e155b4eeaa48ba3956d86e4cd.png" alt="在这里插入图片描述"></p>
+</li>
+<li>
+<p><code>SQL</code>防火墙页面<br>
+druid提供了黑白名单的访问，可以清楚的看到sql防护情况</p>
+</li>
+<li>
+<p><code>Session</code>监控页面<br>
+可以看到当前的<code>session</code>状况，创建时间、最后活跃时间、请求次数、请求时间等详细参数。</p>
+</li>
+<li>
+<p><code>JSONAPI</code>页面<br>
+通过<code>api</code>的形式访问<code>Druid</code>的监控接口，api接口返回<code>Json</code>形式数据</p>
+</li>
 </ul>
 <h2 id="4、sql监控">4、sql监控</h2>
 <p>配置Druid web监控filter（<code>WebStatFilter</code>）这个过滤器，作用就是统计web应用请求中所有的数据库信息，比如 发出的sql语句，sql执行的时间、请求次数、请求的url地址、以及seesion监控、数据库表的访问次数，如下配置</p>
@@ -441,7 +455,7 @@ druid提供了黑白名单的访问，可以清楚的看到sql防护情况</li>
     2023-03-06
     <br>
     <strong class="update-time">最后更新：</strong>
-    2023-03-06
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/799f9c4.html" title="Druid-DataSource监控MySQL" target="_blank">Druid-DataSource监控MySQL</a>
@@ -766,15 +780,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,15 +796,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +820,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,19 +832,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,35 +856,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

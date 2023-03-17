@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="NAS  NAS是Network-Attached Storage的简称。中文一般称为“网络附加存储”，或者“网络连接存储”。我们可以把NAS理解为通过网络提供存储的设备（请特别注意，不需要光纤交换机，普通的局域网交换机即可）。 NAS是一种基于IP的高性能文件共享和存储专用设备。  可使NAS客户端通过IP网络共享文件 采用针对文件I&#x2F;O而优化的专用操作系统 使UNIX和Windows用户都能共">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/08/GWAFfS.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/08/GWE1Et.png">
-<meta property="og:image" content="https://s1.ax1x.com/2020/04/08/GWZtmj.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/GWAFfS.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/GWE1Et.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/GWZtmj.png">
 <meta property="article:published_time" content="2020-04-08T05:43:40.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:28:15.575Z">
+<meta property="article:modified_time" content="2023-03-17T05:27:21.681Z">
 <meta property="article:author" content="Shawn">
-<meta property="article:tag" content="虚拟化基础">
+<meta property="article:tag" content="虚拟化与云计算">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/08/GWAFfS.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/GWAFfS.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -309,16 +309,16 @@ var _hmt = _hmt || [];
 <li>使UNIX和Windows用户都能共享数据</li>
 </ul>
 <p> 通俗来讲：NAS可以是一个独立的存储系统，从与普通的应用服务器对比也可以看出，NAS是直接独立的存储，我们就称为<strong>NAS存储系统</strong>。一般来说，我们也可以用NAS搭建家庭共享存储设备，可以实现视频、照片等在多终端的同时共享。</p>
-<p><img src="https://s1.ax1x.com/2020/04/08/GWAFfS.png" alt="GWAFfS.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/GWAFfS.png" alt="GWAFfS.png"></p>
 <a id="more"></a>
 <h3 id="SAN">SAN</h3>
 <p> SAN全称Storage Area Network and SAN Protocols，中文名存储区域网络，SAN是一种高速网络，提供在计算机与存储系统之间的数据传输。存储设备是指一台或多台用以存储计算机数据的磁盘设备，通常指磁盘阵列。其采用网状通道（Fibre Channel，简称FC）技术，通过FC交换机连接存储阵列和服务器主机，建立专用于数据存储的区域网络。SAN存储由于其基础是一个专用网络，因此扩展性很强，不管是在一个SAN系统中增加一定的存储空间还是增加几台使用存储空间的服务器都非常方便。</p>
 <p>但注意的是，SAN和NAS并不是相互冲突的，是可以共存于一个系统网络中的，但NAS通过一个公共的接口实现空间的管理和资源共享，SAN仅仅是为服务器存储数据提供一个专门的快速后方通道</p>
-<p><img src="https://s1.ax1x.com/2020/04/08/GWE1Et.png" alt="GWE1Et.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/GWE1Et.png" alt="GWE1Et.png"></p>
 <h3 id="iSCSI存储">iSCSI存储</h3>
 <p> 使用专门的存储区域网成本很高，而利用普通的数据网来传输ISCSI数据实现和SAN相似的功能可以大大的降低成本，同时提高系统的灵活性。SCSI就是这样一种技术，它利用普通的TCP/IP网来传输本来用存储区域网来传输的SCSI数据块。</p>
 <p> ISCSI网络存储的兴起原因：使用专门的光纤介质组建的SAN模式的存储区域网成本很高，而利用普通的数据网来传输ISCSI数据实现和SAN相似的功能可以大大的降低成本，同时提高系统的灵活性。</p>
-<p><img src="https://s1.ax1x.com/2020/04/08/GWZtmj.png" alt="GWZtmj.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/GWZtmj.png" alt="GWZtmj.png"></p>
 <h3 id="DAS"><strong>DAS</strong></h3>
 <p> 一种直接与主机系统相连接的存储设备，如作为服务器的计算机内部硬件驱动。</p>
 <h6 id></h6>
@@ -384,7 +384,7 @@ var _hmt = _hmt || [];
     2020-04-08
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/2.927e+166.html" title="NAS、SAN、ISCSI存储简单理解" target="_blank">NAS、SAN、ISCSI存储简单理解</a>
@@ -414,7 +414,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">虚拟化基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">虚拟化与云计算</a>
         		</li>
       		
 		</ul>
@@ -433,7 +433,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/虚拟化与云计算//" class="article-tag-list-link color3">虚拟化与云计算</a>
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -709,15 +709,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,15 +725,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -745,11 +749,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -757,19 +761,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,35 +785,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

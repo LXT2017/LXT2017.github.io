@@ -15,67 +15,67 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、事务基础知识 1、数据库事务概述 1.1 基本概念  SHOW ENGINES&#96;命令来查看当前 MySQL 支持的存储引擎都有哪些，以及这些存储引擎是否支持事务  **事务：**一组逻辑操作单元，使数据从一种状态变换到另一种状态。 **事务处理的原则：**保证所有事务都作为 一个工作单元 来执行，即使出现了故障，都不能改变这种执行方 式。当在一个事务中执行多个操作时，要么所有的事务都被提交(">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/34555bfc2fdfe71af5fe51d38f84b4be.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f663ec1653db90809f64f11da2b38b2c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e46ed4599c8f90c15ac94532e8d5a891.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c0f60c85d36da0618fe35f33da22ff30.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/83644f913a0e55cf9a0af10006188ac4.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/db67608a5a25d8512b384c3cff08c2f3.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c86ac2a4b73613d7f33e823a31e0a185.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/33603fdb317fa44fe2f00c6f7fdce74f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/651defef8ee660bc13d5b52581860d3c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/46e7642946d13c47be46271e3720d9ac.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/a115b8a99f045e3d97422868f5a8f1fb.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/8ee4d298405cac83a435e6256b1a2e5c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/fb17ed844060ff3f503a0c6a18b4e1f7.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/7b6bd715d14a897899f5c72e5c2849bc.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d3e17db3f01b7a2863e5d3095b9cba81.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4cc3fa152f83257debcdc22fe1f3b431.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ee6cc809c5c99f1ac3847b60039edfa1.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/362c2141eee1aa61a9212b7882667d06.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/8159a2da49a514f5100186599ec87ddf.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ab30f97d6272556124dd8488d7445b4c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/9d033f40f8f2b15773dfeea7956d53db.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/23038c6563ea1b105f626802c3295dc4.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f297073de2c39b94711af16f4e0b95aa.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d0bc50389caf2e0a2f40fb18438bc990.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/45b82f67617450175521419008bd7349.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/540da7c2bef2b48c6b0a794be878a043.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/85ca2b14b42df08ec50fde07b8ee4899.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/8982ff5f8999b7be69f7a9bc74855222.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0dec8a6081b73189478fde102642a922.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e3935a656e6e72bf9ada8f18772be3cb.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/3e3dc8d663119bda7d4b7f7d5c70c2ee.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d8bd4d904b98ba9c0074e50bd5833576.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2f2f89540a9c669f584da1573c3757ab.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d02ed7d161e8a04492f2b1b38ead9fe8.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/6ea921d34e52caef91440f86991c8fc3.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ff38f02640923a585fb989901f5c933d.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/10dea13c9c7a012a1c819e89ad69c993.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/51ddf7615a4ce1b5a96d3e23f16ed3ae.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/af176d0643ae45de76816bef235f0162.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e72ab7ee3373257f5cd129b3146a1a5a.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/90e754c0c81071aa8229ab51822777f6.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/640cbee8dfb4b17c3d0b5e3de6039916.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b2bf48e7a038655fc6315820d8fd3cc6.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/66c935ab472ee219efd881403750b5e2.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f573942f4672a60773708786600da41f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/7ded8812aa4ef3415773e1cb71882c3f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/75294856dc97fce39914dd6a119290fc.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c825114198bcb149c0d7933200f4b23d.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/be028aaa25deb033af097de1f6daf916.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f5c167014c8b76f754610a56fa586491.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/eadad27f0d8c3cc7570c246c42f86a68.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e3320fd843b1aca47873907e7d5e4fea.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/86f91998d0c6d09e8657f5c91d8c7b07.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/29fdb08150cfc1338d26c53dbe684160.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/9d08c83e5ee07c07c1d56ab68ab73080.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/34555bfc2fdfe71af5fe51d38f84b4be.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f663ec1653db90809f64f11da2b38b2c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e46ed4599c8f90c15ac94532e8d5a891.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/c0f60c85d36da0618fe35f33da22ff30.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/83644f913a0e55cf9a0af10006188ac4.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/db67608a5a25d8512b384c3cff08c2f3.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/c86ac2a4b73613d7f33e823a31e0a185.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/33603fdb317fa44fe2f00c6f7fdce74f.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/651defef8ee660bc13d5b52581860d3c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/46e7642946d13c47be46271e3720d9ac.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/a115b8a99f045e3d97422868f5a8f1fb.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/8ee4d298405cac83a435e6256b1a2e5c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/fb17ed844060ff3f503a0c6a18b4e1f7.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7b6bd715d14a897899f5c72e5c2849bc.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/d3e17db3f01b7a2863e5d3095b9cba81.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/4cc3fa152f83257debcdc22fe1f3b431.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/ee6cc809c5c99f1ac3847b60039edfa1.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/362c2141eee1aa61a9212b7882667d06.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/8159a2da49a514f5100186599ec87ddf.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/ab30f97d6272556124dd8488d7445b4c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/9d033f40f8f2b15773dfeea7956d53db.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/23038c6563ea1b105f626802c3295dc4.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f297073de2c39b94711af16f4e0b95aa.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/d0bc50389caf2e0a2f40fb18438bc990.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/45b82f67617450175521419008bd7349.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/540da7c2bef2b48c6b0a794be878a043.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/85ca2b14b42df08ec50fde07b8ee4899.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/8982ff5f8999b7be69f7a9bc74855222.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/0dec8a6081b73189478fde102642a922.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e3935a656e6e72bf9ada8f18772be3cb.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/3e3dc8d663119bda7d4b7f7d5c70c2ee.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/d8bd4d904b98ba9c0074e50bd5833576.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/2f2f89540a9c669f584da1573c3757ab.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/d02ed7d161e8a04492f2b1b38ead9fe8.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/6ea921d34e52caef91440f86991c8fc3.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/ff38f02640923a585fb989901f5c933d.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/10dea13c9c7a012a1c819e89ad69c993.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/51ddf7615a4ce1b5a96d3e23f16ed3ae.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/af176d0643ae45de76816bef235f0162.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e72ab7ee3373257f5cd129b3146a1a5a.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/90e754c0c81071aa8229ab51822777f6.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/640cbee8dfb4b17c3d0b5e3de6039916.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b2bf48e7a038655fc6315820d8fd3cc6.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/66c935ab472ee219efd881403750b5e2.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f573942f4672a60773708786600da41f.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7ded8812aa4ef3415773e1cb71882c3f.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/75294856dc97fce39914dd6a119290fc.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/c825114198bcb149c0d7933200f4b23d.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/be028aaa25deb033af097de1f6daf916.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f5c167014c8b76f754610a56fa586491.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/eadad27f0d8c3cc7570c246c42f86a68.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e3320fd843b1aca47873907e7d5e4fea.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/86f91998d0c6d09e8657f5c91d8c7b07.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/29fdb08150cfc1338d26c53dbe684160.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/9d08c83e5ee07c07c1d56ab68ab73080.png">
 <meta property="article:published_time" content="2023-03-05T16:17:23.000Z">
-<meta property="article:modified_time" content="2023-03-05T16:34:26.137Z">
+<meta property="article:modified_time" content="2023-03-17T05:19:30.876Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/34555bfc2fdfe71af5fe51d38f84b4be.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/34555bfc2fdfe71af5fe51d38f84b4be.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -301,7 +301,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MySQL8-0高级篇-下-事务与日志和备份" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySQL8.0高级篇(下)-事务与日志和备份" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -393,8 +393,8 @@ var _hmt = _hmt || [];
 如果事务执行了一部分而变为 <code>失败的</code> 状态，那么就需要把已经修改的事务中的操作还原到事务执 行前的状态。换句话说，就是要撤销失败事务对当前数据库造成的影响。我们把这个撤销的过程称之为 <code>回滚</code> 。当 <code>回滚</code> 操作执行完毕时，也就是数据库恢复到了执行事务之前的状态，我们就说该事 务处在了 <code>中止的</code> 状态。</li>
 <li><strong>提交的（committed）</strong></li>
 </ul>
-<p>当一个处在 部分提交的 状态的事务将修改过的数据都 同步到磁盘 上之后，我们就可以说该事务处在了 提交的 状态。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/34555bfc2fdfe71af5fe51d38f84b4be.png" alt="image-20220708171857847.png"></p>
+<p>当一个处在 部分提交的 状态的事务将修改过的数据都 同步到磁盘 上之后，我们就可以说该事务处在了 提交的 状态。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/34555bfc2fdfe71af5fe51d38f84b4be.png" alt="image-20220708171857847.png"></p>
 <h2 id="2、如何使用事务">2、如何使用事务</h2>
 <blockquote>
 <p>使用事务有两种方式，分别为 显式事务 和 隐式事务</p>
@@ -435,14 +435,14 @@ var _hmt = _hmt || [];
 <h3 id="3-1-数据准备">3.1 数据准备</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student (</span><br><span class="line">    studentno <span class="built_in">INT</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    <span class="keyword">class</span> <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (studentno)</span><br><span class="line">) <span class="keyword">Engine</span>=<span class="keyword">InnoDB</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> student <span class="keyword">VALUES</span>(<span class="number">1</span>, <span class="string">'小谷'</span>, <span class="string">'1班'</span>);</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
 <h3 id="3-2-数据并发问题">3.2 数据并发问题</h3>
-<p><strong>1、脏写</strong>，对于两个事务 Session A、Session B，如果事务Session A 修改了 另一个 未提交 事务Session B 修改过 的数据，那就意味着发生了 脏写<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/f663ec1653db90809f64f11da2b38b2c.png" alt="image-20220708214453902.png"><br>
-**2、脏读，**对于两个事务 Session A、Session B，Session A 读取 了已经被 Session B 更新 但还 没有被提交 的字段。 之后若 Session B 回滚 ，Session A 读取的内容就是 临时且无效 的<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/e46ed4599c8f90c15ac94532e8d5a891.png" alt="image-20220708215109480.png"><br>
-**3、不可重复读（ Non-Repeatable Read ），**对于两个事务Session A、Session B，Session A 读取了一个字段，然后 Session B 更新了该字段。 之后 Session A 再次读取 同一个字段， 值就不同 了。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/c0f60c85d36da0618fe35f33da22ff30.png" alt="image-20220708215626435.png"><br>
-4、**幻读（ Phantom ），**对于两个事务Session A、Session B, Session A 从一个表中 读取 了一个字段, 然后 Session B 在该表中 插 入 了一些新的行。 之后, 如果 Session A 再次读取 同一个表, 就会多出几行。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/83644f913a0e55cf9a0af10006188ac4.png" alt="image-20220708220102342.png"></p>
+<p><strong>1、脏写</strong>，对于两个事务 Session A、Session B，如果事务Session A 修改了 另一个 未提交 事务Session B 修改过 的数据，那就意味着发生了 脏写</p>
+<p><img src="http://qnypic.shawncoding.top/blog/f663ec1653db90809f64f11da2b38b2c.png" alt="image-20220708214453902.png"></p>
+<p>**2、脏读，**对于两个事务 Session A、Session B，Session A 读取 了已经被 Session B 更新 但还 没有被提交 的字段。 之后若 Session B 回滚 ，Session A 读取的内容就是 临时且无效 的</p>
+<p><img src="http://qnypic.shawncoding.top/blog/e46ed4599c8f90c15ac94532e8d5a891.png" alt="image-20220708215109480.png"></p>
+<p>**3、不可重复读（ Non-Repeatable Read ），**对于两个事务Session A、Session B，Session A 读取了一个字段，然后 Session B 更新了该字段。 之后 Session A 再次读取 同一个字段， 值就不同 了。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/c0f60c85d36da0618fe35f33da22ff30.png" alt="image-20220708215626435.png"></p>
+<p>4、**幻读（ Phantom ），**对于两个事务Session A、Session B, Session A 从一个表中 读取 了一个字段, 然后 Session B 在该表中 插 入 了一些新的行。 之后, 如果 Session A 再次读取 同一个表, 就会多出几行。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/83644f913a0e55cf9a0af10006188ac4.png" alt="image-20220708220102342.png"></p>
 <h3 id="3-3-SQL中的四种隔离级别">3.3 SQL中的四种隔离级别</h3>
 <p>上面介绍了几种并发事务执行过程中可能遇到的一些问题，这些问题有轻重缓急之分，我们给这些问题 按照严重性来排一下序：<strong>脏写 &gt; 脏读 &gt; 不可重复读 &gt; 幻读</strong><br>
 SQL标准 中设立了4个 隔离级别</p>
@@ -452,9 +452,9 @@ SQL标准 中设立了4个 隔离级别</p>
 <li><code>REPEATABLE READ</code> ：可重复读，事务A在读到一条数据之后，此时事务B对该数据进行了修改并提 交，那么事务A再读该数据，读到的还是原来的内容。可以避免脏读、不可重复读，但幻读问题仍 然存在。这是MySQL的默认隔离级别。</li>
 <li><code>SERIALIZABLE</code> ：可串行化，确保事务可以从一个表中读取相同的行。在这个事务持续期间，禁止 其他事务对该表执行插入、更新和删除操作。所有的并发问题都可以避免，但性能十分低下。能避 免脏读、不可重复读和幻读。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/db67608a5a25d8512b384c3cff08c2f3.png" alt="image-20220708220917267.png"><br>
-脏写怎么没涉及到？因为脏写这个问题太严重了，不论是哪种隔离级别，都不允许脏写的情况发生。不同的隔离级别有不同的现象，并有不同的锁和并发机制，隔离级别越高，数据库的并发性能就越差，4 种事务隔离级别与并发性能的关系如下：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/c86ac2a4b73613d7f33e823a31e0a185.png" alt="image-20220708220957108.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/db67608a5a25d8512b384c3cff08c2f3.png" alt="image-20220708220917267.png"></p>
+<p>脏写怎么没涉及到？因为脏写这个问题太严重了，不论是哪种隔离级别，都不允许脏写的情况发生。不同的隔离级别有不同的现象，并有不同的锁和并发机制，隔离级别越高，数据库的并发性能就越差，4 种事务隔离级别与并发性能的关系如下：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/c86ac2a4b73613d7f33e823a31e0a185.png" alt="image-20220708220957108.png"></p>
 <h3 id="3-4-MySQL支持的四种隔离级别">3.4 MySQL支持的四种隔离级别</h3>
 <p>不同的数据库厂商对sQL标准中规定的四种隔离级别支持不一样。比如，<code>Oracle</code>就只支持 <strong>READ COMMITTED（默认隔离级别）和SERIALIZABLE隔离级别</strong>。MySQL虽然支持4种隔离级别，但与SQL标准中所规定的各级隔离级别允许发生的问题却有些出入，<strong>MySQL在REPEATABLE READ隔离级别下，是可以禁止幻读问题的发生的</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看隔离级别，MySQL 5.7.20的版本之前</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'tx_isolation'</span>;</span><br><span class="line"><span class="comment">--  MySQL 5.7.20版本之后，引入transaction_isolation来替换tx_isolation</span></span><br><span class="line"><span class="comment">-- 查看隔离级别，MySQL 5.7.20的版本及之后</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'transaction_isolation'</span>;</span><br><span class="line"><span class="comment">-- 或者不同MySQL版本中都可以使用的：</span></span><br><span class="line"><span class="keyword">SELECT</span> @@transaction_isolation;</span><br></pre></td></tr></table></figure>
@@ -526,9 +526,9 @@ redo log跟bin log的区别，redo log是<code>存储引擎层</code>产生的�
 <li>重做日志文件 (redo log file)，保存在硬盘中，是持久的。例如ib_logfile0和ib_logfile1即为REDO日志</li>
 </ul>
 <h3 id="2-4-redo的整体流程">2.4 redo的整体流程</h3>
-<p>以一个更新事务为例，redo log 流转过程，如下图所示：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/33603fdb317fa44fe2f00c6f7fdce74f.png" alt="image-20220710204810264.png"><br>
-第1步：先将原始数据从磁盘中读入内存中来，修改数据的内存拷贝<br>
+<p>以一个更新事务为例，redo log 流转过程，如下图所示：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/33603fdb317fa44fe2f00c6f7fdce74f.png" alt="image-20220710204810264.png"></p>
+<p>第1步：先将原始数据从磁盘中读入内存中来，修改数据的内存拷贝<br>
 第2步：生成一条重做日志并写入redo log buffer，记录的是数据被修改后的值<br>
 第3步：当事务commit时，将redo log buffer中的内容刷新到 redo log file，对 redo log file采用追加写的方式<br>
 第4步：定期将内存中修改的数据刷新到磁盘中</p>
@@ -536,9 +536,9 @@ redo log跟bin log的区别，redo log是<code>存储引擎层</code>产生的�
 <p>Write-Ahead Log(预先日志持久化)：在持久化一个数据页之前，先将内存中相应的日志页持久化</p>
 </blockquote>
 <h3 id="2-5-redo-log的刷盘策略">2.5 redo log的刷盘策略</h3>
-<p>redo log的写入并不是直接写入磁盘的，InnoDB引擎会在写redo log的时候先写redo log buffer，之后以一 定的频率刷入到真正的redo log file 中。这里的一定频率怎么看待呢？这就是我们要说的刷盘策略。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/651defef8ee660bc13d5b52581860d3c.png" alt="image-20220710205015302.png"><br>
-注意，redo log buffer刷盘到redo log file的过程并不是真正的刷到磁盘中去，只是刷入到 <code>文件系统缓存 （page cache）</code>中去（这是现代操作系统为了提高文件写入效率做的一个优化），真正的写入会交给系统自己来决定（比如page cache足够大了）。那么对于InnoDB来说就存在一个问题，如果交给系统来同 步，同样如果系统宕机，那么数据也丢失了（虽然整个系统宕机的概率还是比较小的）。<br>
+<p>redo log的写入并不是直接写入磁盘的，InnoDB引擎会在写redo log的时候先写redo log buffer，之后以一 定的频率刷入到真正的redo log file 中。这里的一定频率怎么看待呢？这就是我们要说的刷盘策略。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/651defef8ee660bc13d5b52581860d3c.png" alt="image-20220710205015302.png"></p>
+<p>注意，redo log buffer刷盘到redo log file的过程并不是真正的刷到磁盘中去，只是刷入到 <code>文件系统缓存 （page cache）</code>中去（这是现代操作系统为了提高文件写入效率做的一个优化），真正的写入会交给系统自己来决定（比如page cache足够大了）。那么对于InnoDB来说就存在一个问题，如果交给系统来同 步，同样如果系统宕机，那么数据也丢失了（虽然整个系统宕机的概率还是比较小的)。<br>
 针对这种情况，InnoDB给出 <code>innodb_flush_log_at_trx_commit</code> 参数，该参数控制 commit提交事务 时，如何将 redo log buffer 中的日志刷新到 redo log file 中。它支持三种策略：</p>
 <ul>
 <li><code>设置为0</code> ：表示每次事务提交时不进行刷盘操作。（系统默认master thread每隔1s进行一次重做日 志的同步） 第1步：先将原始数据从磁盘中读入内存中来，修改数据的内存拷贝 第2步：生成一条重做日志并写入redo log buffer，记录的是数据被修改后的值 第3步：当事务commit时，将redo log buffer中的内容刷新到 redo log file，对 redo log file采用追加 写的方式 第4步：定期将内存中修改的数据刷新到磁盘中</li>
@@ -546,34 +546,34 @@ redo log跟bin log的区别，redo log是<code>存储引擎层</code>产生的�
 <li><code>设置为2</code> ：表示每次事务提交时都只把 redo log buffer 内容写入 page cache，不进行同步。由os自 己决定什么时候同步到磁盘文件。</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看自己的刷盘策略</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'innodb_flush_log_at_trx_commit'</span> ;</span><br></pre></td></tr></table></figure>
-<p>另外，InnoDB存储引擎有一个后台线程，每隔1秒，就会把redo log buffer中的内容写到文件系统缓存(page cache)，然后调用刷盘操作<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/46e7642946d13c47be46271e3720d9ac.png" alt="image-20220710210339724.png"><br>
-也就是说，一个没有提交事务的redo log记录，也可能会刷盘。因为在事务执行过程 redo log 记录是会写入 redo log buffer中，这些redo log 记录会被后台线程刷盘。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/a115b8a99f045e3d97422868f5a8f1fb.png" alt="image-20220710210532805.png"><br>
-除了后台线程每秒1次的轮询操作，还有一种情况，当redo log buffer占用的空间即将达到innodb_log_buffer_size（这个参数默认是16M）的一半的时候，后台线程会主动刷盘</p>
+<p>另外，InnoDB存储引擎有一个后台线程，每隔1秒，就会把redo log buffer中的内容写到文件系统缓存(page cache)，然后调用刷盘操作</p>
+<p><img src="http://qnypic.shawncoding.top/blog/46e7642946d13c47be46271e3720d9ac.png" alt="image-20220710210339724.png"></p>
+<p>也就是说，一个没有提交事务的redo log记录，也可能会刷盘。因为在事务执行过程 redo log 记录是会写入 redo log buffer中，这些redo log 记录会被后台线程刷盘。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/a115b8a99f045e3d97422868f5a8f1fb.png" alt="image-20220710210532805.png"></p>
+<p>除了后台线程每秒1次的轮询操作，还有一种情况，当redo log buffer占用的空间即将达到innodb_log_buffer_size（这个参数默认是16M)的一半的时候，后台线程会主动刷盘</p>
 <h3 id="1-6-不同刷盘策略演示">1.6 不同刷盘策略演示</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 比较innodb_flush_log_at_trx_commit对事务的影响</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test_load(</span><br><span class="line">a <span class="built_in">INT</span>,</span><br><span class="line">b <span class="built_in">CHAR</span>(<span class="number">80</span>)</span><br><span class="line">)<span class="keyword">ENGINE</span>=<span class="keyword">INNODB</span>;</span><br><span class="line"></span><br><span class="line">DELIMITER//</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> p_load(<span class="keyword">COUNT</span> <span class="built_in">INT</span> <span class="keyword">UNSIGNED</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> s <span class="built_in">INT</span> <span class="keyword">UNSIGNED</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> c <span class="built_in">CHAR</span>(<span class="number">80</span>) <span class="keyword">DEFAULT</span> <span class="keyword">REPEAT</span>(<span class="string">'a'</span>,<span class="number">80</span>);</span><br><span class="line">WHILE s&lt;=COUNT DO</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_load <span class="keyword">SELECT</span> <span class="literal">NULL</span>, c;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">SET</span> s=s+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line"><span class="keyword">END</span> //</span><br><span class="line">DELIMITER;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 向表中插入3w条记录，并执行3万次的fsync操作。</span></span><br><span class="line"><span class="keyword">CALL</span> p_load(<span class="number">30000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改参数innodb_flush_log_at_trx_commit，进行分别测试</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> innodb_flush_log_at_trx_commit = <span class="number">0</span>;</span><br><span class="line"><span class="comment">-- 0最快2其次1最慢</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-7-写入redo-log-buffer-过程">1.7 写入redo log buffer 过程</h3>
 <p><strong>1、补充概念：Mini-Transaction</strong><br>
 MySQL把对底层页面中的一次原子访问过程称之为一个Mini-Transaction，简称mtr，比如，向某个索引对应的B+树中插入一条记录的过程就是一个Mini-Transaction。一个所谓的mtr可以包含一组redo日志，在进行崩溃恢复时这一组redo日志可以作为一个不可分割的整体。<br>
-一个事务可以包含若干条语句，每一条语句其实是由若干个 mtr 组成，每一个 mtr 又可以包含若干条 redo日志，画个图表示它们的关系就是这样：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/8ee4d298405cac83a435e6256b1a2e5c.png" alt="image-20220710220653131.png"><br>
-<strong>2、 redo 日志写入log buffer</strong><br>
-向<code>log buffer</code>中写入redo日志的过程是顺序的，也就是先往前边的block中写，当该block的空闲空间用完之后再往下一个block中写。当我们想往<code>log buffer</code>中写入redo日志时，第一个遇到的问题就是应该写在哪个<code>block</code>的哪个偏移量处，所以<code>InnoDB</code>的设计者特意提供了一个称之为<code>buf_free</code>的全局变量，该变量指明后续写入的redo日志应该写入到<code>log buffer</code>中的哪个位置，如图所示:<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/fb17ed844060ff3f503a0c6a18b4e1f7.png" alt="image-20220710220919271.png"><br>
-一个mtr执行过程中可能产生若干条redo日志，<strong>这些redo日志是一个不可分割的组</strong>，所以其实并不是每生成一条redo日志，就将其插入到log buffer中，而是每个mtr运行过程中产生的日志先暂时存到一个地方，当该mtr结束的时候，将过程中产生的一组redo日志再全部复制到log buffer中。我们现在假设有两个名为<strong>T1、T2</strong>的事务，每个事务都包含2个mtr，我们给这几个mtr命名一下:</p>
+一个事务可以包含若干条语句，每一条语句其实是由若干个 mtr 组成，每一个 mtr 又可以包含若干条 redo日志，画个图表示它们的关系就是这样：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/8ee4d298405cac83a435e6256b1a2e5c.png" alt="image-20220710220653131.png"></p>
+<p><strong>2、 redo 日志写入log buffer</strong><br>
+向<code>log buffer</code>中写入redo日志的过程是顺序的，也就是先往前边的block中写，当该block的空闲空间用完之后再往下一个block中写。当我们想往<code>log buffer</code>中写入redo日志时，第一个遇到的问题就是应该写在哪个<code>block</code>的哪个偏移量处，所以<code>InnoDB</code>的设计者特意提供了一个称之为<code>buf_free</code>的全局变量，该变量指明后续写入的redo日志应该写入到<code>log buffer</code>中的哪个位置，如图所示:</p>
+<p><img src="http://qnypic.shawncoding.top/blog/fb17ed844060ff3f503a0c6a18b4e1f7.png" alt="image-20220710220919271.png"></p>
+<p>一个mtr执行过程中可能产生若干条redo日志，<strong>这些redo日志是一个不可分割的组</strong>，所以其实并不是每生成一条redo日志，就将其插入到log buffer中，而是每个mtr运行过程中产生的日志先暂时存到一个地方，当该mtr结束的时候，将过程中产生的一组redo日志再全部复制到log buffer中。我们现在假设有两个名为<strong>T1、T2</strong>的事务，每个事务都包含2个mtr，我们给这几个mtr命名一下:</p>
 <ul>
 <li>事务T1的两个mtr分别称为mtr_T1_1和mtr_T1_2</li>
 <li>事务T2的两个mtr分别称为mtr_T2_1和mtr_T2_2</li>
 </ul>
-<p>每个mtr都会产生一组redo日志，不同的事务可能是 并发 执行的，所以 T1 、 T2 之间的 mtr 可能是 交替执行 的。没当一个mtr执行完成时，伴随该mtr生成的一组redo日志就需要被复制到log buffer中，也就是说不同事务的mtr可能是交替写入log buffer的，我们画个示意图（为了美观，我们把一个mtr中产生的所有redo日志当做一个整体来画）<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/7b6bd715d14a897899f5c72e5c2849bc.png" alt="image-20220710221620291.png"><br>
-<strong>3、redo log block的结构</strong><br>
+<p>每个mtr都会产生一组redo日志，不同的事务可能是 并发 执行的，所以 T1 、 T2 之间的 mtr 可能是 交替执行 的。没当一个mtr执行完成时，伴随该mtr生成的一组redo日志就需要被复制到log buffer中，也就是说不同事务的mtr可能是交替写入log buffer的，我们画个示意图（为了美观，我们把一个mtr中产生的所有redo日志当做一个整体来画）</p>
+<p><img src="http://qnypic.shawncoding.top/blog/7b6bd715d14a897899f5c72e5c2849bc.png" alt="image-20220710221620291.png"></p>
+<p><strong>3、redo log block的结构</strong><br>
 一个redo log block是由<code>日志头、日志体、日志尾</code>组成。日志头占用12字节，日志尾占用8字节，所以一个block真正能存储的数据是512-12-8=492字节。</p>
 <blockquote>
 <p>这个和磁盘的扇区有关，机械磁盘默认的扇区就是512字节，如果你要写入的数据大于512字节，那么要写入的扇区肯定不止一个，这时就要涉及到盘片的转动，找到下一个扇区，假设现在需要写入两个扇区A和B，如果扇区A写入成功，而扇区B写入失败，那么就会出现非原子性的写入，而如果每次只写入和扇区的大小一样的512字节，那么每次的写入都是原子性的。</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d3e17db3f01b7a2863e5d3095b9cba81.png" alt="image-20220711144608223.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/d3e17db3f01b7a2863e5d3095b9cba81.png" alt="image-20220711144608223.png"></p>
 <h3 id="1-8-redo-log-file">1.8 redo log file</h3>
 <p><strong>1、相关参数设置</strong></p>
 <ul>
@@ -592,12 +592,12 @@ MySQL把对底层页面中的一次原子访问过程称之为一个Mini-Transac
 <li><code>write pos</code>是当前记录的位置，一边写一边后移</li>
 <li><code>checkpoint</code>是当前要擦除的位置，也是往后推移</li>
 </ul>
-<p>每次刷盘 redo log 记录到日志文件组中，write pos 位置就会后移更新。每次MySQL加载日志文件组恢复数据时，会清空加载过的 redo log 记录，并把check point后移更新。write pos 和 checkpoint 之间的还空着的部分可以用来写入新的 redo log 记录。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/4cc3fa152f83257debcdc22fe1f3b431.png" alt="image-20220711152626161.png"><br>
-如果 write pos 追上 checkpoint ，表示日志文件组满了，这时候不能再写入新的 redo log记录，MySQL 得 停下来，清空一些记录，把 checkpoint 推进一下<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/ee6cc809c5c99f1ac3847b60039edfa1.png" alt="image-20220711152802294.png"></p>
+<p>每次刷盘 redo log 记录到日志文件组中，write pos 位置就会后移更新。每次MySQL加载日志文件组恢复数据时，会清空加载过的 redo log 记录，并把check point后移更新。write pos 和 checkpoint 之间的还空着的部分可以用来写入新的 redo log 记录。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/4cc3fa152f83257debcdc22fe1f3b431.png" alt="image-20220711152626161.png"></p>
+<p>如果 write pos 追上 checkpoint ，表示日志文件组满了，这时候不能再写入新的 redo log记录，MySQL 得 停下来，清空一些记录，把 checkpoint 推进一下</p>
+<p><img src="http://qnypic.shawncoding.top/blog/ee6cc809c5c99f1ac3847b60039edfa1.png" alt="image-20220711152802294.png"></p>
 <h3 id="1-9-redo-log-小结">1.9 redo log 小结</h3>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/362c2141eee1aa61a9212b7882667d06.png" alt="image-20220711152930911.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/362c2141eee1aa61a9212b7882667d06.png" alt="image-20220711152930911.png"></p>
 <h2 id="3、Undo日志">3、Undo日志</h2>
 <blockquote>
 <p>redo log是事务持久性的保证，undo log是事务原子性的保证。在事务中 更新数据 的 前置操作 其实是要先写入一个 undo log</p>
@@ -668,14 +668,14 @@ InnoDB对undo log的管理采用段的方式，也就是 <code>回滚段（rollb
 <li>如果在8-9之间宕机，恢复之后可以选择回滚，也可以选择继续完成事务提交，因为此时redo log已经持久化</li>
 <li>若在9之后系统宕机，内存映射中变更的数据还来不及刷回磁盘，那么系统恢复之后，可以根据redo log把数据刷回磁盘。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/8159a2da49a514f5100186599ec87ddf.png" alt="image-20220711162642305.png"><br>
-<strong>2、详细生成过程</strong><br>
-<img src="https://img-blog.csdnimg.cn/img_convert/ab30f97d6272556124dd8488d7445b4c.png" alt="image-20220711162919157.png"><br>
-对应更新的操作会产生update undo log，并且会分更新主键和不更新主键的，对于不更新主键的，这时会把老的记录写入新的undo log，让回滚指针指向新的undo log，它的undo no是1，并且新的undo log会指向老的undo log（undo no=0）<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/9d033f40f8f2b15773dfeea7956d53db.png" alt="image-20220711164138414.png"><br>
-对于更新主键的操作，会先把原来的数据deletemark标识打开，这时并没有真正的删除数据，真正的删除会交给清理线程去判断，然后在后面插入一条新的数据，新的数据也会产生undo log，并且undo log的序号会递增<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/23038c6563ea1b105f626802c3295dc4.png" alt="image-20220711164421494.png"><br>
-可以发现每次对数据的变更都会产生一个undo log，当一条记录被变更多次时，那么就会产生多条undo log，undo log记录的是变更前的日志，并且每个undo log的序号是递增的，那么当要回滚的时候，按照序号依次向前推，就可以找到我们的原始数据了<br>
+<p><img src="http://qnypic.shawncoding.top/blog/8159a2da49a514f5100186599ec87ddf.png" alt="image-20220711162642305.png"></p>
+<p><strong>2、详细生成过程</strong></p>
+<p><img src="http://qnypic.shawncoding.top/blog/ab30f97d6272556124dd8488d7445b4c.png" alt="image-20220711162919157.png"></p>
+<p>对应更新的操作会产生update undo log，并且会分更新主键和不更新主键的，对于不更新主键的，这时会把老的记录写入新的undo log，让回滚指针指向新的undo log，它的undo no是1，并且新的undo log会指向老的undo log（undo no=0）</p>
+<p><img src="http://qnypic.shawncoding.top/blog/9d033f40f8f2b15773dfeea7956d53db.png" alt="image-20220711164138414.png"></p>
+<p>对于更新主键的操作，会先把原来的数据deletemark标识打开，这时并没有真正的删除数据，真正的删除会交给清理线程去判断，然后在后面插入一条新的数据，新的数据也会产生undo log，并且undo log的序号会递增</p>
+<p><img src="http://qnypic.shawncoding.top/blog/23038c6563ea1b105f626802c3295dc4.png" alt="image-20220711164421494.png"></p>
+<p>可以发现每次对数据的变更都会产生一个undo log，当一条记录被变更多次时，那么就会产生多条undo log，undo log记录的是变更前的日志，并且每个undo log的序号是递增的，那么当要回滚的时候，按照序号依次向前推，就可以找到我们的原始数据了<br>
 <strong>3、undo log是如何回滚的</strong><br>
 以上面的例子来说，假设执行rollback，那么对应的流程应该是这样：</p>
 <ul>
@@ -701,16 +701,16 @@ InnoDB对undo log的管理采用段的方式，也就是 <code>回滚段（rollb
 <h3 id="2-1-读-读情况">2.1 读-读情况</h3>
 <p>读-读情况，即并发事务相继读取相同的记录。读取操作本身不会对记录有任何影响，并不会引起什么问题，所以允许这种情况的发生</p>
 <h3 id="2-2-写-写情况">2.2 写-写情况</h3>
-<p>写-写 情况，即并发事务相继对相同的记录做出改动，在这种情况下会发生 脏写 的问题，任何一种隔离级别都不允许这种问题的发生。所以在多个未提交事务相继对一条记录做改动时，需要让它们 排队执行 ，这个排队的过程其实是通过 锁 来实现的。这个所谓的锁其实是一个内存中的结构 ，在事务执行前本来是没有锁的，也就是说一开始是没有 锁结构 和记录进 行关联的，当一个事务想对这条记录做改动时，首先会看看内存中有没有与这条记录关联的 锁结构 ，当没有的时候 就会在内存中生成一个 锁结构 与之关联。比如，事务T1 要对这条记录做改动，就需要生成一个 锁结构 与之关联<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/f297073de2c39b94711af16f4e0b95aa.png" alt="image-20220711192633239.png"></p>
+<p>写-写 情况，即并发事务相继对相同的记录做出改动，在这种情况下会发生 脏写 的问题，任何一种隔离级别都不允许这种问题的发生。所以在多个未提交事务相继对一条记录做改动时，需要让它们 排队执行 ，这个排队的过程其实是通过 锁 来实现的。这个所谓的锁其实是一个内存中的结构 ，在事务执行前本来是没有锁的，也就是说一开始是没有 锁结构 和记录进 行关联的，当一个事务想对这条记录做改动时，首先会看看内存中有没有与这条记录关联的 锁结构 ，当没有的时候 就会在内存中生成一个 锁结构 与之关联。比如，事务T1 要对这条记录做改动，就需要生成一个 锁结构 与之关联</p>
+<p><img src="http://qnypic.shawncoding.top/blog/f297073de2c39b94711af16f4e0b95aa.png" alt="image-20220711192633239.png"></p>
 <p>在<code>锁结构</code>里有很多信息，为了简化理解，只把两个比较重要的属性拿了出来</p>
 <ul>
 <li><code>trx信息</code>：代表这个锁结构是哪个事务生成的。</li>
 <li><code>is_waiting</code>：代表当前事务是否在等待</li>
 </ul>
-<p>在事务<code>T1</code>改动了这条记录后，就生成了一个<code>锁结构</code>与该记录关联，因为之前没有别的事务为这条记录加锁，所以<code>is_waiting</code>属性就是<code>false</code>，我们把这个场景就称值为<code>获取锁成功</code>，或者<code>加锁成功</code>，然后就可以继续执行操作了。在事务<code>T1</code>提交之前，另一个事务<code>T2</code>也想对该记录做改动，那么先看看有没有<code>锁结构</code>与这条记录关联，发现有一个<code>锁结构</code>与之关联后，然后也生成了一个锁结构与这条记录关联，不过锁结构的<code>is_waiting</code>属性值为<code>true</code>，表示当前事务需要等待，我们把这个场景就称之为<code>获取锁失败</code>，或者<code>加锁失败</code><br>
-<img src="https://img-blog.csdnimg.cn/img_convert/d0bc50389caf2e0a2f40fb18438bc990.png" alt="image-20220711193732567.png"><br>
-在事务T1提交之后，就会把该事务生成的锁结构释放掉，然后看看还有没有别的事务在等待获取锁，发现了事务T2还在等待获取锁，所以把事务T2对应的锁结构的is_waiting属性设置为false，然后把该事务对应的线程唤醒，让它继续执行，此时事务T2就算获取到锁了<br>
+<p>在事务<code>T1</code>改动了这条记录后，就生成了一个<code>锁结构</code>与该记录关联，因为之前没有别的事务为这条记录加锁，所以<code>is_waiting</code>属性就是<code>false</code>，我们把这个场景就称值为<code>获取锁成功</code>，或者<code>加锁成功</code>，然后就可以继续执行操作了。在事务<code>T1</code>提交之前，另一个事务<code>T2</code>也想对该记录做改动，那么先看看有没有<code>锁结构</code>与这条记录关联，发现有一个<code>锁结构</code>与之关联后，然后也生成了一个锁结构与这条记录关联，不过锁结构的<code>is_waiting</code>属性值为<code>true</code>，表示当前事务需要等待，我们把这个场景就称之为<code>获取锁失败</code>，或者<code>加锁失败</code></p>
+<p><img src="http://qnypic.shawncoding.top/blog/d0bc50389caf2e0a2f40fb18438bc990.png" alt="image-20220711193732567.png"></p>
+<p>在事务T1提交之后，就会把该事务生成的锁结构释放掉，然后看看还有没有别的事务在等待获取锁，发现了事务T2还在等待获取锁，所以把事务T2对应的锁结构的is_waiting属性设置为false，然后把该事务对应的线程唤醒，让它继续执行，此时事务T2就算获取到锁了<br>
 <strong>小结</strong></p>
 <ul>
 <li>不加锁，意思就是不需要在内存中生成对应的 <code>锁结构</code> ，可以直接执行操作。</li>
@@ -739,7 +739,7 @@ InnoDB对undo log的管理采用段的方式，也就是 <code>回滚段（rollb
 </ul>
 <p>一般情况下我们当然愿意采用 <code>MVCC</code> 来解决 <code>读-写</code> 操作并发执行的问题，但是业务在某些特殊情况下，要求必须采用 <code>加锁</code>的方式执行。下面就讲解下MySQL中不同类别的锁。</p>
 <h2 id="3、锁的不同角度分类">3、锁的不同角度分类</h2>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/45b82f67617450175521419008bd7349.png" alt="image-20220711203519162.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/45b82f67617450175521419008bd7349.png" alt="image-20220711203519162.png"></p>
 <h3 id="3-1-从数据操作的类型划分：读锁、写锁">3.1 从数据操作的类型划分：读锁、写锁</h3>
 <p>对于数据库中并发事务的<code>读-读</code>情况并不会引起什么问题。对于<code>写-写、读-写或写-读</code>这些情况可能会引起一些问题，需要使用<code>MVCC</code>或者<code>加锁</code>的方式来解决它们。在使用加锁的方式解决问题时，由于既要允许读-读情况不受影响，又要使<code>写-写、读-写或写-读</code>情况中的操作相互阻塞，所以MySQL实现一个由两种类型的锁组成的锁系统来解决。这两种类型的锁通常被称为<strong>共享锁(Shared Lock，SLock)和排他锁（Exclusive Lock，XLock)，也叫读锁(readlock)和写锁(write lock)</strong>。</p>
 <ul>
@@ -748,10 +748,10 @@ InnoDB对undo log的管理采用段的方式，也就是 <code>回滚段（rollb
 </ul>
 <p><strong>需要注意的是对于 InnoDB 引擎来说，读锁和写锁可以加在表上，也可以加在行上</strong><br>
 <strong>1、锁定读</strong><br>
-<img src="https://img-blog.csdnimg.cn/img_convert/540da7c2bef2b48c6b0a794be878a043.png" alt="image-20220711212931912.png"><br>
-<img src="https://img-blog.csdnimg.cn/img_convert/85ca2b14b42df08ec50fde07b8ee4899.png" alt="image-20220711213741630.png"><br>
-<strong>2、写操作</strong><br>
-<img src="https://img-blog.csdnimg.cn/img_convert/8982ff5f8999b7be69f7a9bc74855222.png" alt="image-20220711214412163.png"></p>
+<img src="http://qnypic.shawncoding.top/blog/540da7c2bef2b48c6b0a794be878a043.png" alt="image-20220711212931912.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/85ca2b14b42df08ec50fde07b8ee4899.png" alt="image-20220711213741630.png"></p>
+<p><strong>2、写操作</strong></p>
+<p><img src="http://qnypic.shawncoding.top/blog/8982ff5f8999b7be69f7a9bc74855222.png" alt="image-20220711214412163.png"></p>
 <h3 id="3-2-从数据操作的粒度划分：表级锁、页级锁、行锁">3.2 从数据操作的粒度划分：表级锁、页级锁、行锁</h3>
 <p>为了尽可能提高数据库的并发度，每次锁定的数据范围越小越好,理论上每次只锁定当前操作的数据的方案会得到最大的并发度，但是管理锁是很耗资源的事情（涉及获取、检查、释放锁等动作)。因此数据库系统需要在<strong>高并发响应</strong>和<strong>系统性能</strong>两方面进行平衡，这样就产生了“<strong>锁粒度(Lock granularity)</strong>”的概念。<br>
 对一条记录加锁影响的也只是这条记录而已，我们就说这个锁的粒度比较细;其实一个事务也可以在表级别进行加锁，自然就被称之为<strong>表级锁</strong>或者表锁，对一个表加锁影响整个表中的记录，我们就说这个锁的粒度比较粗。锁的粒度主要分为<strong>表级锁、页级锁和行锁</strong>。</p>
@@ -865,7 +865,7 @@ next-key锁的本质就是一个记录锁和一个gap锁的合体，它既能保
 <li><code>乐观锁</code> 适合 <code>读操作多</code> 的场景，相对来说写的操作比较少。它的优点在于 <code>程序实现</code> ， <code>不存在死锁</code> 问题，不过适用场景也会相对乐观，因为它阻止不了除了程序以外的数据库操作。</li>
 <li><code>悲观锁</code> 适合 <code>写操作多</code> 的场景，因为写的操作具有 <code>排它性</code> 。采用悲观锁的方式，可以在数据库层 面阻止其他事务对该数据的操作权限，防止 <code>读 - 写</code> 和 <code>写 - 写</code> 的冲突。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/0dec8a6081b73189478fde102642a922.png" alt="image-20220713211417909.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/0dec8a6081b73189478fde102642a922.png" alt="image-20220713211417909.png"></p>
 <h3 id="3-4-按加锁的方式划分：显式锁、隐式锁">3.4 按加锁的方式划分：显式锁、隐式锁</h3>
 <h4 id="1、隐式锁">1、隐式锁</h4>
 <p>一个事务在执行<code>INSERT</code>操作时，如果即将插入的<code>间隙</code>已经被其他事务加了<code>gap锁</code>，那么本次INSERT操作会阻塞，并且当前事务会在该间隙上加一个<code>插入意向锁</code>，否则一般情况下<code>INSERT</code>操作是不加锁的。那如果一个事务首先插入了一条记录（此时并没有在内存生产与该记录关联的锁结构)，然后另一个事务:</p>
@@ -936,8 +936,8 @@ next-key锁的本质就是一个记录锁和一个gap锁的合体，它既能保
 <li>加锁的类型是一样的</li>
 <li>等待状态是一样的</li>
 </ul>
-<p><code>InnoDB</code> 存储引擎中的 <code>锁结构</code> 如下：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/e3935a656e6e72bf9ada8f18772be3cb.png" alt="image-20220714132306208.png"></p>
+<p><code>InnoDB</code> 存储引擎中的 <code>锁结构</code> 如下：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/e3935a656e6e72bf9ada8f18772be3cb.png" alt="image-20220714132306208.png"></p>
 <h3 id="4-2-结构解析">4.2 结构解析</h3>
 <p><strong>1、锁所在的事务信息</strong><br>
 不论是 <code>表锁</code> 还是 <code>行锁</code> ，都是在事务执行过程中生成的，哪个事务生成了这个锁结构 ，这里就记录这个 事务的信息。此 <code>锁所在的事务信息</code> 在内存结构中只是一个指针，通过指针可以找到内存中关于该事务的更多信息，比方说事务id等。<br>
@@ -957,8 +957,8 @@ next-key锁的本质就是一个记录锁和一个gap锁的合体，它既能保
 </li>
 </ul>
 <p><strong>4、type_mode</strong><br>
-这是一个32位的数，被分成了 <code>lock_mode</code> 、 <code>lock_type</code> 和 <code>rec_lock_type</code> 三个部分，如图所示：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/3e3dc8d663119bda7d4b7f7d5c70c2ee.png" alt="image-20220714133319666.png"></p>
+这是一个32位的数，被分成了 <code>lock_mode</code> 、 <code>lock_type</code> 和 <code>rec_lock_type</code> 三个部分，如图所示：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/3e3dc8d663119bda7d4b7f7d5c70c2ee.png" alt="image-20220714133319666.png"></p>
 <ul>
 <li>锁的模式（ <code>lock_mode</code> ），占用低4位，可选的值如下：
 <ul>
@@ -1272,7 +1272,7 @@ session A 是一个范围查询，按照原则 1 的话，应该是索引 id 上
 </table>
 <p>这次我们用 delete 语句来验证。注意， delete 语句加锁的逻辑，其实跟 select … for update 是类似的， 也就是我在文章开始总结的两个原则 、两个优化和一个bug。这时， session A 在遍历的时候，先访问第一个 col1=10 的记录。同样地，根据原则 1 ，这里加的是 (col1=5,id=5) 到 (col1=10,id=10) 这个 next-key lock 。<br>
 由于c是普通索引，所以继续向右查找，直到碰到 (col1=15,id=15) 这一行循环才结束。根据优化 2 ，这是 一个等值查询，向右查找到了不满足条件的行，所以会退化成 (col1=10,id=10) 到 (col1=15,id=15) 的间隙锁。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/d8bd4d904b98ba9c0074e50bd5833576.png" alt="image-20220714134945012.png"><br>
+<img src="http://qnypic.shawncoding.top/blog/d8bd4d904b98ba9c0074e50bd5833576.png" alt="image-20220714134945012.png"><br>
 这个 delete 语句在索引 col1 上的加锁范围，就是上面图中蓝色区域覆盖的部分。这个蓝色区域左右两边都 是虚线，表示开区间，即 (col1=5,id=5) 和 (col1=15,id=15) 这两行上都没有锁<br>
 <strong>案例七： limit 语句加锁</strong></p>
 <table>
@@ -1395,9 +1395,9 @@ update test set col1=5 where col1=1;(blocked) |</p>
 <li>插入 (col1=1, id=5) 这个记录；</li>
 <li>删除 (col1=5, id=5) 这个记录</li>
 </ul>
-<p>通过这个操作， session A 的加锁范围变成了图所示的样子:<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/2f2f89540a9c669f584da1573c3757ab.png" alt="image-20220714135333089.png"><br>
-接下来 session B 要执行 update t set col1 = 5 where col1 = 1 这个语句了，一样地可以拆成两步：</p>
+<p>通过这个操作， session A 的加锁范围变成了图所示的样子:</p>
+<p><img src="http://qnypic.shawncoding.top/blog/2f2f89540a9c669f584da1573c3757ab.png" alt="image-20220714135333089.png"></p>
+<p>接下来 session B 要执行 update t set col1 = 5 where col1 = 1 这个语句了，一样地可以拆成两步：</p>
 <ul>
 <li>插入 (col1=5, id=5) 这个记录；</li>
 <li>删除 (col1=1, id=5) 这个记录。 第一步试图在已经加了间隙锁的 (1,10) 中插入数据，所以就被堵住了</li>
@@ -1419,10 +1419,10 @@ MVCC没有正式的标准，在不同的DBMS中MVCC的实现方式可能是不�
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">LOCK</span> <span class="keyword">IN</span> <span class="keyword">SHARE</span> <span class="keyword">MODE</span>; <span class="comment">-- 共享锁</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>; <span class="comment">-- 排他锁</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> student <span class="keyword">values</span> ... <span class="comment">-- 排他锁</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> ... <span class="comment">-- 排他锁</span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> ... <span class="comment">-- 排他锁</span></span><br></pre></td></tr></table></figure>
 <h2 id="3、前瞻回顾">3、前瞻回顾</h2>
 <h3 id="3-1-再谈隔离级别">3.1 再谈隔离级别</h3>
-<p>我们知道事务有 4 个隔离级别，可能存在三种并发问题<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/d02ed7d161e8a04492f2b1b38ead9fe8.png" alt="image-20220714140441064.png"><br>
-在MySQL中，默认的隔离级别是可重复读，可以解决脏读和不可重复读的问题，如果仅从定义的角度来看，它并不能解决幻读问题。如果我们想要解决幻读问题，就需要采用串行化的方式，也就是将隔离级别提升到最高，但这样一来就会大幅降低数据库的事务并发能力。MVCC可以不采用锁机制，而是<strong>通过乐观锁的方式来解决不可重复读和幻读问题</strong>!它可以在大多数情况下替代行级锁，降低系统的开销。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/6ea921d34e52caef91440f86991c8fc3.png" alt="image-20220714140541555.png"></p>
+<p>我们知道事务有 4 个隔离级别，可能存在三种并发问题</p>
+<p><img src="http://qnypic.shawncoding.top/blog/d02ed7d161e8a04492f2b1b38ead9fe8.png" alt="image-20220714140441064.png"></p>
+<p>在MySQL中，默认的隔离级别是可重复读，可以解决脏读和不可重复读的问题，如果仅从定义的角度来看，它并不能解决幻读问题。如果我们想要解决幻读问题，就需要采用串行化的方式，也就是将隔离级别提升到最高，但这样一来就会大幅降低数据库的事务并发能力。MVCC可以不采用锁机制，而是<strong>通过乐观锁的方式来解决不可重复读和幻读问题</strong>!它可以在大多数情况下替代行级锁，降低系统的开销。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/6ea921d34e52caef91440f86991c8fc3.png" alt="image-20220714140541555.png"></p>
 <h3 id="3-2-隐藏字段、Undo-Log版本链">3.2 隐藏字段、Undo Log版本链</h3>
 <p>回顾一下undo日志的版本链，对于使用 InnoDB 存储引擎的表来说，它的聚簇索引记录中都包含两个必要的隐藏列</p>
 <ul>
@@ -1432,9 +1432,9 @@ MVCC没有正式的标准，在不同的DBMS中MVCC的实现方式可能是不�
 <blockquote>
 <p>insert undo只在事务回滚时起作用，当事务提交后，该类型的undo日志就没用了，它占用的Undo Log Segment也会被系统回收（也就是该undo日志占用的Undo页面链表要么被重用，要么被释放）。</p>
 </blockquote>
-<p>每次对记录进行改动，都会记录一条undo日志，每条undo日志也都有一个 roll_pointer 属性 （ INSERT 操作对应的undo日志没有该属性，因为该记录并没有更早的版本），可以将这些 undo日志 都连起来，串成一个链表：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/ff38f02640923a585fb989901f5c933d.png" alt="image-20220714141012874.png"><br>
-对该记录每次更新后，都会将旧值放到一条 undo日志 中，就算是该记录的一个旧版本，随着更新次数 的增多，所有的版本都会被 roll_pointer 属性连接成一个链表，我们把这个链表称之为 版本链 ，版 本链的头节点就是当前记录最新的值。每个版本中还包含生成该版本时对应的事务id。</p>
+<p>每次对记录进行改动，都会记录一条undo日志，每条undo日志也都有一个 roll_pointer 属性 （ INSERT 操作对应的undo日志没有该属性，因为该记录并没有更早的版本），可以将这些 undo日志 都连起来，串成一个链表：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/ff38f02640923a585fb989901f5c933d.png" alt="image-20220714141012874.png"></p>
+<p>对该记录每次更新后，都会将旧值放到一条 undo日志 中，就算是该记录的一个旧版本，随着更新次数 的增多，所有的版本都会被 roll_pointer 属性连接成一个链表，我们把这个链表称之为 版本链 ，版 本链的头节点就是当前记录最新的值。每个版本中还包含生成该版本时对应的事务id。</p>
 <h2 id="4、MVCC实现原理之ReadView">4、MVCC实现原理之ReadView</h2>
 <blockquote>
 <p>MVCC 的实现依赖于：隐藏字段、Undo Log、Read View</p>
@@ -1481,9 +1481,9 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 <blockquote>
 <p>InnoDB中，MVCC是通过Undo Log + Read View进行数据读取，Undo Log保存了历史快照，而Read View规则帮我们判断当前版本的数据是否可见。</p>
 </blockquote>
-<p>在隔离级别为读已提交（Read Committed）时，一个事务中的每一次 SELECT 查询都会重新获取一次 Read View。注意，此时同样的查询语句都会重新获取一次 Read View，这时如果 Read View 不同，就可能产生不可重复读或者幻读的情况<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/10dea13c9c7a012a1c819e89ad69c993.png" alt="image-20220715130843147.png"><br>
-当隔离级别为可重复读的时候，就避免了不可重复读，这是因为一个事务只在第一次 SELECT 的时候会获取一次 Read View，而后面所有的 SELECT 都会复用这个 Read View</p>
+<p>在隔离级别为读已提交（Read Committed）时，一个事务中的每一次 SELECT 查询都会重新获取一次 Read View。注意，此时同样的查询语句都会重新获取一次 Read View，这时如果 Read View 不同，就可能产生不可重复读或者幻读的情况</p>
+<p><img src="http://qnypic.shawncoding.top/blog/10dea13c9c7a012a1c819e89ad69c993.png" alt="image-20220715130843147.png"></p>
+<p>当隔离级别为可重复读的时候，就避免了不可重复读，这是因为一个事务只在第一次 SELECT 的时候会获取一次 Read View，而后面所有的 SELECT 都会复用这个 Read View</p>
 <h2 id="5、举例说明">5、举例说明</h2>
 <p>假设现在student表中只有一条由事务id为8的事务插入的一条记录:<code>SELECT * FROM student;</code>MVCC只能在<strong>READ COMMITTED和REPEATABLE READ两个隔离级别下工作</strong>。接下来看一下READ COMMNITTED和REPEATABLE READ所谓的生成ReadView的时机不同到底不同在哪里。</p>
 <h3 id="5-1-READ-COMMITTED隔离级别下">5.1 READ COMMITTED隔离级别下</h3>
@@ -1491,9 +1491,9 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 <p>READ COMMITTED ：每次读取数据前都生成一个ReadView</p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 现在有两个 事务id 分别为 10、 20的事务在执行</span></span><br><span class="line"><span class="comment">-- Transaction 10</span></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> <span class="keyword">name</span>=<span class="string">"李四"</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> <span class="keyword">name</span>=<span class="string">"王五"</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br><span class="line"><span class="comment">-- Transaction 20</span></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="comment">-- 更新了一些别的表的记录</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">-- 事务执行过程中，只有在第一次真正修改记录时（比如使用INSERT、DELETE、UPDATE语句），才会被分配一个单独的事务id，这个事务id是递增的。</span></span><br><span class="line"><span class="comment">-- 所以我们才在事务2中更新一些别的表的记录，目的是让它分配事务id。</span></span><br></pre></td></tr></table></figure>
-<p>此刻，表student 中 id 为 1 的记录得到的版本链表如下所示：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/51ddf7615a4ce1b5a96d3e23f16ed3ae.png" alt="image-20220715133640655.png"><br>
-假设现在有一个使用 READ COMMITTED 隔离级别的事务开始执行：</p>
+<p>此刻，表student 中 id 为 1 的记录得到的版本链表如下所示：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/51ddf7615a4ce1b5a96d3e23f16ed3ae.png" alt="image-20220715133640655.png"></p>
+<p>假设现在有一个使用 READ COMMITTED 隔离级别的事务开始执行：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用READ COMMITTED隔离级别的事务</span></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- SELECT1：Transaction 10、20未提交</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>; <span class="comment">-- 得到的列name的值为'张三'</span></span><br></pre></td></tr></table></figure>
 <p>这个<code>SELECT1</code>的执行过程如下:</p>
 <ul>
@@ -1504,9 +1504,9 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 </ul>
 <p>之后，我们把 事务id 为 10 的事务提交一下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Transaction 10</span></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> <span class="keyword">name</span>=<span class="string">"李四"</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> <span class="keyword">name</span>=<span class="string">"王五"</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 然后再到 事务id为 20的事务中更新一下表 student中 id为 1的记录</span></span><br><span class="line"><span class="comment">-- Transaction 20</span></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="comment">-- 更新了一些别的表的记录</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> <span class="keyword">name</span>=<span class="string">"钱七"</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> <span class="keyword">name</span>=<span class="string">"宋八"</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>此刻，表student中 id 为 1 的记录的版本链就长这样：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/af176d0643ae45de76816bef235f0162.png" alt="image-20220715134839081.png"><br>
-然后再到刚才使用 READ COMMITTED 隔离级别的事务中继续查找这个 id 为 1 的记录，如下：</p>
+<p>此刻，表student中 id 为 1 的记录的版本链就长这样：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/af176d0643ae45de76816bef235f0162.png" alt="image-20220715134839081.png"></p>
+<p>然后再到刚才使用 READ COMMITTED 隔离级别的事务中继续查找这个 id 为 1 的记录，如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用READ COMMITTED隔离级别的事务</span></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- SELECT1：Transaction 10、20均未提交</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>; <span class="comment">-- 得到的列name的值为'张三'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- SELECT2：Transaction 10提交，Transaction 20未提交</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>; <span class="comment">-- 得到的列name的值为'王五'</span></span><br></pre></td></tr></table></figure>
 <p>这个<code>SELECT2</code>的执行过程如下:</p>
 <ul>
@@ -1542,9 +1542,9 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 </ul>
 <p>这次SELECT查询得到的结果是重复的，记录的列c值都是张三，这就是可重复读的含义。如果我们之后再把事务id为20的记录提交了，然后再到刚才使用REPEATABLE READ隔离级别的事务中继续查找这个id为1的记录，得到的结果还是张三，具体执行过程大家可以自己分析一下。</p>
 <h3 id="5-3-如何解决幻读">5.3 如何解决幻读</h3>
-<p>接下来说明InnoDB 是如何解决幻读的。假设现在表 student 中只有一条数据，数据内容中，主键 id=1，隐藏的 trx_id=10，它的 undo log 如下图所示。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/e72ab7ee3373257f5cd129b3146a1a5a.png" alt="image-20220715141002035.png"><br>
-假设现在有事务 A 和事务 B 并发执行，事务 A 的事务 id 为 20 ， 事务 B 的事务 id 为 30 。<br>
+<p>接下来说明InnoDB 是如何解决幻读的。假设现在表 student 中只有一条数据，数据内容中，主键 id=1，隐藏的 trx_id=10，它的 undo log 如下图所示。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/e72ab7ee3373257f5cd129b3146a1a5a.png" alt="image-20220715141002035.png"></p>
+<p>假设现在有事务 A 和事务 B 并发执行，事务 A 的事务 id 为 20 ， 事务 B 的事务 id 为 30 。<br>
 步骤1：事务 A 开始第一次查询数据，查询的 SQL 语句如下：<code>select * from student where id &gt;= 1;</code>在开始查询之前，MySQL 会为事务 A 产生一个 ReadView，此时 ReadView 的内容如下： trx_ids= [20,30] ， up_limit_id=20 ， low_limit_id=31 ， creator_trx_id=20 。<br>
 由于此时表 student 中只有一条数据，且符合 where id&gt;=1 条件，因此会查询出来。然后根据 ReadView 机制，发现该行数据的trx_id=10，小于事务 A 的 ReadView 里 up_limit_id，这表示这条数据是事务 A 开启之前，其他事务就已经提交了的数据，因此事务 A 可以读取到。结论：事务 A 的第一次查询，能读取到一条数据，id=1。<br>
 步骤2：接着事务 B(trx_id=30)，往表 student 中新插入两条数据，并提交事务。</p>
@@ -1555,8 +1555,8 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 <li>然后是 id=2 的数据，它的 trx_id=30，此时事务 A 发现，这个值处于 up_limit_id 和 low_limit_id 之 间，因此还需要再判断 30 是否处于 trx_ids 数组内。由于事务 A 的 trx_ids=[20,30]，因此在数组内，这表 示 id=2 的这条数据是与事务 A 在同一时刻启动的其他事务提交的，所以这条数据不能让事务 A 看到</li>
 <li>同理，id=3 的这条数据，trx_id 也为 30，因此也不能被事务 A 看见。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/90e754c0c81071aa8229ab51822777f6.png" alt="image-20220715141243993.png"><br>
-结论：最终事务 A 的第二次查询，只能查询出 id=1 的这条数据。这和事务 A 的第一次查询的结果是一样 的，因此没有出现幻读现象，所以说在 MySQL 的可重复读隔离级别下，不存在幻读问题。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/90e754c0c81071aa8229ab51822777f6.png" alt="image-20220715141243993.png"></p>
+<p>结论：最终事务 A 的第二次查询，只能查询出 id=1 的这条数据。这和事务 A 的第一次查询的结果是一样 的，因此没有出现幻读现象，所以说在 MySQL 的可重复读隔离级别下，不存在幻读问题。</p>
 <h2 id="6、总结">6、总结</h2>
 <p>这里介绍了 MVCC 在 <code>READ COMMITTD</code> 、 <code>REPEATABLE READ</code> 这两种隔离级别的事务在执行快照读操作时 访问记录的版本链的过程。这样使不同事务的 <code>读-写</code> 、 <code>写-读</code> 操作并发执行，从而提升系统性能。核心点在于 ReadView 的原理， <code>READ COMMITTD</code> 、 <code>REPEATABLE READ</code> 这两个隔离级别的一个很大不同 就是生成ReadView的时机不同：</p>
 <ul>
@@ -1669,8 +1669,8 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看当前的二进制日志文件列表及大小</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="built_in">BINARY</span> <span class="keyword">LOGS</span>;</span><br></pre></td></tr></table></figure>
 <p>然后可以查看相关bin log日志</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开始查看binlog</span></span><br><span class="line">mysqlbinlog <span class="string">"/var/lib/mysql/binlog/atguigu-bin.0000002"</span></span><br><span class="line"><span class="comment"># 执行结果可以看到，这是一个简单的日志文件，日志中记录了用户的一些操作，这里并没有出现具体的SQL语句，这是因为binlog关键字后面的内容是经过编码后的二进制日志。</span></span><br><span class="line"><span class="comment"># 这里一个update语句包含如下事件</span></span><br><span class="line"><span class="comment"># Query事件负责开始一个事务(BEGIN)</span></span><br><span class="line"><span class="comment"># Table_map事件负责映射需要的表</span></span><br><span class="line"><span class="comment"># Update_rows事件负责写入数据</span></span><br><span class="line"><span class="comment"># Xid事件负责结束事务</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面命令将行事件以伪SQL的形式表现出来</span></span><br><span class="line">mysqlbinlog -v <span class="string">"/var/lib/mysql/binlog/atguigu-bin.000002"</span></span><br><span class="line"><span class="comment"># 前面的命令同时显示binlog格式的语句，使用如下命令不显示它</span></span><br><span class="line">mysqlbinlog -v --base64-output=DECODE-ROWS <span class="string">"/var/lib/mysql/binlog/atguigu-bin.000002"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ===============其他命令=======================</span></span><br><span class="line"><span class="comment"># 可查看参数帮助</span></span><br><span class="line">mysqlbinlog --no-defaults --<span class="built_in">help</span></span><br><span class="line"><span class="comment"># 查看最后100行</span></span><br><span class="line">mysqlbinlog --no-defaults --base64-output=decode-rows -vv atguigu-bin.000002 |tail -100</span><br><span class="line"><span class="comment"># 根据position查找</span></span><br><span class="line">mysqlbinlog --no-defaults --base64-output=decode-rows -vv atguigu-bin.000002 |grep -A 20 <span class="string">'4939002'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 上面这种办法读取出binlog日志的全文内容比较多，不容易分辨查看到pos点信息</span></span><br><span class="line">mysql&gt; show binlog events [IN <span class="string">'log_name'</span>] [FROM pos] [LIMIT [offset,] row_count];* `IN <span class="string">'log_name'</span>` ：指定要查询的binlog文件名（不指定就是第一个binlog文件）　 </span><br><span class="line"><span class="comment"># IN 'log_name' ：指定要查询的binlog文件名（不指定就是第一个binlog文件）　 </span></span><br><span class="line"><span class="comment"># FROM pos ：指定从哪个pos起始点开始查起（不指定就是从整个文件首个pos点开始算） </span></span><br><span class="line"><span class="comment"># LIMIT [offset] ：偏移量(不指定就是0) </span></span><br><span class="line"><span class="comment"># row_count :查询总条数（不指定就是所有行）</span></span><br><span class="line">mysql&gt; show binlog events <span class="keyword">in</span> <span class="string">'atguigu-bin.000002'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># flush logs命令的作用就是关闭当前使用的binary log，然后打开一个新的binary log文件，binlog文件的序号递增加1</span></span><br><span class="line">flush logs</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/640cbee8dfb4b17c3d0b5e3de6039916.png" alt="image-20220715165603879.png"><br>
-上面我们讲了这么多都是基于binlog的默认格式，binlog格式查看：<code>show variables like 'binlog_format';</code></p>
+<p><img src="http://qnypic.shawncoding.top/blog/640cbee8dfb4b17c3d0b5e3de6039916.png" alt="image-20220715165603879.png"></p>
+<p>上面我们讲了这么多都是基于binlog的默认格式，binlog格式查看：<code>show variables like 'binlog_format';</code></p>
 <ul>
 <li><strong>Statement</strong>。每一条会修改数据的sql都会记录在binlog中。优点：不需要记录每一行的变化，减少了binlog日志量，节约了IO，提高性能。</li>
 <li><strong>Row</strong>。5.1.5版本的MySQL才开始支持row level的复制，它不记录sql语句上下文相关信息，仅保存哪条记录被修改。优点：row level 的日志内容会非常清楚的记录下每一行数据修改的细节。而且不会出现某些特定情况下 的存储过程，或function，以及trigger的调用和触发无法被正确复制的问题。</li>
@@ -1702,8 +1702,8 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 <h2 id="5、深入二进制日志-binlog">5、深入二进制日志(binlog)</h2>
 <h3 id="5-1-写入机制">5.1 写入机制</h3>
 <p>binlog的写入时机也非常简单，事务执行过程中，先把日志写到 binlog cache ，事务提交的时候，再把binlog cache写到binlog文件中。因为一个事务的binlog不能被拆开，无论这个事务多大，也要确保一次性写入，所以系统会给每个线程分配一个块内存作为binlog cache。<br>
-我们可以通过binlog_cache_size参数控制单个线程 binlog cache 大小，如果存储内容超过了这个参数，就要暂存到磁盘（Swap）。binlog日志刷盘流程如下：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/b2bf48e7a038655fc6315820d8fd3cc6.png" alt="image-20220715172958729.png"></p>
+我们可以通过binlog_cache_size参数控制单个线程 binlog cache 大小，如果存储内容超过了这个参数，就要暂存到磁盘（Swap）。binlog日志刷盘流程如下：</p>
+<p><img src="http://qnypic.shawncoding.top/blog/b2bf48e7a038655fc6315820d8fd3cc6.png" alt="image-20220715172958729.png"></p>
 <ul>
 <li>上图的write，是指把日志写入到文件系统的page cache，并没有把数据持久化到磁盘，所以速度比较快</li>
 <li>上图的fsync，才是将数据持久化到磁盘的操作</li>
@@ -1722,14 +1722,14 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 </li>
 </ul>
 <h3 id="5-3-两阶段提交">5.3 两阶段提交</h3>
-<p>在执行更新语句过程，会记录redo log与binlog两块日志，以基本的事务为单位，redo log在事务执行过程中可以不断写入，而binlog只有在提交事务时才写入，所以redo log与binlog的 写入时机 不一样。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/66c935ab472ee219efd881403750b5e2.png" alt="image-20220715194959405.png"><br>
-<strong>redo log与binlog两份日志之间的逻辑不一致，会出现什么问题？<strong>由于binlog没写完就异常，这时候binlog里面没有对应的修改记录。因此，之后用binlog日志恢复数据时，就会少这一次更新，恢复出来的最终数据不一致。<br>
-为了解决两份日志之间的逻辑一致问题，InnoDB存储引擎使用</strong>两阶段提交</strong>方案。原理很简单，将redo log的写入拆成了两个步骤prepare和commit，这就是<strong>两阶段提交</strong>。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/f573942f4672a60773708786600da41f.png" alt="image-20220715195635196.png"><br>
-使用两阶段提交后，写入binlog时发生异常也不会有影响，因为MySQL根据redo log日志恢复数据时，发现redo log还处于prepare阶段，并且没有对应binlog日志，就会回滚该事务。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/7ded8812aa4ef3415773e1cb71882c3f.png" alt="image-20220715200321717.png"><br>
-另一个场景，redo log设置commit阶段发生异常，那会不会回滚事务呢？答案并不会回滚事务，它会执行上图框住的逻辑，虽然redo log是处于prepare阶段，但是能通过事务id找到对应的binlog日志，所以MySQL认为是完整的，就会提交事务恢复数据。</p>
+<p>在执行更新语句过程，会记录redo log与binlog两块日志，以基本的事务为单位，redo log在事务执行过程中可以不断写入，而binlog只有在提交事务时才写入，所以redo log与binlog的 写入时机 不一样。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/66c935ab472ee219efd881403750b5e2.png" alt="image-20220715194959405.png"></p>
+<p><strong>redo log与binlog两份日志之间的逻辑不一致，会出现什么问题？<strong>由于binlog没写完就异常，这时候binlog里面没有对应的修改记录。因此，之后用binlog日志恢复数据时，就会少这一次更新，恢复出来的最终数据不一致。<br>
+为了解决两份日志之间的逻辑一致问题，InnoDB存储引擎使用</strong>两阶段提交</strong>方案。原理很简单，将redo log的写入拆成了两个步骤prepare和commit，这就是<strong>两阶段提交</strong>。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/f573942f4672a60773708786600da41f.png" alt="image-20220715195635196.png"></p>
+<p>使用两阶段提交后，写入binlog时发生异常也不会有影响，因为MySQL根据redo log日志恢复数据时，发现redo log还处于prepare阶段，并且没有对应binlog日志，就会回滚该事务。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/7ded8812aa4ef3415773e1cb71882c3f.png" alt="image-20220715200321717.png"></p>
+<p>另一个场景，redo log设置commit阶段发生异常，那会不会回滚事务呢？答案并不会回滚事务，它会执行上图框住的逻辑，虽然redo log是处于prepare阶段，但是能通过事务id找到对应的binlog日志，所以MySQL认为是完整的，就会提交事务恢复数据。</p>
 <h2 id="6、中继日志-relay-log">6、中继日志(relay log)</h2>
 <h3 id="6-1-介绍">6.1 介绍</h3>
 <p><strong>中继日志只在主从服务器架构的从服务器上存在</strong>。从服务器为了与主服务器保持一致，要从主服务器读取二进制日志的内容，并且把读取到的信息写入 本地的日志文件 中，这个从服务器本地的日志文件就叫 中继日志 。然后，从服务器读取中继日志，并根据中继日志的内容对从服务器的数据进行更新，完成主 从服务器的 数据同步 。<br>
@@ -1761,10 +1761,10 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 <p>Slave 会从 Master 读取 binlog 来进行数据同步</p>
 </blockquote>
 <h3 id="2-1-原理剖析">2.1 原理剖析</h3>
-<p>实际上主从同步的原理就是基于 binlog 进行数据同步的。在主从复制过程中，会基于 3 个线程 来操 作，一个主库线程，两个从库线程<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/75294856dc97fce39914dd6a119290fc.png" alt="image-20220715215944767.png"><br>
-二进制日志转储线程 （Binlog dump thread）是一个主库线程。当从库线程连接的时候， 主库可以将二进 制日志发送给从库，当主库读取事件（Event）的时候，会在 Binlog 上 加锁 ，读取完成之后，再将锁释放掉。从库 I/O 线程 会连接到主库，向主库发送请求更新 Binlog。这时从库的 I/O 线程就可以读取到主库的二进制日志转储线程发送的 Binlog 更新部分，并且拷贝到本地的中继日志 （Relay log）。从库 SQL 线程 会读取从库中的中继日志，并且执行日志中的事件，将从库中的数据与主库保持同步。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/c825114198bcb149c0d7933200f4b23d.png" alt="image-20220715220037213.png"></p>
+<p>实际上主从同步的原理就是基于 binlog 进行数据同步的。在主从复制过程中，会基于 3 个线程 来操 作，一个主库线程，两个从库线程</p>
+<p><img src="http://qnypic.shawncoding.top/blog/75294856dc97fce39914dd6a119290fc.png" alt="image-20220715215944767.png"></p>
+<p>二进制日志转储线程 （Binlog dump thread）是一个主库线程。当从库线程连接的时候， 主库可以将二进 制日志发送给从库，当主库读取事件（Event）的时候，会在 Binlog 上 加锁 ，读取完成之后，再将锁释放掉。从库 I/O 线程 会连接到主库，向主库发送请求更新 Binlog。这时从库的 I/O 线程就可以读取到主库的二进制日志转储线程发送的 Binlog 更新部分，并且拷贝到本地的中继日志 （Relay log）。从库 SQL 线程 会读取从库中的中继日志，并且执行日志中的事件，将从库中的数据与主库保持同步。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/c825114198bcb149c0d7933200f4b23d.png" alt="image-20220715220037213.png"></p>
 <blockquote>
 <p>注意：不是所有版本的MySQL都默认开启服务器的二进制日志。在进行主从同步的时候，我们需要先检查服务器是否已经开启了二进制日志。除非特殊指定，默认情况下从服务器会执行所有主服务器中保存的事件。也可以通过配置，使从服务器执行特定的事件。</p>
 </blockquote>
@@ -1781,8 +1781,8 @@ ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视�
 <li>每个 <code>Master</code> 可以有多个 <code>Slave</code></li>
 </ul>
 <h2 id="3、一主一从架构搭建">3、一主一从架构搭建</h2>
-<p>台 主机 用于处理所有 写请求 ，一台 从机 负责所有 读请求 ，架构图如下:<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/be028aaa25deb033af097de1f6daf916.png" alt="image-20220715220852836.png"></p>
+<p>台 主机 用于处理所有 写请求 ，一台 从机 负责所有 读请求 ，架构图如下:</p>
+<p><img src="http://qnypic.shawncoding.top/blog/be028aaa25deb033af097de1f6daf916.png" alt="image-20220715220852836.png"></p>
 <h3 id="3-1-准备工作">3.1 准备工作</h3>
 <ul>
 <li>准备 2台 CentOS 虚拟机</li>
@@ -1866,7 +1866,7 @@ MySQL会根据执行的每一条具体的sql语句来区分对待记录的日志
 <h3 id="3-8-其他">3.8 其他</h3>
 <p><strong>搭建主从复制：双主双从</strong><br>
 一个主机m1用于处理所有写请求，它的从机s1和另一台主机m2还有它的从机s2负责所有读请求。当m1主机宕机后，m2主机负责写请求，m1、m2互为备机。结构图如下：<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/f5c167014c8b76f754610a56fa586491.png" alt="image-20220718143705843.png"></p>
+<img src="http://qnypic.shawncoding.top/blog/f5c167014c8b76f754610a56fa586491.png" alt="image-20220718143705843.png"></p>
 <h2 id="4、同步数据一致性问题">4、同步数据一致性问题</h2>
 <h3 id="4-1-问题介绍">4.1 问题介绍</h3>
 <p><strong>主从同步的要求：</strong></p>
@@ -1905,24 +1905,24 @@ MySQL会根据执行的每一条具体的sql语句来区分对待记录的日志
 </blockquote>
 <h4 id="方法-1：异步复制">方法 1：异步复制</h4>
 <p>异步模式就是客户端提交 COMMIT 之后不需要等从库返回任何结果，而是直接将结果返回给客户端，这样做的好处是不会影响主库写的效率，但可能会存在主库宕机，而Binlog还没有同步到从库的情况，也就是此时的主库和从库数据不一致。这时候从从库中选择一个作为新主，那么新主则可能缺少原来主服务器中已提交的事务。所以，这种复制模式下的数据一致性是最弱的。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/eadad27f0d8c3cc7570c246c42f86a68.png" alt="image-20220718144410731.png"></p>
+<img src="http://qnypic.shawncoding.top/blog/eadad27f0d8c3cc7570c246c42f86a68.png" alt="image-20220718144410731.png"></p>
 <h4 id="方法-2：半同步复制">方法 2：半同步复制</h4>
 <p>MySQL5.5版本之后开始支持半同步复制的方式。原理是在<strong>客户端提交COMMIT之后不直接将结果返回给客户端，而是等待至少有一个从库接收到了Binlog，并且写入到中继日志中</strong>，再返回给客户端。这样做的好处就是提高了数据的一致性，当然相比于异步复制来说，至少多增加了一个网络连接的延迟，降低了主库写的效率。<br>
-在MySQL5.7版本中还增加了一个<code>rpl_semi_sync_master_wait_for_slave_count</code>参数，可以对应答的从库数量进行设置，<strong>默认为1，也就是说只要有1个从库进行了响应</strong>，就可以返回给客户端。如果将这个参数调大，可以提升数据一致性的强度，但也会增加主库等待从库响应的时间。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/e3320fd843b1aca47873907e7d5e4fea.png" alt="image-20220718144958357.png"></p>
+在MySQL5.7版本中还增加了一个<code>rpl_semi_sync_master_wait_for_slave_count</code>参数，可以对应答的从库数量进行设置，<strong>默认为1，也就是说只要有1个从库进行了响应</strong>，就可以返回给客户端。如果将这个参数调大，可以提升数据一致性的强度，但也会增加主库等待从库响应的时间。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/e3320fd843b1aca47873907e7d5e4fea.png" alt="image-20220718144958357.png"></p>
 <h4 id="方法-3：组复制">方法 3：组复制</h4>
 <p>异步复制和半同步复制都无法最终保证数据的一致性问题，半同步复制是通过判断从库响应的个数来决定是否返回给客户端，虽然数据一致性相比于异步复制有提升，但仍然无法满足对数据一致性要求高的场景，比如金融领域。MGR 很好地弥补了这两种复制模式的不足。<strong>组复制技术，简称 MGR（MySQL Group Replication）</strong>。是 MySQL 在 5.7.17 版本中推出的一种新的数据复制技术，这种复制技术是基于 Paxos 协议的状态机复制。<br>
 <strong>MGR 是如何工作的</strong><br>
-首先我们将多个节点共同组成一个复制组，在 执行读写（RW）事务 的时候，需要通过一致性协议层 （Consensus 层）的同意，也就是读写事务想要进行提交，必须要经过组里“大多数人”（对应 Node 节 点）的同意，大多数指的是同意的节点数量需要大于 （N/2+1），这样才可以进行提交，而不是原发起方一个说了算。而针对 只读（RO）事务 则不需要经过组内同意，直接 COMMIT 即可。在一个复制组内有多个节点组成，它们各自维护了自己的数据副本，并且在一致性协议层实现了原子消 息和全局有序消息，从而保证组内数据的一致性。<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/86f91998d0c6d09e8657f5c91d8c7b07.png" alt="image-20220718145235499.png"><br>
-MGR 将 MySQL 带入了数据强一致性的时代，是一个划时代的创新，其中一个重要的原因就是MGR 是基 于 Paxos 协议的。Paxos 算法是由 2013 年的图灵奖获得者 Leslie Lamport 于 1990 年提出的，有关这个算法的决策机制可以搜一下。事实上，Paxos 算法提出来之后就作为 分布式一致性算法 被广泛应用，比如 Apache 的 ZooKeeper 也是基于 Paxos 实现的。</p>
+首先我们将多个节点共同组成一个复制组，在 执行读写（RW）事务 的时候，需要通过一致性协议层 （Consensus 层）的同意，也就是读写事务想要进行提交，必须要经过组里“大多数人”（对应 Node 节 点）的同意，大多数指的是同意的节点数量需要大于 （N/2+1），这样才可以进行提交，而不是原发起方一个说了算。而针对 只读（RO）事务 则不需要经过组内同意，直接 COMMIT 即可。在一个复制组内有多个节点组成，它们各自维护了自己的数据副本，并且在一致性协议层实现了原子消 息和全局有序消息，从而保证组内数据的一致性。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/86f91998d0c6d09e8657f5c91d8c7b07.png" alt="image-20220718145235499.png"></p>
+<p>MGR 将 MySQL 带入了数据强一致性的时代，是一个划时代的创新，其中一个重要的原因就是MGR 是基 于 Paxos 协议的。Paxos 算法是由 2013 年的图灵奖获得者 Leslie Lamport 于 1990 年提出的，有关这个算法的决策机制可以搜一下。事实上，Paxos 算法提出来之后就作为 分布式一致性算法 被广泛应用，比如 Apache 的 ZooKeeper 也是基于 Paxos 实现的。</p>
 <h2 id="5、知识延伸">5、知识延伸</h2>
 <p>在主从架构的配置中，如果想要采取读写分离的策略，我们可以<code>自己编写程序</code> ，也可以通过 <code>第三方的中间件</code> 来实现。</p>
 <ul>
 <li>自己编写程序的好处就在于比较自主，我们可以自己判断哪些查询在从库上来执行，针对实时性要 求高的需求，我们还可以考虑哪些查询可以在主库上执行。同时，程序直接连接数据库，减少了中间件层，相当于减少了性能损耗。</li>
 <li>采用中间件的方法有很明显的优势，<code>功能强大</code> ， <code>使用简单</code> 。但因为在客户端和数据库之间增加了 中间件层会有一些 <code>性能损耗</code> ，同时商业中间件也是有使用成本的。我们也可以考虑采取一些优秀的开源工具。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/29fdb08150cfc1338d26c53dbe684160.png" alt="image-20220718145428456.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/29fdb08150cfc1338d26c53dbe684160.png" alt="image-20220718145428456.png"></p>
 <h1>七、数据库备份与恢复</h1>
 <h2 id="1、概述-v3">1、概述</h2>
 <h3 id="1-1-备份简介">1.1 备份简介</h3>
@@ -2029,7 +2029,7 @@ MGR 将 MySQL 带入了数据强一致性的时代，是一个划时代的创新
 迁移之前，需要了解不同数据库的架构， 比较它们之间的差异 。不同数据库中定义相同类型的数据的 关键字可能会不同 。例如，MySQL中日期字段分为DATE和TIME两种，而ORACLE日期字段只有DATE；SQL Server数据库中有ntext、Image等数据类型，MySQL数据库没有这些数据类型；MySQL支持的ENUM和SET 类型，这些SQL Server数据库不支持。<br>
 另外，数据库厂商并没有完全按照SQL标准来设计数据库系统，导致不同的数据库系统的 SQL语句 有差别。例如，微软的SQL Server软件使用的是T-SQL语句，T-SQL中包含了非标准的SQL语句，不能和MySQL的SQL语句兼容。不同类型数据库之间的差异造成了互相 迁移的困难 ，这些差异其实是商业公司故意造成的技术壁垒。但 是不同类型的数据库之间的迁移并 不是完全不可能 。例如，可以使用MyODBC 实现MySQL和SQL Server之 间的迁移。MySQL官方提供的工具 MySQL Migration Toolkit 也可以在不同数据之间进行数据迁移。 MySQL迁移到Oracle时，需要使用mysqldump命令导出sql文件，然后， 手动更改 sql文件中的CREATE语句。</p>
 <h3 id="6-4-迁移小结">6.4 迁移小结</h3>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/9d08c83e5ee07c07c1d56ab68ab73080.png" alt="image-20220718165515965.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/9d08c83e5ee07c07c1d56ab68ab73080.png" alt="image-20220718165515965.png"></p>
 <h2 id="7、误删数据集合">7、误删数据集合</h2>
 <p>传统的高可用架构是不能预防误删数据的，因为主库的一个drop table命令，会通过binlog传给所有从库和级联从库，进而导致整个集群的实例都会执行这个命令。为了找到解决误删数据的更高效的方法，我们需要先对和MySQL相关的误删数据，做下分类:</p>
 <ul>
@@ -2184,7 +2184,7 @@ delete全表是很慢的，需要生成回滚日志、写redo、写binlog。所�
     2023-03-06
     <br>
     <strong class="update-time">最后更新：</strong>
-    2023-03-06
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/b2281a88.html" title="MySQL8.0高级篇(下)-事务与日志和备份" target="_blank">MySQL8.0高级篇(下)-事务与日志和备份</a>
@@ -2509,15 +2509,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2525,15 +2525,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2545,11 +2549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2557,19 +2561,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2577,35 +2585,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

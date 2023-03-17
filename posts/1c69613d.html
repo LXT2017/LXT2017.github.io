@@ -15,17 +15,17 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="1、基于2.x的旧模板  默认已经安装好了Node和Webpack 1、全局安装vue-cli 1npm install vue-cli -g 查看版本输入 1vue -V 2、vue-cli来创建一个基于 webpack 模板的新项目 12#my_project是项目名vue init webpack my_project">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200430170320574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200430171747210.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200430172209100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200430172311886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200430172608398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200430170320574.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200430171747210.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200430172209100.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200430172311886.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200430172608398.png">
 <meta property="article:published_time" content="2021-03-15T09:14:21.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:32:25.424Z">
+<meta property="article:modified_time" content="2023-03-17T06:16:33.032Z">
 <meta property="article:author" content="Shawn">
-<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200430170320574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/20200430170320574.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -311,9 +311,9 @@ var _hmt = _hmt || [];
 <p>2、vue-cli来创建一个基于 webpack 模板的新项目</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#my_project是项目名</span></span><br><span class="line">vue init webpack my_project</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>之后需要填写项目的一些基本配置，下面是我的配置<br>
-<img src="https://img-blog.csdnimg.cn/20200430170320574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-3、运行vue-cli项目<br>
+<p>之后需要填写项目的一些基本配置，下面是我的配置</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200430170320574.png" alt="在这里插入图片描述"></p>
+<p>3、运行vue-cli项目<br>
  进入项目，输入<code>npm run dev</code>之后项目就跑起来了，可以进入<code>localhost:8080</code>查看效果</p>
 <h3 id="2、基于交互式命令创建新版vue项目">2、基于交互式命令创建新版vue项目</h3>
 <p>1、安装新版脚手架<br>
@@ -323,18 +323,18 @@ var _hmt = _hmt || [];
 <p><em>注：如何在安装新版的脚手架后要创建旧版项目，可以运行<code>npm install -g @vue/cli-init</code>后面操作就和安装旧版本一样了</em><br>
 2、创建项目</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意这里不能用中文项目名</span></span><br><span class="line">vue create project1</span><br></pre></td></tr></table></figure>
-<p>其中空格表示选中，回车确定，其配置项如下，这里我总的配置项，新建项目时会一个个选项进行询问。<br>
-<img src="https://img-blog.csdnimg.cn/20200430171747210.png" alt="在这里插入图片描述"><br>
-3、运行项目<br>
+<p>其中空格表示选中，回车确定，其配置项如下，这里我总的配置项，新建项目时会一个个选项进行询问。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200430171747210.png" alt="在这里插入图片描述"></p>
+<p>3、运行项目<br>
 进入项目后<code>npm run serve</code>启动项目</p>
 <h3 id="3、基于图形化界面创建新版vue项目">3、基于图形化界面创建新版vue项目</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在cmd窗口运行命令，进入图形化界面</span></span><br><span class="line">vue ui</span><br></pre></td></tr></table></figure>
-<p>选择创建项目，后面的配置项和命令行类似，这里不多阐述了。<br>
-<img src="https://img-blog.csdnimg.cn/20200430172209100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-<img src="https://img-blog.csdnimg.cn/20200430172311886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-3、运行项目<br>
- 创建好项目后选择任务，在这里serve是我们开发期间打包和运行，build是成品发布运行，我们选择serve，点击运行即可成功启动项目<br>
-<img src="https://img-blog.csdnimg.cn/20200430172608398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>选择创建项目，后面的配置项和命令行类似，这里不多阐述了。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200430172209100.png" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200430172311886.png" alt="在这里插入图片描述"></p>
+<p>3、运行项目<br>
+ 创建好项目后选择任务，在这里serve是我们开发期间打包和运行，build是成品发布运行，我们选择serve，点击运行即可成功启动项目</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200430172608398.png" alt="在这里插入图片描述"></p>
 
       
 
@@ -397,7 +397,7 @@ var _hmt = _hmt || [];
     2021-03-15
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/1c69613d.html" title="vue-cli脚手架三种搭建方式" target="_blank">vue-cli脚手架三种搭建方式</a>
@@ -427,7 +427,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
@@ -711,15 +711,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,15 +727,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,11 +751,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,19 +763,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -779,35 +787,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

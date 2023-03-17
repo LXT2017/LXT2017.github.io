@@ -6,29 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shawn22.xyz">
-  <title>Redis学习笔记 | 星星的猫(&gt;^ω^&lt;)喵</title>
+  <title>Redis6.0学习笔记 | 星星的猫(&gt;^ω^&lt;)喵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、Redis概述入门 1、NoSQL概述 NoSQL是指not only Sql，是一种非关系型数据库。其中NoSQL共有四种分类  KV键值 文档型数据库(bson、MongoDB) 列存储数据库(HBase、分布式文件系统) 图关系数据库(存放关系、例如Neo4j)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis学习笔记">
+<meta property="og:title" content="Redis6.0学习笔记">
 <meta property="og:url" content="https://www.shawn22.xyz/posts/8eda3648.html">
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Redis概述入门 1、NoSQL概述 NoSQL是指not only Sql，是一种非关系型数据库。其中NoSQL共有四种分类  KV键值 文档型数据库(bson、MongoDB) 列存储数据库(HBase、分布式文件系统) 图关系数据库(存放关系、例如Neo4j)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d28fd6e0bea9f14e2cdd5fe41fc52e08.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/8493958510848e2a742d3daaa5d334f1.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ccd4e931a64a456221c2ecc47685f23f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/3dac4cc63de6f0f30da9865ca46cd233.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0bf23b1bbd2721ffc7fd22f08efb547c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/36c3397a156a4a136cfe3bddc3b5dc45.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c655e416fa028a3c026dad80b494bd70.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/21dbc30f033f3f8b114e73a681bd8790.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/d28fd6e0bea9f14e2cdd5fe41fc52e08.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/8493958510848e2a742d3daaa5d334f1.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/ccd4e931a64a456221c2ecc47685f23f.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/3dac4cc63de6f0f30da9865ca46cd233.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/0bf23b1bbd2721ffc7fd22f08efb547c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/36c3397a156a4a136cfe3bddc3b5dc45.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/c655e416fa028a3c026dad80b494bd70.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/21dbc30f033f3f8b114e73a681bd8790.png">
 <meta property="article:published_time" content="2021-06-08T10:23:58.000Z">
-<meta property="article:modified_time" content="2022-08-21T06:26:49.329Z">
+<meta property="article:modified_time" content="2023-03-17T07:28:30.371Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="中间件">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/d28fd6e0bea9f14e2cdd5fe41fc52e08.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/d28fd6e0bea9f14e2cdd5fe41fc52e08.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -254,7 +254,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Redis学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Redis6.0学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -299,7 +299,7 @@ var _hmt = _hmt || [];
       <center><p>
   
     <h1 class="article-title_code_ant" itemprop="name">
-      Redis学习笔记
+      Redis6.0学习笔记
     </h1>
   
 </p></center>
@@ -524,7 +524,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedisSpringApplicationTests</span> </span>&#123;</span><br><span class="line">  <span class="comment">//redisTemplate 操作不同的数据类型，api和我们的指令是一样的</span></span><br><span class="line">  <span class="comment">//opsForValue 操作字符申类似string</span></span><br><span class="line">  <span class="comment">//opsForList 操作list 类List</span></span><br><span class="line">  <span class="comment">//opsForSet</span></span><br><span class="line">  <span class="comment">//opsForHash</span></span><br><span class="line">  <span class="comment">//opsForZSet</span></span><br><span class="line">  <span class="comment">//opsForGeo</span></span><br><span class="line">  <span class="comment">//opsForHyperLogLog</span></span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  RedisTemplate&lt;String, String&gt; redisTemplate;</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    redisTemplate.opsForValue().set(<span class="string">"k"</span>,<span class="string">"v"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="2-2-源码分析">2.2 <strong>源码分析</strong></h4>
 <p>在<code>External Libraries</code>中找到Redis的自动配置类，在<code>RedisProperties.class</code>也可以看到配置信息<br>
-<img src="https://img-blog.csdnimg.cn/img_convert/d28fd6e0bea9f14e2cdd5fe41fc52e08.png" alt="image-20210607170901524"></p>
+<img src="http://qnypic.shawncoding.top/blog/d28fd6e0bea9f14e2cdd5fe41fc52e08.png" alt="image-20210607170901524"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>(proxyBeanMethods = <span class="keyword">false</span>)</span><br><span class="line"><span class="meta">@ConditionalOnClass</span>(&#123;RedisOperations<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">@<span class="title">EnableConfigurationProperties</span>(</span>&#123;RedisProperties<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">@<span class="title">Import</span>(</span>&#123;LettuceConnectionConfiguration<span class="class">.<span class="keyword">class</span>, <span class="title">JedisConnectionConfiguration</span>.<span class="title">class</span>&#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">RedisAutoConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RedisAutoConfiguration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="comment">//我们可以自定义一个redisTemplate替换默认。下面注解意思是如果Spring容器中有了RedisTemplate对象了，这个自动配置的RedisTemplate不会实例化。</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(name = &#123;<span class="string">"redisTemplate"</span>&#125;)</span><br><span class="line">    <span class="meta">@ConditionalOnSingleCandidate</span>(RedisConnectionFactory<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">RedisTemplate</span>&lt;<span class="title">Object</span>, <span class="title">Object</span>&gt; <span class="title">redisTemplate</span>(<span class="title">RedisConnectionFactory</span> <span class="title">redisConnectionFactory</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//默认的没有进行过多操作，也没有序列化，不能进行对象传输</span></span><br><span class="line">        <span class="comment">//我们一般使用&lt;String,Object&gt;</span></span><br><span class="line">        RedisTemplate&lt;Object, Object&gt; template = <span class="keyword">new</span> RedisTemplate();</span><br><span class="line">        template.setConnectionFactory(redisConnectionFactory);</span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">  <span class="comment">//String类型常用，单独提出来一个方法</span></span><br><span class="line">    <span class="meta">@ConditionalOnSingleCandidate</span>(RedisConnectionFactory<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">StringRedisTemplate</span> <span class="title">stringRedisTemplate</span>(<span class="title">RedisConnectionFactory</span> <span class="title">redisConnectionFactory</span>) </span>&#123;</span><br><span class="line">        StringRedisTemplate template = <span class="keyword">new</span> StringRedisTemplate();</span><br><span class="line">        template.setConnectionFactory(redisConnectionFactory);</span><br><span class="line">        <span class="keyword">return</span> template;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="2-3-序列化工具封装">2.3 <strong>序列化工具封装</strong></h4>
 <p>自定义序列化<code>RedisTemplate</code>，这里提供两种，一种是jackson，另一种是fastjson</p>
@@ -555,7 +555,7 @@ var _hmt = _hmt || [];
 <p>在指定的时间间隔内将内存中的数据集快照写入磁盘，也就是行话讲的Snapshot快照，它恢复时是将快照文件直接读到内存里</p>
 </blockquote>
 <p>Redis会单独创建（fork）一个子进程来进行持久化，会先将数据写入到一个临时文件中，待持久化过程都结束了，再用这个临时文件替换上次持久化好的文件。整个过程中，主进程是不进行任何IO操作的。这就确保了极高的性能。如果需要进行大规模数据的恢复，且对于数据恢复的完整性不是非常敏感，那RDB方式要比AOF方式更加的高效。RDB的缺点是最后一次持久化后的数据可能丢失，且备份时需要消耗内存。</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/8493958510848e2a742d3daaa5d334f1.png" alt="image-20210605140429685"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/8493958510848e2a742d3daaa5d334f1.png" alt="image-20210605140429685"></p>
 <p><strong>RDB快照</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对于RDB来说，提供了三种机制：save、bgsave、自动触发。</span></span><br><span class="line"><span class="comment"># 自动触发在redis.conf下进行配置</span></span><br><span class="line"><span class="comment"># 三种情况保存的rdb文件可以进行配置，默认在当前目录</span></span><br><span class="line">127.0.0.1:6379&gt; bgsave</span><br><span class="line">Background saving started</span><br><span class="line">127.0.0.1:6379&gt; save</span><br><span class="line">OK</span><br><span class="line"><span class="comment"># 若要恢复Redis数据，只需要将dump.rdb文件放到对应dir目录下，Redis会自动进行数据恢复</span></span><br><span class="line">127.0.0.1:6379&gt; config get dir</span><br><span class="line">1) <span class="string">"dir"</span></span><br><span class="line">2) <span class="string">"/usr/local/bin"</span></span><br></pre></td></tr></table></figure>
 <h3 id="2、AOF-Append-Only-File">2、AOF(Append Only File)</h3>
@@ -582,7 +582,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>Redis 发布订阅(pub/sub)是一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接收消息。 Redis 客户端可以订阅任意数量的频道。</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/ccd4e931a64a456221c2ecc47685f23f.png" alt="image-20210605195534013"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/ccd4e931a64a456221c2ecc47685f23f.png" alt="image-20210605195534013"></p>
 <p><strong>redis发布订阅常用命令</strong></p>
 <table>
 <thead>
@@ -689,7 +689,7 @@ var _hmt = _hmt || [];
 <p>哨兵模式能够后台监控主机是否故障，如果故障了根据投票数自动将从库转换为主库。哨兵模式是一种特殊的模式，首先Redis提供了哨兵的命令，哨兵是一个独立的进程，作为进程，它会独立运行。其原理是哨兵通过发送命令，等待Redis服务器响应，从而监控运行的多个Redis实例。</p>
 </blockquote>
 <p>一般哨兵模式要开启6个进程，假设主服务器宕机，哨兵1先检测到这个结果，系统并不会马上进行failover过程，仅仅是哨兵1主观的认为主服务器不可用，这个现象成为==主观下线==。当后面的哨兵也检测到主服务器不可用，并且数量达到一定值时，那么哨兵之间就会进行一次投票，投票的结果由一个哨兵发起，进行failover[故障转移]操作。切换成功后，就会通过发布订阅模式，让各个哨兵把自己监控的从服务器实现切换主机，这个过程称为==客观下线==。</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/3dac4cc63de6f0f30da9865ca46cd233.png" alt="img"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/3dac4cc63de6f0f30da9865ca46cd233.png" alt="img"></p>
 <p><strong>测试配置</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一主二从配置不变，加入哨兵进程</span></span><br><span class="line"><span class="comment"># 进入redis目录</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/bin/</span><br><span class="line"><span class="comment"># 复制3个哨兵配置文件sentinel.conf</span></span><br><span class="line">cp /opt/redis-6.2.4/sentinel.conf conf/sentinel1.conf </span><br><span class="line">cp /opt/redis-6.2.4/sentinel.conf conf/sentinel2.conf </span><br><span class="line">cp /opt/redis-6.2.4/sentinel.conf conf/sentinel3.conf</span><br></pre></td></tr></table></figure>
 <p>依次修改3份哨兵配置文件，保证端口、pid文件和日志文件不重名，日志文件在/tmp目录下</p>
@@ -709,7 +709,7 @@ var _hmt = _hmt || [];
 </ul>
 <p><strong>普通端口</strong>：即客户端访问端口，如默认的6379；</p>
 <p><strong>集群端口</strong>：普通端口号加10000，如6379的集群端口为16379，用于集群节点之间的通讯</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/0bf23b1bbd2721ffc7fd22f08efb547c.png" alt="image-20210607155751506"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/0bf23b1bbd2721ffc7fd22f08efb547c.png" alt="image-20210607155751506"></p>
 <p><strong>配置</strong></p>
 <p>分配6个配置文件</p>
 <table>
@@ -773,17 +773,17 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>缓存穿透是指查询一个根本不存在的数据，缓存层和持久层都不会命中。在日常工作中出于容错的考虑，如果从持久层查不到数据则不写入缓存层，缓存穿透将导致不存在的数据每次请求都要到持久层去查询，失去了缓存保护后端持久的意义</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/36c3397a156a4a136cfe3bddc3b5dc45.png" alt="image-20210608101514039"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/36c3397a156a4a136cfe3bddc3b5dc45.png" alt="image-20210608101514039"></p>
 <h3 id="2、缓存击穿">2、缓存击穿</h3>
 <blockquote>
 <p>系统中存在以下两个问题时需要引起注意：当前key是一个热点key（例如一个秒杀活动），并发量非常大；重建缓存不能在短时间完成，可能是一个复杂计算，例如复杂的SQL、多次IO、多个依赖等。在缓存失效的瞬间，有大量线程来重建缓存，造成后端负载加大，甚至可能会让应用崩溃。</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/c655e416fa028a3c026dad80b494bd70.png" alt="image-20210607170758835"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/c655e416fa028a3c026dad80b494bd70.png" alt="image-20210607170758835"></p>
 <h3 id="3、缓存雪崩">3、缓存雪崩</h3>
 <blockquote>
 <p>由于缓存层承载着大量请求，有效地保护了存储层，但是如果缓存层由于某些原因不可用（宕机）或者大量缓存由于超时时间相同在同一时间段失效（大批key失效/热点数据失效），大量请求直接到达存储层，存储层压力过大导致系统雪崩。</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/21dbc30f033f3f8b114e73a681bd8790.png" alt="image-20210607170538553"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/21dbc30f033f3f8b114e73a681bd8790.png" alt="image-20210607170538553"></p>
 <hr>
 <p>参考文章：<br>
 <a href="https://blog.csdn.net/wsdc0521/article/details/106316972" target="_blank" rel="noopener">https://blog.csdn.net/wsdc0521/article/details/106316972</a><br>
@@ -851,13 +851,13 @@ var _hmt = _hmt || [];
     2021-06-08
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-08-21
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://www.shawn22.xyz/posts/8eda3648.html" title="Redis学习笔记" target="_blank">Redis学习笔记</a>
+    <a href="https://www.shawn22.xyz/posts/8eda3648.html" title="Redis6.0学习笔记" target="_blank">Redis6.0学习笔记</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://www.shawn22.xyz/posts/8eda3648.html" title="Redis学习笔记" target="_blank">https://www.shawn22.xyz/posts/8eda3648.html</a>
+    <a href="https://www.shawn22.xyz/posts/8eda3648.html" title="Redis6.0学习笔记" target="_blank">https://www.shawn22.xyz/posts/8eda3648.html</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -1176,15 +1176,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1192,15 +1192,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1212,11 +1216,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1224,19 +1228,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1244,35 +1252,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

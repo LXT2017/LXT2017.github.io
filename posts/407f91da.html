@@ -15,18 +15,18 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Kubernetes（K8S）简介 1、概念  官网：https:&#x2F;&#x2F;kubernetes.io&#x2F;zh-cn&#x2F;docs&#x2F;home&#x2F;  1.1 Kubernetes (K8S) 是什么 它是一个为 容器化 应用提供集群部署和管理的开源工具，由 Google 开发。K8S 是负责自动化运维管理多个跨机器 Docker 程序的集群 1.2 核心特性  服务发现与负载均衡：无需修改你的应用程序即可使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/a85b4181772445daae892f246473f6f9.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b27389316e9d4552a7eaa70b3c96b74b.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/7b0aeb0696a044199762d593f8f6d55d.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c8391a23d64c46199b53ad1dbee0bd33.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/fad029fc6f494c6ba1b07b095da05e70.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ed0a4b92be0645e2b9af94cbafa43273.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/a85b4181772445daae892f246473f6f9.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b27389316e9d4552a7eaa70b3c96b74b.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7b0aeb0696a044199762d593f8f6d55d.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/c8391a23d64c46199b53ad1dbee0bd33.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/fad029fc6f494c6ba1b07b095da05e70.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/ed0a4b92be0645e2b9af94cbafa43273.png">
 <meta property="article:published_time" content="2023-03-05T16:15:24.000Z">
-<meta property="article:modified_time" content="2023-03-05T16:37:02.079Z">
+<meta property="article:modified_time" content="2023-03-17T04:51:39.259Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="K8S">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/a85b4181772445daae892f246473f6f9.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/a85b4181772445daae892f246473f6f9.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -331,7 +331,7 @@ var _hmt = _hmt || [];
 <p>所有容器共享主机的系统，轻量级的虚拟机，性能损耗小，资源隔离，CPU和内存可按需分配；例如k8s可以轻松管理百万千万台机器的集群，可以为你提供集中式的管理集群机器和应用，不停机的灰度更新，确保高可用、高性能、高扩展</p>
 <h2 id="2、Kubernetes-集群架构">2、Kubernetes 集群架构</h2>
 <h3 id="2-1-架构">2.1 架构</h3>
-<p><img src="https://img-blog.csdnimg.cn/a85b4181772445daae892f246473f6f9.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/a85b4181772445daae892f246473f6f9.png" alt="在这里插入图片描述"></p>
 <ul>
 <li>
 <p>master</p>
@@ -344,7 +344,7 @@ var _hmt = _hmt || [];
 </ul>
 <h3 id="2-2-重要概念-Pod">2.2 重要概念 Pod</h3>
 <p>K8S 调度、管理的最小单位，一个 Pod 可以包含一个或多个容器，每个 Pod 有自己的虚拟IP。一个工作节点可以有多个 pod，主节点会考量负载自动调度 pod 到哪个节点运行</p>
-<p><img src="https://img-blog.csdnimg.cn/b27389316e9d4552a7eaa70b3c96b74b.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/b27389316e9d4552a7eaa70b3c96b74b.png" alt="在这里插入图片描述"></p>
 <h3 id="2-3-Kubernetes-组件">2.3 Kubernetes 组件</h3>
 <ul>
 <li><code>kube-apiserver</code> <strong>K8S 的请求入口服务</strong>。API Server 负责接收 K8S 所有请求（来自 UI 界面或者 CLI 命令行工具），然后，API Server 根据用户的具体请求，去通知其他组件干活</li>
@@ -356,7 +356,7 @@ var _hmt = _hmt || [];
 <li><code>Kube-Proxy</code> <strong>K8S 的网络代理</strong>。Kube-Proxy 负责 Node 在 K8S 的网络通讯、以及对外部网络流量的负载均衡</li>
 <li><code>Container Runtime</code>** Worker Node 的运行环境**。即安装了容器化所需的软件环境确保容器化程序能够跑起来，比如 Docker Engine运行环境</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/7b0aeb0696a044199762d593f8f6d55d.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/7b0aeb0696a044199762d593f8f6d55d.png" alt="在这里插入图片描述"></p>
 <h1>二、Kubernetes集群安装</h1>
 <blockquote>
 <p>默认已经提前安装好Docker，docker安装可以参考：<a href="https://blog.csdn.net/lemon_TT/article/details/125981712" target="_blank" rel="noopener" title="docker学习笔记">docker学习笔记</a></p>
@@ -505,7 +505,7 @@ var _hmt = _hmt || [];
 <li>可对集群外部提供访问端口</li>
 <li>集群内部可通过服务名字访问</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/c8391a23d64c46199b53ad1dbee0bd33.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/c8391a23d64c46199b53ad1dbee0bd33.png" alt="在这里插入图片描述"></p>
 <h2 id="2、Service简单Demo">2、Service简单Demo</h2>
 <p>首先创建service.yaml</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">test-k8s</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="comment"># 要和pod对应</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">test-k8s</span></span><br><span class="line">  <span class="comment"># 服务默认是这个</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">ClusterIP</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">8080</span>        <span class="comment"># 本 Service 的端口</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">8080</span>  <span class="comment"># 容器端口</span></span><br></pre></td></tr></table></figure>
@@ -573,7 +573,7 @@ var _hmt = _hmt || [];
 <p>创建好数据后重启<code>kubectl rollout restart statefulset mongodb</code>，发现数据还在，同时进入结点，可以发现数据保存在<code>/data/db</code>，而进入该结点的宿主机，发现数据映射在<code>/data/mongo-data</code></p>
 <h2 id="3、高级抽象挂载">3、高级抽象挂载</h2>
 <h3 id="3-1-概述">3.1 概述</h3>
-<p><img src="https://img-blog.csdnimg.cn/fad029fc6f494c6ba1b07b095da05e70.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/fad029fc6f494c6ba1b07b095da05e70.png" alt="在这里插入图片描述"></p>
 <ul>
 <li>更好的分工，运维人员负责提供好存储，开发人员不需要关注磁盘细节，只需要写一个申请单。</li>
 <li>方便云服务商提供不同类型的，配置细节不需要开发者关注，只需要一个申请单。</li>
@@ -644,7 +644,7 @@ var _hmt = _hmt || [];
 <p>Ingress 为外部访问集群提供了一个 <strong>统一</strong> 入口，避免了对外暴露集群端口；功能类似 Nginx，可以根据域名、路径把请求转发到不同的 Service。可以配置 https</p>
 </blockquote>
 <p>**跟 LoadBalancer 有什么区别？**LoadBalancer 需要对外暴露端口，不安全；无法根据域名、路径转发流量到不同 Service，多个 Service 则需要开多个 LoadBalancer；功能单一，无法配置 https</p>
-<p><img src="https://img-blog.csdnimg.cn/ed0a4b92be0645e2b9af94cbafa43273.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/ed0a4b92be0645e2b9af94cbafa43273.png" alt="在这里插入图片描述"></p>
 <h2 id="2、使用">2、使用</h2>
 <blockquote>
 <p>文档：<a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress/" target="_blank" rel="noopener" title="Ingress">Ingress</a></p>
@@ -718,7 +718,7 @@ var _hmt = _hmt || [];
     2023-03-06
     <br>
     <strong class="update-time">最后更新：</strong>
-    2023-03-06
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/407f91da.html" title="k8s快速入门" target="_blank">k8s快速入门</a>
@@ -767,7 +767,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/云原生//" class="article-tag-list-link color4">云原生</a>
         		</li>
       		
 		</ul>
@@ -840,7 +840,7 @@ var _hmt = _hmt || [];
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Kubernetes 1.18学习笔记
+          Kubernetes1.18学习笔记
         
       </div>
     </a>
@@ -1043,15 +1043,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1059,15 +1059,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1079,11 +1083,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1091,19 +1095,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1111,35 +1119,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

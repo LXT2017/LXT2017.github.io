@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、frp和RDClient 1、简介 1.1 frp简介  官网介绍：https:&#x2F;&#x2F;gofrp.org&#x2F;docs&#x2F;overview&#x2F; 下载：https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releases  frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/61c82ca5b4504de89391cb6e6e7bc9dd.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e5295784d71548c5a1e3fc062a5b637f.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/61c82ca5b4504de89391cb6e6e7bc9dd.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e5295784d71548c5a1e3fc062a5b637f.png">
 <meta property="article:published_time" content="2022-05-09T13:30:01.000Z">
-<meta property="article:modified_time" content="2022-05-16T13:25:18.416Z">
+<meta property="article:modified_time" content="2023-03-17T02:23:31.013Z">
 <meta property="article:author" content="Shawn">
-<meta property="article:tag" content="linux基础">
+<meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/61c82ca5b4504de89391cb6e6e7bc9dd.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/61c82ca5b4504de89391cb6e6e7bc9dd.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -322,7 +322,7 @@ var _hmt = _hmt || [];
 <p>多种插件，提供很多功能</p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/61c82ca5b4504de89391cb6e6e7bc9dd.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/61c82ca5b4504de89391cb6e6e7bc9dd.png" alt="在这里插入图片描述"></p>
 <h3 id="1-2-RDClient简介">1.2 RDClient简介</h3>
 <blockquote>
 <p>官网地址：<a href="https://docs.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients" target="_blank" rel="noopener" title="RDClient">RDClient</a></p>
@@ -444,7 +444,7 @@ var _hmt = _hmt || [];
 <p>直接进入<code>/etc/nps</code>下，配置文件<code>vim conf/nps.conf</code>，如果启动失败就关闭http代理</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 客户端连接需要的vkey，这里建议设置复杂点</span></span><br><span class="line">public_vkey=123</span><br><span class="line"></span><br><span class="line">web_host= 服务器IP或者域名</span><br><span class="line">web_username= admin（登录用户名）</span><br><span class="line">web_password= 你的密码</span><br><span class="line">web_port=8080（web管理端口）` </span><br><span class="line"></span><br><span class="line"><span class="comment">#bridge可以更改 NPC的连接端口。</span></span><br><span class="line">bridge_type=tcp</span><br><span class="line"><span class="comment"># 修改连接端口</span></span><br><span class="line">bridge_port=8024     </span><br><span class="line">bridge_ip=0.0.0.0</span><br></pre></td></tr></table></figure>
 <p>最后启动<code>sudo nps start|stop|restart</code>，它会自动寻找配置文件。这里需要主要的是服务端端口的开放</p>
-<p><img src="https://img-blog.csdnimg.cn/e5295784d71548c5a1e3fc062a5b637f.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/e5295784d71548c5a1e3fc062a5b637f.png" alt="在这里插入图片描述"></p>
 <h2 id="3、NPC下载与安装">3、NPC下载与安装</h2>
 <h3 id="3-1-客户端下载">3.1 客户端下载</h3>
 <p>首先从<a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener" title="github仓库下载地址">github仓库下载地址</a>下载对应平台的客户端并解压，详情可以查看<a href="https://ehang-io.github.io/nps/#/use" target="_blank" rel="noopener" title="npc具体使用">npc具体使用</a></p>
@@ -572,7 +572,7 @@ var _hmt = _hmt || [];
     2022-05-09
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-05-16
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/60728e79.html" title="内网穿透工具" target="_blank">内网穿透工具</a>
@@ -602,7 +602,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
         		</li>
       		
 		</ul>
@@ -694,14 +694,14 @@ var _hmt = _hmt || [];
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Intellij IDEA(2021) 常用设置与快捷键
+          Intellij-IDEA(2021)常用设置与快捷键
         
       </div>
     </a>
   
   
     <a href="/posts/4fc38b79.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringCloud Gateway 详解</div>
+      <div class="article-nav-title">SpringCloud-Gateway详解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -897,15 +897,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -913,15 +913,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -933,11 +937,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -945,19 +949,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -965,35 +973,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

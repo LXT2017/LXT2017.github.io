@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、介绍 1、功能介绍 在 Java 系统工程开发过程中，都会有各个层之间的对象转换，比如  VO、DTO、PO、VO 等，而如果都是手动get、set又太浪费时间，还可能操作错误，所以选择一个自动化工具会更加方便；同时在工作也常常遇到将java的Bean对象转化为Map，或者将Map转为Bean对象的情况。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2ee67a9600134d77a779e288494ae203.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/849426d575434a5db685e5ef59cf75ce.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/2ee67a9600134d77a779e288494ae203.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/849426d575434a5db685e5ef59cf75ce.png">
 <meta property="article:published_time" content="2022-02-03T13:49:17.000Z">
-<meta property="article:modified_time" content="2022-10-31T13:29:40.718Z">
+<meta property="article:modified_time" content="2023-03-17T02:22:09.759Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Spring基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2ee67a9600134d77a779e288494ae203.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/2ee67a9600134d77a779e288494ae203.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -305,13 +305,13 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h2 id="2、Bean互转不同方法与性能对比">2、Bean互转不同方法与性能对比</h2>
 <p>目前用于对象属性转换有12种，包括普通的<strong>get/set、json2Json、Apache属性拷贝、Spring属性拷贝、bean-mapping、bean-mapping-asm、BeanCopier、Orika、Dozer、ModelMapper、JMapper、MapStruct</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/2ee67a9600134d77a779e288494ae203.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/2ee67a9600134d77a779e288494ae203.png" alt></p>
 <ul>
 <li>Spring 提供的<code>BeanUtils.copyProperties</code> 是大家代码里最常出现的工具类，注意不是 <code>Apache</code> 包下</li>
 <li>手动<code>get、set</code>性能是最好的，另外 <code>MapStruct</code> 性能和操作也很方便，因为它本身就是在编译期生成<code>get、set</code>代码，和我们写<code>get、set</code>一样</li>
 <li>其他一些组件包主要基于 <code>AOP</code>、<code>ASM</code>、<code>CGlib</code>，的技术手段实现的，所以也会有相应的性能损耗</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/849426d575434a5db685e5ef59cf75ce.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/849426d575434a5db685e5ef59cf75ce.png" alt></p>
 <h2 id="3、Bean-Map互转">3、Bean/Map互转</h2>
 <p>工作常常遇到将java的Bean对象转化为Map，或者将Map转为Bean对象，常见手段有以下几种</p>
 <ul>
@@ -452,7 +452,7 @@ var _hmt = _hmt || [];
     2022-02-03
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-10-31
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/ed9e2fb2.html" title="几种Bean映射工具介绍" target="_blank">几种Bean映射工具介绍</a>
@@ -777,15 +777,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -793,15 +793,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -813,11 +817,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,19 +829,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -845,35 +853,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、前言  常用项目编写规范参考：Spring Boot后端接口规范  1、概述 前面讲到数据统一响应、全局异常等常用后端框架，那么随着项目的开发，需要对请求进行校验(参数校验、前面校验等)，不符合的不进入后端业务逻辑，提前返回并抛出异常。一般实现方法有拦截器和过滤器，这两者都可以实现对应的功能，可以根据自己喜好进行编写。 过滤器一般完成通用的操作。如：登录验证、统⼀编码处理、敏感字符过滤，常见的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/da12fa07e67f48a385233ac4352f2e8b.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/0c4dc4e4867a4edb8163950eb3db8865.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e041e0dadd6c44238a65b91d68ab42f5.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/da12fa07e67f48a385233ac4352f2e8b.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/0c4dc4e4867a4edb8163950eb3db8865.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e041e0dadd6c44238a65b91d68ab42f5.png">
 <meta property="article:published_time" content="2023-03-05T16:18:22.000Z">
-<meta property="article:modified_time" content="2023-03-05T16:25:49.697Z">
+<meta property="article:modified_time" content="2023-03-17T02:19:48.174Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Spring基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/da12fa07e67f48a385233ac4352f2e8b.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/da12fa07e67f48a385233ac4352f2e8b.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -312,7 +312,7 @@ var _hmt = _hmt || [];
 <h2 id="2、过滤器与拦截器异同">2、过滤器与拦截器异同</h2>
 <h3 id="2-1-简介">2.1 简介</h3>
 <p>过滤器(filter)和拦截器(Inteceptor)的执行顺序概览</p>
-<p><img src="https://img-blog.csdnimg.cn/da12fa07e67f48a385233ac4352f2e8b.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/da12fa07e67f48a385233ac4352f2e8b.png" alt="在这里插入图片描述"></p>
 <h3 id="2-2-异同">2.2 异同</h3>
 <ul>
 <li>过滤器和拦截器触发时机不一样，过滤器是在请求进入容器后，但请求进入servlet之前进行预处理的。请求结束返回也是，是在servlet处理完后，返回给前端之前</li>
@@ -330,13 +330,13 @@ var _hmt = _hmt || [];
 <li>过滤器只能在请求的前后使用，而拦截器可以详细到每个方法</li>
 </ul>
 <p>具体的执行调用流程如下</p>
-<p><img src="https://img-blog.csdnimg.cn/0c4dc4e4867a4edb8163950eb3db8865.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/0c4dc4e4867a4edb8163950eb3db8865.png" alt="在这里插入图片描述"></p>
 <ul>
 <li>过滤器（Filter） ：可以拿到原始的http请求，但是拿不到你请求的控制器和请求控制器中的方法的信息</li>
 <li>拦截器（Interceptor）：可以拿到你请求的控制器和方法，却拿不到请求方法的参数</li>
 <li>切片（Aspect）: 可以拿到方法的参数，但是却拿不到http请求和响应的对象</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/e041e0dadd6c44238a65b91d68ab42f5.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/e041e0dadd6c44238a65b91d68ab42f5.png" alt="在这里插入图片描述"></p>
 <p>这里说一下为什么spring security使用过滤器而不是拦截器。因为作为一个通用的安全框架不应该耦合其他web框架的元素。很显然拦截器是spring mvc或struts等框架提供的，如果基于拦截器势必耦合这些框架，就做不到通用了</p>
 <h2 id="3、Filters-vs-HandlerInterceptors">3、Filters vs HandlerInterceptors</h2>
 <ul>
@@ -486,7 +486,7 @@ var _hmt = _hmt || [];
     2023-03-06
     <br>
     <strong class="update-time">最后更新：</strong>
-    2023-03-06
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/5a99ecc7.html" title="过滤器与拦截器" target="_blank">过滤器与拦截器</a>
@@ -811,15 +811,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -827,15 +827,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -847,11 +851,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -859,19 +863,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -879,35 +887,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

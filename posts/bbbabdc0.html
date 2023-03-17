@@ -15,20 +15,20 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、CICD环境介绍与安装 1、简介  Jenkins，原名 Hudson，2011 年改为现在的名字。它是一个开源的实现持续集成的软件工具。 官方网站：https:&#x2F;&#x2F;www.jenkins.io&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ebe57cb4d97a4292a3e7380541501708.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/1adea6f9867941fda7e7acd5ef2dfed4.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f974771d3da54e898957c1b8e7e44f45.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/67501cfff02944e68e7fd167adef4fcc.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/003c35d511b644dfb1f8b283d4c0159f.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/49e0156b51584d7a86678a4bee74081c.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/15fa2fc75b044757baa283c2ebee7e28.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/6ef1108654404e71b7e5c39ede33bfcf.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/ebe57cb4d97a4292a3e7380541501708.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/1adea6f9867941fda7e7acd5ef2dfed4.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f974771d3da54e898957c1b8e7e44f45.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/67501cfff02944e68e7fd167adef4fcc.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/003c35d511b644dfb1f8b283d4c0159f.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/49e0156b51584d7a86678a4bee74081c.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/15fa2fc75b044757baa283c2ebee7e28.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/6ef1108654404e71b7e5c39ede33bfcf.png">
 <meta property="article:published_time" content="2022-09-28T09:33:48.000Z">
-<meta property="article:modified_time" content="2022-09-28T09:48:19.189Z">
+<meta property="article:modified_time" content="2023-03-17T04:49:37.705Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Linux运维">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/ebe57cb4d97a4292a3e7380541501708.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/ebe57cb4d97a4292a3e7380541501708.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -311,7 +311,7 @@ var _hmt = _hmt || [];
 <p>Jenkins，原名 Hudson，2011 年改为现在的名字。它是一个开源的实现持续集成的软件工具。<br>
 官方网站：<a href="https://www.jenkins.io/" target="_blank" rel="noopener">https://www.jenkins.io/</a></p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/ebe57cb4d97a4292a3e7380541501708.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/ebe57cb4d97a4292a3e7380541501708.png" alt="在这里插入图片描述"></p>
 <a id="more"></a>
 <h2 id="2、Docker安装">2、Docker安装</h2>
 <blockquote>
@@ -360,12 +360,12 @@ var _hmt = _hmt || [];
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>$&#123;user.home&#125;/.m2/repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroup</span>&gt;</span>org.mortbay.jetty<span class="tag">&lt;/<span class="name">pluginGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- mirror</span></span><br><span class="line"><span class="comment">   | Specifies a repository mirror site to use instead of a given repository. The repository that</span></span><br><span class="line"><span class="comment">   | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used</span></span><br><span class="line"><span class="comment">   | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.</span></span><br><span class="line"><span class="comment">   |</span></span><br><span class="line"><span class="comment">  &lt;mirror&gt;</span></span><br><span class="line"><span class="comment">    &lt;id&gt;mirrorId&lt;/id&gt;</span></span><br><span class="line"><span class="comment">    &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;</span></span><br><span class="line"><span class="comment">    &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</span></span><br><span class="line"><span class="comment">    &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;</span></span><br><span class="line"><span class="comment">  &lt;/mirror&gt;</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--This sends everything else to /public --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--This is used to direct the public snapshots repo in the </span></span><br><span class="line"><span class="comment">        profile below over to a different nexus group --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-public-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>public-snapshots<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/snapshots/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--This is used to direct the public snapshots repo in the </span></span><br><span class="line"><span class="comment">        profile below over to a different nexus group --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-public-snapshots1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>public-snapshots1<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://artifacts.alfresco.com/nexus/content/repositories/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-2-全局配置">1.2 全局配置</h3>
 <p>系统管理→全局工具配置→配置系统全局maven，注意填写自己的maven路径，然后下载好git</p>
-<p><img src="https://img-blog.csdnimg.cn/1adea6f9867941fda7e7acd5ef2dfed4.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/1adea6f9867941fda7e7acd5ef2dfed4.png" alt="在这里插入图片描述"></p>
 <h3 id="1-3-自动拉取构建初体验">1.3 自动拉取构建初体验</h3>
 <p>选择新建任务→构建一个maven项目，其他暂时默认，仓库去gitlab获取链接，这里使用了http，使用不需要凭证，同时选择好自己想拉取的分支，如果报错，需要安装git</p>
-<p><img src="https://img-blog.csdnimg.cn/f974771d3da54e898957c1b8e7e44f45.png#pic_center" alt="在这里插入图片描述"><br>
+<p><img src="http://qnypic.shawncoding.top/blog/f974771d3da54e898957c1b8e7e44f45.png" alt="在这里插入图片描述"><br>
 <code>pom.xml</code>位置，如果项目里面有多个子项目，那需要添加前缀</p>
-<p><img src="https://img-blog.csdnimg.cn/67501cfff02944e68e7fd167adef4fcc.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/67501cfff02944e68e7fd167adef4fcc.png" alt="在这里插入图片描述"></p>
 <h3 id="1-4-构建注意事项">1.4 构建注意事项</h3>
 <p>如果控制台报错<code>No compiler is provided in this environment.Perhaps you are running on a &quot;JRE rather than a JDK?</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认yum安装java的时候会显示安装的是openjdk1.8 实则实际上只安装了jre</span></span><br><span class="line">yum install -y java-devel</span><br><span class="line"><span class="comment"># ubuntu正常</span></span><br></pre></td></tr></table></figure>
@@ -373,10 +373,10 @@ var _hmt = _hmt || [];
 <h3 id="2-1-插件安装与配置">2.1 插件安装与配置</h3>
 <p>系统管理→插件管理→安装插件→<strong>publish over ssh</strong></p>
 <p>安装好插件好，进入系统管理→系统管理，配置好对目标服务器的ssh，设置好登录地点目录</p>
-<p><img src="https://img-blog.csdnimg.cn/003c35d511b644dfb1f8b283d4c0159f.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/003c35d511b644dfb1f8b283d4c0159f.png" alt="在这里插入图片描述"></p>
 <h3 id="2-2-自动发布">2.2 自动发布</h3>
 <p>在原来的任务选择配置进行修改，选择构建后的操作，选择我们刚刚配置好的服务器，配置构建后出发的选项，<code>Source files</code>代表要传送的文件，<code>Remove prefix</code>表示去除的前缀，<code>Remote directory</code>表示要创建的目录，最后是要运行的命令，构建结束后，远程服务器存在文件<code>/home/shawn/jenkins/jenkin.jar</code></p>
-<p><img src="https://img-blog.csdnimg.cn/49e0156b51584d7a86678a4bee74081c.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/49e0156b51584d7a86678a4bee74081c.png" alt="在这里插入图片描述"></p>
 <p><strong>超时机制</strong></p>
 <p>输出命令时一定要注意不要让窗口卡主，不然Jenkins会认为认为一直没完成</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 工作目录为服务器配置的，我这里就是/home/shawn</span></span><br><span class="line"><span class="string">nohup</span> <span class="string">java</span> <span class="string">-jar</span> <span class="string">/home/shawn/jenkins/jenkins*.jar</span> <span class="string">--server.port=8989</span>  <span class="string">&gt;mylog.log</span> <span class="number">2</span><span class="string">&gt;&amp;1</span>  <span class="string">&amp;</span></span><br></pre></td></tr></table></figure>
@@ -408,7 +408,7 @@ var _hmt = _hmt || [];
 <p>代码改动(提交，合并等)自动可以使用gitlab的webhook回调钩子调起Jenkins的启动任务接口，进行自动打包构建与运行</p>
 </blockquote>
 <p>首先在构建触发器中配置接口和token</p>
-<p><img src="https://img-blog.csdnimg.cn/15fa2fc75b044757baa283c2ebee7e28.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/15fa2fc75b044757baa283c2ebee7e28.png" alt="在这里插入图片描述"></p>
 <p>因为需要权限认证，所以需要安装一个插件<code>Build Authorization Token Root</code>，安装完插件后，要访问<code>http://192.168.249.129:8080/buildByToken/build?job=first&amp;token=123456</code>即可无需认证触发构建</p>
 <p>然后进入GitlLab或者远程代码仓库，找到<strong>Webhook选项</strong>，将调起Jenkins的启动任务接口填入，如果GitLab发现不让本地访问，调用<code>菜单→管理员→设置→网络→出战请求→允许来自 web hooks 和服务对本地网络的请求</code>就可</p>
 <h2 id="2、定时构建">2、定时构建</h2>
@@ -488,7 +488,7 @@ Jenkins cron不是标准的cron表达式</p>
 <p>集群化构建可以有效提升构建效率，尤其是团队项目比较多或是子项目比较多的时候，可以并发在多台机器上执行构建</p>
 </blockquote>
 <p>这里我们一模一样克隆一台jenkins机器，从机无需启动jenkins，只需要java和maven构建环境，进入<strong>系统管理→节点管理</strong>，可以看到本机就是一个主节点，然后我们<strong>新建节点</strong>，取名jenkin-01，注意标签的填写，后面流水线需要依赖这个；填好并发依赖数量，主机名</p>
-<p><img src="https://img-blog.csdnimg.cn/6ef1108654404e71b7e5c39ede33bfcf.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/6ef1108654404e71b7e5c39ede33bfcf.png" alt="在这里插入图片描述"></p>
 <p>然后进入我们的任务配置，在general中勾选<strong>在必要的时候并发构建</strong>，这样就可以进行集群化构建了</p>
 <h1>五、流水线pipline</h1>
 <h2 id="1、介绍">1、介绍</h2>
@@ -642,7 +642,7 @@ Jenkins cron不是标准的cron表达式</p>
     2022-09-28
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-09-28
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/bbbabdc0.html" title="Jenkins学习笔记" target="_blank">Jenkins学习笔记</a>
@@ -967,15 +967,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -983,15 +983,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1003,11 +1007,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1015,19 +1019,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1035,35 +1043,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

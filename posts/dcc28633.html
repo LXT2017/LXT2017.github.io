@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、概述 1、Redis概述  Redis参考文章：Redis6.0学习笔记  Redis 除了做缓存，还能干很多很多事情：分布式锁、限流、处理请求接口幂等性，本篇文章重点讲述SpringBoot通过注解和AOP的方式实现Redis的接口限流，Redis使用了Lua脚本实现原子操作；通过redis实现的分布式锁以及处理接口幂等等方案">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b695cb94cd9f4b589fe02d2672881f99.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/30757728bc9844d8bf4271d625caf91d.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b695cb94cd9f4b589fe02d2672881f99.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/30757728bc9844d8bf4271d625caf91d.png">
 <meta property="article:published_time" content="2022-09-28T09:34:48.000Z">
-<meta property="article:modified_time" content="2022-09-28T09:48:19.193Z">
+<meta property="article:modified_time" content="2023-03-17T05:40:48.675Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/b695cb94cd9f4b589fe02d2672881f99.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/b695cb94cd9f4b589fe02d2672881f99.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -451,7 +451,7 @@ var _hmt = _hmt || [];
 <p>切点前进行加锁，任务执行后进行删除 key</p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/b695cb94cd9f4b589fe02d2672881f99.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/b695cb94cd9f4b589fe02d2672881f99.png" alt="在这里插入图片描述"></p>
 <h3 id="2-2-核心步骤">2.2 核心步骤</h3>
 <ul>
 <li><strong>加锁</strong></li>
@@ -554,7 +554,7 @@ var _hmt = _hmt || [];
 <p>token机制：请求业务接口之前，先请求token接口（会将生成的token放入redis中）获取一个token，然后请求业务接口时，带上token。在进行业务操作之前，我们先获取请求中携带的token，看看在redis中是否有该token，有的话，就删除，删除成功说明token校验通过，并且继续执行业务操作；如果redis中没有该token，说明已经被删除了，也就是已经执行过业务操作了，就不让其再进行业务操作。大致流程如下：</p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/30757728bc9844d8bf4271d625caf91d.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/30757728bc9844d8bf4271d625caf91d.png" alt="在这里插入图片描述"></p>
 <h2 id="2、防重-Token-令牌流程">2、防重 Token 令牌流程</h2>
 <ul>
 <li>
@@ -659,7 +659,7 @@ var _hmt = _hmt || [];
     2022-09-28
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-09-28
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/dcc28633.html" title="Redis接口限流、分布式锁与幂等" target="_blank">Redis接口限流、分布式锁与幂等</a>
@@ -984,15 +984,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1000,15 +1000,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1020,11 +1024,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1032,19 +1036,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1052,35 +1060,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、问题描述 电脑和EAIBOT小车的树莓派3b连接好路由器WIFI后，树莓派和电脑能够正常通信，电脑能正常上网，但是发现树莓派无法上网。命令ping baidu.com显示找不到主机，在修改&#x2F;etc&#x2F;resolv.conf中的nameserver 8.8.8.8DNS配置后仍显示网络不可达。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210727144414044.png">
-<meta property="og:image" content="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210727150148403.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/image-20210727144414044.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/image-20210727150148403.png">
 <meta property="article:published_time" content="2021-07-27T07:51:04.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:23:51.547Z">
+<meta property="article:modified_time" content="2023-03-17T03:30:42.197Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210727144414044.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/image-20210727144414044.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -301,11 +301,11 @@ var _hmt = _hmt || [];
       
         <h2 id="一、问题描述">一、问题描述</h2>
 <p>电脑和EAIBOT小车的树莓派3b连接好路由器WIFI后，树莓派和电脑能够正常通信，电脑能正常上网，但是发现树莓派无法上网。命令<code>ping baidu.com</code>显示找不到主机，在修改<code>/etc/resolv.conf</code>中的<code>nameserver 8.8.8.8</code>DNS配置后仍显示网络不可达。</p>
-<p><img src="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210727144414044.png" alt="image-20210727144414044"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/image-20210727144414044.png" alt="image-20210727144414044"></p>
 <a id="more"></a>
 <h2 id="二、问题分析">二、问题分析</h2>
 <p>输入<code>ifconfig</code>命令后，eth0是以太网网卡，lo指的是本地回环，wlan0是无线网卡，我无线路由器网段为192.168.32.x，现在是无线网进行连接，局域网能正常通讯。</p>
-<p><img src="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210727150148403.png" alt="image-20210727150148403"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/image-20210727150148403.png" alt="image-20210727150148403"></p>
 <p>因为我连接了wlan0的wifi，因此可以正常通信，但是要访问外部网络时，由于我的以太网网卡优先级高于无线网卡，且以太网网段不在和路由器同一个网段中，此时通过eth0无法访问外网！</p>
 <h2 id="三、解决方案">三、解决方案</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方案一：禁用以太网卡</span></span><br><span class="line">sudo ifconfig eth0 down</span><br><span class="line"><span class="comment">#方案二：设置eth0网卡ip到同网段</span></span><br><span class="line"><span class="comment">#打卡网卡</span></span><br><span class="line">sudo ifconfig eth0 up</span><br><span class="line"><span class="comment">#设置ip</span></span><br><span class="line">sudo ifconfig eth0 192.168.32.203</span><br><span class="line"><span class="comment">#配置好即可上网</span></span><br></pre></td></tr></table></figure>
@@ -374,7 +374,7 @@ var _hmt = _hmt || [];
     2021-07-27
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/202ae1e9.html" title="EAIBOT小车树莓派3B网络问题" target="_blank">EAIBOT小车树莓派3B网络问题</a>
@@ -699,15 +699,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,15 +715,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,11 +739,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,19 +751,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,35 +775,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

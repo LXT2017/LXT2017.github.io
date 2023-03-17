@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、概述 ​	删库跑路这个词大家看到不会陌生，那万一发生在自己身上怎么办？直接跑？那肯定是不现实的，其实这里有种方法可以恢复误删除的数据，使用binlog可以很轻松的查看你之前的操作，当然前提是打开了这个功能，而且使用了mysqlbinlog ，因为 binlog 文件是二进制的。 ​	这里也简单记录一下防止自己以后手贱误删操作。 ​	环境准备：MySql8.0，navicate15">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210929204012919.png">
-<meta property="og:image" content="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20211010102129943.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/image-20210929204012919.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/image-20211010102129943.png">
 <meta property="article:published_time" content="2021-10-10T03:17:42.000Z">
-<meta property="article:modified_time" content="2021-11-18T05:28:00.059Z">
+<meta property="article:modified_time" content="2023-03-17T05:25:58.620Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210929204012919.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/image-20210929204012919.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -309,7 +309,7 @@ var _hmt = _hmt || [];
 <p>​	<code>binlog</code> 即 <code>Binary Log</code>，它是二进制文件，用来记录数据库写操作的日志。数据库的 insert、delete、update、create、alter、drop 等写入操作都会被 binlog 记录。因此，数据库的主从数据同步通常也是基于 binlog 完成的。</p>
 <p>​	一般情况下，<code>binlog</code>是默认开启的，可以通过脚本查看 binlog 是否开启，也可以查看文件存放地址。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE &#39;LOG_BIN%&#39;;</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20210929204012919.png" alt="image-20210929204012919"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/image-20210929204012919.png" alt="image-20210929204012919"></p>
 <p>​	如果<code>log_bin</code>参数显示的是<code>OFF</code>说明 binlog 是关闭状态，需要手动开启。开启 binlog 需要修改数据库的<code>my.cnf</code>配置文件，my.cnf文件通常在服务器的<code>/etc</code>目录下。binlog 的日志有三种格式，分别是 STATEMENT、ROW、MIXED。在 mysql5.7.7 版本之前默认使用的是 STATEMENT，之后的版本默认使用的是 ROW。</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用binlog并设置binlog日志的存储目录</span></span><br><span class="line"><span class="string">log_bin</span> <span class="string">=</span> <span class="string">/www/server/data/mysql-bin</span></span><br><span class="line"><span class="comment"># 设置binlog索引存储目录</span></span><br><span class="line"><span class="string">log_bin_index</span> <span class="string">=</span> <span class="string">/www/server/data/mysql-bin.index</span></span><br><span class="line"><span class="comment"># 30天之前的日志自动删除</span></span><br><span class="line"><span class="string">expire_logs_days</span> <span class="string">=</span> <span class="number">30</span></span><br><span class="line"><span class="comment"># 设置binlog日志模式，共有3种模式：STATMENT、ROW、MIXED </span></span><br><span class="line"><span class="string">binlog_format</span> <span class="string">=</span> <span class="string">row</span></span><br></pre></td></tr></table></figure>
 <h2 id="2、binlog三种日志格式">2、binlog三种日志格式</h2>
@@ -355,7 +355,7 @@ var _hmt = _hmt || [];
 <p>找到二进制文件路径，使用<code>mysqlbinlog</code>工具解析，并把它输出到<code>temp.log</code>文件，若文件过大，可以进行简单的过滤。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqlbinlog -v mysql-bin.000001 &gt; temp.log</span><br><span class="line">#查看test数据库的数据</span><br><span class="line">mysqlbinlog -v --start-datetime &quot;2021-10-10 09:00:00&quot; --stop-datetime &quot;2021-10-10 09:50:00&quot; mysql-bin.000001 | grep test</span><br></pre></td></tr></table></figure>
 <p>​	最后的文件如图所示，可以查看到每一条语句的具体的操作记录，使用工具替换即可复原数据，sql 执行完以后，被误删除的数据就恢复回来了。</p>
-<p><img src="https://gitee.com/LXT2017/Picbed/raw/blogimg/noteimg/image-20211010102129943.png" alt="image-20211010102129943"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/image-20211010102129943.png" alt="image-20211010102129943"></p>
 <h1>四、数据库操作的几点建议</h1>
 <ul>
 <li>研发人员不能直连生产库</li>
@@ -429,7 +429,7 @@ var _hmt = _hmt || [];
     2021-10-10
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-11-18
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/78413d01.html" title="mysqlbinlog简单入门实践" target="_blank">mysqlbinlog简单入门实践</a>
@@ -754,15 +754,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,15 +770,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,11 +794,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,19 +806,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -822,35 +830,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

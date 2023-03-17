@@ -15,17 +15,17 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、简介 1、介绍 在应用开发中，特别是web工程开发，通常都是并发编程，不是多进程就是多线程。这种场景下极易出现线程并发性安全问题，此时不得不使用锁来解决问题。在多线程高并发场景下，为了保证资源的线程安全问题，jdk为我们提供了synchronized关键字和ReentrantLock可重入锁，但是它们只能保证一个工程内的线程安全。在分布式集群、微服务、云原生横行的当下，如何保证不同进程、不同服">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d3d37a61a8a0436da054b68b8c0e2ccc.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/5159f97a96d441f98c872fcc63754299.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/37e54d7afac99e77517be3d9f9b95f4c.jpeg">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2dccc2f746d528480c89ff4a30489438.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d9bd228d07bb4b2a93f2e4489a35d7bc.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/d3d37a61a8a0436da054b68b8c0e2ccc.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/5159f97a96d441f98c872fcc63754299.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/37e54d7afac99e77517be3d9f9b95f4c.jpeg">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/2dccc2f746d528480c89ff4a30489438.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/d9bd228d07bb4b2a93f2e4489a35d7bc.png">
 <meta property="article:published_time" content="2022-10-31T13:33:46.000Z">
-<meta property="article:modified_time" content="2022-10-31T13:46:15.561Z">
+<meta property="article:modified_time" content="2023-03-17T02:21:33.522Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="中间件">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/d3d37a61a8a0436da054b68b8c0e2ccc.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/d3d37a61a8a0436da054b68b8c0e2ccc.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -325,7 +325,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StockService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StockMapper stockMapper;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">deduct</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        lock.lock();</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Stock stock = stockMapper.selectOne(<span class="keyword">new</span> QueryWrapper&lt;Stock&gt;().eq(<span class="string">"product_code"</span>, <span class="string">"1001"</span>));</span><br><span class="line">            <span class="keyword">if</span> (stock != <span class="keyword">null</span> &amp;&amp; stock.getCount() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                stock.setCount(stock.getCount() - <span class="number">1</span>);</span><br><span class="line">                stockMapper.updateById(stock);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="comment">//            lock.unlock();</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="1-2-原理">1.2 原理</h3>
 <p>添加<code>synchronized</code>关键字之后，StockService就具备了对象锁，由于添加了<strong>独占的排他锁</strong>，同一时刻只有一个请求能够获取到锁，并减库存。此时，所有请求只会<strong>one-by-one</strong>执行下去，也就不会发生超卖现象</p>
-<p><img src="https://img-blog.csdnimg.cn/d3d37a61a8a0436da054b68b8c0e2ccc.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/d3d37a61a8a0436da054b68b8c0e2ccc.png" alt="在这里插入图片描述"></p>
 <h3 id="1-3-失效场景">1.3 失效场景</h3>
 <ul>
 <li>
@@ -440,7 +440,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <h3 id="2-1基本实现">2.1基本实现</h3>
 <p>借助于redis中的命令setnx(key, value)，key不存在就新增，存在就什么都不做。同时有多个客户端发送setnx命令，只有一个客户端可以成功，返回1（true）；其他的客户端返回0（false）等待重试；获取锁成功的请求执行业务逻辑，执行完后释放锁</p>
-<p><img src="https://img-blog.csdnimg.cn/5159f97a96d441f98c872fcc63754299.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/5159f97a96d441f98c872fcc63754299.png" alt="在这里插入图片描述"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StockService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StockMapper stockMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deduct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 加锁setnx</span></span><br><span class="line">        Boolean lock = <span class="keyword">this</span>.redisTemplate.opsForValue().setIfAbsent(<span class="string">"lock"</span>, <span class="string">"111"</span>);</span><br><span class="line">        <span class="comment">// 重试：递归调用</span></span><br><span class="line">        <span class="keyword">if</span> (!lock)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">50</span>);</span><br><span class="line">                <span class="keyword">this</span>.deduct();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 1. 查询库存信息</span></span><br><span class="line">                String stock = redisTemplate.opsForValue().get(<span class="string">"stock"</span>).toString();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 2. 判断库存是否充足</span></span><br><span class="line">                <span class="keyword">if</span> (stock != <span class="keyword">null</span> &amp;&amp; stock.length() != <span class="number">0</span>) &#123;</span><br><span class="line">                    Integer st = Integer.valueOf(stock);</span><br><span class="line">                    <span class="keyword">if</span> (st &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="comment">// 3.扣减库存</span></span><br><span class="line">                        redisTemplate.opsForValue().set(<span class="string">"stock"</span>, String.valueOf(--st));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">// 解锁</span></span><br><span class="line">                <span class="keyword">this</span>.redisTemplate.delete(<span class="string">"lock"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中加锁也可以使用循环</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加锁，获取锁失败重试</span></span><br><span class="line"><span class="keyword">while</span> (!<span class="keyword">this</span>.redisTemplate.opsForValue().setIfAbsent(<span class="string">"lock"</span>, <span class="string">"111"</span>))&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Thread.sleep(<span class="number">40</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -653,9 +653,9 @@ var _hmt = _hmt || [];
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">RLock lock = redisson.getLock(<span class="string">"anyLock"</span>);</span><br><span class="line"><span class="comment">// 最常见的使用方法</span></span><br><span class="line">lock.lock();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加锁以后10秒钟自动解锁</span></span><br><span class="line"><span class="comment">// 无需调用unlock方法手动解锁</span></span><br><span class="line">lock.lock(<span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试加锁，最多等待100秒，上锁以后10秒自动解锁</span></span><br><span class="line"><span class="keyword">boolean</span> res = lock.tryLock(<span class="number">100</span>, <span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line"><span class="keyword">if</span> (res) &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">     ...</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">       lock.unlock();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-分布式锁原理">2.2 分布式锁原理</h3>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/37e54d7afac99e77517be3d9f9b95f4c.jpeg" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/37e54d7afac99e77517be3d9f9b95f4c.jpeg" alt></p>
 <p>Redisson分布式锁源码分析</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/2dccc2f746d528480c89ff4a30489438.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/2dccc2f746d528480c89ff4a30489438.png" alt></p>
 <p><strong>redisson.getLock(lockKey) 的逻辑</strong></p>
 <ul>
 <li>
@@ -1031,7 +1031,7 @@ var _hmt = _hmt || [];
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`tb_lock`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`lock_name`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'锁名'</span>,</span><br><span class="line">  <span class="string">`class_name`</span> <span class="built_in">varchar</span>(<span class="number">100</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'类名'</span>,</span><br><span class="line">  <span class="string">`method_name`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'方法名'</span>,</span><br><span class="line">  <span class="string">`server_name`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'服务器ip'</span>,</span><br><span class="line">  <span class="string">`thread_name`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'线程名'</span>,</span><br><span class="line">  <span class="string">`create_time`</span> <span class="built_in">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'获取锁时间'</span>,</span><br><span class="line">  <span class="string">`desc`</span> <span class="built_in">varchar</span>(<span class="number">100</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'描述'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> <span class="string">`idx_unique`</span> (<span class="string">`lock_name`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">1332899824461455363</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
 <h2 id="2、基本思路">2、基本思路</h2>
 <p>synchronized关键字和ReetrantLock锁都是独占排他锁，即多个线程争抢一个资源时，同一时刻只有一个线程可以抢占该资源，其他线程只能阻塞等待，直到占有资源的线程释放该资源</p>
-<p><img src="https://img-blog.csdnimg.cn/d9bd228d07bb4b2a93f2e4489a35d7bc.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/d9bd228d07bb4b2a93f2e4489a35d7bc.png" alt="在这里插入图片描述"></p>
 <ul>
 <li>
 <p>线程同时获取锁（insert）</p>
@@ -1171,7 +1171,7 @@ var _hmt = _hmt || [];
     2022-10-31
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-10-31
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/4e57a4d4.html" title="几种分布式锁详解" target="_blank">几种分布式锁详解</a>
@@ -1496,15 +1496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1512,15 +1512,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1532,11 +1536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1544,19 +1548,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1564,35 +1572,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

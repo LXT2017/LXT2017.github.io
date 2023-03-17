@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Linux密码重置 1、Centos7密码重置 首先重启centos，随即长按shift进入grub菜单">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f72eae4de65345a4bff2de98c0ad2745.png?type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2FTGVtb24=,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/59d011f51e58476db5dac5fb636a2647.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2FTGVtb24=,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/86c33f5fed5f4dcb95da75a4e5083710.png?type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2FTGVtb24=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/f72eae4de65345a4bff2de98c0ad2745.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/59d011f51e58476db5dac5fb636a2647.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/86c33f5fed5f4dcb95da75a4e5083710.png">
 <meta property="article:published_time" content="2022-04-08T09:02:23.000Z">
-<meta property="article:modified_time" content="2022-04-08T13:19:02.743Z">
+<meta property="article:modified_time" content="2023-03-17T04:59:38.786Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f72eae4de65345a4bff2de98c0ad2745.png?type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2FTGVtb24=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/f72eae4de65345a4bff2de98c0ad2745.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -303,12 +303,12 @@ var _hmt = _hmt || [];
         <h1>一、Linux密码重置</h1>
 <h2 id="1、Centos7密码重置">1、Centos7密码重置</h2>
 <p>首先重启centos，随即长按<strong>shift</strong>进入grub菜单</p>
-<p><img src="https://img-blog.csdnimg.cn/f72eae4de65345a4bff2de98c0ad2745.png?type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2FTGVtb24=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/f72eae4de65345a4bff2de98c0ad2745.png" alt="在这里插入图片描述"></p>
 <a id="more"></a>
-<p>选择正确的内核版本，按e进入编辑界面，<strong>将 [ro] 改为 [rw init=sysroot/bin/sh]</strong>，然后按照指示，<strong>按[ctrl+x]to start</strong>使用单用户模式启动.由于是单用户,就不需要密码进入了.<br>
-<img src="https://img-blog.csdnimg.cn/59d011f51e58476db5dac5fb636a2647.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2FTGVtb24=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>
-然后就可以开始修改密码了，说明一下我有两个用户，root和shawn。首先<strong>输入命令[chroot /sysroot]</strong>，chroot就是change root，也就是改变程序执行时所参考的根目录位置,根目录改为/sysroot。然后<strong>输入命令[passwd root]</strong>，passwd表示更改使用者的密码，最后<strong>输入命令[touch /.autorelabel]</strong> ,在/目录下创建一个.autorelabel文件，而有这个文件存在，系统在重启时就会对整个文件系统进行relabeling。以及<strong>命令[exit]退出</strong>，以及<strong>命令[reboot]重启</strong>。<br>
-<img src="https://img-blog.csdnimg.cn/86c33f5fed5f4dcb95da75a4e5083710.png?type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6a2FTGVtb24=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>选择正确的内核版本，按e进入编辑界面，<strong>将 [ro] 改为 [rw init=sysroot/bin/sh]</strong>，然后按照指示，<strong>按[ctrl+x]to start</strong>使用单用户模式启动.由于是单用户,就不需要密码进入了.</p>
+<p><img src="http://qnypic.shawncoding.top/blog/59d011f51e58476db5dac5fb636a2647.png" alt="在这里插入图片描述"></p>
+<p>然后就可以开始修改密码了，说明一下我有两个用户，root和shawn。首先<strong>输入命令[chroot /sysroot]</strong>，chroot就是change root，也就是改变程序执行时所参考的根目录位置,根目录改为/sysroot。然后<strong>输入命令[passwd root]</strong>，passwd表示更改使用者的密码，最后<strong>输入命令[touch /.autorelabel]</strong> ,在/目录下创建一个.autorelabel文件，而有这个文件存在，系统在重启时就会对整个文件系统进行relabeling。以及<strong>命令[exit]退出</strong>，以及<strong>命令[reboot]重启</strong>。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/86c33f5fed5f4dcb95da75a4e5083710.png" alt="在这里插入图片描述"></p>
 <h2 id="2、Ubuntu密码重置">2、Ubuntu密码重置</h2>
 <p><strong>1、重启ubuntu，随即长按shift进入grub菜单；<br>
 2、选择recovery mode，按&quot;e&quot;键进入编辑页面；<br>
@@ -381,7 +381,7 @@ var _hmt = _hmt || [];
     2022-04-08
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-04-08
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/47cb212a.html" title="Linux开机密码重置" target="_blank">Linux开机密码重置</a>
@@ -706,15 +706,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,15 +722,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,11 +746,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,19 +758,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,35 +782,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

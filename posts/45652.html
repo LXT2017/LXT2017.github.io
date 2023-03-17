@@ -15,21 +15,21 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Nginx介绍与安装 1、Nginx简介 Nginx  (engine x) 是一个高性能的HTTP和反向代理的轻量级web服务器，同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务。由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。其他web服务器对比 Nginx有以下一些特点   反向代理   集群与负载均衡   动静分离(静态资源虚拟化)   限流    上图基本上说明了当下">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/be71b1828c26124572f06507e06eaca3.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/705d19bf88d1140c8a2d31c0a2c8c794.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2878e1c5402fac597d742944e5c71158.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ba2ddfdd9a0cfb3303aa0efbc7aa3845.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/7ebcb3b9371e10e9a9e12f2b22004ba8.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/329a6a534474ca1ca0c797ad3ddf46ff.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/22ad20b01b39e7d5f926db69d263b6c9.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/df0ce72c1a3a424f8f75269e75c65338.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/304b3dda44dc45079d5fd6e4d20f07a1.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/be71b1828c26124572f06507e06eaca3.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/705d19bf88d1140c8a2d31c0a2c8c794.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/2878e1c5402fac597d742944e5c71158.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/ba2ddfdd9a0cfb3303aa0efbc7aa3845.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7ebcb3b9371e10e9a9e12f2b22004ba8.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/329a6a534474ca1ca0c797ad3ddf46ff.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/22ad20b01b39e7d5f926db69d263b6c9.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/df0ce72c1a3a424f8f75269e75c65338.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/304b3dda44dc45079d5fd6e4d20f07a1.png">
 <meta property="article:published_time" content="2020-01-06T03:05:56.000Z">
-<meta property="article:modified_time" content="2022-05-09T13:01:02.724Z">
+<meta property="article:modified_time" content="2023-03-17T05:34:28.335Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="中间件">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/be71b1828c26124572f06507e06eaca3.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/be71b1828c26124572f06507e06eaca3.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -324,15 +324,15 @@ var _hmt = _hmt || [];
 <p>限流</p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/be71b1828c26124572f06507e06eaca3.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/be71b1828c26124572f06507e06eaca3.png" alt></p>
 <p>上图基本上说明了当下流行的技术架构。</p>
 <a id="more"></a>
 <h2 id="2、常见特点简介">2、常见特点简介</h2>
 <h3 id="2-1-反向代理">2.1 反向代理</h3>
 <p>再讲反向代理之前首先要知道什么叫正向代理，正向代理相当于当你要访问一个资源时，你需要一个代理服务器进行资源访问</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/705d19bf88d1140c8a2d31c0a2c8c794.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/705d19bf88d1140c8a2d31c0a2c8c794.png" alt></p>
 <p>反向代理，客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，在返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，暴露的是代理服务器的地址，隐藏了真实服务器的ip</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/2878e1c5402fac597d742944e5c71158.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/2878e1c5402fac597d742944e5c71158.png" alt></p>
 <h3 id="2-2-负载均衡">2.2 负载均衡</h3>
 <p>简单来说，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上，将负载分发到不同的服务器，也就是我们所说的负载均衡</p>
 <h3 id="2-3-动静分离">2.3 动静分离</h3>
@@ -407,7 +407,7 @@ var _hmt = _hmt || [];
 <p><em>当然Nginx安装如果不想这么麻烦，可以直接在宝塔面板进行快速安装(傻瓜式安装，不过我装了有点问题，折腾了好久还是选择了安装包安装)</em></p>
 <h1>二、Nginx原理</h1>
 <h2 id="1、nginx工作原理图">1、nginx工作原理图</h2>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/ba2ddfdd9a0cfb3303aa0efbc7aa3845.png" alt="lfxJk6.jpg"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/ba2ddfdd9a0cfb3303aa0efbc7aa3845.png" alt="lfxJk6.jpg"></p>
 <p>Nginx只有一个主线程，可以有多个worker线程，<code>ps -ef |grep nginx</code>可以查看活着的线程。而多个worker可以进行热部署，而且提高了服务的可靠性，另外worker数一般和cpu核心数相等，这样能最大限度发挥性能。对于连接数worker_connection，访问静态资源占用2个(请求和返回)，动态资源占用4个(另外再加上tomcat的请求)。nginx在linux默认采用epoll的io线程处理模型，采用的是==异步非阻塞==的机制来完成线程的处理，所以上面的tomcat1如果发生了阻塞，并不会影响tomcat2的执行。</p>
 <ul>
 <li>
@@ -419,7 +419,7 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="2、nginx默认配置">2、nginx默认配置</h2>
 <p>访问<code>http:ip</code>，Nginx–&gt;监听80端口–&gt;找到对应server----&gt;映射路由/----&gt; html中的index.html</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/7ebcb3b9371e10e9a9e12f2b22004ba8.png#pic_center" alt="5wWRnx.png"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/7ebcb3b9371e10e9a9e12f2b22004ba8.png" alt="5wWRnx.png"></p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置worker进程的用户，指的linux中的用户，会涉及到nginx操作目录或文件的一些权限，默认为 nobody。</span></span><br><span class="line"><span class="comment"># 默认情况是：nobody，你注释的情况下也是nobody。当然你也可以修改成 user root，修改以后记得重启翻方可生效，然后通过ps -ef | grep nginx 可以查看效果。</span></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line"><span class="comment">#worker进程工作数设置，一般来说CPU有几个，就设置几个，或者设置为N-1也行</span></span><br><span class="line"><span class="attribute">worker_processes</span>  <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#  nginx 日志级别 debug | info | notice | warn | error | crit | alert | emerg,错误级别从左到右越来越大</span></span><br><span class="line"><span class="comment"># 默认是：error级别，存储的路在 /var/log/nginx/error.log</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置nginx进程 pid</span></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置系统的线程模型和工作线程的线程数量</span></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="comment"># linux系统默认使用epoll</span></span><br><span class="line">    <span class="comment"># use epoll;</span></span><br><span class="line">    <span class="comment"># 每个工作进程的最大允许连接的客户端最大连接数</span></span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># http 是指令块，针对http网络传输的一些指令配置</span></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="comment"># 包含和导入外部的文件，进行模块化的划分。#在conf目录下的文件夹，mime.types会根据不同资源告诉浏览器用相应的工具打开。也可以将server模块放到其他模块</span></span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 配置日志格式</span></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 给于access_log的格式是main格式，然后把每次请求的信息写入到logs/access.log中。</span></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 启用文件的高效传输，打开有利于文件传输的性能</span></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush它必须和sendfile使用，并且sendfile打开了才生效，它的含义是：当请求的数据包累积了到一定的大小的时候，在进行发送。</span></span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 客户端连接服务器的超时时间，默认是65秒，0代表不保持连接。</span></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 开启gzip,利于文件和请求数据的传输。</span></span><br><span class="line">    <span class="attribute">gzip</span>  <span class="literal">on</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 服务虚拟主机配置</span></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="comment"># 监听端口</span></span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="comment"># 监听服务器ip，域名，或者localhost</span></span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">            <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">        <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 服务虚拟主机配置</span></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="comment"># 监听端口</span></span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">8087</span>;</span><br><span class="line">        <span class="comment"># 监听服务器ip，域名，或者localhost</span></span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">            <span class="attribute">index</span>  newindex.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3、常见错误与进程退出">3、常见错误与进程退出</h2>
 <p><strong>问题</strong></p>
@@ -647,7 +647,7 @@ var _hmt = _hmt || [];
 <p><strong>常用表达式</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每分钟执行</span></span><br><span class="line">*/1 * * * *</span><br><span class="line"><span class="comment">#每日凌晨（每天晚上23:59）执行</span></span><br><span class="line">59 23 * * *</span><br><span class="line"><span class="comment">#每日凌晨1点执行</span></span><br><span class="line">0 1 * * *</span><br></pre></td></tr></table></figure>
 <h1>五、Nginx配置高可用集群</h1>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/329a6a534474ca1ca0c797ad3ddf46ff.png" alt="lfxtfO.jpg"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/329a6a534474ca1ca0c797ad3ddf46ff.png" alt="lfxtfO.jpg"></p>
 <p>原理如上，相信大家的水平应该都能看懂，在配置时需要一些准备工作</p>
 <ol>
 <li>
@@ -663,7 +663,7 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装命令</span></span><br><span class="line">yum install keepalived -y</span><br><span class="line"><span class="comment">#检查是否安装好</span></span><br><span class="line">rpm -q -a keepalived</span><br></pre></td></tr></table></figure>
 <p>安装安成后在/etc/keepalived下有配置文件，原理详看<a href="https://baike.baidu.com/item/Keepalived/10346758?fr=aladdin" target="_blank" rel="noopener">keepalived原理</a></p>
 <h3 id="主从配置-还有双主模式自行学习">主从配置(还有双主模式自行学习)</h3>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/22ad20b01b39e7d5f926db69d263b6c9.png" alt="lfx1mR.jpg"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/22ad20b01b39e7d5f926db69d263b6c9.png" alt="lfx1mR.jpg"></p>
 <p>1、修改keepalived配置文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line">   ...</span><br><span class="line">   <span class="comment">#在/etc/hosts中修改</span></span><br><span class="line">   router_id LVS_DEVEL    <span class="comment">#主机名字</span></span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#检测脚本和权重参数</span></span><br><span class="line">vrrp_script chk_http_port &#123;</span><br><span class="line">  script <span class="string">"/usr/local/src/nginx_check.sh"</span></span><br><span class="line">  interval 2   <span class="comment">#检测间隔</span></span><br><span class="line">  weight -2  <span class="comment">#权重</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#虚拟IP配置</span></span><br><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    state MASTER       <span class="comment">#备份改成BACKUP</span></span><br><span class="line">    interface eth0      <span class="comment">#网卡  ifconfig可以查看</span></span><br><span class="line">    virtual_router_id 51    <span class="comment">#主备机必须相同</span></span><br><span class="line">    priority 100      <span class="comment">#优先级 主机较大，备份机较小</span></span><br><span class="line">    advert_int 1    <span class="comment">#心跳包间隔</span></span><br><span class="line">    authentication &#123;     <span class="comment">#校验方式</span></span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;    <span class="comment">#可以绑定多个虚拟ip</span></span><br><span class="line">       在这里添加虚拟ip地址</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2、在<code>/usr/local/src</code>添加检测脚本</p>
@@ -709,9 +709,9 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <h3 id="2-2-SSL证书申请">2.2 SSL证书申请</h3>
-<p>进入阿里云平台，认领免费证书，之后进行申请签发，很快就能审核通过，下载nginx证书到本地。这里注意一个证书只能对应一个具体的域名。<br>
-<img src="https://img-blog.csdnimg.cn/df0ce72c1a3a424f8f75269e75c65338.png" alt="请添加图片描述"><br>
-<img src="https://img-blog.csdnimg.cn/304b3dda44dc45079d5fd6e4d20f07a1.png" alt="请添加图片描述"></p>
+<p>进入阿里云平台，认领免费证书，之后进行申请签发，很快就能审核通过，下载nginx证书到本地。这里注意一个证书只能对应一个具体的域名。</p>
+<p><img src="http://qnypic.shawncoding.top/blog/df0ce72c1a3a424f8f75269e75c65338.png" alt="请添加图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/304b3dda44dc45079d5fd6e4d20f07a1.png" alt="请添加图片描述"></p>
 <h2 id="3、Nginx配置https">3、Nginx配置https</h2>
 <p>这里只需要<code>ssl_certificate、ssl_certificate_key</code>，另外配置server为443，并且将http重定向到443端口。配置完成后重启即可。</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个服务器是http://www.itbooking.net的服务</span></span><br><span class="line"><span class="string">server</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">listen</span> <span class="number">80</span><span class="string">;</span></span><br><span class="line">    <span class="comment">#需要将yourdomain.com替换成证书绑定的域名。</span></span><br><span class="line">    <span class="string">server_name</span> <span class="string">www.shawn22.xyz;</span> </span><br><span class="line">    <span class="comment">#将所有HTTP请求通过rewrite指令重定向到HTTPS。</span></span><br><span class="line">    <span class="string">rewrite</span> <span class="string">^(.*)$</span> <span class="string">https://$host$1;</span> </span><br><span class="line">    <span class="string">location</span> <span class="string">/</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">index</span> <span class="string">index.html</span> <span class="string">index.htm;</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个服务器是https://www.itbooking.net的服务</span></span><br><span class="line"><span class="string">server</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">listen</span> <span class="number">443</span> <span class="string">ssl;</span></span><br><span class="line">    <span class="comment">#配置HTTPS的默认访问端口为443。</span></span><br><span class="line">    <span class="comment">#如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。</span></span><br><span class="line">    <span class="comment">#如果您使用Nginx 1.15.0及以上版本，请使用listen 443 ssl代替listen 443和ssl on。</span></span><br><span class="line">    <span class="comment">#需要将yourdomain.com替换成证书绑定的域名。</span></span><br><span class="line">    <span class="string">server_name</span> <span class="string">www.shawn22.xyz;</span> </span><br><span class="line">    <span class="string">root</span> <span class="string">html;</span></span><br><span class="line">    <span class="string">index</span> <span class="string">index.html</span> <span class="string">index.htm;</span></span><br><span class="line">    <span class="comment">#需要将cert-file-name.pem替换成已上传的证书文件的名称</span></span><br><span class="line">    <span class="string">ssl_certificate</span> <span class="string">cert/6695459_www.shawn22.xyz.pem;</span> </span><br><span class="line">    <span class="comment">#需要将cert-file-name.key替换成已上传的证书密钥文件的名称。</span></span><br><span class="line">    <span class="string">ssl_certificate_key</span> <span class="string">cert/6695459_www.shawn22.xyz.key;</span> </span><br><span class="line">    <span class="string">ssl_session_timeout</span> <span class="string">5m;</span></span><br><span class="line">    <span class="string">ssl_ciphers</span> <span class="string">ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span></span><br><span class="line">    <span class="comment">#表示使用的加密套件的类型。</span></span><br><span class="line">    <span class="comment">#表示使用的TLS协议的类型。</span></span><br><span class="line">    <span class="string">ssl_protocols</span> <span class="string">TLSv1</span> <span class="string">TLSv1.1</span> <span class="string">TLSv1.2;</span> </span><br><span class="line">    <span class="string">ssl_prefer_server_ciphers</span> <span class="string">on;</span></span><br><span class="line">    <span class="string">location</span> <span class="string">/</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="comment">#站点目录。</span></span><br><span class="line">        <span class="string">root</span> <span class="string">html;</span>  </span><br><span class="line">        <span class="string">index</span> <span class="string">index.html</span> <span class="string">index.htm;</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -781,7 +781,7 @@ var _hmt = _hmt || [];
     2020-01-06
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-05-09
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/45652.html" title="Nginx入门学习" target="_blank">Nginx入门学习</a>
@@ -1106,15 +1106,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1122,15 +1122,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1142,11 +1146,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1154,19 +1158,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,35 +1182,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

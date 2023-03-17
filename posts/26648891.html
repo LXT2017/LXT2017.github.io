@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、引言 社交模块作为热点数据来说，可能会频繁改动字段，因此用Mysql是肯定不现实的，一般使用Redis。这里我以发表朋友圈动态为例，社交模块包括发表动态，点赞、评论、收藏、关注以及签到统计等模块，这里我简单实现了动态发表，点赞、评论这三个模块。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/38cd060cb74444e481ace785d68270af.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/16208973b157451caf70e64f7258585f.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/38cd060cb74444e481ace785d68270af.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/16208973b157451caf70e64f7258585f.png">
 <meta property="article:published_time" content="2021-12-28T09:40:22.000Z">
-<meta property="article:modified_time" content="2022-01-10T11:19:07.571Z">
+<meta property="article:modified_time" content="2023-03-17T05:49:25.689Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/38cd060cb74444e481ace785d68270af.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/38cd060cb74444e481ace785d68270af.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -338,7 +338,7 @@ var _hmt = _hmt || [];
 <p>动态发布因为考虑到先缓存到Redis，在异步保存到MySql，因此动态主键使用Redis的自增函数，通过Redis生成MySql的动态主键；</p>
 <p>对于动态数据的存储，我使用了list存储结构，新的数据从左边压入list，考虑到feed流查询，我还设置了一个伴生list列表，用来与动态同步存储主键值，首先通过lastid查询上一次浏览的值，查询list的index，在通过存储动态的列表返回一个列表；同时使用了读写锁，是为了保证原子性；</p>
 <p>最后异步或定时检查列表长度，若过长可以从右边舍弃，或者设置列表过期时间，插入的时候重新刷新过期时间<br>
-<img src="https://img-blog.csdnimg.cn/38cd060cb74444e481ace785d68270af.png" alt></p>
+<img src="http://qnypic.shawncoding.top/blog/38cd060cb74444e481ace785d68270af.png" alt></p>
 <h1>四、评论模块设计</h1>
 <h2 id="1、介绍-v2">1、介绍</h2>
 <p>mysql表字段，评论父表和字表存储在同一个数据表，根据<code>p_comment_id</code>字段分辨，返回的时候先查询出总的list，在使用JDK8的Stream流形成树形结构返回。ORM映射使用了Fluent MyBatis ，树形结构格式转换；</p>
@@ -353,7 +353,7 @@ var _hmt = _hmt || [];
 <p>如果遇到下面问题，回退版本号，我当时遇到了</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fastJson1.2.78版本会概率性出现该错误，回退到1.2.76即可</span></span><br><span class="line">Comparison method violates its general contract</span><br></pre></td></tr></table></figure>
 <h2 id="4、评论简单过滤">4、评论简单过滤</h2>
-<p><img src="https://img-blog.csdnimg.cn/16208973b157451caf70e64f7258585f.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/16208973b157451caf70e64f7258585f.png" alt></p>
 <p>简单原理如上图所示，创建结点类，里面包含是否是敏感词结束符，以及一个HashMap，哈希里key值存储的是敏感词的一个词，value指向下一个结点（即指向下一个词），一个哈希表中可以存放多个值，比如赌博、赌黄这两个都是敏感词。</p>
 <p>敏感词文件存在在<code>resources</code>文件夹下，通过类加载器获取里面的敏感词。在springboot中，被<code>@PostConstruct</code>修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器执行一次。<code>PostConstruct</code>在构造函数之后执行，<code>init()</code>方法之前执行。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 敏感词过滤器</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Shawn</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021年11月20日11:09</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SensitiveFilter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(SensitiveFilter<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将敏感词替换成 ***</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String REPLACEMENT = <span class="string">"***"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> TreeNode rootNode = <span class="keyword">new</span> TreeNode();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 被<span class="doctag">@PostConstruct</span>修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器执行一次。PostConstruct在构造函数之后执行，init（）方法之前执行。</span></span><br><span class="line"><span class="comment">     * 初始化敏感词的结构树</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 带资源的try语句，try块退出时，会自动调用res.close()方法，关闭资源。</span></span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">            InputStream resourceAsStream = <span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"sensitive-words.txt"</span>);</span><br><span class="line">            BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(resourceAsStream));</span><br><span class="line">        )&#123;</span><br><span class="line">            String keyword;</span><br><span class="line">            <span class="keyword">while</span>((keyword=bufferedReader.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">this</span>.addKeyWord(keyword);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            logger.error(<span class="string">"资源文件加载失败 ==&gt; &#123;&#125;"</span>,e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将敏感词加入前缀树里</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> keyword 敏感词</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addKeyWord</span><span class="params">(@NotNull String keyword)</span></span>&#123;</span><br><span class="line">        TreeNode tempNode = rootNode;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i&lt;keyword.length();i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> c = keyword.charAt(i);</span><br><span class="line">            <span class="comment">// 进行空值判断，当多个敏感词首字母相同时，可以指向不同结点</span></span><br><span class="line">            TreeNode subNode = tempNode.getKeywordNode(c);</span><br><span class="line">            <span class="keyword">if</span>(subNode==<span class="keyword">null</span>)&#123;</span><br><span class="line">                subNode = <span class="keyword">new</span> TreeNode();</span><br><span class="line">                tempNode.addKeywordNode(c,subNode);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 指向下一个结点</span></span><br><span class="line">            tempNode=subNode;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 结尾设置结束符</span></span><br><span class="line">        tempNode.setKeywordEnd(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 敏感词过滤器</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> text 文本</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> String&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">filter</span><span class="params">(String text)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(StringUtils.isBlank(text))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 规则树，用来匹配敏感词</span></span><br><span class="line">        TreeNode tempNode = rootNode;</span><br><span class="line">        <span class="comment">// begin指针，指向文本中某个敏感词的第一位</span></span><br><span class="line">        <span class="keyword">int</span> begin=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">// end指针，指向文本中某个敏感词的最后一位</span></span><br><span class="line">        <span class="keyword">int</span> end = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (end&lt;text.length())&#123;</span><br><span class="line">            <span class="keyword">char</span> c = text.charAt(end);</span><br><span class="line">            <span class="comment">// 跳过符号（防止敏感词混合符号，比如 ☆赌☆博）</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.isSymbol(c))&#123;</span><br><span class="line">                <span class="comment">// 若tempNode结点在开头，代表还没有匹配敏感字，这个特殊符号加入返回词，且 begin 指针指向下一个</span></span><br><span class="line">                <span class="keyword">if</span>(tempNode == rootNode)&#123;</span><br><span class="line">                    sb.append(c);</span><br><span class="line">                    begin++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 无论符号在开头还是在中间，指针 end 都会向下走一步</span></span><br><span class="line">                end++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 检查子节点</span></span><br><span class="line">            tempNode = tempNode.getKeywordNode(c);</span><br><span class="line">            <span class="keyword">if</span>(tempNode==<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="comment">// 以指针 begin 开头的字符串不是敏感词</span></span><br><span class="line">                sb.append(text.charAt(begin));</span><br><span class="line">                <span class="comment">// 进入下一位的判断</span></span><br><span class="line">                end++;</span><br><span class="line">                begin=end;</span><br><span class="line">                <span class="comment">// 这里需要把规则树重新指向根节点</span></span><br><span class="line">                tempNode=rootNode;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(tempNode.isKeyWordEnd())&#123;</span><br><span class="line">                <span class="comment">// 发现敏感词，将 begin~end 的字符串替换掉</span></span><br><span class="line">                sb.append(REPLACEMENT);</span><br><span class="line">                end++;</span><br><span class="line">                begin=end;</span><br><span class="line">                tempNode=rootNode;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 敏感词匹配过程中</span></span><br><span class="line">                end++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将最后一批字符计入结果（如果最后一次循环的字符串不是敏感词，上述的循环逻辑不会将其加入最终结果）</span></span><br><span class="line">        sb.append(text.substring(begin));</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否是符号</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isSymbol</span><span class="params">(Character c)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 0x2E80~0x9FFF 是东亚文字范围</span></span><br><span class="line">        <span class="keyword">return</span> !CharUtils.isAsciiAlphanumeric(c) &amp;&amp; (c &lt; <span class="number">0x2E80</span> || c &gt; <span class="number">0x9FFF</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 树节点</span></span><br><span class="line"><span class="comment">     * 敏感词结点类，与hash表类似，所有敏感词形成一个hash表，每个词语的每个词形成一个链表，用map指向下一个</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">        <span class="comment">// 关键词结束标识，默认是不是非结束结点</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">boolean</span> isKeywordEnd = <span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">// map的key存储一个敏感词，value指向下一个敏感词结点</span></span><br><span class="line">        HashMap&lt;Character, TreeNode&gt; nodeMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 返回是否本次词语结束</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isKeyWordEnd</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> isKeywordEnd;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 设置是否是结束词</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKeywordEnd</span><span class="params">(<span class="keyword">boolean</span> keywordEnd)</span></span>&#123;</span><br><span class="line">            isKeywordEnd = keywordEnd;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 添加敏感词，key表示字符</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addKeywordNode</span><span class="params">(Character c, TreeNode treeNode)</span></span>&#123;</span><br><span class="line">            nodeMap.put(c,treeNode);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 获取当前词是否是敏感词，若没有在表中，则返回null</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> TreeNode <span class="title">getKeywordNode</span><span class="params">(Character c)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> nodeMap.get(c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -464,7 +464,7 @@ var _hmt = _hmt || [];
     2021-12-28
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-01-10
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/26648891.html" title="Spring开发社交模块小记" target="_blank">Spring开发社交模块小记</a>
@@ -789,15 +789,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,15 +805,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,11 +829,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,19 +841,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -857,35 +865,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

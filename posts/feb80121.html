@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、引言 1、描述 对于C++来说，调用方法时存在值传递(新产生的副本不影响原来的)和引用传递(会影响原来的值)，那么对于Java呢？">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2b242337fa664980b15aff549e3b5c22.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/4054110a4fcb4f64b127c12b01d7839b.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/2b242337fa664980b15aff549e3b5c22.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/4054110a4fcb4f64b127c12b01d7839b.png">
 <meta property="article:published_time" content="2021-12-28T09:41:37.000Z">
-<meta property="article:modified_time" content="2021-12-28T09:58:52.039Z">
+<meta property="article:modified_time" content="2023-03-17T04:06:40.537Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="Java基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2b242337fa664980b15aff549e3b5c22.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/2b242337fa664980b15aff549e3b5c22.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -317,11 +317,11 @@ var _hmt = _hmt || [];
 <h2 id="2、final修饰的包装类对象">2、final修饰的包装类对象</h2>
 <p>对于String、Integer等对象会生成新的对象，因此传递到方法时并不会修改原来的值，因为final修饰符表示对象不可变。</p>
 <p>main方法栈中的引用地址name、c传递给方法，因为String等对象不可修改，所以java会重新创建一个对象，此时新生成的对象指向局部变量，因此对原先变量不产生影响<br>
-<img src="https://img-blog.csdnimg.cn/2b242337fa664980b15aff549e3b5c22.png" alt></p>
+<img src="http://qnypic.shawncoding.top/blog/2b242337fa664980b15aff549e3b5c22.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Method</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Integer a = <span class="number">1</span>;</span><br><span class="line">        String c = <span class="string">"lemon"</span>;</span><br><span class="line">        String name = <span class="keyword">new</span> String(<span class="string">"shawn"</span>);</span><br><span class="line">        change(a, c,name);</span><br><span class="line">        <span class="comment">// 输出仍是 1、lemon、shawn</span></span><br><span class="line">        System.out.println(a);</span><br><span class="line">        System.out.println(c);</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(Integer a1, String c1,String name1)</span> </span>&#123;</span><br><span class="line">        a1 = <span class="number">222</span>;</span><br><span class="line">        c1 = <span class="string">"lemon22"</span>;</span><br><span class="line">        name1 = <span class="keyword">new</span> String(<span class="string">"shawn22"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3、提供方法对自身进行修改的对象">3、提供方法对自身进行修改的对象</h2>
 <p>这里举例StringBuilder对象和自定义类对象，传值传过来的是对象地址，对象本身内容可修改，且提供了方法对自身内容进行修改<br>
-<img src="https://img-blog.csdnimg.cn/4054110a4fcb4f64b127c12b01d7839b.png" alt></p>
+<img src="http://qnypic.shawncoding.top/blog/4054110a4fcb4f64b127c12b01d7839b.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Method</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        stringBuilder.append(<span class="string">"hello "</span>);</span><br><span class="line"></span><br><span class="line">        Test test = <span class="keyword">new</span> Test();</span><br><span class="line">        test.setName(<span class="string">"shawn"</span>);</span><br><span class="line">        test.setPassword(<span class="string">"123456"</span>);</span><br><span class="line"></span><br><span class="line">        change(test,stringBuilder);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// hello world!</span></span><br><span class="line">        <span class="comment">// Test(name=lemon, password=123456)</span></span><br><span class="line">        System.out.println(stringBuilder);</span><br><span class="line">        System.out.println(test);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(Test test1,StringBuilder stringBuilder1)</span> </span>&#123;</span><br><span class="line">        test1.setName(<span class="string">"lemon"</span>);</span><br><span class="line">        stringBuilder1.append(<span class="string">"world!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -385,7 +385,7 @@ var _hmt = _hmt || [];
     2021-12-28
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-12-28
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/feb80121.html" title="Java方法参数传递" target="_blank">Java方法参数传递</a>
@@ -710,15 +710,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,15 +726,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,11 +750,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,19 +762,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,35 +786,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Prometheus+Grafana监控Springboot 1、简介 任何一个系统上线，运维监控都太重要了。关于Springboot微服务的监控，之前写过Spring Boot Admin服务监控，这个方案可以实时监控并提供告警提醒功能，但不能记录历史数据，无法查看过去1小时或过去1天等运维情况。本文介绍Prometheus + Grafana的方法监控Springboot 2.X，实现美观">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b664b1fc48a940c49f48a3996d9dc450.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b2a36a8fe1d84feda6c5ea201e22700b.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/7143efd4ddd34db49c6d3356dfa9cd21.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/809238c86589408f9a120c15b0931d70.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b664b1fc48a940c49f48a3996d9dc450.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/b2a36a8fe1d84feda6c5ea201e22700b.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7143efd4ddd34db49c6d3356dfa9cd21.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/809238c86589408f9a120c15b0931d70.png">
 <meta property="article:published_time" content="2023-03-05T16:18:15.000Z">
-<meta property="article:modified_time" content="2023-03-05T16:27:29.982Z">
+<meta property="article:modified_time" content="2023-03-17T05:56:36.046Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="linux基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/b664b1fc48a940c49f48a3996d9dc450.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/b664b1fc48a940c49f48a3996d9dc450.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -326,7 +326,7 @@ var _hmt = _hmt || [];
 <p>准备配置文件<code>prometheus.yml</code></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scrape_configs:</span> </span><br><span class="line">  <span class="comment"># 可随意指定，默认保存15天</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">monitor-demo</span></span><br><span class="line">    <span class="comment"># 多久采集一次数据</span></span><br><span class="line">    <span class="attr">scrape_interval:</span> <span class="string">5s</span></span><br><span class="line">    <span class="comment"># 采集时的超时时间</span></span><br><span class="line">    <span class="attr">scrape_timeout:</span> <span class="string">5s</span></span><br><span class="line">    <span class="comment"># 采集的路径</span></span><br><span class="line">    <span class="attr">metrics_path:</span> <span class="string">/actuator/prometheus</span></span><br><span class="line">    <span class="attr">scheme:</span> <span class="string">http</span></span><br><span class="line">    <span class="attr">basic_auth:</span></span><br><span class="line">      <span class="attr">username:</span> <span class="string">admin</span></span><br><span class="line">      <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="comment"># 采集服务的地址，设置成Springboot应用所在服务器的具体地址</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="comment"># 可以多个地址- targets: ['hostname:9000','hostname:8080']</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="number">192.168</span><span class="number">.31</span><span class="number">.98</span><span class="string">:8888</span></span><br></pre></td></tr></table></figure>
 <p>结果页面<br>
-<img src="https://img-blog.csdnimg.cn/b664b1fc48a940c49f48a3996d9dc450.png#pic_center" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/b664b1fc48a940c49f48a3996d9dc450.png" alt="在这里插入图片描述"></p>
 <h2 id="4、Grafana可视化监控">4、Grafana可视化监控</h2>
 <h3 id="4-1-可视化">4.1 可视化</h3>
 <p>Docker部署Grafana，注意镜像源的修改</p>
@@ -335,7 +335,7 @@ var _hmt = _hmt || [];
 <p>然后导入可视化面板：点击<code>+</code>号 --&gt; <code>Import</code> --&gt; 输入模板链接或ID --&gt; 点击Load</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里推荐一个模板id:10280</span></span><br><span class="line"><span class="comment"># 模板官网：https://grafana.com/grafana/dashboards</span></span><br></pre></td></tr></table></figure>
 <p>当然各个面板可以自定义，不过要注意的是，面板的数据需要在<code>http://192.168.31.98:9090/graph</code>查得到才行，可以点击Explore→Metrics browser查看<br>
-<img src="https://img-blog.csdnimg.cn/b2a36a8fe1d84feda6c5ea201e22700b.png#pic_center" alt="在这里插入图片描述"></p>
+<img src="http://qnypic.shawncoding.top/blog/b2a36a8fe1d84feda6c5ea201e22700b.png" alt="在这里插入图片描述"></p>
 <h3 id="4-2-告警设置">4.2 告警设置</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=grafana -p 3000:3000 \</span><br><span class="line">-v /home/shawn/visual/custom.ini:/usr/grafana/conf/custom.ini \</span><br><span class="line">--restart=always -d grafana/grafana \</span><br><span class="line">--config /usr/grafana/conf/custom.ini</span><br></pre></td></tr></table></figure>
 <p>custom.ini</p>
@@ -400,7 +400,7 @@ var _hmt = _hmt || [];
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3.4"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">x-logging:</span></span><br><span class="line">  <span class="string">&amp;loki-logging</span></span><br><span class="line">  <span class="attr">driver:</span> <span class="string">loki</span></span><br><span class="line">  <span class="attr">options:</span></span><br><span class="line">    <span class="attr">loki-url:</span> <span class="string">"http://YOUR_IP:3100/loki/api/v1/push"</span></span><br><span class="line">    <span class="attr">max-size:</span> <span class="string">"50m"</span></span><br><span class="line">    <span class="attr">max-file:</span> <span class="string">"10"</span></span><br><span class="line">    <span class="attr">loki-pipeline-stages:</span> <span class="string">|</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">multiline:</span></span><br><span class="line">          <span class="attr">firstline:</span> <span class="string">'^\[\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125; \w&#123;4&#125;\]'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">host:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">grafana</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">grafana/grafana</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">LANG=zh_CN.UTF-8</span></span><br><span class="line">    <span class="attr">logging:</span> <span class="string">*loki-logging</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-3-grafana可视化">2.3 grafana可视化</h3>
 <p>打开grafana，<code>http://192.168.1.1:3000</code>(换成自己的ip)，账户密码为admin/admin，进入后首先配置配置<code>Data sources</code>，选择Loki数据源，url填写<code>http://192.168.1.1:3100</code>(换成自己的ip)，保存后点击Explore即可成功查看</p>
-<p><img src="https://img-blog.csdnimg.cn/7143efd4ddd34db49c6d3356dfa9cd21.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/7143efd4ddd34db49c6d3356dfa9cd21.png" alt="在这里插入图片描述"></p>
 <h2 id="3、grafana-prometheus-loki-监控docker容器收集服务日志">3、grafana+prometheus+loki 监控docker容器收集服务日志</h2>
 <h3 id="3-1-创建grafana，prometheus文件夹及配置文件">3.1 创建grafana，prometheus文件夹及配置文件</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="comment"># 创建grafana文件夹</span></span><br><span class="line">mkdir -p grafana/grafana</span><br><span class="line">mkdir -p grafana/grafana/data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建prometheus文件夹</span></span><br><span class="line">mkdir -p grafana/prometheus</span><br><span class="line">mkdir -p grafana/prometheus/data</span><br><span class="line">mkdir -p grafana/prometheus/<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建prometheus配置文件</span></span><br><span class="line">vim grafana/prometheus/prometheus.yml</span><br></pre></td></tr></table></figure>
@@ -428,7 +428,7 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> grafana</span><br><span class="line"><span class="comment"># docker-compose up -d</span></span><br><span class="line">docker-compose -f promtail.yml up -d</span><br><span class="line"><span class="comment"># 如果改了配置文件</span></span><br><span class="line">docker-compose -f promtail.yml rebuild</span><br><span class="line"><span class="comment"># 如果修改了编排文件，就需要down后up</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-5-测试与模板">3.5 测试与模板</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 好用的grafana模板下载</span></span><br><span class="line"><span class="comment"># https://grafana.com/dashboards</span></span><br><span class="line"></span><br><span class="line">Spring Boot 2.1 Statistics: 10280</span><br><span class="line">Spring Boot Statistics: 6756</span><br><span class="line">1 Node Exporter <span class="keyword">for</span> Prometheus Dashboard EN 20201010: 11074</span><br><span class="line">Docker and system monitoring: 893</span><br><span class="line">Docker Container &amp; Host Metrics: 10619</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/809238c86589408f9a120c15b0931d70.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/809238c86589408f9a120c15b0931d70.png" alt="在这里插入图片描述"></p>
 <hr>
 <p><a href="https://www.cnblogs.com/turingguo/p/13847003.html" target="_blank" rel="noopener" title="docker-compose安装loki套件(loki+grafana)">docker-compose安装loki套件(loki+grafana)</a></p>
 <p><a href="https://www.cnblogs.com/yg0070/p/16437578.html" target="_blank" rel="noopener" title="docker-compose安装grafana+prometheus+loki 监控docker容器收集服务日志">docker-compose安装grafana+prometheus+loki 监控docker容器收集服务日志</a></p>
@@ -495,7 +495,7 @@ var _hmt = _hmt || [];
     2023-03-06
     <br>
     <strong class="update-time">最后更新：</strong>
-    2023-03-06
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/d1523d3d.html" title="SpringBoot监控" target="_blank">SpringBoot监控</a>
@@ -820,15 +820,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,15 +836,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -856,11 +860,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -868,19 +872,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -888,35 +896,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

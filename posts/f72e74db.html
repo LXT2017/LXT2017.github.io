@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、健康监控简介 1、介绍 开发完成后，生产就绪需要做哪些工作呢？我认为，以下三方面的工作最重要。  提供健康检测接口。传统采用 ping 的方式对应用进行探活检测并不准确。有的时候，应用的关键内部或外部依赖已经离线，导致其根本无法正常工作，但其对外的 Web 端口或管理端口是可以 ping 通的。我们应该提供一个专有的监控检测接口，并尽可能触达一些内部组件。 暴露应用内部信息。应用内部诸如线程池">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e02064042e3d4cf6a6164031a8d3a181.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/15e05963b1704f188af9dc06d87d3aa8.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/e02064042e3d4cf6a6164031a8d3a181.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/15e05963b1704f188af9dc06d87d3aa8.png">
 <meta property="article:published_time" content="2022-09-28T09:26:33.000Z">
-<meta property="article:modified_time" content="2022-09-28T09:48:19.187Z">
+<meta property="article:modified_time" content="2023-03-17T05:58:38.876Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/e02064042e3d4cf6a6164031a8d3a181.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/e02064042e3d4cf6a6164031a8d3a181.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -332,8 +332,8 @@ var _hmt = _hmt || [];
 <p>要实现这个 user 接口是否正确响应和程序整体的健康状态挂钩的话，很简单，只需定义一个 <code>UserServiceHealthIndicator</code>实现 <code>HealthIndicator</code>接口即可。</p>
 <p>在 health 方法中，我们通过 RestTemplate 来访问这个 user 接口，如果结果正确则返回 <code>Health.up()</code>，并把调用执行耗时和结果作为补充信息加入 Health 对象中。如果调用接口出现异常，则返回 <code>Health.down()</code>，并把异常信息作为补充信息加入 Health 对象中：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceHealthIndicator</span> <span class="keyword">implements</span> <span class="title">HealthIndicator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Health <span class="title">health</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> begin = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">long</span> userId = <span class="number">2L</span>;</span><br><span class="line">        User user = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            user = restTemplate.getForObject(<span class="string">"http://localhost:8080/user?userId="</span> + userId, User<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            <span class="keyword">if</span> (user != <span class="keyword">null</span> &amp;&amp; user.getUserId() == userId) &#123;</span><br><span class="line">                <span class="keyword">return</span> Health.up()</span><br><span class="line">                        .withDetail(<span class="string">"user"</span>, user)</span><br><span class="line">                        .withDetail(<span class="string">"took"</span>, System.currentTimeMillis() - begin)</span><br><span class="line">                        .build();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> Health.down().withDetail(<span class="string">"took"</span>, System.currentTimeMillis() - begin).build();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">            log.warn(<span class="string">"health check failed!"</span>, ex);</span><br><span class="line">            <span class="keyword">return</span> Health.down(ex).withDetail(<span class="string">"took"</span>, System.currentTimeMillis() - begin).build();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此时访问<code>http://localhost:45678/admin/health</code>即可发现<strong>UserService</strong>已经成功被检测<br>
-<img src="https://img-blog.csdnimg.cn/e02064042e3d4cf6a6164031a8d3a181.png#pic_center" alt="在这里插入图片描述"></p>
+<p>此时访问<code>http://localhost:45678/admin/health</code>即可发现<strong>UserService</strong>已经成功被检测</p>
+<p><img src="http://qnypic.shawncoding.top/blog/e02064042e3d4cf6a6164031a8d3a181.png" alt="在这里插入图片描述"></p>
 <h2 id="3、自定义多-HealthIndicator-聚合">3、自定义多 HealthIndicator 聚合</h2>
 <p>我们再来看一个聚合多个 HealthIndicator 的案例，也就是定义一个 CompositeHealthContributor 来聚合多个 HealthContributor，实现一组线程池的监控</p>
 <p>首先，在 ThreadPoolProvider 中定义两个线程池，其中 demoThreadPool 是包含一个工作线程的线程池，类型是 ArrayBlockingQueue，阻塞队列的长度为 10；还有一个 ioThreadPool 模拟 IO 操作线程池，核心线程数 10，最大线程数 50</p>
@@ -352,7 +352,7 @@ var _hmt = _hmt || [];
 <p>访问 /admin/info 接口，可以看到这些数据</p>
 <h2 id="2、JMX-MBean">2、JMX MBean</h2>
 <p>如果开启了JMX，即<code>spring.jmx.enabled=true</code>，可以通过 jconsole 工具，在 <code>org.springframework.boot.Endpoint</code> 中找到 <code>Info </code>这个 MBean，然后执行 info 操作可以看到，我们刚才自定义的 <code>InfoContributor </code>输出的有关两个线程池的信息：</p>
-<p><img src="https://img-blog.csdnimg.cn/15e05963b1704f188af9dc06d87d3aa8.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/15e05963b1704f188af9dc06d87d3aa8.png" alt="在这里插入图片描述"></p>
 <h1>四、指标 Metrics 快速定位</h1>
 <p>指标是指一组和时间关联的、衡量某个维度能力的量化数值。通过收集指标并展现为曲线图、饼图等图表，可以帮助我们快速定位、分析问题</p>
 <h1>五、总结</h1>
@@ -419,7 +419,7 @@ var _hmt = _hmt || [];
     2022-09-28
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-09-28
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/f72e74db.html" title="SpringBoot生产监控" target="_blank">SpringBoot生产监控</a>
@@ -744,15 +744,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,15 +760,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,11 +784,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,19 +796,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,35 +820,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

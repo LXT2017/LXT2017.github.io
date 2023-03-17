@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Nacos Config 配置项动态刷新 1、介绍与环境引入 1.1 简介  Nacos官方手册：https:&#x2F;&#x2F;nacos.io&#x2F;zh-cn&#x2F;docs&#x2F;quick-start.html  动态刷新通过线上的配置更新进行推送，不需要代码改动也不需要重启服务器，这样可以更快更方便的进行服务器配置文件修改(因为重启Tomcat往往会消耗大量的时间)。首先需要引入相关依赖，这里默认已经启动Nacos">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c4bf6d58a54b49769b54b2fae9ecbcf4.png#pic_center">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/c4bf6d58a54b49769b54b2fae9ecbcf4.png">
 <meta property="article:published_time" content="2022-10-31T13:41:33.000Z">
-<meta property="article:modified_time" content="2022-10-31T13:46:15.555Z">
+<meta property="article:modified_time" content="2023-03-17T05:47:39.039Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringCloud">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/c4bf6d58a54b49769b54b2fae9ecbcf4.png#pic_center">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/c4bf6d58a54b49769b54b2fae9ecbcf4.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -377,7 +377,7 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="3、Nacos-Config-Server文件配置">3、Nacos Config Server文件配置</h2>
 <p>我们在本地启动 Nacos 服务器，打开配置管理模块下的&quot;配置列表&quot;页面，再切换到相应的命名空间下</p>
-<p><img src="https://img-blog.csdnimg.cn/c4bf6d58a54b49769b54b2fae9ecbcf4.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/c4bf6d58a54b49769b54b2fae9ecbcf4.png" alt="在这里插入图片描述"></p>
 <p>然后创建对应的Config文件，主文件的命名规则为<code>${spring.application.name}-${spring.profile.active}.${file-extension}</code>，如果没写active属性则默认是无；接下来，你就可以将原本配置在<code>本地 application.yml </code>中的配置项转移到 Nacos Config 中了，由于 Data ID 后缀是 yml，所以在编辑配置项的时候，你需要在页面上选择&quot;YAML&quot;作为配置格式。</p>
 <h2 id="4、动态配置推送">4、动态配置推送</h2>
 <p>声明一个布尔值的变量 disableCoupon，并使用 <code>@Value</code> 注解将 Nacos 配置中心里的<code>disableCouponRequest</code> 属性注入进来。我们给 <code>disableCouponRequest </code>属性设置了一个默认值&quot;false&quot;，这样做的目的是<strong>加一层容错机制</strong>。即便 Nacos Config 连接异常无法获取配置项，应用程序也可以使用默认值完成启动加载。</p>
@@ -502,7 +502,7 @@ public RouteDefinitionLocator routeDefinitionLocator(
     2022-10-31
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-10-31
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/95744580.html" title="Spring-Gateway与Nacos相关配置" target="_blank">Spring-Gateway与Nacos相关配置</a>
@@ -827,15 +827,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -843,15 +843,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -863,11 +867,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -875,19 +879,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -895,35 +903,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

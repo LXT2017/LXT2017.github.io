@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="我们知道酷Q机器人是运行在windows上的，配合图灵机器人的API可以实现QQ或者微信的自动对话，但是如果想让机器人不间断24小时运行，那就需要使用云服务了，并且需要使用docker作为运行的容器来运行酷Q机器人。 1、安装和运行docker 这里我用了Centos的linux操作系统，使用其他Linux的也大同小异，不过这里的操作都需要root权限，没有的话需要sudo su获得root权限">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200522193608772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200522193655630.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200522195848627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200522193608772.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200522193655630.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/20200522195848627.png">
 <meta property="article:published_time" content="2020-05-22T12:37:57.000Z">
-<meta property="article:modified_time" content="2021-03-15T08:50:22.171Z">
+<meta property="article:modified_time" content="2023-03-17T05:00:20.109Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200522193608772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/20200522193608772.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -307,10 +307,10 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h3 id="2、下载酷Q镜像">2、下载酷Q镜像</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull coolq/wine-coolq</span><br></pre></td></tr></table></figure>
-<p>这里的镜像是从docker中央仓库获取，也是别人已经打包好的镜像，我们直接拿来用就行了<br>
-<img src="https://img-blog.csdnimg.cn/20200522193608772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-使用<code>docker images</code>可以查看拉取的镜像<br>
-<img src="https://img-blog.csdnimg.cn/20200522193655630.png" alt="在这里插入图片描述"></p>
+<p>这里的镜像是从docker中央仓库获取，也是别人已经打包好的镜像，我们直接拿来用就行了</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200522193608772.png" alt="在这里插入图片描述"></p>
+<p>使用<code>docker images</code>可以查看拉取的镜像</p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200522193655630.png" alt="在这里插入图片描述"></p>
 <h3 id="3、后台运行酷Q容器">3、后台运行酷Q容器</h3>
 <p>创建一个用于存放（映射）coolq数据的目录，用于持久化存放coolq（酷Q应用）的数据。这里我在根目录下创建cooqldata文件夹</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /coolqdata</span><br></pre></td></tr></table></figure>
@@ -328,7 +328,7 @@ docker run --name=coolq -d -p 8765:9000 -v /coolqdata:/home/user/coolq -e VNC_PA
 <p>==最后开放设置的端口号==</p>
 <h4 id="4、登录VNC进行机器人的设置">4、登录VNC进行机器人的设置</h4>
 <p>打开浏览器，在浏览器输入服务器ip+端口号即可进行访问，按要求进行机器人的登录设置，可以登录http://www.tuling123.com/ 获取机器人对话的API接口并放入到酷Q中，这里如果需要复制可使用旁边的工具</p>
-<p><img src="https://img-blog.csdnimg.cn/20200522195848627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX1RU,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/20200522195848627.png" alt="在这里插入图片描述"></p>
 <hr>
 <p>参考文章:<a href="https://www.cnblogs.com/tielemao/p/8462263.html" target="_blank" rel="noopener">Linux通过docker安装运行酷Q–用QQ骰子君进行跑团</a>.</p>
 
@@ -393,7 +393,7 @@ docker run --name=coolq -d -p 8765:9000 -v /coolqdata:/home/user/coolq -e VNC_PA
     2020-05-22
     <br>
     <strong class="update-time">最后更新：</strong>
-    2021-03-15
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/18a55fe7.html" title="Linux上使用docker运行酷Q机器人" target="_blank">Linux上使用docker运行酷Q机器人</a>
@@ -718,15 +718,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,15 +734,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,11 +758,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,19 +770,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -786,35 +794,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>

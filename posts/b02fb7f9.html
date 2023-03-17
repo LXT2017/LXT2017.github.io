@@ -15,15 +15,16 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="一、Nginx扩容 1、前言 扩容包括单机垂直扩容和水平扩展 2、单机垂直扩容：硬件资源增加  云服务资源增加 整机：IBM、浪潮、DELL、HP等 CPU&#x2F;主板：更新到主流 网卡：10G&#x2F;40G网卡 磁盘：SAS(SCSI) HDD（机械）、HHD（混合）、SATA SSD、PCI-e SSD、 MVMe SSD SSD 多副本机制 系统盘&#x2F;热点数据&#x2F;数据库存储 HDD 冷数据存储">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/7d09c174a0c14defb77a8c51585583fc.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/64d55fd5628e4f1b86d88642ad341cf3.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/5751be2c4eb041c68961eb685fbb95a9.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/7d09c174a0c14defb77a8c51585583fc.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/64d55fd5628e4f1b86d88642ad341cf3.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/6dd67074c2f952344611a882fc53fa86.jpeg">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/5751be2c4eb041c68961eb685fbb95a9.png">
 <meta property="article:published_time" content="2022-07-11T11:28:10.000Z">
-<meta property="article:modified_time" content="2022-07-11T12:08:48.706Z">
+<meta property="article:modified_time" content="2023-03-17T05:33:08.354Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="中间件">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/7d09c174a0c14defb77a8c51585583fc.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/7d09c174a0c14defb77a8c51585583fc.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -277,7 +278,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长≈</span>
-        <span class="post-count">48分</span>
+        <span class="post-count">47分</span>
       </span>
     </span>
 </div>
@@ -339,8 +340,8 @@ tengine中有session_sticky模块我们通过第三方的方式安装在开源�
 <p>配置方法</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> httpget &#123;</span><br><span class="line"><span class="comment"># 直接这样也行</span></span><br><span class="line"><span class="comment"># sticky;</span></span><br><span class="line"><span class="attribute">sticky</span> name=route expires=<span class="number">6h</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">server</span> <span class="number">192.168.44.102</span>;</span><br><span class="line"><span class="attribute">server</span> <span class="number">192.168.44.103</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="1-3-错误处理">1.3 错误处理</h3>
-<p>如果遇到以下错误，可能是版本问题<br>
-<img src="https://img-blog.csdnimg.cn/7d09c174a0c14defb77a8c51585583fc.png" alt="在这里插入图片描述"></p>
+<p>如果遇到以下错误，可能是版本问题</p>
+<p><img src="http://qnypic.shawncoding.top/blog/7d09c174a0c14defb77a8c51585583fc.png" alt="在这里插入图片描述"></p>
 <p>打开 ngx_http_sticky_misc.c文件，在12行添加</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include <span class="tag">&lt;<span class="name">openssl</span>/<span class="attr">sha.h</span>&gt;</span></span><br><span class="line">#include <span class="tag">&lt;<span class="name">openssl</span>/<span class="attr">md5.h</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>备份之前的程序</strong><code>mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.old</code><br>
@@ -363,7 +364,7 @@ tengine中有session_sticky模块我们通过第三方的方式安装在开源�
 <li>访问内联资源一般用缓存，不需要keepalive</li>
 <li>长时间的tcp连接容易导致系统资源无效占用</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/64d55fd5628e4f1b86d88642ad341cf3.png" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/64d55fd5628e4f1b86d88642ad341cf3.png" alt="在这里插入图片描述"></p>
 <h3 id="2-2-测试工具charles">2.2 测试工具charles</h3>
 <p>抓包工具，可以查看传输次数，模拟重放等</p>
 <blockquote>
@@ -781,7 +782,7 @@ Entity Tag 的缩写，中文译过来就是实体标签的意思。HTTP中并�
 <li>etag lastmodify  协商缓存</li>
 </ul>
 <p>没发生变化 返回304 不发送数据<br>
-![](<a href="https://img-blog.csdnimg.cn/img_convert/6dd67074c2f952344611a882fc53fa86.jpeg#clientId=ubd9e63cc-9837-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;id=uf9446d2a&amp;margin=" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/img_convert/6dd67074c2f952344611a882fc53fa86.jpeg#clientId=ubd9e63cc-9837-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=paste&amp;id=uf9446d2a&amp;margin=</a>[object Object]&amp;originHeight=476&amp;originWidth=500&amp;originalType=url&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;status=done&amp;style=none&amp;taskId=u736da398-3ade-49b1-a9a4-c2c97ac46d2&amp;title=)</p>
+<img src="http://qnypic.shawncoding.top/blog/6dd67074c2f952344611a882fc53fa86.jpeg" alt></p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">  <span class="comment"># 协商缓存</span></span><br><span class="line">  <span class="comment"># 关掉etag校验</span></span><br><span class="line">  <span class="comment"># etag off;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 设置下面的每次就会刷新</span></span><br><span class="line">  <span class="comment"># if_modified_since off;</span></span><br><span class="line">  <span class="comment"># add_header Last-Modified "";</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 强制缓存</span></span><br><span class="line">  <span class="comment"># expires 30s;</span></span><br><span class="line">  <span class="comment"># add_header cache-control "max-age:300";</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="4、浏览器缓存原则">4、浏览器缓存原则</h2>
 <ul>
@@ -904,7 +905,7 @@ Entity Tag 的缩写，中文译过来就是实体标签的意思。HTTP中并�
 <blockquote>
 <p>nginx的memcached_module模块可以直接从memcached服务器中读取内容后输出，后续的请求不再经过应用程序处理，如php-fpm、django，大大的提升动态页面的速度。nginx只负责从memcached服务器中读取数据，要往memcached写入数据丕得需要后台的应用程序来完成，主动的将要缓存的页面缓存到memcached中，可以通过404重定向到后端去处理的。</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/5751be2c4eb041c68961eb685fbb95a9.png" alt="在这里插入图片描述"></p>
+<p><img src="http://qnypic.shawncoding.top/blog/5751be2c4eb041c68961eb685fbb95a9.png" alt="在这里插入图片描述"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu安装</span></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install memcached libmemcached-tools</span><br><span class="line"></span><br><span class="line">sudo systemctl status memcached</span><br><span class="line">sudo nano /etc/memcached.conf</span><br><span class="line">sudo systemctl restart memcached</span><br><span class="line"></span><br><span class="line"><span class="comment"># centos安装</span></span><br><span class="line">yum -y install memcached</span><br><span class="line"><span class="comment"># 默认配置文件在/etc/sysconfig/memcached</span></span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">memcached-tool 127.0.0.1:11211  stats</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问</span></span><br><span class="line">telnet 127.0.0.1 11211</span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">stats</span><br><span class="line"><span class="comment"># key 元数据 过期时间 字节数</span></span><br><span class="line"><span class="built_in">set</span> name 0 0 3</span><br><span class="line">get name</span><br></pre></td></tr></table></figure>
 <p>nginx配置文件</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> tomcat-web &#123;</span><br><span class="line">   <span class="attribute">keepalive_timeout</span> <span class="number">1000</span>;</span><br><span class="line">   <span class="attribute">keepalive</span> <span class="number">100</span>;</span><br><span class="line">   <span class="attribute">keepalive_requests</span> <span class="number">100</span>;</span><br><span class="line">  </span><br><span class="line">   <span class="attribute">server</span> tomcat01:<span class="number">8080</span>  weight=<span class="number">100</span> max_fails=<span class="number">2</span> fail_timeout=<span class="number">15</span>;</span><br><span class="line">   <span class="attribute">server</span> tomcat02:<span class="number">8080</span>  weight=<span class="number">100</span> max_fails=<span class="number">2</span> fail_timeout=<span class="number">15</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">      <span class="attribute">set</span> <span class="variable">$memcached_key</span> <span class="variable">$uri</span>;</span><br><span class="line">      <span class="attribute">memcached_pass</span> <span class="number">127.0.0.1:11211</span>;</span><br><span class="line">      <span class="attribute">add_header</span> X-Cache-Satus HIT;</span><br><span class="line">      <span class="attribute">add_header</span> Content-Type <span class="string">'text/html; charset=utf-8'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">error_page</span> <span class="number">404</span> = <span class="variable">@fallback</span>;</span><br><span class="line">	<span class="attribute">location</span> <span class="variable">@fallback</span>&#123;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> content-type <span class="string">"text/html"</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://tomcat-web;</span><br><span class="line"><span class="comment">#		return 200 "hello world";</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -984,7 +985,7 @@ nginx支持了四层代理，即传输层，就是我们常说的TCP/UDP层，�
     2022-07-11
     <br>
     <strong class="update-time">最后更新：</strong>
-    2022-07-11
+    2023-03-17
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://www.shawn22.xyz/posts/b02fb7f9.html" title="Nginx高级篇" target="_blank">Nginx高级篇</a>
@@ -1113,7 +1114,7 @@ nginx支持了四层代理，即传输层，就是我们常说的TCP/UDP层，�
   
   
     <a href="/posts/8b59da55.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySql8.0阻塞报错Too many connections及连接超时</div>
+      <div class="article-nav-title">MySql8.0阻塞报错Too-many-connections及连接超时</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1309,15 +1310,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安卓</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,15 +1326,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C&C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1345,11 +1350,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">IDETools</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1357,19 +1362,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">虚拟化与云计算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,35 +1386,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Spring基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">虚拟化基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo的搭建和美化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux运维</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">K8S</a>
               </li>
             
             <div class="clearfix"></div>
