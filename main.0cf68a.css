@@ -506,6 +506,7 @@ https://ianlunn.github.io/Hover/ */
 
 /*背景透明化*/
 .article {
+    overflow: hidden;
     margin: 15px;
     border: 1px solid #ddd;
     border-top: 1px solid #fff;
@@ -514,6 +515,7 @@ https://ianlunn.github.io/Hover/ */
     transition: all .2s ease-in
 }
 body {
+    overflow: hidden; 
     margin:0;
     font-size:18px;
     font-family:Helvetica Neue, Helvetica, STHeiTi, Arial, sans-serif;
