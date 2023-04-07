@@ -514,6 +514,9 @@ https://ianlunn.github.io/Hover/ */
     background: rgba(255,255,255,.5);
     transition: all .2s ease-in
 }
+html{
+    overflow:auto;
+}
 body {
     overflow: hidden; 
     margin:0;
