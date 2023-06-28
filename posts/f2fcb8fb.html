@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://qnypic.shawncoding.top/blog/f6e06bc2a7135aa6670972de541b82c1.png">
 <meta property="og:image" content="http://qnypic.shawncoding.top/blog/34679f6a0ee98bc7eb37629c49d64d6d.png">
 <meta property="article:published_time" content="2023-03-05T16:17:13.000Z">
-<meta property="article:modified_time" content="2023-03-17T05:11:10.459Z">
+<meta property="article:modified_time" content="2023-06-28T14:14:28.255Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：165
+			总文章数：168
 		</ul>
 		
 		<nav class="header-nav">
@@ -444,14 +444,14 @@ var _hmt = _hmt || [];
 <p><strong>在 SQL 中，关键字和函数名是不用区分字母大小写的，比如 SELECT、WHERE、ORDER、GROUP BY 等关键字，以及 ABS、MOD、ROUND、MAX 等函数名</strong>。不过在 SQL 中，你还是要确定大小写的规范，因为在 Linux 和 Windows 环境下，你可能会遇到不同的大小写问题。<strong>windows系统默认大小写不敏感，但是linux系统是大小写敏感的</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认为0，大小写敏感</span></span><br><span class="line"><span class="comment"># 设置1，大小写不敏感。创建的表，数据库都是以小写形式存放在磁盘上，对于sql语句都是转换为小写对表和数据库进行查</span></span><br><span class="line"><span class="comment"># 设置2，创建的表和数据库依据语句上格式存放，凡是查找都是转换为小写进行</span></span><br><span class="line">SHOW VARIABLES LIKE <span class="string">'%lower_case_table_names%'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当想设置为大小写不敏感时，要在my.cnf 这个配置文件 [mysqld] 中加入lower_case_table_names=1 ，然后重启服务器</span></span><br><span class="line"><span class="comment"># 然后需要将原来的数据库都删除</span></span><br><span class="line"><span class="comment"># 建议不要改</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ===================建议=====================</span></span><br><span class="line"><span class="comment"># 关键字和函数名称全部大写；</span></span><br><span class="line"><span class="comment"># 数据库名、表名、表别名、字段名、字段别名等全部小写；</span></span><br><span class="line"><span class="comment"># SQL 语句必须以分号结尾。</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-8-sql-mode的合理设置">1.8 sql_mode的合理设置</h3>
-<p><strong>宽松模式：</strong><br>
-如果设置的是宽松模式，那么我们在插入数据的时候，即便是给了一个错误的数据，也可能会被接受，并且不报错。<br>
-<strong>举例</strong>：我在创建一个表时，该表中有一个字段为name，给name设置的字段类型时<code>char(10)</code> ，如果我在插入数据的时候，其中name这个字段对应的有一条数据的<strong>长度超过了10 <strong>，例如’1234567890abc’，超过了设定的字段长度10，那么不会报错，并且取前10个字符存上，也就是说你这个数据被存为了’1234567890’，而’abc’就没有了。但是，我们给的这条数据是错误的，因为超过了字段长度，但是并没有报错，并且mysql自行处理并接受了，这就是宽松模式的效果。<br>
-<strong>应用场景</strong>：通过设置sql mode为宽松模式，来保证大多数sql符合标准的sql语法，这样应用在不同数据库之间进行</strong>迁移</strong>时，则不需要对业务sql 进行较大的修改<br>
-<strong>严格模式：</strong><br>
-出现上面宽松模式的错误，应该报错才对，所以MySQL5.7版本就将sql_mode默认值改为了严格模式。所以在<strong>生产等环境中</strong>，我们必须采用的是严格模式，进而<strong>开发、测试环境</strong>的数据库也必须要设置，这样在开发测试阶段就可以发现问题。并且我们即便是用的MySQL5.6，也应该自行将其改为严格模式。<br>
-<strong>开发经验</strong>：MySQL等数据库总想把关于数据的所有操作都自己包揽下来，包括数据的校验，其实开发中，我们应该在自己<strong>开发的项目程序级别将这些校验给做了</strong>，虽然写项目的时候麻烦了一些步骤，但是这样做之后，我们在进行数据库迁移或者在项目的迁移时，就会方便很多。<br>
-改为严格模式后可能会存在的问题：若设置模式中包含了<code>NO_ZERO_DATE</code> ，那么MySQL数据库不允许插入零日期，插入零日期会抛出错误而不是警告。例如，表中含字段TIMESTAMP列（如果未声明为NULL或显示DEFAULT子句）将自动分配DEFAULT ‘0000-00-00 00:00:00’（零时间戳），这显然是不满足sql_mode中的NO_ZERO_DATE而报错</p>
+<p><strong>宽松模式：</strong></p>
+<p>如果设置的是宽松模式，那么我们在插入数据的时候，即便是给了一个错误的数据，也可能会被接受，并且不报错。</p>
+<p><strong>举例</strong>：我在创建一个表时，该表中有一个字段为name，给name设置的字段类型时<code>char(10)</code> ，如果我在插入数据的时候，其中name这个字段对应的有一条数据的**长度超过了10 **，例如’1234567890abc’，超过了设定的字段长度10，那么不会报错，并且取前10个字符存上，也就是说你这个数据被存为了’1234567890’，而’abc’就没有了。但是，我们给的这条数据是错误的，因为超过了字段长度，但是并没有报错，并且mysql自行处理并接受了，这就是宽松模式的效果。</p>
+<p><strong>应用场景</strong>：通过设置sql mode为宽松模式，来保证大多数sql符合标准的sql语法，这样应用在不同数据库之间进行<strong>迁移</strong>时，则不需要对业务sql 进行较大的修改</p>
+<p><strong>严格模式：</strong></p>
+<p>出现上面宽松模式的错误，应该报错才对，所以MySQL5.7版本就将sql_mode默认值改为了严格模式。所以在<strong>生产等环境中</strong>，我们必须采用的是严格模式，进而<strong>开发、测试环境</strong>的数据库也必须要设置，这样在开发测试阶段就可以发现问题。并且我们即便是用的MySQL5.6，也应该自行将其改为严格模式。</p>
+<p><strong>开发经验</strong>：MySQL等数据库总想把关于数据的所有操作都自己包揽下来，包括数据的校验，其实开发中，我们应该在自己<strong>开发的</strong></p>
+<p><strong>目程序级别将这些校验给做了</strong>，虽然写项目的时候麻烦了一些步骤，但是这样做之后，我们在进行数据库迁移或者在项目的迁移时，就会方便很多。改为严格模式后可能会存在的问题：若设置模式中包含了<code>NO_ZERO_DATE</code> ，那么MySQL数据库不允许插入零日期，插入零日期会抛出错误而不是警告。例如，表中含字段TIMESTAMP列（如果未声明为NULL或显示DEFAULT子句）将自动分配DEFAULT ‘0000-00-00 00:00:00’（零时间戳），这显然是不满足sql_mode中的NO_ZERO_DATE而报错</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 宽松模式举例</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employees <span class="keyword">group</span> <span class="keyword">by</span> department_id <span class="keyword">limit</span> <span class="number">10</span>;</span><br><span class="line"><span class="keyword">set</span> sql_mode = ONLY_FULL_GROUP_BY;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employees <span class="keyword">group</span> <span class="keyword">by</span> department_id <span class="keyword">limit</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看当前的sql_mode</span></span><br><span class="line"><span class="keyword">select</span> @@session.sql_mode</span><br><span class="line"><span class="keyword">select</span> @@global.sql_mode</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'sql_mode'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 临时设置方式：设置当前窗口中设置sql_mode</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> sql_mode = <span class="string">'modes...'</span>; </span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">SESSION</span> sql_mode = <span class="string">'modes...'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 改为严格模式。此方法只在当前会话中生效，关闭当前会话就不生效了。</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">SESSION</span> sql_mode=<span class="string">'STRICT_TRANS_TABLES'</span>;</span><br><span class="line"><span class="comment">-- 改为严格模式。此方法在当前服务中生效，重启MySQL服务后失效。</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">GLOBAL</span> sql_mode=<span class="string">'STRICT_TRANS_TABLES'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 永久设置方式：在/etc/my.cnf中配置sql_mode</span></span><br><span class="line"><span class="comment">-- 在my.cnf文件(windows系统是my.ini文件)，新增，最后重启即可</span></span><br><span class="line">[mysqld]</span><br><span class="line">sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR</span><br><span class="line">_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
 <h2 id="2、MySQL的数据目录">2、MySQL的数据目录</h2>
 <h3 id="2-1-MySQL8的主要目录结构">2.1 MySQL8的主要目录结构</h3>
@@ -475,14 +475,14 @@ var _hmt = _hmt || [];
 <p>MySQL 系统自带的数据库，这个数据库主要是通过视图的形式把<code>information_schema</code> 和<code>performance_schema</code> 结合起来，帮助系统管理员和开发人员监控 MySQL 的技术性能。</p>
 <h3 id="2-3-InnoDB存储引擎模式">2.3 InnoDB存储引擎模式</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/mysql</span><br><span class="line">ll</span><br><span class="line"><span class="comment"># 这个数据目录下的文件和子目录比较多，除了information_schema 这个系统数据库外，其他的数据库在数据目录下都有对应的子目录。</span></span><br></pre></td></tr></table></figure>
-<p>为了保存表结构，InnoDB在数据目录下对应的数据库子目录下创建了一个专门用于描述表结构的文件，即<code>表名.frm</code><br>
-<strong>系统表空间（system tablespace）</strong><br>
-默认情况下，InnoDB会在数据目录下创建一个名为ibdata1、大小为12M的自拓展文件，这个文件就是对应的系统表空间在文件系统上的表示。如果你想让系统表空间对应文件系统上多个实际文件，或者仅仅觉得原来的ibdata1 这个文件名难听，那可以在MySQL启动时配置对应的文件路径以及它们的大小，比如我们这样修改一下my.cnf 配置文件：</p>
+<p>为了保存表结构，InnoDB在数据目录下对应的数据库子目录下创建了一个专门用于描述表结构的文件，即<code>表名.frm</code></p>
+<p><strong>系统表空间（system tablespace）</strong></p>
+<p>默认情况下，InnoDB会在数据目录下创建一个名为ibdata1、大小为12M的自拓展文件，这个文件就是对应的系统表空间在文件系统上的表示。如果你想让系统表空间对应文件系统上多个实际文件，或者仅仅觉得原来的ibdata1 这个文件名难听，那可以在MySQL启动时配置对应的文件路径以及它们的大小，比如我们这样修改一下my.cnf 配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[server]</span><br><span class="line">innodb_data_file_path=data1:512M;data2:512M:autoextend</span><br></pre></td></tr></table></figure>
-<p><strong>独立表空间(file-per-table tablespace)</strong><br>
-在MySQL5.6.6以及之后的版本中，InnoDB并不会默认的把各个表的数据存储到系统表空间中，而是为<strong>每一个表建立一个独立表空间</strong>，也就是说我们创建了多少个表，就有多少个独立表空间。使用独立表空间来存储表数据的话，会在该表所属数据库对应的子目录下创建一个表示该独立表空间的文件，文件名和表名相同，只不过添加了一个<code>.ibd</code> 的扩展名而已，所以完整的文件名称长这样：<code>表名.ibd</code><br>
-<strong>系统表空间与独立表空间的设置</strong><br>
-我们可以自己指定使用<strong>系统表空间</strong>还是<strong>独立表空间</strong>来存储数据，这个功能由启动参数<code>innodb_file_per_table</code> 控制，比如说我们想刻意将表数据都存储到<strong>系统表空间</strong>时，可以在启动MySQL服务器的时候这样配置：</p>
+<p><strong>独立表空间(file-per-table tablespace)</strong></p>
+<p>在MySQL5.6.6以及之后的版本中，InnoDB并不会默认的把各个表的数据存储到系统表空间中，而是为<strong>每一个表建立一个独立表空间</strong>，也就是说我们创建了多少个表，就有多少个独立表空间。使用独立表空间来存储表数据的话，会在该表所属数据库对应的子目录下创建一个表示该独立表空间的文件，文件名和表名相同，只不过添加了一个<code>.ibd</code> 的扩展名而已，所以完整的文件名称长这样：<code>表名.ibd</code></p>
+<p><strong>系统表空间与独立表空间的设置</strong></p>
+<p>我们可以自己指定使用<strong>系统表空间</strong>还是<strong>独立表空间</strong>来存储数据，这个功能由启动参数<code>innodb_file_per_table</code> 控制，比如说我们想刻意将表数据都存储到<strong>系统表空间</strong>时，可以在启动MySQL服务器的时候这样配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[server]</span><br><span class="line">innodb_file_per_table=0 <span class="comment"># 0：代表使用系统表空间； 1：代表使用独立表空间</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># show variables like 'innodb_file_per_table';</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-4-MyISAM存储引擎模式">2.4 MyISAM存储引擎模式</h3>
 <ul>
@@ -491,18 +491,18 @@ var _hmt = _hmt || [];
 <li>test.MYI 存储索引 (MYIndex)</li>
 </ul>
 <h3 id="2-5-小结">2.5 小结</h3>
-<p>举例：** 数据库a** ， **表b **<br>
-1、如果表b采用<code>InnoDB</code> ，data\a中会产生1个或者2个文件：</p>
+<p>举例：<strong>数据库a</strong> ， **表b **</p>
+<p>1、如果表b采用<code>InnoDB</code> ，data\a中会产生1个或者2个文件：</p>
 <ul>
 <li><code>b.frm</code> ：描述表结构文件，字段长度等</li>
 <li>如果采用<strong>系统表空间</strong>模式的，数据信息和索引信息都存储在<code>ibdata1</code> 中</li>
 <li>如果采用<strong>独立表空间</strong>存储模式，data\a中还会产生<code>b.ibd</code> 文件（存储数据信息和索引信息）</li>
 </ul>
-<p>此外：<br>
-① MySQL5.7 中会在data/a的目录下生成<code>db.opt</code> 文件用于保存数据库的相关配置。比如：字符集、比较<br>
-规则。而MySQL8.0不再提供db.opt文件。<br>
-② MySQL8.0中不再单独提供b.frm，而是合并在b.ibd文件中。<br>
-2、如果表b采用<code>MyISAM </code>，data\a中会产生3个文件：</p>
+<p>此外：</p>
+<p>① MySQL5.7 中会在data/a的目录下生成<code>db.opt</code> 文件用于保存数据库的相关配置。比如：字符集、比较<br>
+规则。而MySQL8.0不再提供db.opt文件。</p>
+<p>② MySQL8.0中不再单独提供b.frm，而是合并在b.ibd文件中。</p>
+<p>2、如果表b采用<code>MyISAM </code>，data\a中会产生3个文件：</p>
 <ul>
 <li>MySQL5.7 中： <code>b.frm</code> ：描述表结构文件，字段长度等。MySQL8.0 中 <code>b.xxx.sdi</code> ：描述表结构文件，字段长度等</li>
 <li><code>b.MYD (MYData)</code>：数据信息文件，存储数据信息(如果采用独立表存储模式)</li>
@@ -552,7 +552,7 @@ var _hmt = _hmt || [];
 <p>user表是MySQL中最重要的一个权限表，** 记录用户账号和权限信息，有49个字段。</p>
 <p><img src="http://qnypic.shawncoding.top/blog/b96058a4711aa7b508388d2849562bc9.jpeg" alt="第03章_用户与权限管理.jpg"></p>
 <p>这些字段可以分成4类，分别是范围列（或用户列）、权限列、安全列和资源控制列<br>
-范围列（或用户列)**</p>
+<strong>范围列（或用户列)</strong></p>
 <ul>
 <li>host ： 表示连接类型
 <ul>
@@ -599,21 +599,19 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
-<p><strong>安全列</strong><br>
-安全列只有6个字段，其中两个是ssl相关的（ssl_type、ssl_cipher），用于<code>加密</code>；两个是x509相关的（x509_issuer、x509_subject），用于<code>标识用户</code>；另外两个Plugin字段用于<code>验证用户身份</code>的插件，该字段不能为空。如果该字段为空，服务器就使用内建授权验证机制验证用户身份<br>
-<strong>资源控制列</strong><br>
-资源控制列的字段用来<code>限制用户使用的资源</code>，包含4个字段，分别为：①max_questions，用户每小时允许执行的查询操作次数； ②max_updates，用户每小时允许执行的更新操作次数； ③max_connections，用户每小时允许执行的连接操作次数； ④max_user_connections，用户允许同时建立的连接次数。</p>
+<p><strong>安全列</strong></p>
+<p>安全列只有6个字段，其中两个是ssl相关的（ssl_type、ssl_cipher），用于<code>加密</code>；两个是x509相关的（x509_issuer、x509_subject），用于<code>标识用户</code>；另外两个Plugin字段用于<code>验证用户身份</code>的插件，该字段不能为空。如果该字段为空，服务器就使用内建授权验证机制验证用户身份</p>
+<p><strong>资源控制列</strong></p>
+<p>资源控制列的字段用来<code>限制用户使用的资源</code>，包含4个字段，分别为：①max_questions，用户每小时允许执行的查询操作次数； ②max_updates，用户每小时允许执行的更新操作次数； ③max_connections，用户每小时允许执行的连接操作次数； ④max_user_connections，用户允许同时建立的连接次数。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看字段</span></span><br><span class="line">DESC mysql.user;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mysql.user \G;</span><br><span class="line"><span class="comment">-- 查询特定字段</span></span><br><span class="line"><span class="keyword">SELECT</span> host,<span class="keyword">user</span>,authentication_string,select_priv,insert_priv,drop_priv <span class="keyword">FROM</span> mysql.user;</span><br></pre></td></tr></table></figure>
 <h3 id="3-2-db表">3.2 db表</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用DESCRIBE查看db表的基本结构</span></span><br><span class="line"><span class="keyword">DESCRIBE</span> mysql.db;</span><br></pre></td></tr></table></figure>
-<p><strong>用户列</strong><br>
-db表用户列有3个字段，分别是Host、User、Db。这3个字段分别表示主机名、用户名和数据库<br>
-名。表示从某个主机连接某个用户对某个数据库的操作权限，这3个字段的组合构成了db表的主键。<br>
-<strong>权限列</strong><br>
-Create_routine_priv和Alter_routine_priv这两个字段决定用户是否具有创建和修改存储过程的权限</p>
+<p><strong>用户列</strong></p>
+<p>db表用户列有3个字段，分别是Host、User、Db。这3个字段分别表示主机名、用户名和数据库名。表示从某个主机连接某个用户对某个数据库的操作权限，这3个字段的组合构成了db表的主键。</p>
+<p><strong>权限列</strong></p>
+<p>Create_routine_priv和Alter_routine_priv这两个字段决定用户是否具有创建和修改存储过程的权限</p>
 <h3 id="3-3-tables-priv表和columns-priv表">3.3 tables_priv表和columns_priv表</h3>
-<p>tables_priv表用来<code>对表设置操作权限</code>，columns_priv表用来对表的<code>某一列设置权限</code>。<code>desc mysql.tables_priv;</code><br>
-tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor、Timestamp、Table_priv和Column_priv，各个字段说明如下：</p>
+<p>tables_priv表用来<code>对表设置操作权限</code>，columns_priv表用来对表的<code>某一列设置权限</code>。<code>desc mysql.tables_priv;</code>tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor、Timestamp、Table_priv和Column_priv，各个字段说明如下：</p>
 <ul>
 <li><code>Host 、Db 、User 和Table_name</code> 四个字段分别表示主机名、数据库名、用户名和表名。</li>
 <li>Grantor表示修改该记录的用户</li>
@@ -626,11 +624,11 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <p>rocs_priv表可以对<code>存储过程和存储函数设置操作权限</code>，<code>desc mysql.procs_priv;</code></p>
 <h2 id="4、访问控制-了解">4、访问控制(了解)</h2>
 <h3 id="4-1-连接核实阶段">4.1 连接核实阶段</h3>
-<p>当用户试图连接MySQL服务器时，服务器基于用户的身份以及用户是否能提供正确的密码验证身份来确定接受或者拒绝连接。即客户端用户会在连接请求中提供用户名、主机地址、用户密码，MySQL服务器接收到用户请求后，会<strong>使用user表中的host、user和authentication_string这3个字段匹配客户端提供信息</strong>。<br>
-服务器只有在user表记录的Host和User字段匹配客户端主机名和用户名，并且提供正确的密码时才接受连接。<strong>如果连接核实没有通过，服务器就完全拒绝访问；否则，服务器接受连接，然后进入阶段2等待用户请求</strong>。</p>
+<p>当用户试图连接MySQL服务器时，服务器基于用户的身份以及用户是否能提供正确的密码验证身份来确定接受或者拒绝连接。即客户端用户会在连接请求中提供用户名、主机地址、用户密码，MySQL服务器接收到用户请求后，会<strong>使用user表中的host、user和authentication_string这3个字段匹配客户端提供信息</strong>。</p>
+<p>服务器只有在user表记录的Host和User字段匹配客户端主机名和用户名，并且提供正确的密码时才接受连接。<strong>如果连接核实没有通过，服务器就完全拒绝访问；否则，服务器接受连接，然后进入阶段2等待用户请求</strong>。</p>
 <h3 id="4-2-请求核实阶段">4.2 请求核实阶段</h3>
-<p>一旦建立了连接，服务器就进入了访问控制的阶段2，也就是请求核实阶段。对此连接上进来的每个请求，服务器检查该请求要执行什么操作、是否有足够的权限来执行它，这正是需要授权表中的权限列发挥作用的地方。这些权限可以来自<code>user、db、table_priv和column_priv表</code>。<br>
-确认权限时，MySQL首先<strong>检查user表</strong>，如果指定的权限没有在user表中被授予，那么MySQL就会继续<strong>检查db表</strong>，db表是下一安全层级，其中的权限限定于数据库层级，在该层级的SELECT权限允许用户查看指定数据库的所有表中的数据；如果在该层级没有找到限定的权限，则MySQL继续<strong>检查tables_priv表</strong>以及<strong>columns_priv表</strong>，如果所有权限表都检查完毕，但还是没有找到允许的权限操作，MySQL将返回<strong>错误信息</strong>，用户请求的操作不能执行，操作失败。</p>
+<p>一旦建立了连接，服务器就进入了访问控制的阶段2，也就是请求核实阶段。对此连接上进来的每个请求，服务器检查该请求要执行什么操作、是否有足够的权限来执行它，这正是需要授权表中的权限列发挥作用的地方。这些权限可以来自<code>user、db、table_priv和column_priv表</code>。</p>
+<p>确认权限时，MySQL首先<strong>检查user表</strong>，如果指定的权限没有在user表中被授予，那么MySQL就会继续<strong>检查db表</strong>，db表是下一安全层级，其中的权限限定于数据库层级，在该层级的SELECT权限允许用户查看指定数据库的所有表中的数据；如果在该层级没有找到限定的权限，则MySQL继续<strong>检查tables_priv表</strong>以及<strong>columns_priv表</strong>，如果所有权限表都检查完毕，但还是没有找到允许的权限操作，MySQL将返回<strong>错误信息</strong>，用户请求的操作不能执行，操作失败。</p>
 <blockquote>
 <p>提示： MySQL通过向下层级的顺序（从user表到columns_priv表）检查权限表，但并不是所有的权限都要执行该过程。例如，一个用户登录到MySQL服务器之后只执行对MySQL的管理操作，此时只涉及管理权限，因此MySQL只检查user表。另外，如果请求的权限操作不被允许，MySQL也不会继续检查下一层级的表。</p>
 </blockquote>
@@ -702,14 +700,14 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <blockquote>
 <p>在解析器中对 SQL 语句进行语法分析、语义分析</p>
 </blockquote>
-<p>分析器先做“ 词法分析 ”。你输入的是由多个字符串和空格组成的一条 SQL 语句，MySQL 需要识别出里面 的字符串分别是什么，代表什么。 MySQL 从你输入的&quot;select&quot;这个关键字识别出来，这是一个查询语 句。它也要把字符串“T”识别成“表名 T”，把字符串“ID”识别成“列 ID”。接着，要做“ 语法分析 ”。根据词法分析的结果，语法分析器（比如：Bison）会根据语法规则，判断你输 入的这个 SQL 语句是否 满足 MySQL 语法<br>
-<strong>3、优化器</strong></p>
+<p>分析器先做“ 词法分析 ”。你输入的是由多个字符串和空格组成的一条 SQL 语句，MySQL 需要识别出里面 的字符串分别是什么，代表什么。 MySQL 从你输入的&quot;select&quot;这个关键字识别出来，这是一个查询语 句。它也要把字符串“T”识别成“表名 T”，把字符串“ID”识别成“列 ID”。接着，要做“ 语法分析 ”。根据词法分析的结果，语法分析器（比如：Bison）会根据语法规则，判断你输 入的这个 SQL 语句是否 满足 MySQL 语法</p>
+<p><strong>3、优化器</strong></p>
 <blockquote>
 <p>在优化器中会确定 SQL 语句的执行路径，比如是根据 <code>全表检索</code> ，还是根据 <code>索引检索</code> 等。</p>
 </blockquote>
-<p>经过解释器，MySQL就知道你要做什么了。在开始执行之前，还要先经过优化器的处理。<strong>一条查询可以有很多种执行方式，最后都返回相同的结果。优化器的作用就是找到这其中最好的执行计划</strong>。比如：优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联 (join) 的时候，决定各个表的连接顺序，还有表达式简化、子查询转为连接、外连接转为内连接等。<br>
-在查询优化器中，可以分为 <strong>逻辑查询</strong> 优化阶段和 <strong>物理查询</strong> 优化阶段。<strong>逻辑查询优化</strong>就是通过改变SQL语句的内容来使得SQL查询更高效，同时为物理查询优化提供更多的候选执行计划。通常采用的方式是对SQL语句进行等价变换，对查询进行重写，而查询重写的数学基础就是关系代数。对条件表达式进行等价谓词重写、条件简化，对视图进行重写，对子查询进行优化，对连接语义进行了外连接消除、嵌套连接消除等。<strong>物理查询优化</strong>是基于关系代数进行的查询重写，而关系代数的每一步都对应着物理计算，这些物理计算往往存在多种算法，因此需要计算各种物理路径的代价，从中选择代价最小的作为执行计划。在这个阶段里，对于单表和多表连接的操作，需要高效地使用索引，提升查询效率<br>
-<strong>4、执行器</strong></p>
+<p>经过解释器，MySQL就知道你要做什么了。在开始执行之前，还要先经过优化器的处理。<strong>一条查询可以有很多种执行方式，最后都返回相同的结果。优化器的作用就是找到这其中最好的执行计划</strong>。比如：优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联 (join) 的时候，决定各个表的连接顺序，还有表达式简化、子查询转为连接、外连接转为内连接等。</p>
+<p>在查询优化器中，可以分为 <strong>逻辑查询</strong> 优化阶段和 <strong>物理查询</strong> 优化阶段。<strong>逻辑查询优化</strong>就是通过改变SQL语句的内容来使得SQL查询更高效，同时为物理查询优化提供更多的候选执行计划。通常采用的方式是对SQL语句进行等价变换，对查询进行重写，而查询重写的数学基础就是关系代数。对条件表达式进行等价谓词重写、条件简化，对视图进行重写，对子查询进行优化，对连接语义进行了外连接消除、嵌套连接消除等。<strong>物理查询优化</strong>是基于关系代数进行的查询重写，而关系代数的每一步都对应着物理计算，这些物理计算往往存在多种算法，因此需要计算各种物理路径的代价，从中选择代价最小的作为执行计划。在这个阶段里，对于单表和多表连接的操作，需要高效地使用索引，提升查询效率</p>
+<p><strong>4、执行器</strong></p>
 <blockquote>
 <p>在执行之前需要判断该用户是否 具备权限 。如果没有，就会返回权限错误。如果具备权限，就执行 SQL 查询并返回结果。在 MySQL8.0 以下的版本，如果设置了查询缓存，这时会将查询结果进行缓存</p>
 </blockquote>
@@ -727,8 +725,8 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <h3 id="3-2-缓冲池如何读取数据">3.2 缓冲池如何读取数据</h3>
 <p>冲池管理器会尽量将经常使用的数据保存起来，在数据库进行页面读操作的时候，首先会判断该页面 是否在缓冲池中，如果存在就直接读取，如果不存在，就会通过内存或磁盘将页面存放到缓冲池中再进行读取。</p>
 <p><img src="http://qnypic.shawncoding.top/blog/a221480f2ffb80fdcb16e81c7b4f83bc.png" alt="image-20220615193131719.png"></p>
-<p><strong>如果我们执行 SQL 语句的时候更新了缓存池中的数据，那么这些数据会马上同步到磁盘上吗？</strong><br>
-实际上，当我们对数据库中的记录进行修改的时候，首先会修改缓冲池中页里面的记录信息，然后数据库会<strong>以一定的频率</strong>刷新到磁盘中。注意并不是每次发生更新操作，都会立即进行磁盘回写。缓冲池会采用一种叫做** checkpoint 的机制 <strong>将数据回写到磁盘上，这样做的好处就是提升了数据库的整体性能。比如，当</strong>缓冲池不够用时**，需要释放掉一些不常用的页，此时就可以强行采用checkpoint的方式，将不常用的脏页回写到磁盘上，然后再从缓存池中将这些页释放掉。这里的脏页 (dirty page) 指的是缓冲池中被修改过的页，与磁盘上的数据页不一致。</p>
+<p><strong>如果我们执行 SQL 语句的时候更新了缓存池中的数据，那么这些数据会马上同步到磁盘上吗？</strong></p>
+<p>实际上，当我们对数据库中的记录进行修改的时候，首先会修改缓冲池中页里面的记录信息，然后数据库会<strong>以一定的频率</strong>刷新到磁盘中。注意并不是每次发生更新操作，都会立即进行磁盘回写。缓冲池会采用一种叫做** checkpoint 的机制 <strong>将数据回写到磁盘上，这样做的好处就是提升了数据库的整体性能。比如，当</strong>缓冲池不够用时**，需要释放掉一些不常用的页，此时就可以强行采用checkpoint的方式，将不常用的脏页回写到磁盘上，然后再从缓存池中将这些页释放掉。这里的脏页 (dirty page) 指的是缓冲池中被修改过的页，与磁盘上的数据页不一致。</p>
 <h3 id="3-3-查看-设置缓冲池">3.3 查看/设置缓冲池</h3>
 <p>如果你使用的是 MySQL MyISAM 存储引擎，它只缓存索引，不缓存数据，对应的键缓存参数为<code>key_buffer_size</code>，你可以用它进行查看。如果你使用的是 InnoDB 存储引擎，可以通过查看 <code>innodb_buffer_pool_size</code> 变量来查看缓冲池的大小</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 此时 InnoDB 的缓冲池大小只有 134217728/1024/1024=128MB</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'innodb_buffer_pool_size'</span>;</span><br><span class="line"><span class="comment">-- 我们可以修改缓冲池大小，比如改为256MB</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> innodb_buffer_pool_size = <span class="number">268435456</span>;</span><br><span class="line"><span class="comment">-- 或者配置文件修改</span></span><br><span class="line">[server]</span><br><span class="line">innodb_buffer_pool_size = 268435456</span><br></pre></td></tr></table></figure>
@@ -783,9 +781,9 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 </ul>
 <p><strong>Archive 引擎：用于数据存档</strong></p>
 <p><img src="http://qnypic.shawncoding.top/blog/98d601dc3138fa439679a7bdf03f1f2f.png" alt="image-20220616124743732.png"></p>
-<p><strong>Blackhole 引擎：丢弃写操作，读操作会返回空内容</strong><br>
-<strong>CSV 引擎：存储数据时，以逗号分隔各个数据项</strong><br>
-<strong>Memory 引擎：置于内存的表</strong></p>
+<p><strong>Blackhole 引擎：丢弃写操作，读操作会返回空内容</strong></p>
+<p><strong>CSV 引擎：存储数据时，以逗号分隔各个数据项</strong></p>
+<p><strong>Memory 引擎：置于内存的表</strong></p>
 <blockquote>
 <p>Memory采用的逻辑介质是内存 ，响应速度很快 ，但是当mysqld守护进程崩溃的时候数据会丢失 。另外，要求存储的数据是数据长度不变的格式，比如，Blob和Text类型的数据不可用(长度不固定的)。</p>
 </blockquote>
@@ -803,8 +801,8 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <li>如果数据是临时的 ，而且必须立即可用得到，那么就可以放在内存中。</li>
 <li>存储在Memory表中的数据如果突然间丢失的话也没有太大的关系</li>
 </ol>
-<p><strong>Federated 引擎：访问远程表</strong><br>
-<strong>NDB引擎：MySQL集群专用存储引擎</strong></p>
+<p><strong>Federated 引擎：访问远程表</strong></p>
+<p><strong>NDB引擎：MySQL集群专用存储引擎</strong></p>
 <blockquote>
 <p>也叫做 NDB Cluster 存储引擎，主要用于 MySQL Cluster 分布式集群 环境，类似于 Oracle 的 RAC 集 群</p>
 </blockquote>
@@ -817,8 +815,8 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <p>索引是存储引擎用于快速找到数据记录的一种数据结构，MySQL进行数据查找时，首先查看查询条件是否命中某条索引，符合则通过索引查找相关数据，如果不符合则需要全表扫描，即需要一条一条地查找记录，直到找到与条件符合的记录</p>
 </blockquote>
 <p><img src="http://qnypic.shawncoding.top/blog/80f6f60743b1a3a8f919b9ce5b2343ea.png" alt="image-20220616142723266.png"></p>
-<p>MySQL官方对索引的定义为：索引（Index)是帮助MySQL高效获取数据的数据结构。<br>
-<strong>索引的本质</strong>：索引是数据结构。你可以简单理解为“排好序的快速查找数据结构”，满足特定查找算法。 这些数据结构以某种方式指向数据， 这样就可以在这些数据结构的基础上实现 高级查找算法 。索引是在存储引擎中实现的，因此每种存储引擎的索引不一定完全相同，并且每种存储引擎不一定支持所有索引类型。同时，存储引擎可以定义每个表的 最大索引数和 最大索引长度。所有存储引擎支持每个表至少16个索引，总索引长度至少为256字节。有些存储引擎支持更多的索引数和更大的索引长度。</p>
+<p>MySQL官方对索引的定义为：索引（Index)是帮助MySQL高效获取数据的数据结构。</p>
+<p><strong>索引的本质</strong>：索引是数据结构。你可以简单理解为“排好序的快速查找数据结构”，满足特定查找算法。 这些数据结构以某种方式指向数据， 这样就可以在这些数据结构的基础上实现 高级查找算法 。索引是在存储引擎中实现的，因此每种存储引擎的索引不一定完全相同，并且每种存储引擎不一定支持所有索引类型。同时，存储引擎可以定义每个表的 最大索引数和 最大索引长度。所有存储引擎支持每个表至少16个索引，总索引长度至少为256字节。有些存储引擎支持更多的索引数和更大的索引长度。</p>
 <h3 id="1-2-索引优点">1.2 索引优点</h3>
 <ul>
 <li>类似大学图书馆建书目索引，提高数据检索的效率，降低 <strong>数据库的IO成本</strong> ，这也是创建索引最主 要的原因</li>
@@ -911,9 +909,9 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <p><img src="http://qnypic.shawncoding.top/blog/1afa2706ff0897563b7617e3ff86ecc6.png" alt="image-20220616203852043.png"></p>
 <p>这个B+树与上边介绍的聚簇索引有几处不同</p>
 <p><img src="http://qnypic.shawncoding.top/blog/4c1d681944659e95fb254000c08352e5.png" alt="image-20220616210404733.png"></p>
-<p>**概念：回表 **<br>
-我们根据这个以c2列大小排序的B+树只能确定我们要查找记录的主键值，所以如果我们想根 据c2列的值查找到完整的用户记录的话，仍然需要到 聚簇索引 中再查一遍，这个过程称为 回表 。也就 是根据c2列的值查询一条完整的用户记录需要使用到 2 棵B+树<br>
-<strong>小结</strong></p>
+<p>**概念：回表 **</p>
+<p>我们根据这个以c2列大小排序的B+树只能确定我们要查找记录的主键值，所以如果我们想根 据c2列的值查找到完整的用户记录的话，仍然需要到 聚簇索引 中再查一遍，这个过程称为 回表 。也就 是根据c2列的值查询一条完整的用户记录需要使用到 2 棵B+树</p>
+<p><strong>小结</strong></p>
 <ul>
 <li>聚簇索引的<code>叶子节点</code>存储的就是我们的<code>数据记录</code>, 非聚簇索引的叶子节点存储的是<code>数据位置</code>。非聚簇索引不会影响数据表的物理存储顺序。</li>
 <li>一个表<code>只能有一个聚簇索引</code>，因为只能有一种排序存储的方式，但可以有<code>多个非聚簇索引</code>，也就是多个索引目录提供数据检索。</li>
@@ -943,8 +941,8 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <li>随后向表中插入用户记录时，先把用户记录存储到这个<code>根节点</code> 中。</li>
 <li>当根节点中的可用 <code>空间用完时</code> 继续插入记录，此时会将根节点中的所有记录复制到一个新分配的页，比如 <code>页a</code> 中，然后对这个新页进行 <code>页分裂</code> 的操作，得到另一个新页，比如<code>页b</code> 。这时新插入的记录根据键值（也就是聚簇索引中的主键值，二级索引中对应的索引列的值）的大小就会被分配到 <code>页a</code> 或者 <code>页b</code> 中，而 <code>根节点</code> 便升级为存储目录项记录的页。</li>
 </ul>
-<p>这个过程特别注意的是：一个B+树索引的根节点自诞生之日起，便不会再移动。这样只要我们对某个表建议一个索引，那么它的根节点的页号便会被记录到某个地方。然后凡是 <code>InnoDB</code> 存储引擎需要用到这个索引的时候，都会从哪个固定的地方取出根节点的页号，从而来访问这个索引<br>
-为了让新插入记录找到自己在那个页面，我们需要<strong>保证在B+树的同一层页节点的目录项记录除页号这个字段以外是唯一的</strong>。所以对于二级索引的内节点的目录项记录的内容实际上是由三个部分构成的：</p>
+<p>这个过程特别注意的是：一个B+树索引的根节点自诞生之日起，便不会再移动。这样只要我们对某个表建议一个索引，那么它的根节点的页号便会被记录到某个地方。然后凡是 <code>InnoDB</code> 存储引擎需要用到这个索引的时候，都会从哪个固定的地方取出根节点的页号，从而来访问这个索引</p>
+<p>为了让新插入记录找到自己在那个页面，我们需要<strong>保证在B+树的同一层页节点的目录项记录除页号这个字段以外是唯一的</strong>。所以对于二级索引的内节点的目录项记录的内容实际上是由三个部分构成的：</p>
 <ul>
 <li>索引列的值</li>
 <li>主键值</li>
@@ -1001,9 +999,9 @@ tables_priv表有8个字段，分别是Host、Db、User、Table_name、Grantor�
 <li>数据库索引是存储在磁盘上的，如果数据量很大，必然导致索引的大小也会很大，超过几个G。</li>
 <li>当我们利用索引查询时候，是不可能将全部几个G的索引都加载进内存的，我们能做的只能是:逐一加载每一个磁盘页，因为磁盘页对应着索引树的节点。</li>
 </ul>
-<p><strong>B+树的存储能力如何？为何说一般查找行记录，最多只需1~3次磁盘IO</strong><br>
-InnoDB存储引擎中页的大小为16KB，一般表的主键类型为INT(占用4个字节)或BIGINT(占用8个字节)，指针类型也一般为4或8个字节，也就是说一个页(B+Tree中的一个节点)中大概存储16KB/(8B+8B)=1K个键值（因为是估值，为方便计算，这里的K取值为10<sup>3。也就是说一个深度为3的B+Tree索引可以维护10</sup>3*10<sup>3*10</sup>3=10亿条记录。(这里假定一个数据页也存储10^3条行记录数据了)实际情况中每个节点可能不能填充满，因此在数据库中，B+Tree 的高度一般都在2~4层。MysQL的InnoDB存储引擎在设计时是将根节点常驻内存的，也就是说查找某一键值的行记录时最多只需要1-3次磁盘I/O操作。<br>
-<strong>为什么说B+树比B-树更适合实际应用中操作系统的文件索引和数据库索引？</strong></p>
+<p><strong>B+树的存储能力如何？为何说一般查找行记录，最多只需1~3次磁盘IO</strong></p>
+<p>InnoDB存储引擎中页的大小为16KB，一般表的主键类型为INT(占用4个字节)或BIGINT(占用8个字节)，指针类型也一般为4或8个字节，也就是说一个页(B+Tree中的一个节点)中大概存储16KB/(8B+8B)=1K个键值（因为是估值，为方便计算，这里的K取值为10<sup>3。也就是说一个深度为3的B+Tree索引可以维护10</sup>3*10<sup>3*10</sup>3=10亿条记录。(这里假定一个数据页也存储10^3条行记录数据了)实际情况中每个节点可能不能填充满，因此在数据库中，B+Tree 的高度一般都在2~4层。MysQL的InnoDB存储引擎在设计时是将根节点常驻内存的，也就是说查找某一键值的行记录时最多只需要1-3次磁盘I/O操作。</p>
+<p><strong>为什么说B+树比B-树更适合实际应用中操作系统的文件索引和数据库索引？</strong></p>
 <ul>
 <li>B+树的磁盘读写代价更低，B+树的内部结点并没有指向关键字具体信息的指针。因此其内部结点相对B树更小。如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说Io读写次数也就降低了。</li>
 <li>B+树的查询效率更加稳定，由于非终结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</li>
@@ -1015,17 +1013,17 @@ InnoDB存储引擎中页的大小为16KB，一般表的主键类型为INT(占用
 <li>Hash索引不支持ORDER BY排序，因为Hash索引指向的数据是无序的，因此无法起到排序优化的作用，而主树索引数据是有序的，可以起到对该字段ORDER BY排序优化的作用。同理，我们也无法用Hash索引进行模糊查询，而B+树使用LIKE进行模糊查询的时候，LIKE后面后模糊查询（比如%结尾）的话就可以起到优化作用</li>
 <li>InnoDB 不支持哈希索引</li>
 </ul>
-<p><strong>Hash 索引与 B+ 树索引是在建索引的时候手动指定的吗？</strong><br>
-针对InnoDB和MyISAM存储引擎，都会默认采用B+树索引，无法使用Hash 索引。InnoDB提供的自适应Hash是不需要手动指定的。如果是Memory/Heap和NDB存储引擎，是可以进行选择Hash索引的。<br>
-<strong>R树概念</strong><br>
-R-Tree在MySQL很少使用，仅支持 geometry数据类型 ，支持该类型的存储引擎只有myisam、bdb、 innodb、ndb、archive几种</p>
+<p><strong>Hash 索引与 B+ 树索引是在建索引的时候手动指定的吗？</strong></p>
+<p>针对InnoDB和MyISAM存储引擎，都会默认采用B+树索引，无法使用Hash 索引。InnoDB提供的自适应Hash是不需要手动指定的。如果是Memory/Heap和NDB存储引擎，是可以进行选择Hash索引的。</p>
+<p><strong>R树概念</strong></p>
+<p>R-Tree在MySQL很少使用，仅支持 geometry数据类型 ，支持该类型的存储引擎只有myisam、bdb、 innodb、ndb、archive几种</p>
 <h2 id="4、InnoDB数据存储结构">4、InnoDB数据存储结构</h2>
 <h3 id="4-1-数据库的存储结构：页">4.1 数据库的存储结构：页</h3>
 <blockquote>
 <p>lnnoDB将数据划分为若干个页，InnoDB中页的大小默认为16KB，以页作为磁盘和内存之间交互的基本单位，也就是一次最少从磁盘中读取16KB的内容到内存中，一次最少把内存中的16KB内容刷新到磁盘中。也就是说，在数据库中，不论读一行，还是读多行，都是将这些行所在的页进行加载。也就是说，数据库管理存储空间的基本单位是页(Page)，数据库Ⅳ/O操作的最小单位是页。一个页中可以存储多个行记录。</p>
 </blockquote>
-<p>不同的数据库管理系统（简称DBMS）的页大小不同。比如在 MySQL 的 InnoDB 存储引擎中，默认页的大小是 16KB，我们可以通过下面的命令来进行查看：<code>show variables like '%innodb_page_size%'</code>；SQL Server 中页的大小为 8KB，而在 Oracle 中我们用术语 “块” （Block）来表示 “页”，Oracle 支持的快大小为2KB, 4KB, 8KB, 16KB, 32KB 和 64KB。<br>
-另外在数据库中，还存在着区（Extent）、段（Segment）和表空间（Tablespace）的概念。行、页、区、段、表空间的关系如下图所示</p>
+<p>不同的数据库管理系统（简称DBMS）的页大小不同。比如在 MySQL 的 InnoDB 存储引擎中，默认页的大小是 16KB，我们可以通过下面的命令来进行查看：<code>show variables like '%innodb_page_size%'</code>；SQL Server 中页的大小为 8KB，而在 Oracle 中我们用术语 “块” （Block）来表示 “页”，Oracle 支持的快大小为2KB, 4KB, 8KB, 16KB, 32KB 和 64KB。</p>
+<p>另外在数据库中，还存在着区（Extent）、段（Segment）和表空间（Tablespace）的概念。行、页、区、段、表空间的关系如下图所示</p>
 <p><img src="http://qnypic.shawncoding.top/blog/336654e539addd96c4ea7aa480bb0171.png" alt="image-20220617194256988.png"></p>
 <p>区(Extent)是比页大一级的存储结构，在InnoDB存储引擎中，一个区会分配<strong>64个连续的页</strong>。因为InnoDB中的页大小默认是16KB，所以一个区的大小是<strong>64*16KB= 1MB</strong>。段(Segment)由一个或多个区组成，区在文件系统是一个连续分配的空间(在InnoDB中是连续的64个页)，不过在段中不要求区与区之间是相邻的。<strong>段是数据库中的分配单位，不同类型的数据库对象以不同的段形式存在</strong>。当我们创建数据表、索引的时候，就会相应创建对应的段，比如创建一张表时会创建一个表段，创建一个索引时会创建一个索引段。表空间(Tablespace)是一个逻辑容器，表空间存储的对象是段，在一个表空间中可以有一个或多个段，但是一个段只能属于一个表空间。数据库由一个或多个表空间组成，表空间从管理上可以划分为<strong>系统表空间、用户表空间、撤销表空间、临时表空间</strong>等。</p>
 <h3 id="4-2-页的内部结构-重要">4.2 页的内部结构(重要)</h3>
@@ -1033,13 +1031,12 @@ R-Tree在MySQL很少使用，仅支持 geometry数据类型 ，支持该类型�
 <p><img src="http://qnypic.shawncoding.top/blog/be4e62c5c4c270d029433384e54c6bd0.png" alt="image-20220617195012446.png"></p>
 <p>这7个部分如下所示</p>
 <p><img src="http://qnypic.shawncoding.top/blog/74fe1900a9b97051e027ce20046619b9.png" alt="image-20220617195148164.png"></p>
-<p><strong>B+树是如何进行记录检索的？</strong><br>
-如果通过B+树的索引查询行记录，首先是从B+树的根开始，逐层检索，直到找到叶子节点，也就是找到对应的数据页为止，将数据页加载到内存中，页目录中的槽（slot)采用二分查找的方式先找到一个粗略的记录分组，然后再在分组中通过链表遍历的方式查找记录。<br>
-<strong>普通索引和唯一索引在查询效率上有什么不同?</strong><br>
-唯一索引就是在普通索引上增加了约束性，也就是<strong>关键字唯一</strong>，找到了关键字就停止检索。而<strong>普通索引，可能会存在用户记录中的关键字相同的情况</strong>，根据页结构的原理，当我们读取一条记录的时候，不是单独将这条记录从磁盘中读出去，而是将这个记录所在的页加载到内存中进行读取。InnoDB存储引擎的页大小为16KB，在一个页中可能存储着上千个记录，因此在普通索引的字段上进行查找也就是在内存中多几次“判断下一条记录&quot;的操作，对于CPU来说，这些操作所消耗的时间是可以忽略不计的。所以对一个索引字段进行检索，采用普通索引还是唯一索引在检索效率上基本上没有差别。</p>
+<p><strong>B+树是如何进行记录检索的？</strong></p>
+<p>如果通过B+树的索引查询行记录，首先是从B+树的根开始，逐层检索，直到找到叶子节点，也就是找到对应的数据页为止，将数据页加载到内存中，页目录中的槽（slot)采用二分查找的方式先找到一个粗略的记录分组，然后再在分组中通过链表遍历的方式查找记录。</p>
+<p><strong>普通索引和唯一索引在查询效率上有什么不同?</strong></p>
+<p>唯一索引就是在普通索引上增加了约束性，也就是<strong>关键字唯一</strong>，找到了关键字就停止检索。而<strong>普通索引，可能会存在用户记录中的关键字相同的情况</strong>，根据页结构的原理，当我们读取一条记录的时候，不是单独将这条记录从磁盘中读出去，而是将这个记录所在的页加载到内存中进行读取。InnoDB存储引擎的页大小为16KB，在一个页中可能存储着上千个记录，因此在普通索引的字段上进行查找也就是在内存中多几次“判断下一条记录&quot;的操作，对于CPU来说，这些操作所消耗的时间是可以忽略不计的。所以对一个索引字段进行检索，采用普通索引还是唯一索引在检索效率上基本上没有差别。</p>
 <h3 id="4-3-InnoDB行格式-或记录格式">4.3 InnoDB行格式 (或记录格式)</h3>
-<p>见文件InnoDB数据库存储结构，可以二进制打开看看<br>
-mysql5.1，默认是COMPACT行格式</p>
+<p>见文件InnoDB数据库存储结构，可以二进制打开看看mysql5.1，默认是COMPACT行格式</p>
 <p><img src="http://qnypic.shawncoding.top/blog/f6e06bc2a7135aa6670972de541b82c1.png" alt="image.png"></p>
 <p>在MySQL 8.0中，<strong>默认行格式就是Dynamic</strong>，Dynamic、Compressed行格式和Compact行格式挺像，只不过在处理行溢出数据时有分歧:</p>
 <ul>
@@ -1049,13 +1046,14 @@ mysql5.1，默认是COMPACT行格式</p>
 <h3 id="4-4-区、段与碎片区">4.4 区、段与碎片区</h3>
 <h4 id="区的作用">区的作用</h4>
 <p>B+树的每一层中的页都会形成一个双向链表，如果是<strong>以页为单位</strong>来分配存储空间的话，双向链表相邻的两个页之间的<strong>物理位置可能离得非常远</strong>。我们介绍B+树索引的适用场景的时候特别提到范围查询只需要定位到最左边的记录和最右边的记录，然后沿着双向链表一直扫描就可以了，而如果链表中相邻的两个页物理位置离得非常远，就是所谓的随机I/0。再一次强调，磁盘的速度和内存的速度差了好几个数量级，<strong>随机I/O是非常慢的</strong>，所以我们应该尽量让链表中相邻的页的物理位置也相邻，这样进行范围查询的时候才可以使用所谓的<strong>顺序I/O</strong>。<br>
-引入区的概念，一个区就是在物理位置上连续的<strong>64个页</strong>。因为InnoDB 中的页大小默认是16KB，所以一个区的大小是64*16KB= <strong>1MB</strong>。在表中<strong>数据量大</strong>的时候，为某个索引分配空间的时候就不再按照页为单位分配了，而是按照<strong>区为单位分配</strong>，甚至在表中的数据特别多的时候，可以一次性分配多个连续的区。虽然可能造成<strong>一点点空间的浪费</strong>（数据不足以填充满整个区)，但是从性能角度看，可以消除很多的随机I/o，功大于过!</p>
+引入区的概念，一个区就是在物理位置上连续的<strong>64个页</strong>。因为InnoDB 中的页大小默认是16KB，所以一个区的大小是64*16KB= <strong>1MB</strong></p>
+<p>在表中<strong>数据量大</strong>的时候，为某个索引分配空间的时候就不再按照页为单位分配了，而是按照<strong>区为单位分配</strong>，甚至在表中的数据特别多的时候，可以一次性分配多个连续的区。虽然可能造成<strong>一点点空间的浪费</strong>（数据不足以填充满整个区)，但是从性能角度看，可以消除很多的随机I/o，功大于过!</p>
 <h4 id="段的作用">段的作用</h4>
-<p>对于范围查询，其实是对B+树叶子节点中的记录进行顺序扫描，而如果不区分叶子节点和非叶子节点，统统把节点代表的页面放到申请到的区中的话，进行范围扫描的效果就大打折扣了。所以InnoDB对B+树的<strong>叶子节点</strong>和<strong>非叶子节点</strong>进行了区别对待，也就是说叶子节点有自己独有的区，非叶子节点也有自己独有的区。存放叶子节点的区的集合就算是一个段( segment )，存放非叶子节点的区的集合也算是一个段。也就是说一个索引会生成2个段，一个叶子节点段，一个非叶子节点段。<br>
-除了索引的叶子节点段和非叶子节点段之外，InnoDB中还有为存储一些特殊的数据而定义的段，比如回滚段。所以，常见的段有<strong>数据段、索引段、回滚段</strong>。数据段即为B+树的叶子节点，索引段即为B+树的非叶子节点。在InnoDB存储引擎中，对段的管理都是由引擎自身所完成，DBA不能也没有必要对其进行控制。这从一定程度上简化了DBA对于段的管理。段其实不对应表空间中某一个连续的物理区域，而是一个逻辑上的概念，由若干个<strong>零散的页面</strong>以及一些完整的区组成。</p>
+<p>对于范围查询，其实是对B+树叶子节点中的记录进行顺序扫描，而如果不区分叶子节点和非叶子节点，统统把节点代表的页面放到申请到的区中的话，进行范围扫描的效果就大打折扣了。所以InnoDB对B+树的<strong>叶子节点</strong>和<strong>非叶子节点</strong>进行了区别对待，也就是说叶子节点有自己独有的区，非叶子节点也有自己独有的区。存放叶子节点的区的集合就算是一个段( segment )，存放非叶子节点的区的集合也算是一个段。也就是说一个索引会生成2个段，一个叶子节点段，一个非叶子节点段。</p>
+<p>除了索引的叶子节点段和非叶子节点段之外，InnoDB中还有为存储一些特殊的数据而定义的段，比如回滚段。所以，常见的段有<strong>数据段、索引段、回滚段</strong>。数据段即为B+树的叶子节点，索引段即为B+树的非叶子节点。在InnoDB存储引擎中，对段的管理都是由引擎自身所完成，DBA不能也没有必要对其进行控制。这从一定程度上简化了DBA对于段的管理。段其实不对应表空间中某一个连续的物理区域，而是一个逻辑上的概念，由若干个<strong>零散的页面</strong>以及一些完整的区组成。</p>
 <h4 id="为什么要有碎片区">为什么要有碎片区</h4>
-<p>默认情况下，一个使用InnoDB存储引擎的表只有一个聚簇索引，一个索引会生成2个段，而段是以区为单位申请存储空间的，<strong>一个区默认占用1M (64*16Kb=1024Kb）存储空间</strong>，所以<strong>默认情况下一个只存了几条记录的小表也需要2M的存储空间么?<strong>以后每次添加一个索引都要多申请2M的存储空间么?这对于存储记录比较少的表简直是天大的浪费。<br>
-为了考虑以完整的区为单位分配给某个段对于</strong>数据量较小</strong>的表太浪费存储空间的这种情况，InnoDB提出了一个<strong>碎片(fragment)区</strong>的概念。在一个碎片区中，并不是所有的页都是为了存储同一个段的数据而存在的，而是碎片区中的页可以用于不同的目的，比如有些页用于段A，有些页用于段B，有些页甚至哪个段都不属于。<strong>碎片区直属于表空间</strong>，并不属于任何一个段。<br>
+<p>默认情况下，一个使用InnoDB存储引擎的表只有一个聚簇索引，一个索引会生成2个段，而段是以区为单位申请存储空间的，<strong>一个区默认占用1M (64*16Kb=1024Kb）存储空间</strong>，所以**默认情况下一个只存了几条记录的小表也需要2M的存储空间么?**以后每次添加一个索引都要多申请2M的存储空间么?这对于存储记录比较少的表简直是天大的浪费。</p>
+<p>为了考虑以完整的区为单位分配给某个段对于<strong>数据量较小</strong>的表太浪费存储空间的这种情况，InnoDB提出了一个<strong>碎片(fragment)区</strong>的概念。在一个碎片区中，并不是所有的页都是为了存储同一个段的数据而存在的，而是碎片区中的页可以用于不同的目的，比如有些页用于段A，有些页用于段B，有些页甚至哪个段都不属于。<strong>碎片区直属于表空间</strong>，并不属于任何一个段。<br>
 所以此后为某个段分配存储空间的策略是这样的:</p>
 <ul>
 <li>在刚开始向表中插入数据的时候，段是从某个碎片区以单个页面为单位来分配存储空间的</li>
@@ -1074,11 +1072,11 @@ mysql5.1，默认是COMPACT行格式</p>
 <p>表空间可以看做是InnoDB存储引擎逻辑结构的最高层，所有的数据都存放在表空间中。表空间是一个逻辑容器，表空间存储的对象是段，在一个表空间中可以有一个或多个段，但是一个段只能属于一个表空间。表空间数据库由一个或多个表空间组成，表空间从管理上可以划分为系统表空间(System tablespace)、独立表空间(File-per-table tablespace)、撤销表空间(Undo Tablespace)和临时表空间(Temporary Tablespace)等。</p>
 </blockquote>
 <h4 id="独立表空间">独立表空间</h4>
-<p>独立表空间，即每张表有一个独立的表空间，也就是数据和索引信息都会保存在自己的表空间中。独立的表空间 (即：单表) 可以在不同的数据库之间进行 迁移。空间可以回收 (DROP TABLE 操作可自动回收表空间；其他情况，表空间不能自己回收) 。如果对于统计分析或是日志表，删除大量数据后可以通过：alter table TableName engine=innodb; 回收不用的空间。对于使用独立表空间的表，不管怎么删除，表空间的碎片不会太严重的影响性能，而且还有机会处理.<br>
-<strong>独立表空间结构</strong>由段、区、页组成，我们到数据目录里看，会发现一个新建的表对应的 .ibd 文件只占用了 96K，才6个页面大小 (MySQL5.7中)，这是因为一开始表空间占用的空间很小，因为表里边都没有数据。不过别忘了这些 .ibd 文件是自扩展的，随着表中数据的增多，表空间对应的文件也逐渐增大，可以查看表空间类型：<code>show variables like 'innodb_file_per_table'</code>;能看到<code>innodb_file_per_table=ON</code>, 这就意味着每张表都会单词保存一个 .ibd 文件。</p>
+<p>独立表空间，即每张表有一个独立的表空间，也就是数据和索引信息都会保存在自己的表空间中。独立的表空间 (即：单表) 可以在不同的数据库之间进行 迁移。空间可以回收 (DROP TABLE 操作可自动回收表空间；其他情况，表空间不能自己回收) 。如果对于统计分析或是日志表，删除大量数据后可以通过：alter table TableName engine=innodb; 回收不用的空间。对于使用独立表空间的表，不管怎么删除，表空间的碎片不会太严重的影响性能，而且还有机会处理.</p>
+<p><strong>独立表空间结构</strong>由段、区、页组成，我们到数据目录里看，会发现一个新建的表对应的 .ibd 文件只占用了 96K，才6个页面大小 (MySQL5.7中)，这是因为一开始表空间占用的空间很小，因为表里边都没有数据。不过别忘了这些 .ibd 文件是自扩展的，随着表中数据的增多，表空间对应的文件也逐渐增大，可以查看表空间类型：<code>show variables like 'innodb_file_per_table'</code>;能看到<code>innodb_file_per_table=ON</code>, 这就意味着每张表都会单词保存一个 .ibd 文件。</p>
 <h4 id="系统表空间">系统表空间</h4>
-<p>系统表空间的结构和独立表空间基本类似，只不过由于整个MySQL进程只有一个系统表空间，在系统表空间中会额外记录一些有关整个系统信息的页面，这部分是独立表空间中没有的。<br>
-在 information_scheme 数据库中的这些以 INNODB_SYS 开头的表并不是真正的内部系统表 (内部系统表就是我们上边以 SYS 开头的那些表)，而是在存储引擎启动时读取这些以 SYS 开头的系统表，然后填充到这些以 INNODB_SYS 开头的表中。以 INNODB_SYS 开头的表和以 SYS 开头的表中的字段并不完全一样</p>
+<p>系统表空间的结构和独立表空间基本类似，只不过由于整个MySQL进程只有一个系统表空间，在系统表空间中会额外记录一些有关整个系统信息的页面，这部分是独立表空间中没有的。</p>
+<p>在 information_scheme 数据库中的这些以 INNODB_SYS 开头的表并不是真正的内部系统表 (内部系统表就是我们上边以 SYS 开头的那些表)，而是在存储引擎启动时读取这些以 SYS 开头的系统表，然后填充到这些以 INNODB_SYS 开头的表中。以 INNODB_SYS 开头的表和以 SYS 开头的表中的字段并不完全一样</p>
 <h2 id="5、索引的创建">5、索引的创建</h2>
 <h3 id="5-1-索引的声明">5.1 索引的声明</h3>
 <p>MySQL的索引包括<strong>普通索引、唯一性索引、全文索引、单列索引、多列索引和空间索引</strong>等。从 功能逻辑 上说，索引主要有 4 种，分别是普通索引、唯一索引、主键索引、全文索引。 按照 物理实现方式 ，索引可以分为 2 种：<strong>聚簇索引和非聚簇索引</strong>。 按照 作用字段个数 进行划分，分成<strong>单列索引和联合索引</strong></p>
@@ -1102,8 +1100,8 @@ mysql5.1，默认是COMPACT行格式</p>
 <h3 id="5-2索引的使用">5.2索引的使用</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用CREATE TABLE创建表时，除了可以定义列的数据类型外，还可以定义主键约束、外键约束或者唯一性约束，而不论创建哪种约束，在定义约束的同时相当于在指定列上创建了一个索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dept(</span><br><span class="line">dept_id <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">dept_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp(</span><br><span class="line">emp_id <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">emp_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNIQUE</span>,</span><br><span class="line">dept_id <span class="built_in">INT</span>,</span><br><span class="line"><span class="keyword">CONSTRAINT</span> emp_dept_id_fk <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(dept_id) <span class="keyword">REFERENCES</span> dept(dept_id)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显式创建表时创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name [col_name data_type]</span><br><span class="line">[<span class="keyword">UNIQUE</span> | FULLTEXT | SPATIAL] [<span class="keyword">INDEX</span> | <span class="keyword">KEY</span>] [index_name] (col_name [<span class="keyword">length</span>]) [<span class="keyword">ASC</span> |</span><br><span class="line"><span class="keyword">DESC</span>]</span><br><span class="line"><span class="comment">-- UNIQUE 、 FULLTEXT 和 SPATIAL 为可选参数，分别表示唯一索引、全文索引和空间索引； </span></span><br><span class="line"><span class="comment">-- INDEX 与 KEY 为同义词，两者的作用相同，用来指定创建索引； </span></span><br><span class="line"><span class="comment">-- index_name 指定索引的名称，为可选参数，如果不指定，那么MySQL默认col_name为索引名； </span></span><br><span class="line"><span class="comment">-- col_name 为需要创建索引的字段列，该列必须从数据表中定义的多个列中选择； </span></span><br><span class="line"><span class="comment">-- length 为可选参数，表示索引的长度，只有字符串类型的字段才能指定索引长度； </span></span><br><span class="line"><span class="comment">-- ASC 或 DESC 指定升序或者降序的索引值存储</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建普通索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> book(</span><br><span class="line">book_id <span class="built_in">INT</span> ,</span><br><span class="line">book_name <span class="built_in">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line"><span class="keyword">authors</span> <span class="built_in">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">info <span class="built_in">VARCHAR</span>(<span class="number">100</span>) ,</span><br><span class="line"><span class="keyword">comment</span> <span class="built_in">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">year_publication <span class="keyword">YEAR</span>,</span><br><span class="line"><span class="keyword">INDEX</span>(year_publication)</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 创建唯一索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test1(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> uk_idx_id(<span class="keyword">id</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">INDEX</span> <span class="keyword">FROM</span> test1 \G;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 设定为主键后数据库会自动建立索引，innodb为聚簇索引</span></span><br><span class="line"><span class="comment">-- 随表一起建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span>(<span class="number">10</span>) <span class="keyword">UNSIGNED</span> AUTO_INCREMENT ,</span><br><span class="line">student_no <span class="built_in">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">student_name <span class="built_in">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>)</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 删除主键索引</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">drop</span> PRIMARY <span class="keyword">KEY</span>;</span><br><span class="line"><span class="comment">-- 修改主键索引：必须先删除掉(drop)原索引，再新建(add)索引</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建组合索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test3(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">CHAR</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">age <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">info <span class="built_in">VARCHAR</span>(<span class="number">255</span>),</span><br><span class="line"><span class="keyword">INDEX</span> multi_idx(<span class="keyword">id</span>,<span class="keyword">name</span>,age)</span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 使用EXPLAIN语句查看索引的使用情况</span></span><br><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> test3 <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">AND</span> <span class="keyword">name</span>=<span class="string">'songhongkang'</span> \G;</span><br><span class="line"></span><br><span class="line"><span class="comment">--  创建全文索引</span></span><br><span class="line"><span class="comment">-- FULLTEXT全文索引可以用于全文检索，并且只为 `CHAR` 、`VARCHAR` 和 `TEXT` 列创建索引。索引总是对整个列进行，不支持局部 (前缀) 索引</span></span><br><span class="line"><span class="comment">-- 在MySQL5.7及之后版本中可以不指定最后的ENGINE了，因为在此版本中InnoDB支持全文索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test4(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">name</span> <span class="built_in">CHAR</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">age <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">info <span class="built_in">VARCHAR</span>(<span class="number">255</span>),</span><br><span class="line">FULLTEXT <span class="keyword">INDEX</span> futxt_idx_info(info)</span><br><span class="line">) <span class="keyword">ENGINE</span>=MyISAM;</span><br><span class="line"><span class="comment">-- 全文索引用match+against方式查询。全文索引比 like + % 快 N 倍，但是可能存在精度问题</span></span><br><span class="line"><span class="comment">-- 如果需要全文索引的是大量数据，建议先添加数据，再创建索引</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> papers <span class="keyword">WHERE</span> <span class="keyword">MATCH</span>(title,<span class="keyword">content</span>) AGAINST (<span class="string">'查询字符串'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建空间索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test5(</span><br><span class="line">geo GEOMETRY <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">SPATIAL <span class="keyword">INDEX</span> spa_idx_geo(geo)</span><br><span class="line">) <span class="keyword">ENGINE</span>=MyISAM;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- ==========================已经存在的表上创建索引======================</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> [<span class="keyword">UNIQUE</span> | FULLTEXT | SPATIAL] [<span class="keyword">INDEX</span> | <span class="keyword">KEY</span>]</span><br><span class="line">[index_name] (col_name[<span class="keyword">length</span>],...) [<span class="keyword">ASC</span> | <span class="keyword">DESC</span>]</span><br><span class="line"><span class="comment">-- 第二种方式</span></span><br><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span> | FULLTEXT | SPATIAL] <span class="keyword">INDEX</span> index_name</span><br><span class="line"><span class="keyword">ON</span> table_name (col_name[<span class="keyword">length</span>],...) [<span class="keyword">ASC</span> | <span class="keyword">DESC</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ========================删除索引=====================================</span></span><br><span class="line"><span class="comment">--  删除表中的列时，如果要删除的列为索引的组成部分，则该列也会从索引中删除。如果组成索引的所有列都被删除，则整个索引将被删除。</span></span><br><span class="line"><span class="comment">-- AUTO_INCREMENT约束字段的唯一索引不能被删除</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name <span class="keyword">ON</span> table_name;</span><br></pre></td></tr></table></figure>
 <h3 id="5-3-MySQL8-0索引新特性">5.3 MySQL8.0索引新特性</h3>
-<p><strong>第一支持降序索引，降序索引以降序存储键值</strong>。虽然在语法上，从MySQL 4版本开始就已经支持降序索引的语法了，但实际上DESC定义是被忽略的，直到MySQL 8.x版本才开始真正支持降序索引 (仅限于InnoDBc存储引擎)。MySQL在8.0版本之前创建的仍然是升序索引，使用时进行反向扫描，这大大降低了数据库的效率。在某些场景下，降序索引意义重大。例如，如果一个查询，需要对多个列进行排序，且顺序要求不一致，那么使用降序索引将会避免数据库使用额外的文件排序操作，从而提高性能。<br>
-<strong>第二支持隐藏索引。<strong>在MySQL 5.7版本及之前，只能通过显式的方式删除索引。此时，如果删除索引后出现错误，又只能通过显式创建索引的方式将删除的索引创建回来。如果数据表中的数据量非常大，或者数据表本身比较 大，这种操作就会消耗系统过多的资源，操作成本非常高。从MySQL 8.x开始支持 <strong>隐藏索引（invisible indexes）</strong> ，只需要将待删除的索引设置为隐藏索引，使 查询优化器不再使用这个索引（即使使用force index（强制使用索引），优化器也不会使用该索引）， 确认将索引设置为隐藏索引后系统不受任何响应，就可以彻底删除索引。 这种通过先将索引设置为隐藏索引，再删除索引的方式就是</strong>软删除</strong>。同时，如果你想验证某个索引删除之后的 查询性能影响，就可以暂时先隐藏该索引</p>
+<p><strong>第一支持降序索引，降序索引以降序存储键值</strong>。虽然在语法上，从MySQL 4版本开始就已经支持降序索引的语法了，但实际上DESC定义是被忽略的，直到MySQL 8.x版本才开始真正支持降序索引 (仅限于InnoDBc存储引擎)。MySQL在8.0版本之前创建的仍然是升序索引，使用时进行反向扫描，这大大降低了数据库的效率。在某些场景下，降序索引意义重大。例如，如果一个查询，需要对多个列进行排序，且顺序要求不一致，那么使用降序索引将会避免数据库使用额外的文件排序操作，从而提高性能。</p>
+<p><strong>第二支持隐藏索引。<strong>在MySQL 5.7版本及之前，只能通过显式的方式删除索引。此时，如果删除索引后出现错误，又只能通过显式创建索引的方式将删除的索引创建回来。如果数据表中的数据量非常大，或者数据表本身比较 大，这种操作就会消耗系统过多的资源，操作成本非常高。从MySQL 8.x开始支持 <strong>隐藏索引（invisible indexes）</strong> ，只需要将待删除的索引设置为隐藏索引，使 查询优化器不再使用这个索引（即使使用force index（强制使用索引），优化器也不会使用该索引）， 确认将索引设置为隐藏索引后系统不受任何响应，就可以彻底删除索引。 这种通过先将索引设置为隐藏索引，再删除索引的方式就是</strong>软删除</strong>。同时，如果你想验证某个索引删除之后的 查询性能影响，就可以暂时先隐藏该索引</p>
 <blockquote>
 <p>主键不能被设置为隐藏索引。当表中没有显式主键时，表中第一个唯一非空索引会成为隐式主键，也不能设置为隐藏索引</p>
 </blockquote>
@@ -1112,34 +1110,34 @@ mysql5.1，默认是COMPACT行格式</p>
 <h3 id="6-1-数据准备">6.1 数据准备</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 第1步创建数据库、创建表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> atguigudb1;</span><br><span class="line"><span class="keyword">USE</span> atguigudb1;</span><br><span class="line"><span class="comment">-- 1.创建学生表和课程表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`student_info`</span> (</span><br><span class="line"><span class="string">`id`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line"><span class="string">`student_id`</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line"><span class="string">`name`</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="string">`course_id`</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line"><span class="string">`class_id`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="string">`create_time`</span> DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">INNODB</span> AUTO_INCREMENT=<span class="number">1</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`course`</span> (</span><br><span class="line"><span class="string">`id`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line"><span class="string">`course_id`</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line"><span class="string">`course_name`</span> <span class="built_in">VARCHAR</span>(<span class="number">40</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">INNODB</span> AUTO_INCREMENT=<span class="number">1</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 第2步创建模拟数据必需的存储函数</span></span><br><span class="line"><span class="comment">#函数1：创建随机产生字符串函数</span></span><br><span class="line">DELIMITER //</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> rand_string(n <span class="built_in">INT</span>)</span><br><span class="line">	<span class="keyword">RETURNS</span> <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="comment">#该函数会返回一个字符串</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">DECLARE</span> chars_str <span class="built_in">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">DEFAULT</span></span><br><span class="line"><span class="string">'abcdefghijklmnopqrstuvwxyzABCDEFJHIJKLMNOPQRSTUVWXYZ'</span>;</span><br><span class="line">	<span class="keyword">DECLARE</span> return_str <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">DECLARE</span> i <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line">    WHILE i &lt; n DO</span><br><span class="line">    	<span class="keyword">SET</span> return_str =<span class="keyword">CONCAT</span>(return_str,<span class="keyword">SUBSTRING</span>(chars_str,<span class="keyword">FLOOR</span>(<span class="number">1</span>+<span class="keyword">RAND</span>()*<span class="number">52</span>),<span class="number">1</span>));</span><br><span class="line">    	<span class="keyword">SET</span> i = i + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line">    RETURN return_str;</span><br><span class="line"><span class="keyword">END</span> //</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 函数2：创建随机数函数</span></span><br><span class="line">DELIMITER //</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> rand_num (from_num <span class="built_in">INT</span> ,to_num <span class="built_in">INT</span>) <span class="keyword">RETURNS</span> <span class="built_in">INT</span>(<span class="number">11</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> i <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">SET</span> i = <span class="keyword">FLOOR</span>(from_num +<span class="keyword">RAND</span>()*(to_num - from_num+<span class="number">1</span>)) ;</span><br><span class="line">RETURN i;</span><br><span class="line"><span class="keyword">END</span> //</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 如果报错This function has none of DETERMINISTIC......，由于开启过慢查询日志bin-log, 我们就必须为我们的function指定一个参数</span></span><br><span class="line"><span class="comment">-- 主从复制，主机会将写操作记录在bin-log日志中。从机读取bin-log日志，执行语句来同步数据</span></span><br><span class="line"><span class="comment">-- 如果使 用函数来操作数据，会导致从机和主键操作时间不一致。所以，默认情况下，mysql不开启创建函数设置</span></span><br><span class="line"><span class="comment">-- 查看mysql是否允许创建函数</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'log_bin_trust_function_creators'</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> log_bin_trust_function_creators=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 第3步创建插入模拟数据的存储过程</span></span><br><span class="line"><span class="comment">--  存储过程1：创建插入课程表存储过程</span></span><br><span class="line">DELIMITER //</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> insert_course( max_num <span class="built_in">INT</span> )</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> i <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">SET</span> autocommit = <span class="number">0</span>; <span class="comment">--设置手动提交事务</span></span><br><span class="line">REPEAT <span class="comment">--循环</span></span><br><span class="line"><span class="keyword">SET</span> i = i + <span class="number">1</span>; <span class="comment">--赋值</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> course (course_id, course_name ) <span class="keyword">VALUES</span></span><br><span class="line">(rand_num(<span class="number">10000</span>,<span class="number">10100</span>),rand_string(<span class="number">6</span>));</span><br><span class="line">UNTIL i = max_num</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">REPEAT</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>; <span class="comment">--提交事务</span></span><br><span class="line"><span class="keyword">END</span> //</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 存储过程2：创建插入学生信息表存储过程</span></span><br><span class="line">DELIMITER //</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> insert_stu( max_num <span class="built_in">INT</span> )</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> i <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">SET</span> autocommit = <span class="number">0</span>; <span class="comment">--设置手动提交事务</span></span><br><span class="line">REPEAT <span class="comment">--循环</span></span><br><span class="line"><span class="keyword">SET</span> i = i + <span class="number">1</span>; <span class="comment">--赋值</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> student_info (course_id, class_id ,student_id ,<span class="keyword">NAME</span> ) <span class="keyword">VALUES</span></span><br><span class="line">(rand_num(<span class="number">10000</span>,<span class="number">10100</span>),rand_num(<span class="number">10000</span>,<span class="number">10200</span>),rand_num(<span class="number">1</span>,<span class="number">200000</span>),rand_string(<span class="number">6</span>));</span><br><span class="line">UNTIL i = max_num</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">REPEAT</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>; <span class="comment">--提交事务</span></span><br><span class="line"><span class="keyword">END</span> //</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 第4步：调用存储过程</span></span><br><span class="line"><span class="keyword">CALL</span> insert_course(<span class="number">100</span>);</span><br><span class="line"><span class="keyword">CALL</span> insert_stu(<span class="number">1000000</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="6-2-适合索引的场景">6.2 适合索引的场景</h3>
-<p><strong>1、字段的数值有唯一性的限制</strong><br>
-索引本身可以起到约束的作用，比如唯一索引、主键索引都是可以起到唯一性约束的，因此在我们的数据表中,如果某个字段是唯一性的，就可以直接创建唯一性索引，或者主键索引。这样可以更快速地通过该索引来确定某条记录。例如，学生表中学号是具有唯一性的字段，为该字段建立唯一性索引可以很快确定某个学生的信息，如果使用姓名的话，可能存在同名现象，从而降低查询速度。</p>
+<p><strong>1、字段的数值有唯一性的限制</strong></p>
+<p>索引本身可以起到约束的作用，比如唯一索引、主键索引都是可以起到唯一性约束的，因此在我们的数据表中,如果某个字段是唯一性的，就可以直接创建唯一性索引，或者主键索引。这样可以更快速地通过该索引来确定某条记录。例如，学生表中学号是具有唯一性的字段，为该字段建立唯一性索引可以很快确定某个学生的信息，如果使用姓名的话，可能存在同名现象，从而降低查询速度。</p>
 <blockquote>
 <p>业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引。（来源：Alibaba） 说明：不要以为唯一索引影响了 insert 速度，这个速度损耗可以忽略，但提高查找速度是明显的。</p>
 </blockquote>
-<p><strong>2、频繁作为 WHERE 查询条件的字段</strong><br>
-某个字段在SELECT语句的 WHERE 条件中经常被使用到，那么就需要给这个字段创建索引了。尤其是在 数据量大的情况下，创建普通索引就可以大幅提升数据查询的效率。 比如student_info数据表（含100万条数据），假设我们想要查询 student_id=123110 的用户信息<br>
-<strong>3、经常 GROUP BY 和 ORDER BY 的列</strong><br>
-索引就是让数据按照某种顺序进行存储或检索，因此当我们使用 GROUP BY 对数据进行分组查询，或者使用 ORDER BY 对数据进行排序的时候，就需要对分组或者排序的字段进行索引 。如果待排序的列有多个，那么可以在这些列上建立组合索引<br>
-<strong>4、UPDATE、DELETE 的 WHERE 条件列</strong><br>
-对数据按照某个条件进行查询后再进行 UPDATE 或 DELETE 的操作，如果对 WHERE 字段创建了索引，就能大幅提升效率。原理是因为我们需要先根据 WHERE 条件列检索出来这条记录，然后再对它进行更新或删除。<strong>如果进行更新的时候，更新的字段是非索引字段，提升的效率会更明显，这是因为非索引字段更新不需要对索引进行维护</strong><br>
-<strong>5、DISTINCT 字段需要创建索引</strong><br>
-有时候我们需要对某个字段进行去重，使用 DISTINCT，那么对这个字段创建索引，也会提升查询效率。<br>
-<strong>6、多表 JOIN 连接操作时，创建索引注意事项</strong><br>
-首先， <code>连接表的数量尽量不要超过 3 张</code>，因为每增加一张表就相当于增加了一次嵌套的循环，数量级增 长会非常快，严重影响查询的效率。 其次， <code>对 WHERE 条件创建索引</code>，因为 WHERE 才是对数据条件的过滤。如果在数据量非常大的情况下， 没有 WHERE 条件过滤是非常可怕的。 最后， <code>对用于连接的字段创建索引</code>，并且该字段在多张表中的 类型必须一致 。比如 course_id 在 student_info 表和 course 表中都为 int(11) 类型，而不能一个为 int 另一个为 varchar 类型<br>
-<strong>7、使用列的类型小的创建索引</strong><br>
-我们这里所说的类型大小指的就是该类型表示的数据范围的大小。我们在定义表结构的时候要显式的指定列的类型，以整数类型为例，有TINYINT、MEDIUNINT、INT、BIGINT等，它们占用的存储空间依次递增，能表示的整数范围当然也是依次递增</p>
+<p><strong>2、频繁作为 WHERE 查询条件的字段</strong></p>
+<p>某个字段在SELECT语句的 WHERE 条件中经常被使用到，那么就需要给这个字段创建索引了。尤其是在 数据量大的情况下，创建普通索引就可以大幅提升数据查询的效率。 比如student_info数据表（含100万条数据），假设我们想要查询 student_id=123110 的用户信息</p>
+<p><strong>3、经常 GROUP BY 和 ORDER BY 的列</strong></p>
+<p>索引就是让数据按照某种顺序进行存储或检索，因此当我们使用 GROUP BY 对数据进行分组查询，或者使用 ORDER BY 对数据进行排序的时候，就需要对分组或者排序的字段进行索引 。如果待排序的列有多个，那么可以在这些列上建立组合索引</p>
+<p><strong>4、UPDATE、DELETE 的 WHERE 条件列</strong><br>
+对数据按照某个条件进行查询后再进行 UPDATE 或 DELETE 的操作，如果对 WHERE 字段创建了索引，就能大幅提升效率。原理是因为我们需要先根据 WHERE 条件列检索出来这条记录，然后再对它进行更新或删除。<strong>如果进行更新的时候，更新的字段是非索引字段，提升的效率会更明显，这是因为非索引字段更新不需要对索引进行维护</strong></p>
+<p><strong>5、DISTINCT 字段需要创建索引</strong></p>
+<p>有时候我们需要对某个字段进行去重，使用 DISTINCT，那么对这个字段创建索引，也会提升查询效率。</p>
+<p><strong>6、多表 JOIN 连接操作时，创建索引注意事项</strong></p>
+<p>首先， <code>连接表的数量尽量不要超过 3 张</code>，因为每增加一张表就相当于增加了一次嵌套的循环，数量级增 长会非常快，严重影响查询的效率。 其次， <code>对 WHERE 条件创建索引</code>，因为 WHERE 才是对数据条件的过滤。如果在数据量非常大的情况下， 没有 WHERE 条件过滤是非常可怕的。 最后， <code>对用于连接的字段创建索引</code>，并且该字段在多张表中的 类型必须一致 。比如 course_id 在 student_info 表和 course 表中都为 int(11) 类型，而不能一个为 int 另一个为 varchar 类型</p>
+<p><strong>7、使用列的类型小的创建索引</strong></p>
+<p>我们这里所说的类型大小指的就是该类型表示的数据范围的大小。我们在定义表结构的时候要显式的指定列的类型，以整数类型为例，有TINYINT、MEDIUNINT、INT、BIGINT等，它们占用的存储空间依次递增，能表示的整数范围当然也是依次递增</p>
 <ul>
 <li>数据类型越小，在查询时进行的比较操作越快</li>
 <li>数据类型越小，索引占用的存储空间就越少，在一个数据页内就可以放下更多的记录，从而减少磁盘I/0带来的性能损耗，也就意味着可以把更多的数据页缓存在内存中，从而加快读写效率</li>
 </ul>
-<p><strong>8、使用字符串前缀创建索引</strong><br>
-我们可以通过截取字段的前面一部分内容建立索引，这个就叫<code>前缀索引</code>。这样在查找记录时虽然不能精确的定位到记录的位置，但是能定位到相应前缀所在的位置，然后根据前缀相同的记录的主键值回表查询完整的字符串值。既<code>节约空间</code>，又<code>减少了字符串的比较时间</code>，还大体能解决排序的问题</p>
+<p><strong>8、使用字符串前缀创建索引</strong></p>
+<p>我们可以通过截取字段的前面一部分内容建立索引，这个就叫<code>前缀索引</code>。这样在查找记录时虽然不能精确的定位到记录的位置，但是能定位到相应前缀所在的位置，然后根据前缀相同的记录的主键值回表查询完整的字符串值。既<code>节约空间</code>，又<code>减少了字符串的比较时间</code>，还大体能解决排序的问题</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> shop(address <span class="built_in">varchar</span>(<span class="number">120</span>) <span class="keyword">not</span> <span class="literal">null</span>);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> shop <span class="keyword">add</span> <span class="keyword">index</span>(address(<span class="number">12</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 越接近于1越好，说明越有区分度</span></span><br><span class="line">count(distinct left(列名, 索引长度))/count(*)</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(address,<span class="number">10</span>)) / <span class="keyword">count</span>(*) <span class="keyword">as</span> sub10, <span class="comment">-- 截取前10个字符的选择度</span></span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(address,<span class="number">15</span>)) / <span class="keyword">count</span>(*) <span class="keyword">as</span> sub11, <span class="comment">-- 截取前15个字符的选择度</span></span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(address,<span class="number">20</span>)) / <span class="keyword">count</span>(*) <span class="keyword">as</span> sub12, <span class="comment">-- 截取前20个字符的选择度</span></span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">distinct</span> <span class="keyword">left</span>(address,<span class="number">25</span>)) / <span class="keyword">count</span>(*) <span class="keyword">as</span> sub13 <span class="comment">-- 截取前25个字符的选择度</span></span><br><span class="line"><span class="keyword">from</span> shop;</span><br></pre></td></tr></table></figure>
-<p><strong>9、区分度高(散列性高)的列适合作为索引</strong><br>
-列的基数 指的是某一列中不重复数据的个数，比方说某个列包含值 2, 5, 8, 2, 5, 8, 2, 5, 8，虽然有9条记录，但该列的基数却是3。也就是说**在记录行数一定的情况下，列的基数越大，该列中的值越分散；列的基数越小，该列中的值越集中。**这个列的基数指标非常重要，直接影响我们是否能有效的利用索引。最好为列的基数大的列简历索引，为基数太小的列的简历索引效果可能不好。可以使用公式select count(distinct a) / count(*) from t1 计算区分度，越接近1越好，一般超过33%就算比较高效的索引了。扩展：联合索引把区分度搞(散列性高)的列放在前面。<br>
-<strong>10、使用最频繁的列放到联合索引的左侧</strong><br>
-<strong>11、在多个字段都要创建索引的情况下，联合索引优于单值索引</strong></p>
+<p><strong>9、区分度高(散列性高)的列适合作为索引</strong></p>
+<p>列的基数 指的是某一列中不重复数据的个数，比方说某个列包含值 2, 5, 8, 2, 5, 8, 2, 5, 8，虽然有9条记录，但该列的基数却是3。也就是说**在记录行数一定的情况下，列的基数越大，该列中的值越分散；列的基数越小，该列中的值越集中。**这个列的基数指标非常重要，直接影响我们是否能有效的利用索引。最好为列的基数大的列简历索引，为基数太小的列的简历索引效果可能不好。可以使用公式select count(distinct a) / count(*) from t1 计算区分度，越接近1越好，一般超过33%就算比较高效的索引了。扩展：联合索引把区分度搞(散列性高)的列放在前面。</p>
+<p><strong>10、使用最频繁的列放到联合索引的左侧</strong></p>
+<p><strong>11、在多个字段都要创建索引的情况下，联合索引优于单值索引</strong></p>
 <h3 id="6-3-限制索引的数目">6.3 限制索引的数目</h3>
 <p>在实际工作中，我们也需要注意平衡，索引的数目不是越多越好。我们需要限制每张表上的索引数量，建议单张表索引数量<strong>不超过6个</strong>。原因:</p>
 <ul>
@@ -1148,20 +1146,20 @@ mysql5.1，默认是COMPACT行格式</p>
 <li>优化器在选择如何优化查询时，会根据统一信息，对每一个可以用到的索引来进行评估，以生成出一个最好的执行计划，如果同时有很多个索引都可以用于查询，会增加MySQL优化器生成执行计划时间，降低查询性能。</li>
 </ul>
 <h3 id="6-4-不适合创建索引场景">6.4 不适合创建索引场景</h3>
-<p><strong>1、在where中使用不到的字段，不要设置索引</strong><br>
-WHERE条件 (包括 GROUP BY、ORDER BY) 里用不到的字段不需要创建索引，索引的价值是快速定位，如果起不到定位的字段通常是不需要创建索引的。<br>
-<strong>2、 数据量小的表最好不要使用索引</strong><br>
-如果表记录太少，比如少于1000个，那么是不需要创建索引的。表记录太少，是否创建索引 对查询效率的影响并不大。甚至说，查询花费的时间可能比遍历索引的时间还要短，索引可能不会产生优化效果。<br>
-<strong>3、有大量重复数据的列上不要建立索引</strong><br>
-在条件表达式中经常用到的不同值较多的列上建立索引，但字段中如果有大量重复数据，也不用创建索引。比如在学生表的&quot;性别&quot;字段上只有“男”与“女”两个不同值，因此无须建立索引。如果建立索引，不但不会提高查询效率，反而会严重降低数据更新速度。结论：当数据重复度大，比如 高于 10% 的时候，也不需要对这个字段使用索引<br>
-<strong>4、避免对经常更新的表创建过多的索引</strong><br>
-第一层含义：频繁更新的字段不一定要创建索引。因为更新数据的时候，也需要更新索引，如果索引太多，在更新索引的时候也会造成负担，从而影响效率。<br>
-第二层含义：避免对经常更新的表创建过多的索引，并且索引中的列尽可能少。此时，虽然提高了查询速度，同时却降低更新表的速度。<br>
-<strong>5、不建议用无序的值作为索引</strong><br>
-例如身份证、UUID(在索引比较时需要转为ASCII，并且插入时可能造成页分裂)、MD5、HASH、无序长字 符串等<br>
-<strong>6、删除不再使用或者很少使用的索引</strong><br>
-表中的数据被大量更新，或者数据的使用方式被改变后，原有的一些索引可能不再需要。数据库管理员应当定期找出这些索引，将它们删除，从而减少索引对更新操作的影响<br>
-<strong>7、不要定义夯余或重复的索引</strong></p>
+<p><strong>1、在where中使用不到的字段，不要设置索引</strong></p>
+<p>WHERE条件 (包括 GROUP BY、ORDER BY) 里用不到的字段不需要创建索引，索引的价值是快速定位，如果起不到定位的字段通常是不需要创建索引的。</p>
+<p><strong>2、 数据量小的表最好不要使用索引</strong></p>
+<p>如果表记录太少，比如少于1000个，那么是不需要创建索引的。表记录太少，是否创建索引 对查询效率的影响并不大。甚至说，查询花费的时间可能比遍历索引的时间还要短，索引可能不会产生优化效果。</p>
+<p><strong>3、有大量重复数据的列上不要建立索引</strong></p>
+<p>在条件表达式中经常用到的不同值较多的列上建立索引，但字段中如果有大量重复数据，也不用创建索引。比如在学生表的&quot;性别&quot;字段上只有“男”与“女”两个不同值，因此无须建立索引。如果建立索引，不但不会提高查询效率，反而会严重降低数据更新速度。结论：当数据重复度大，比如 高于 10% 的时候，也不需要对这个字段使用索引</p>
+<p><strong>4、避免对经常更新的表创建过多的索引</strong></p>
+<p>第一层含义：频繁更新的字段不一定要创建索引。因为更新数据的时候，也需要更新索引，如果索引太多，在更新索引的时候也会造成负担，从而影响效率。</p>
+<p>第二层含义：避免对经常更新的表创建过多的索引，并且索引中的列尽可能少。此时，虽然提高了查询速度，同时却降低更新表的速度。</p>
+<p><strong>5、不建议用无序的值作为索引</strong></p>
+<p>例如身份证、UUID(在索引比较时需要转为ASCII，并且插入时可能造成页分裂)、MD5、HASH、无序长字 符串等</p>
+<p><strong>6、删除不再使用或者很少使用的索引</strong></p>
+<p>表中的数据被大量更新，或者数据的使用方式被改变后，原有的一些索引可能不再需要。数据库管理员应当定期找出这些索引，将它们删除，从而减少索引对更新操作的影响</p>
+<p><strong>7、不要定义夯余或重复的索引</strong></p>
 <h1>五、性能分析工具与索引优化</h1>
 <h2 id="1、查看系统性能参数">1、查看系统性能参数</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> [<span class="keyword">GLOBAL</span>|<span class="keyword">SESSION</span>] <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'参数'</span>;</span><br></pre></td></tr></table></figure>
@@ -1180,9 +1178,9 @@ WHERE条件 (包括 GROUP BY、ORDER BY) 里用不到的字段不需要创建索
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 若查询MySQL服务器的连接次数，则可以执行如下语句</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'Connections'</span>;</span><br><span class="line"><span class="comment">-- 若查询服务器工作时间</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'Uptime'</span>;</span><br><span class="line"><span class="comment">-- 若查询MySQL服务器的慢查询次数</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'Slow_queries'</span>;</span><br><span class="line"><span class="comment">-- 慢查询次数参数可以结合慢查询日志找出慢查询语句，然后针对慢查询语句进行`表结构优化`或者`查询语句优化`。</span></span><br><span class="line"><span class="comment">-- 查看相关的指令情况</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'Innodb_rows_%'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="2、统计SQL的查询成本-last-query-cost">2、统计SQL的查询成本: last_query_cost</h2>
-<p>一条SQL查询语句在执行前需要查询执行计划，如果存在多种执行计划的话，MySQL会计算每个执行计划所需要的成本，从中选择成本最小的一个作为最终执行的执行计划。<br>
-如果我们想要查看某条SQL语句的查询成本，可以在执行完这条SQL语句之后，通过查看当前会话中的last_query_cost变量值来得到当前查询的成本： <code>SHOW STATUS LIKE 'last_query_cost'</code>。它通常也是我们评价一个查询的执行效率的一个常用指标。这个查询成本对应的是SQL 语句所需要读取的读页的数量。<br>
-**使用场景：**它对于比较开销是非常有用的，特别是我们有好几种查询方式可选的时候</p>
+<p>一条SQL查询语句在执行前需要查询执行计划，如果存在多种执行计划的话，MySQL会计算每个执行计划所需要的成本，从中选择成本最小的一个作为最终执行的执行计划。</p>
+<p>如果我们想要查看某条SQL语句的查询成本，可以在执行完这条SQL语句之后，通过查看当前会话中的last_query_cost变量值来得到当前查询的成本： <code>SHOW STATUS LIKE 'last_query_cost'</code>。它通常也是我们评价一个查询的执行效率的一个常用指标。这个查询成本对应的是SQL 语句所需要读取的读页的数量。</p>
+<p>**使用场景：**它对于比较开销是非常有用的，特别是我们有好几种查询方式可选的时候</p>
 <blockquote>
 <p>SQL查询时一个动态的过程，从页加载的角度来看，我们可以得到以下两点结论：</p>
 <ol>
@@ -1193,10 +1191,9 @@ WHERE条件 (包括 GROUP BY、ORDER BY) 里用不到的字段不需要创建索
 </blockquote>
 <h2 id="3、-定位执行慢的-SQL：慢查询日志">3、 定位执行慢的 SQL：慢查询日志</h2>
 <h3 id="3-1-慢查询概述">3.1 慢查询概述</h3>
-<p>MySQL的慢查询日志，用来记录在MysQL中<strong>响应时间超过阀值</strong>的语句，具体指运行时间超过long_query_time值的SQL，则会被记录到慢查询日志中。<strong>long_query_time的默认值为10，意思是运行10秒以上(不含10秒)的语句</strong>，认为是超出了我们的最大忍耐时间值。<br>
-它的主要作用是，帮助我们发现那些执行时间特别长的SQL查询，并且有针对性地进行优化，从而提高系统的整体效率。当我们的数据库服务器发生阻塞、运行变慢的时候，检查一下慢查询日志，找到那些慢查询，对解决问题很有帮助。比如一条sql执行超过5秒钟，我们就算慢sQL，希望能收集超过5秒的sql，结合explain进行全面分析。<br>
-默认情况下，<strong>MySQL数据库没有开启慢查询日志</strong>，需要我们手动来设置这个参数。<strong>如果不是调优需要的话，一般不建议启动该参数</strong>，因为开启慢查询日志会或多或少带来一定的性能影响。<br>
-慢查询日志支持将日志记录写入文件。</p>
+<p>MySQL的慢查询日志，用来记录在MysQL中<strong>响应时间超过阀值</strong>的语句，具体指运行时间超过long_query_time值的SQL，则会被记录到慢查询日志中。<strong>long_query_time的默认值为10，意思是运行10秒以上(不含10秒)的语句</strong>，认为是超出了我们的最大忍耐时间值。</p>
+<p>它的主要作用是，帮助我们发现那些执行时间特别长的SQL查询，并且有针对性地进行优化，从而提高系统的整体效率。当我们的数据库服务器发生阻塞、运行变慢的时候，检查一下慢查询日志，找到那些慢查询，对解决问题很有帮助。比如一条sql执行超过5秒钟，我们就算慢sQL，希望能收集超过5秒的sql，结合explain进行全面分析。</p>
+<p>默认情况下，<strong>MySQL数据库没有开启慢查询日志</strong>，需要我们手动来设置这个参数。<strong>如果不是调优需要的话，一般不建议启动该参数</strong>，因为开启慢查询日志会或多或少带来一定的性能影响。慢查询日志支持将日志记录写入文件。</p>
 <h3 id="3-2-慢查询日志参数开启与查看">3.2 慢查询日志参数开启与查看</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 开启 slow_query_log</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%slow_query_log'</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> slow_query_log=<span class="string">'ON'</span>;</span><br><span class="line"><span class="comment">-- 能看到这时慢查询分析已经开启，同时文件保存在 /var/lib/mysql/atguigu02-slow.log`文件 中</span></span><br><span class="line"><span class="comment">-- 修改 long_query_time 阈值</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%long_query_time%'</span>;</span><br><span class="line"><span class="comment">-- 设置为 1 秒</span></span><br><span class="line"><span class="comment">-- 测试发现：设置global的方式对当前session的long_query_time失效。对新连接的客户端有效。所以可以一并执行下述语句</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> long_query_time = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%long_query_time%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> long_query_time=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%long_query_time%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 补充：配置文件中一并设置参数</span></span><br><span class="line"><span class="comment">-- 修改 `my.cnf` 文件，[mysqld] 下增加或修改参数 `long_query_time、slow_query_log` 和 `slow_query_log_file` 后，然后重启 MySQL 服务器</span></span><br><span class="line">[mysqld]</span><br><span class="line">slow_query_log=ON  <span class="comment"># 开启慢查询日志开关</span></span><br><span class="line">slow_query_log_file=/var/lib/mysql/atguigu-low.log  <span class="comment"># 慢查询日志的目录和文件名信息</span></span><br><span class="line">long_query_time=3  <span class="comment"># 设置慢查询的阈值为3秒，超出此设定值的SQL即被记录到慢查询日志</span></span><br><span class="line">log_output=FILE</span><br><span class="line"><span class="comment">-- 如果不指定存储路径，慢查询日志默认存储到MySQL数据库的数据文件夹下。</span></span><br><span class="line"><span class="comment">-- 如果不指定文件名，默认文件名为hostname_slow.log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询当前系统中有多少条慢查询记录</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GLOBAL</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'%Slow_queries%'</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="3-3-案例演示">3.3 案例演示</h3>
@@ -1248,9 +1245,9 @@ WHERE条件 (包括 GROUP BY、ORDER BY) 里用不到的字段不需要创建索
 <li>Copying to tmp table on disk：把内存中临时表复制到磁盘上，警惕！</li>
 <li>locked。</li>
 </ul>
-<p>如果在show profile诊断结果中出现了以上4条结果中的任何一条，则sql语句需要优化。<br>
-<strong>注意：</strong><br>
-不过SHOW PROFILE命令将被启用，我们可以从 information_schema 中的 profiling 数据表进行查看</p>
+<p>如果在show profile诊断结果中出现了以上4条结果中的任何一条，则sql语句需要优化。</p>
+<p><strong>注意：</strong></p>
+<p>不过SHOW PROFILE命令将被启用，我们可以从 information_schema 中的 profiling 数据表进行查看</p>
 <h2 id="5、分析查询语句：EXPLAIN-重要">5、分析查询语句：EXPLAIN(重要)</h2>
 <h3 id="5-1-概述">5.1 概述</h3>
 <blockquote>
@@ -1258,8 +1255,8 @@ WHERE条件 (包括 GROUP BY、ORDER BY) 里用不到的字段不需要创建索
 <a href="https://dev.mysql.com/doc/refman/5.7/en/explain-output.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.7/en/explain-output.html</a><br>
 <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/explain-output.html</a></p>
 </blockquote>
-<p><strong>定位了查询慢的SQL之后，我们就可以使用EXPLAIN或DESCRIBE工具做针对性的分析查询语句</strong>。DESCRIBE语句的使用方法与EXPLAIN语句是一样的，并且分析结果也是一样的。<br>
-MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通过计算分析系统中收集到的统计信息，为客户端请求的Query提供它认为最优的<strong>执行计划</strong>（他认为最优的数据检索方式，但不见得是DBA认为是最优的，这部分最耗费时间)。这个执行计划展示了接下来具体执行查询的方式，比如多表连接的顺序是什么，对于每个表采用什么访问方法来具体执行查询等等。MySQL为我们提供了EXPLAIN语句来帮助我们查看某个查询语句的具体执行计划，大家看懂EXPLAIN语句的各个输出项，可以有针对性的提升我们查询语句的性能。</p>
+<p><strong>定位了查询慢的SQL之后，我们就可以使用EXPLAIN或DESCRIBE工具做针对性的分析查询语句</strong>。DESCRIBE语句的使用方法与EXPLAIN语句是一样的，并且分析结果也是一样的。</p>
+<p>MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通过计算分析系统中收集到的统计信息，为客户端请求的Query提供它认为最优的<strong>执行计划</strong>（他认为最优的数据检索方式，但不见得是DBA认为是最优的，这部分最耗费时间)。这个执行计划展示了接下来具体执行查询的方式，比如多表连接的顺序是什么，对于每个表采用什么访问方法来具体执行查询等等。MySQL为我们提供了EXPLAIN语句来帮助我们查看某个查询语句的具体执行计划，大家看懂EXPLAIN语句的各个输出项，可以有针对性的提升我们查询语句的性能。</p>
 <ul>
 <li>MySQL 5.6.3以前只能 EXPLAIN SELECT ；MYSQL 5.6.3以后就可以 EXPLAIN SELECT，UPDATE， DELETE</li>
 <li>在5.7以前的版本中，想要显示 partitions 需要使用 explain partitions 命令；想要显示 filtered 需要使用 explain extended 命令。在5.7版本后，默认explain直接显示partitions和 filtered中的信息。</li>
@@ -1382,19 +1379,19 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 <li>index，当我们可以使用索引覆盖，但需要扫描全部的索引记录时，该表的访问方法就是index</li>
 <li>ALL，最熟悉的全表扫描</li>
 </ul>
-<p><strong>结果值从最好到最坏依次是： system &gt; const &gt; eq_ref &gt; ref</strong> &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL 。<strong>SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，最好是 consts级别。（阿里巴巴 开发手册要求）</strong><br>
-<strong>6、possible_keys和key</strong><br>
-在EXPLAIN语句输出的执行计划中，possible_keys列表示在某个查询语句中，对某个列执行单表查询时可能用到的索引有哪些。一般查询涉及到的字段上若存在索引，则该索引将被列出，但不一定被查询使用。key列表示实际用到的索引有哪些，如果为NULL，则没有使用索引<br>
-<strong>7、key_len ☆</strong><br>
-实际使用到的索引长度 (即：字节数)，帮你检查是否充分的利用了索引，值越大越好，主要针对于联合索引，有一定的参考意义。<br>
-<strong>8、ref</strong><br>
-显示索引的哪一列被使用了，如果可能的话，是一个常数。哪些列或常量被用于查找索引列上的值。当使用索引列等值匹配的条件去执行查询时，也就是在访问方法是<code>const、eq_ref、ref、ref_or_null 、unique_subquery,、index_subquery</code>其中之一时，<code>ref</code>列展示的就是与索引列作等值匹配的结构是什么，比如只是一个常数或者是某个列。<br>
-<strong>9、rows ☆</strong><br>
-预估的需要读取的记录条数，值越小越好。<br>
-<strong>10、filtered</strong><br>
-某个表经过搜索条件过滤后剩余记录条数的百分比。如果使用的是索引执行的单表扫描，那么计算时需要估计出满足除使用到对应索引的搜索条件外的其他搜索条件的记录有多少条。对于单表查询来说，这个filtered的值没有什么意义，我们<strong>更关注在连接查询中驱动表对应的执行计划记录的filtered值</strong>，它决定了被驱动表要执行的次数 (即: rows * filtered)<br>
-<strong>11、Extra ☆</strong><br>
-用来说明一些额外信息的，包含不适合在其他列中显示但十分重要的额外信息。我们可以通过这些额外信息来更准确的理解MySQL到底将如何执行给定的查询语句。</p>
+<p><strong>结果值从最好到最坏依次是： system &gt; const &gt; eq_ref &gt; ref</strong> &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL 。<strong>SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，最好是 consts级别。（阿里巴巴 开发手册要求）</strong></p>
+<p><strong>6、possible_keys和key</strong></p>
+<p>在EXPLAIN语句输出的执行计划中，possible_keys列表示在某个查询语句中，对某个列执行单表查询时可能用到的索引有哪些。一般查询涉及到的字段上若存在索引，则该索引将被列出，但不一定被查询使用。key列表示实际用到的索引有哪些，如果为NULL，则没有使用索引</p>
+<p><strong>7、key_len ☆</strong></p>
+<p>实际使用到的索引长度 (即：字节数)，帮你检查是否充分的利用了索引，值越大越好，主要针对于联合索引，有一定的参考意义。</p>
+<p><strong>8、ref</strong></p>
+<p>显示索引的哪一列被使用了，如果可能的话，是一个常数。哪些列或常量被用于查找索引列上的值。当使用索引列等值匹配的条件去执行查询时，也就是在访问方法是<code>const、eq_ref、ref、ref_or_null 、unique_subquery,、index_subquery</code>其中之一时，<code>ref</code>列展示的就是与索引列作等值匹配的结构是什么，比如只是一个常数或者是某个列。</p>
+<p><strong>9、rows ☆</strong></p>
+<p>预估的需要读取的记录条数，值越小越好。</p>
+<p><strong>10、filtered</strong></p>
+<p>某个表经过搜索条件过滤后剩余记录条数的百分比。如果使用的是索引执行的单表扫描，那么计算时需要估计出满足除使用到对应索引的搜索条件外的其他搜索条件的记录有多少条。对于单表查询来说，这个filtered的值没有什么意义，我们<strong>更关注在连接查询中驱动表对应的执行计划记录的filtered值</strong>，它决定了被驱动表要执行的次数 (即: rows * filtered)</p>
+<p><strong>11、Extra ☆</strong></p>
+<p>用来说明一些额外信息的，包含不适合在其他列中显示但十分重要的额外信息。我们可以通过这些额外信息来更准确的理解MySQL到底将如何执行给定的查询语句。</p>
 <ul>
 <li>No tables used，当查询语句没有FROM子句时将会提示该额外信息</li>
 <li>Impossible WHERE，当查询语句的WHERE子句永远为FALSE时将会提示该额外信息</li>
@@ -1499,9 +1496,9 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 <li>方案一: 为了去掉filesort我们可以把索引建成联合索引</li>
 <li>方案二：尽量让where的过滤条件和排序使用上索引</li>
 </ul>
-<p>1.两个索引同时存在，mysql自动选择最优的方案。(对于这个例子，mysal选择idx_age _stuno_name)。但是，随着数据量的变化，选择的索引也会随之变化的。<br>
-2.当【范围条件】和【group by或者order by】的字段出现二选一时，优先观察条件字段的过滤数量，如果过滤的数据足够多，而需要排序的数据并不多时，优先把索引放在范围字段上。反之，亦然。<br>
-<strong>filesort算法：双路排序和单路排序</strong></p>
+<p>1.两个索引同时存在，mysql自动选择最优的方案。(对于这个例子，mysal选择idx_age _stuno_name)。但是，随着数据量的变化，选择的索引也会随之变化的。</p>
+<p>2.当【范围条件】和【group by或者order by】的字段出现二选一时，优先观察条件字段的过滤数量，如果过滤的数据足够多，而需要排序的数据并不多时，优先把索引放在范围字段上。反之，亦然。</p>
+<p><strong>filesort算法：双路排序和单路排序</strong></p>
 <ul>
 <li><strong>双路排序 （慢）</strong></li>
 </ul>
@@ -1509,8 +1506,8 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 <ul>
 <li><strong>单路排序 （快，现在用）</strong></li>
 </ul>
-<p>从磁盘读取查询需要的 所有列 ，按照order by列在buffer对它们进行排序，然后扫描排序后的列表进行输出， 它的效率更快一些，避免了第二次读取数据。并且把随机IO变成了顺序IO，但是它会使用更多的空间， 因为它把每一行都保存在内存中了<br>
-<strong>优化策略</strong></p>
+<p>从磁盘读取查询需要的 所有列 ，按照order by列在buffer对它们进行排序，然后扫描排序后的列表进行输出， 它的效率更快一些，避免了第二次读取数据。并且把随机IO变成了顺序IO，但是它会使用更多的空间， 因为它把每一行都保存在内存中了</p>
+<p><strong>优化策略</strong></p>
 <ul>
 <li><strong>尝试提高 sort_buffer_size</strong>，InnoDB默认是1048576字节，1MB</li>
 <li><strong>尝试提高 max_length_for_sort_data</strong></li>
@@ -1526,7 +1523,7 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 <li>包含了order by、group by、distinct这些查询的语句，where条件过滤出来的结果集请保持在1000行 以内，否则SQL会很慢。</li>
 </ul>
 <h3 id="9-6-优化分页查询">9.6 优化分页查询</h3>
-<p>一般分页查询时，通过创建覆盖索引能够比较好地提高性能。一个常见又非常头疼的问题就是limit 2000000,10，此时需要MysQL排序前20oo010记录，仅仅返回2o00000-2000010的记录，其他记录丢弃，查询排序的代价非常大。</p>
+<p>一般分页查询时，通过创建覆盖索引能够比较好地提高性能。一个常见又非常头疼的问题就是limit 2000000,10，此时需要MysQL排序前2000010记录，仅仅返回2o00000-2000010的记录，其他记录丢弃，查询排序的代价非常大。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 原句</span></span><br><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">LIMIT</span> <span class="number">2000000</span>,<span class="number">10</span>;</span><br><span class="line"><span class="comment">-- 优化思路一</span></span><br><span class="line"><span class="comment">-- 在索引上完成排序分页操作，最后根据主键关联回原表查询所需要的其他列内容。</span></span><br><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student t,(<span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">FROM</span> student <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> <span class="keyword">LIMIT</span> <span class="number">2000000</span>,<span class="number">10</span>) a <span class="keyword">WHERE</span> t.id = a.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 优化思路二</span></span><br><span class="line"><span class="comment">-- 该方案适用于主键自增的表，可以把Limit 查询转换成某个位置的查询</span></span><br><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> <span class="keyword">id</span> &gt; <span class="number">2000000</span> <span class="keyword">LIMIT</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="10、索引优化">10、索引优化</h2>
 <h3 id="10-1-优先考虑覆盖索引">10.1 优先考虑覆盖索引</h3>
@@ -1538,9 +1535,9 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 <li>**避免Innodb表进行索引的二次查询(回表)，**Innodb是以聚集索引的顺序来存储的，对于Innodb来说，二级索引在叶子节点中所保存的是行的主键信息，如果是用二级索引查询数据，在查找到相应的键值后，还需通过主键进行二次查询才能获取我们真实所需要的数据。在覆盖索引中，二级索引的键值中可以获取所要的数据，避免了对主键的二次查询，减少了IO操作，提升了查询效率</li>
 <li><strong>可以把随机lO变成顺序IO加快查询效率</strong>，由于覆盖索引是按键值的顺序存储的，对于I0密集型的范围查找来说，对比随机从磁盘读取每一行的数据IO要少的多，因此利用覆盖索引在访问时也可以把磁盘的随机读取的IO转变成索引查找的顺序IO</li>
 </ul>
-<p>由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。<br>
-<strong>弊端</strong><br>
-索引字段的维护总是有代价的。因此，在建立冗余索引来支持覆盖索引时就需要权衡考虑了。这是业务DBA，或者称为业务数据架构师的工作。</p>
+<p>由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。</p>
+<p><strong>弊端</strong></p>
+<p>索引字段的维护总是有代价的。因此，在建立冗余索引来支持覆盖索引时就需要权衡考虑了。这是业务DBA，或者称为业务数据架构师的工作。</p>
 <h3 id="10-2-如何给字符串添加索引">10.2 如何给字符串添加索引</h3>
 <p>**使用前缀索引，定义好长度，就可以做到既节省空间，又不用额外增加太多的查询成本。**前面 已经讲过区分度，区分度越高越好。因为区分度越高，意味着重复的键值越少。</p>
 <blockquote>
@@ -1570,11 +1567,10 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 <li>对于普通索引来说，查找到满足条件的第一个记录(5,500)后，需要查找下一个记录，直到碰到第一个不满足k=5条件的记录。</li>
 <li>对于唯一索引来说，由于索引定义了唯一性，查找到第一个满足条件的记录后，就会停止继续检 索。</li>
 </ul>
-<p>那么，这个不同带来的性能差距会有多少呢？答案是， 微乎其微<br>
-为了说明普通索引和唯一索引对更新语句性能的影响这个问题，介绍一下change buffer。<br>
-<strong>对于更新过程</strong>，当需要更新一个数据页时，如果数据页在内存中就直接更新，而如果这个数据页还没有在内存中的话， 在不影响数据一致性的前提下， InooDB会将这些更新操作缓存在change buffer中 ，这样就不需要从磁盘中读入这个数据页了。在下次查询需要访问这个数据页的时候，将数据页读入内存，然后执行change buffer中与这个页有关的操作。通过这种方式就能保证这个数据逻辑的正确性。<br>
-将change buffer中的操作应用到原数据页，得到最新结果的过程称为 merge 。除了 访问这个数据页 会触 发merge外，系统有 后台线程会定期 merge。在 数据库正常关闭（shutdown） 的过程中，也会执行merge 操作。如果能够将更新操作先记录在change buffer， 减少读磁盘 ，语句的执行速度会得到明显的提升。而且，数据读入内存是需要占用 buffer pool 的，所以这种方式还能够 避免占用内存，提高内存利用率。唯一索引的更新就不能使用change buffer ，实际上也只有普通索引可以使用。<br>
-<strong>change buffer的使用场景</strong></p>
+<p>那么，这个不同带来的性能差距会有多少呢？答案是， 微乎其微。为了说明普通索引和唯一索引对更新语句性能的影响这个问题，介绍一下change buffer。</p>
+<p><strong>对于更新过程</strong>，当需要更新一个数据页时，如果数据页在内存中就直接更新，而如果这个数据页还没有在内存中的话， 在不影响数据一致性的前提下， InooDB会将这些更新操作缓存在change buffer中 ，这样就不需要从磁盘中读入这个数据页了。在下次查询需要访问这个数据页的时候，将数据页读入内存，然后执行change buffer中与这个页有关的操作。通过这种方式就能保证这个数据逻辑的正确性。</p>
+<p>将change buffer中的操作应用到原数据页，得到最新结果的过程称为 merge 。除了 访问这个数据页 会触 发merge外，系统有 后台线程会定期 merge。在 数据库正常关闭（shutdown） 的过程中，也会执行merge 操作。如果能够将更新操作先记录在change buffer， 减少读磁盘 ，语句的执行速度会得到明显的提升。而且，数据读入内存是需要占用 buffer pool 的，所以这种方式还能够 避免占用内存，提高内存利用率。唯一索引的更新就不能使用change buffer ，实际上也只有普通索引可以使用。</p>
+<p><strong>change buffer的使用场景</strong></p>
 <ul>
 <li>普通索引和唯一索引应该怎么选择？其实，这两类索引在查询能力上是没差别的，主要考虑的是 对 更新性能 的影响。所以，建议你 尽量选择普通索引</li>
 <li>在实际使用中会发现， 普通索引 和 change buffer 的配合使用，对于 数据量大 的表的更新优化 还是很明显的</li>
@@ -1587,24 +1583,24 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 </li>
 </ul>
 <h3 id="10-5-其它查询优化策略">10.5 其它查询优化策略</h3>
-<p><strong>1、EXISTS 和 IN 的区分</strong><br>
-索引是个前提，其实选择与否还是要看表的大小。你可以将选择的标准理解为<strong>小表驱动大表</strong>。在这种方式下效率是最高的。哪个表小就用哪个表来驱动，A表小就用EXISTS，B表小就用IN。<br>
-<strong>2、COUNT(*)与COUNT(具体字段)效率</strong></p>
+<p><strong>1、EXISTS 和 IN 的区分</strong></p>
+<p>索引是个前提，其实选择与否还是要看表的大小。你可以将选择的标准理解为<strong>小表驱动大表</strong>。在这种方式下效率是最高的。哪个表小就用哪个表来驱动，A表小就用EXISTS，B表小就用IN。</p>
+<p><strong>2、COUNT(*)与COUNT(具体字段)效率</strong></p>
 <ul>
 <li><code>COUNT(*)</code>和<code>COUNT(1)</code>都是对所有结果进行<code>COUNT</code>，<code>COUNT(*)</code>和<code>COUNT(1)</code>本质上并没有区别(二者执行时间可能略有差别，不过你还是可以把它俩的执行效率看成是相等的)。如果有WHERE子句，则是对所有符合筛选条件的数据行进行统计;如果没有WHERE子句，则是对数据表的数据行数进行统计。</li>
 <li>如果是MylSAM存储引擎，统计数据表的行数只需要<code>O(1)</code>的复杂度，这是因为每张 MyISAM的数据表都有一个meta信息存储了<code>row_count</code>值，而一致性则由表级锁来保证；如果是InnoDB存储引擎，因为InnoDB支持事务，采用行级锁和MVCC机制，所以无法像MyISAM一样，维护一个row_count变量，因此需要采用<code>扫描全表</code>，是<code>O(n)</code>的复杂度，进行循环＋计数的方式来完成统计。</li>
 <li>在InnoDB引擎中，如果采用<code>COUNT(具体字段)</code>来统计数据行数，要尽量采用二级索引。因为主键采用的索引是聚簇索引，聚簇索引包含的信息多，明显会大于二级索引(非聚簇索引)。对于<code>COUNT(*)</code>和<code>COUNT(1)</code>来说，它们不需要查找具体的行，只是统计行数，系统会自动采用占用空间更小的二级索引来进行统计。如果有多个二级索引，会使用key_len小的二级索引进行扫描。当没有二级索引的时候，才会采用主键索引来进行统计。</li>
 </ul>
-<p><strong>3、关于SELECT(*)</strong><br>
-在表查询中，建议明确字段，不要使用 * 作为查询的字段列表，推荐使用<code>SELECT &lt;字段列表&gt; 查询</code>。原因：</p>
+<p><strong>3、关于SELECT(*)</strong></p>
+<p>在表查询中，建议明确字段，不要使用 * 作为查询的字段列表，推荐使用<code>SELECT &lt;字段列表&gt; 查询</code>。原因：</p>
 <ul>
 <li>MySQL 在解析的过程中，会通过查询数据字典 将&quot;*&quot;按序转换成所有列名，这会大大的耗费资源和时间。</li>
 <li>无法使用 覆盖索引</li>
 </ul>
-<p><strong>4、LIMIT 1 对优化的影响</strong><br>
-针对的是会扫描全表的 SQL 语句，如果你可以确定结果集只有一条，那么加上 LIMIT 1 的时候，当找到一条结果的时候就不会继续扫描了，这样会加快查询速度；如果数据表已经对字段建立了唯一索引，那么可以通过索引进行查询，不会全表扫描的话，就不需要加上 LIMIT 1 了。<br>
-<strong>5、多使用COMMIT</strong><br>
-只要有可能，在程序中尽量多使用 COMMIT，这样程序的性能得到提高，需求也会因为 COMMIT 所释放 的资源而减少。COMMIT 所释放的资源：</p>
+<p><strong>4、LIMIT 1 对优化的影响</strong></p>
+<p>针对的是会扫描全表的 SQL 语句，如果你可以确定结果集只有一条，那么加上 LIMIT 1 的时候，当找到一条结果的时候就不会继续扫描了，这样会加快查询速度；如果数据表已经对字段建立了唯一索引，那么可以通过索引进行查询，不会全表扫描的话，就不需要加上 LIMIT 1 了。</p>
+<p><strong>5、多使用COMMIT</strong></p>
+<p>只要有可能，在程序中尽量多使用 COMMIT，这样程序的性能得到提高，需求也会因为 COMMIT 所释放 的资源而减少。COMMIT 所释放的资源：</p>
 <ul>
 <li>回滚段上用于恢复数据的信息</li>
 <li>被程序语句获得的锁</li>
@@ -1688,11 +1684,11 @@ MysQL中有专门负责优化SELECT语句的优化器模块，主要功能:通�
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">port = 3306 </span><br><span class="line">serverid = 1 </span><br><span class="line">socket = /tmp/mysql.sock </span><br><span class="line">skip-locking <span class="comment">#避免MySQL的外部锁定，减少出错几率增强稳定性。 </span></span><br><span class="line">skip-name-resolve <span class="comment">#禁止MySQL对外部连接进行DNS解析，使用这一选项可以消除MySQL进行DNS解析的时间。但需要注意，如果开启该选项，则所有远程主机连接授权都要使用IP地址方式，否则MySQL将无法正常处理连接请求！ </span></span><br><span class="line">back_log = 384</span><br><span class="line">key_buffer_size = 256M </span><br><span class="line">max_allowed_packet = 4M </span><br><span class="line">thread_stack = 256K</span><br><span class="line">table_cache = 128K </span><br><span class="line">sort_buffer_size = 6M </span><br><span class="line">read_buffer_size = 4M</span><br><span class="line">read_rnd_buffer_size=16M </span><br><span class="line">join_buffer_size = 8M </span><br><span class="line">myisam_sort_buffer_size =64M </span><br><span class="line">table_cache = 512 </span><br><span class="line">thread_cache_size = 64 </span><br><span class="line">query_cache_size = 64M</span><br><span class="line">tmp_table_size = 256M </span><br><span class="line">max_connections = 768 </span><br><span class="line">max_connect_errors = 10000000</span><br><span class="line">wait_timeout = 10 </span><br><span class="line">thread_concurrency = 8 <span class="comment">#该参数取值为服务器逻辑CPU数量*2，在本例中，服务器有2颗物理CPU，而每颗物理CPU又支持H.T超线程，所以实际取值为4*2=8</span></span><br><span class="line">skip-networking <span class="comment">#开启该选项可以彻底关闭MySQL的TCP/IP连接方式，如果WEB服务器是以远程连接的方式访问MySQL数据库服务器则不要开启该选项！否则将无法正常连接！ </span></span><br><span class="line">table_cache=1024</span><br><span class="line">innodb_additional_mem_pool_size=4M <span class="comment">#默认为2M </span></span><br><span class="line">innodb_flush_log_at_trx_commit=1</span><br><span class="line">innodb_log_buffer_size=2M <span class="comment">#默认为1M </span></span><br><span class="line">innodb_thread_concurrency=8 <span class="comment">#你的服务器CPU有几个就设置为几。建议用默认一般为8 </span></span><br><span class="line">tmp_table_size=64M <span class="comment">#默认为16M，调到64-256最挂</span></span><br><span class="line">thread_cache_size=120 </span><br><span class="line">query_cache_size=32M</span><br></pre></td></tr></table></figure>
 <h2 id="3、优化数据库结构">3、优化数据库结构</h2>
 <h3 id="3-1-拆分表：冷热数据分离">3.1 拆分表：冷热数据分离</h3>
-<p>拆分表的思路是，<strong>把1个包含很多字段的表拆分成2个或者多个相对较小的表</strong>。这样做的原因是，这些表中某些字段的操作频率很高（热数据），经常要进行查询或者更新操作，而另外一些字段的使用频率却很低（冷数据），冷热数据分离，可以减小表的宽度。如果放在一个表里面，每次查询都要读取大记录，会消耗较多的资源。<br>
-MySQL限制每个表最多存储4096列，并且每一行数据的大小不能超过65535字节。表越宽，把表装载进内存缓冲池时所占用的内存也就越大，也会消耗更多的IO。冷热数据分离的目的是:<strong>①减少磁盘lO，保证热数据的内存缓存命中率。②更有效的利用缓存，避免读入无用的冷数据</strong>。</p>
+<p>拆分表的思路是，<strong>把1个包含很多字段的表拆分成2个或者多个相对较小的表</strong>。这样做的原因是，这些表中某些字段的操作频率很高（热数据），经常要进行查询或者更新操作，而另外一些字段的使用频率却很低（冷数据），冷热数据分离，可以减小表的宽度。如果放在一个表里面，每次查询都要读取大记录，会消耗较多的资源。</p>
+<p>MySQL限制每个表最多存储4096列，并且每一行数据的大小不能超过65535字节。表越宽，把表装载进内存缓冲池时所占用的内存也就越大，也会消耗更多的IO。冷热数据分离的目的是:<strong>①减少磁盘lO，保证热数据的内存缓存命中率。②更有效的利用缓存，避免读入无用的冷数据</strong>。</p>
 <h3 id="3-2-增加中间表">3.2 增加中间表</h3>
-<p>对于需要经常联合查询的表，可以建立中间表以提高查询效率。通过建立中间表，把需要经常联合查询的数据插入中间表中，然后将原来的联合查询改为对中间表的查询，以此来提高查询效率。<br>
-首先，分析经常联合查询表中的字段;然后，使用这些字段建立一个中间表，并将原来联合查询的表的数据插入中间表中;最后，使用中间表来进行查询。</p>
+<p>对于需要经常联合查询的表，可以建立中间表以提高查询效率。通过建立中间表，把需要经常联合查询的数据插入中间表中，然后将原来的联合查询改为对中间表的查询，以此来提高查询效率。</p>
+<p>首先，分析经常联合查询表中的字段;然后，使用这些字段建立一个中间表，并将原来联合查询的表的数据插入中间表中;最后，使用中间表来进行查询。</p>
 <h3 id="3-3-增加冗余字段">3.3 增加冗余字段</h3>
 <p>设计数据库表时应尽量遵循范式理论的规约，尽可能减少冗余字段，让数据库设计看起来精致、优雅。 但是，合理地加入冗余字段可以提高查询速度</p>
 <h3 id="3-4-优化数据类型">3.4 优化数据类型</h3>
@@ -1746,11 +1742,11 @@ MySQL限制每个表最多存储4096列，并且每一行数据的大小不能�
 <h3 id="5-2-创建全局通用表空间">5.2 创建全局通用表空间</h3>
 <p>MySQL8.0使用<code>CREATE TABLESPACE</code>语句来创建一个全局通用表空间。全局表空间可以被所有的数据库的表共享，而且相比于独享表空间，<strong>使用手动创建共享表空间可以节约元数据方面的内存</strong>。可以在创建表的时候，指定属于哪个表空间，也可以对已有表进行表空间修改等。</p>
 <h3 id="5-3-MySQL-8-0新特性：隐藏索引对调优的帮助">5.3  MySQL 8.0新特性：隐藏索引对调优的帮助</h3>
-<p>不可见索引的特性对于性能调试非常有用。在MySQL 8.0中，索引可以被&quot;隐藏&quot;和“显示”。<strong>当一个索引被隐藏时，它不会被查询优化器所使用</strong>。也就是说，管理员可以隐藏一个索引，然后观察对数据库的影响。如果数据库性能有所下降，就说明这个索引是有用的，于是将其&quot;恢复显示&quot;即可;如果数据库性能看不出变化，就说明这个索引是多余的，可以删掉了。<br>
-需要注意的是当索引被隐藏时，它的内容仍然是和正常索引一样<strong>实时更新</strong>的。如果一个索引需要长期被隐藏，那么可以将其删除，因为索引的存在会影响插入、更新和删除的性能。<strong>数据表中的主键不能被设置为invisible</strong>。</p>
+<p>不可见索引的特性对于性能调试非常有用。在MySQL 8.0中，索引可以被&quot;隐藏&quot;和“显示”。<strong>当一个索引被隐藏时，它不会被查询优化器所使用</strong>。也就是说，管理员可以隐藏一个索引，然后观察对数据库的影响。如果数据库性能有所下降，就说明这个索引是有用的，于是将其&quot;恢复显示&quot;即可;如果数据库性能看不出变化，就说明这个索引是多余的，可以删掉了。</p>
+<p>需要注意的是当索引被隐藏时，它的内容仍然是和正常索引一样<strong>实时更新</strong>的。如果一个索引需要长期被隐藏，那么可以将其删除，因为索引的存在会影响插入、更新和删除的性能。<strong>数据表中的主键不能被设置为invisible</strong>。</p>
 <hr>
 <p>参考<br>
-<a href="https://www.bilibili.com/video/BV1iq4y1u7vj" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1iq4y1u7vj</a></p>
+[<a href="https://www.bilibili.com/video/BV1iq4y1u7vj" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1iq4y1u7vj</a>](</p>
 
       
 
@@ -1813,7 +1809,7 @@ MySQL限制每个表最多存储4096列，并且每一行数据的大小不能�
     2023-03-06
     <br>
     <strong class="update-time">最后更新：</strong>
-    2023-03-17
+    2023-06-28
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://blog.shawncoding.top/posts/f2fcb8fb.html" title="MySQL8.0高级篇(上)-架构与索引" target="_blank">MySQL8.0高级篇(上)-架构与索引</a>
@@ -2240,6 +2236,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
             
             <div class="clearfix"></div>
