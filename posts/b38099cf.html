@@ -10,12 +10,12 @@
   <link rel="dns-prefetch" href="https://blog.shawncoding.top">
   <title>缓存一致性几种解决方案 | 星星的猫(&gt;^ω^&lt;)喵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="缓存一致性几种解决方案 一、理论知识 1、概述  2、坏的方案 2.1 先写 MySQL，再写 Redis  图解说明：  这是一副时序图，描述请求的先后调用顺序； 橘黄色的线是请求 A，黑色的线是请求 B； 橘黄色的文字，是 MySQL 和 Redis 最终不一致的数据； 数据是从 10 更新为 11；  请求 A、B 都是先写 MySQL，然后再写 Redis，在高并发情况下，如果请求 A 在">
+  <meta name="description" content="缓存一致性几种解决方案 一、理论知识 1、概述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="缓存一致性几种解决方案">
 <meta property="og:url" content="https://blog.shawncoding.top/posts/b38099cf.html">
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
-<meta property="og:description" content="缓存一致性几种解决方案 一、理论知识 1、概述  2、坏的方案 2.1 先写 MySQL，再写 Redis  图解说明：  这是一副时序图，描述请求的先后调用顺序； 橘黄色的线是请求 A，黑色的线是请求 B； 橘黄色的文字，是 MySQL 和 Redis 最终不一致的数据； 数据是从 10 更新为 11；  请求 A、B 都是先写 MySQL，然后再写 Redis，在高并发情况下，如果请求 A 在">
+<meta property="og:description" content="缓存一致性几种解决方案 一、理论知识 1、概述">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431661.png">
 <meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431662.png">
@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431668.png">
 <meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431669.png">
 <meta property="article:published_time" content="2023-12-13T08:39:14.000Z">
-<meta property="article:modified_time" content="2023-12-13T08:49:55.088Z">
+<meta property="article:modified_time" content="2024-01-24T12:10:40.113Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
@@ -330,6 +330,7 @@ var _hmt = _hmt || [];
 <h1>一、理论知识</h1>
 <h2 id="1、概述">1、概述</h2>
 <p><img src="http://qnypic.shawncoding.top/course/202312131431661.png" alt></p>
+<a id="more"></a>
 <h2 id="2、坏的方案">2、坏的方案</h2>
 <h3 id="2-1-先写-MySQL，再写-Redis">2.1 先写 MySQL，再写 Redis</h3>
 <p><img src="http://qnypic.shawncoding.top/course/202312131431662.png" alt></p>
@@ -484,7 +485,7 @@ var _hmt = _hmt || [];
     2023-12-13
     <br>
     <strong class="update-time">最后更新：</strong>
-    2023-12-13
+    2024-01-24
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://blog.shawncoding.top/posts/b38099cf.html" title="缓存一致性几种解决方案" target="_blank">缓存一致性几种解决方案</a>
@@ -693,7 +694,7 @@ var _hmt = _hmt || [];
         <div class="footer-left">
             <!--如果有设置theme.since，并且时间小于当前时间（年份），形式为：@ 2018 - 2019(+作者/标题)；否则默认为当前年份(+作者/标题)。 -->
             
-                &copy; 2020-2023
+                &copy; 2020-2024
             
             Shawn
         </div>
