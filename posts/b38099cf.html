@@ -17,21 +17,21 @@
 <meta property="og:site_name" content="星星的猫(&gt;^ω^&lt;)喵">
 <meta property="og:description" content="缓存一致性几种解决方案 一、理论知识 1、概述">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431661.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431662.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431663.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431664.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431665.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431666.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431667.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431668.png">
-<meta property="og:image" content="http://qnypic.shawncoding.top/course/202312131431669.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431661.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431662.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431663.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431664.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431665.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431666.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431667.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431668.png">
+<meta property="og:image" content="http://qnypic.shawncoding.top/blog/202312131431669.png">
 <meta property="article:published_time" content="2023-12-13T08:39:14.000Z">
-<meta property="article:modified_time" content="2024-01-24T12:10:40.113Z">
+<meta property="article:modified_time" content="2024-02-29T12:00:08.257Z">
 <meta property="article:author" content="Shawn">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qnypic.shawncoding.top/course/202312131431661.png">
+<meta name="twitter:image" content="http://qnypic.shawncoding.top/blog/202312131431661.png">
   
     <link rel="alternative" href="/atom.xml" title="星星的猫(&gt;^ω^&lt;)喵" type="application/atom+xml">
   
@@ -147,7 +147,7 @@ var _hmt = _hmt || [];
             
 		</nav>
 		<ul style="font-size:12px; font-style:oblique; font-weight:100; color:#1D94CE; margin-top:-15px" >
-			总文章数：173
+			总文章数：185
 		</ul>
 		
 		<nav class="header-nav">
@@ -329,11 +329,11 @@ var _hmt = _hmt || [];
         <h1>缓存一致性几种解决方案</h1>
 <h1>一、理论知识</h1>
 <h2 id="1、概述">1、概述</h2>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431661.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431661.png" alt></p>
 <a id="more"></a>
 <h2 id="2、坏的方案">2、坏的方案</h2>
 <h3 id="2-1-先写-MySQL，再写-Redis">2.1 先写 MySQL，再写 Redis</h3>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431662.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431662.png" alt></p>
 <p>图解说明：</p>
 <ul>
 <li>这是一副时序图，描述请求的先后调用顺序；</li>
@@ -343,18 +343,18 @@ var _hmt = _hmt || [];
 </ul>
 <p>请求 A、B 都是先写 MySQL，然后再写 Redis，在高并发情况下，如果请求 A 在写 Redis 时卡了一会，请求 B 已经依次完成数据的更新，就会出现图中的问题。<strong>不过这里有个前提，就是对于读请求，先去读 Redis，如果没有，再去读 DB，但是读请求不会再回写 Redis。</strong> 大白话说一下，就是读请求不会更新 Redis</p>
 <h3 id="2-2-先写-Redis，再写-MySQL">2.2 先写 Redis，再写 MySQL</h3>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431663.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431663.png" alt></p>
 <p>同“先写 MySQL，再写 Redis”</p>
 <h3 id="2-3-先删除-Redis，再写-MySQL">2.3 先删除 Redis，再写 MySQL</h3>
 <p>这幅图和上面有些不一样，前面的请求 A 和 B 都是更新请求，这里的请求 A 是更新请求，<strong>但是请求 B 是读请求，且请求 B 的读请求会回写 Redis</strong></p>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431664.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431664.png" alt></p>
 <p>请求 A 先删除缓存，可能因为卡顿，数据一直没有更新到 MySQL，导致两者数据不一致。<strong>这种情况出现的概率比较大，因为请求 A 更新 MySQL 可能耗时会比较长，而请求 B 的前两步都是查询，会非常快。</strong></p>
 <h2 id="3、好的方案">3、好的方案</h2>
 <h3 id="3-1-先删除-Redis，再写-MySQL，再删除-Redis">3.1 先删除 Redis，再写 MySQL，再删除 Redis</h3>
 <p>对于“先删除 Redis，再写 MySQL”，如果要解决最后的不一致问题，其实再对 Redis 重新删除即可，<strong>这个也是大家常说的“缓存双删”</strong></p>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431665.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431665.png" alt></p>
 <p>为了便于大家看图，对于蓝色的文字，“删除缓存 10”必须在“回写缓存10”后面，那如何才能保证一定是在后面呢？**网上给出的第一个方案是，让请求 A 的最后一次删除，等待 500ms。**对于这种方案，看看就行，反正我是不会用，太 Low 了，风险也不可控。<strong>那有没有更好的方案呢，我建议异步串行化删除，即删除请求入队列</strong></p>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431666.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431666.png" alt></p>
 <p>异步删除对线上业务无影响，串行化处理保障并发情况下正确删除。如果双删失败怎么办，网上有给 Redis 加一个缓存过期时间的方案，这个不敢苟同。<strong>个人建议整个重试机制，可以借助消息队列的重试机制，也可以自己整个表，记录重试次数</strong>，方法很多</p>
 <p>小结：</p>
 <ul>
@@ -363,9 +363,9 @@ var _hmt = _hmt || [];
 <li>缓存删除失败，增加重试机制</li>
 </ul>
 <h3 id="3-2-先写-MySQL，再删除-Redis">3.2 先写 MySQL，再删除 Redis</h3>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431667.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431667.png" alt></p>
 <p>对于上面这种情况，对于第一次查询，请求 B 查询的数据是 10，但是 MySQL 的数据是 11，<strong>只存在这一次不一致的情况，对于不是强一致性要求的业务，可以容忍。</strong>（那什么情况下不能容忍呢，比如秒杀业务、库存服务等。）当请求 B 进行第二次查询时，因为没有命中 Redis，会重新查一次 DB，然后再回写到 Reids</p>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431668.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431668.png" alt></p>
 <p>这里需要满足 2 个条件：</p>
 <ul>
 <li>缓存刚好自动失效；</li>
@@ -374,7 +374,7 @@ var _hmt = _hmt || [];
 <p>对于第二个条件，我们都知道更新 DB 肯定比查询耗时要长，所以出现这个情况的概率很小，同时满足上述条件的情况更小。</p>
 <h3 id="3-3-先写-MySQL，通过-Binlog，异步更新-Redis">3.3 先写 MySQL，通过 Binlog，异步更新 Redis</h3>
 <p>这种方案，主要是监听 MySQL 的 Binlog，然后通过异步的方式，将数据更新到 Redis，这种方案有个前提，查询的请求，不会回写 Redis。</p>
-<p><img src="http://qnypic.shawncoding.top/course/202312131431669.png" alt></p>
+<p><img src="http://qnypic.shawncoding.top/blog/202312131431669.png" alt></p>
 <p>这个方案，会保证 MySQL 和 Redis 的最终一致性，但是如果中途请求 B 需要查询数据，如果缓存无数据，就直接查 DB；如果缓存有数据，查询的数据也会存在不一致的情况。<strong>所以这个方案，是实现最终一致性的终极解决方案，但是不能保证实时性。</strong></p>
 <h2 id="4、几种方案比较">4、几种方案比较</h2>
 <p>我们对比上面讨论的 6 种方案：</p>
@@ -485,7 +485,7 @@ var _hmt = _hmt || [];
     2023-12-13
     <br>
     <strong class="update-time">最后更新：</strong>
-    2024-01-24
+    2024-02-29
     <br>
     <strong class="article-titles">本文标题：</strong>
     <a href="https://blog.shawncoding.top/posts/b38099cf.html" title="缓存一致性几种解决方案" target="_blank">缓存一致性几种解决方案</a>
